@@ -1,0 +1,53 @@
+name: Build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    name: Build with CMake
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-24.04
+          - macos-26
+    steps:
+    - uses: actions/checkout@v6
+
+    - name: Setup CCache
+      uses: hendrikmuhs/ccache-action@v1.2
+      with:
+        key: ${{ github.job }}-${{ runner.os }}
+
+    - name: Setup Just
+      uses: extractions/setup-just@v3
+
+    - name: Setup VCPKG
+      uses: lukka/run-vcpkg@v11
+      env:
+        VCPKG_BINARY_SOURCES: default,rw
+
+    - name: Setup VCPKG Cache
+      uses: actions/cache@v4
+      with:
+        path: ${{ env.VCPKG_DEFAULT_BINARY_CACHE }}
+        key: ${{ runner.os }}-vcpkg-binary-cache-${{ hashFiles('vcpkg*.json') }}
+        restore-keys: |
+            ${{ runner.os }}-vcpkg-binary-cache-
+
+    - name: Pull Dependencies
+      run: just --no-deps sync
+
+    - name: Generate Build Directory
+      run: just --no-deps setup
+
+    - name: Build with CMake
+      run: just --no-deps build
+
+    - name: Test
+      run: just --no-deps test
