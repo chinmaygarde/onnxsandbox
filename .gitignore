@@ -5,3 +5,5 @@ build/
 *.orig
 *.perfetto-trace
 *.ini
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
