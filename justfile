@@ -1,10 +1,10 @@
-@build preset='debug': (setup preset)
+@build preset='debug':
 	cmake --build --preset {{preset}}
 
 alias gen := setup
 
-@test preset='debug': (build preset)
-	ctest --preset {{preset}}
+@test preset='debug':
+	./build/src/onnx_sandbox_tests
 
 @setup preset='debug':
 	cmake --preset {{preset}}

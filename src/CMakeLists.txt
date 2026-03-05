@@ -26,6 +26,10 @@ target_link_libraries(onnx_sandbox PUBLIC glm::glm)
 find_package(absl CONFIG REQUIRED)
 target_link_libraries(onnx_sandbox PUBLIC absl::log absl::base)
 
+# ONNX Runtime
+find_package(onnxruntime CONFIG REQUIRED)
+target_link_libraries(onnx_sandbox PUBLIC onnxruntime::onnxruntime)
+
 # Unittests
 add_executable(onnx_sandbox_tests
   unittests.cc

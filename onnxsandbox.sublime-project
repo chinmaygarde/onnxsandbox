@@ -2,7 +2,7 @@
   "build_systems": [
     {
       "name": "ONNX Build All",
-      "shell_cmd": "just",
+      "shell_cmd": "just build && just test",
       "working_dir": "${project_path}",
       "file_regex": "(.*):(\\d+):(\\d+)(.*)",
       "shell": true,
