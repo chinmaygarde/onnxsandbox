@@ -1,9 +1,9 @@
 # Library
 add_library(onnx_sandbox
-  vk_connection.h
+  vk.cc
   vk.h
   vk_connection.cc
-  vk.cc
+  vk_connection.h
 )
 
 # Configure Fixtures Location
@@ -33,11 +33,14 @@ target_link_libraries(onnx_sandbox PUBLIC onnxruntime::onnxruntime)
 # Unittests
 add_executable(onnx_sandbox_tests
   unittests.cc
+  unittests_main.cc
   ${CMAKE_CURRENT_BINARY_DIR}/fixtures_location.h
 )
 target_link_libraries(onnx_sandbox_tests
   onnx_sandbox
-  GTest::gtest_main
+  GTest::gtest
+  absl::log_initialize
+  absl::log_globals
 )
 target_include_directories(onnx_sandbox_tests
   PUBLIC
