@@ -20,12 +20,13 @@ TEST(ExecutionProviderTest, MustFindCPUExecutionProvider) {
 }
 
 TEST(ExecutionProviderTest, CanCreateVulkanContext) {
-  auto vulkan_dylib = fml::NativeLibrary::Create("libvulkan.so");
+  auto vulkan_dylib = fml::NativeLibrary::CreateForCurrentProcess();
   auto instance_proc_addr =
       vulkan_dylib->ResolveFunction<PFN_vkGetInstanceProcAddr>(
           "vkGetInstanceProcAddr");
   ASSERT_TRUE(instance_proc_addr.has_value());
   impeller::ContextVK::Settings settings;
+  settings.shader_libraries_data = {};
   settings.proc_address_callback = instance_proc_addr.value();
   auto context = impeller::ContextVK::Create(std::move(settings));
   ASSERT_TRUE(!!context);

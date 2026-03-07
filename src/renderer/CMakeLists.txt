@@ -153,11 +153,13 @@ target_include_directories(renderer PUBLIC ..)
 
 # Vulkan
 find_package(VulkanHeaders CONFIG REQUIRED)
+find_package(VulkanLoader CONFIG REQUIRED)
 find_package(VulkanMemoryAllocator CONFIG REQUIRED)
 find_package(unofficial-vulkan-memory-allocator-hpp CONFIG REQUIRED)
 
 target_link_libraries(renderer PUBLIC
   Vulkan::Headers
+  Vulkan::Loader
   GPUOpen::VulkanMemoryAllocator
   unofficial::VulkanMemoryAllocator-Hpp::VulkanMemoryAllocator-Hpp
 )
