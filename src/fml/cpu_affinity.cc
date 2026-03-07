@@ -3,7 +3,9 @@
 // found in the LICENSE file.
 
 #include "fml/cpu_affinity.h"
+
 #include "fml/build_config.h"
+#include "fml/logging.h"
 
 #include <cstdint>
 #include <fstream>
@@ -83,6 +85,7 @@ const std::vector<size_t>& CPUSpeedTracker::GetIndices(
     case CpuAffinity::kNotEfficiency:
       return not_efficiency_;
   }
+  FML_UNREACHABLE();
 }
 
 // Get the size of the cpuinfo file by reading it until the end. This is

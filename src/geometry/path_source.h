@@ -113,8 +113,7 @@ class EllipsePathSource : public PathSource {
 /// by a matrix, and pass them along to a subsequent receiver.
 class PathTransformer : public ogre::PathReceiver {
  public:
-  PathTransformer(PathReceiver& receiver [[clang::lifetimebound]],
-                  const ogre::Matrix& matrix [[clang::lifetimebound]])
+  PathTransformer(PathReceiver& receiver, const ogre::Matrix& matrix)
       : receiver_(receiver), matrix_(matrix) {}
 
   void MoveTo(const Point& p2, bool will_be_closed) override {

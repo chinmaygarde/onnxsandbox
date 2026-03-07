@@ -296,6 +296,7 @@ Color Color::Blend(Color src, BlendMode blend_mode) const {
         return SetLuminosity(d, Luminosity(s));
       });
   }
+  FML_UNREACHABLE();
 }
 
 Color Color::ApplyColorMatrix(const ColorMatrix& color_matrix) const {

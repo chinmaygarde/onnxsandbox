@@ -99,60 +99,38 @@ std::optional<std::vector<std::string>>
 CapabilitiesVK::GetEnabledInstanceExtensions() const {
   std::vector<std::string> required;
 
-  if (!HasExtension("VK_KHR_surface")) {
-    // Swapchain support is required and this is a dependency of
-    // VK_KHR_swapchain.
-    VALIDATION_LOG << "Could not find the surface extension.";
-    return std::nullopt;
-  }
-  required.push_back("VK_KHR_surface");
+  // Surface and WSI extensions are optional; the context supports headless
+  // compute operation without them.
+  if (HasExtension("VK_KHR_surface")) {
+    required.push_back("VK_KHR_surface");
 
-  auto has_wsi = false;
-  if (HasExtension("VK_MVK_macos_surface")) {
-    required.push_back("VK_MVK_macos_surface");
-    has_wsi = true;
-  }
-
-  if (HasExtension("VK_EXT_metal_surface")) {
-    required.push_back("VK_EXT_metal_surface");
-    has_wsi = true;
+    if (HasExtension("VK_MVK_macos_surface")) {
+      required.push_back("VK_MVK_macos_surface");
+    }
+    if (HasExtension("VK_EXT_metal_surface")) {
+      required.push_back("VK_EXT_metal_surface");
+    }
+    if (HasExtension("VK_KHR_win32_surface")) {
+      required.push_back("VK_KHR_win32_surface");
+    }
+    if (HasExtension("VK_KHR_android_surface")) {
+      required.push_back("VK_KHR_android_surface");
+    }
+    if (HasExtension("VK_KHR_xcb_surface")) {
+      required.push_back("VK_KHR_xcb_surface");
+    }
+    if (HasExtension("VK_KHR_xlib_surface")) {
+      required.push_back("VK_KHR_xlib_surface");
+    }
+    if (HasExtension("VK_KHR_wayland_surface")) {
+      required.push_back("VK_KHR_wayland_surface");
+    }
+  } else {
+    FML_LOG(INFO) << "VK_KHR_surface not available; running in headless mode.";
   }
 
   if (HasExtension("VK_KHR_portability_enumeration")) {
     required.push_back("VK_KHR_portability_enumeration");
-    has_wsi = true;
-  }
-
-  if (HasExtension("VK_KHR_win32_surface")) {
-    required.push_back("VK_KHR_win32_surface");
-    has_wsi = true;
-  }
-
-  if (HasExtension("VK_KHR_android_surface")) {
-    required.push_back("VK_KHR_android_surface");
-    has_wsi = true;
-  }
-
-  if (HasExtension("VK_KHR_xcb_surface")) {
-    required.push_back("VK_KHR_xcb_surface");
-    has_wsi = true;
-  }
-
-  if (HasExtension("VK_KHR_xlib_surface")) {
-    required.push_back("VK_KHR_xlib_surface");
-    has_wsi = true;
-  }
-
-  if (HasExtension("VK_KHR_wayland_surface")) {
-    required.push_back("VK_KHR_wayland_surface");
-    has_wsi = true;
-  }
-
-  if (!has_wsi) {
-    // Don't really care which WSI extension there is as long there is at least
-    // one.
-    VALIDATION_LOG << "Could not find a WSI extension.";
-    return std::nullopt;
   }
 
   if (validations_enabled_) {
