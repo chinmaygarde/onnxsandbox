@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_SWAPCHAIN_AHB_EXTERNAL_SEMAPHORE_VK_H_
-#define FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_SWAPCHAIN_AHB_EXTERNAL_SEMAPHORE_VK_H_
+#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_SWAPCHAIN_AHB_EXTERNAL_SEMAPHORE_VK_H_
+#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_SWAPCHAIN_AHB_EXTERNAL_SEMAPHORE_VK_H_
 
 #include "fml/unique_fd.h"
 #include "renderer/backend/vulkan/shared_object_vk.h"
@@ -11,7 +11,7 @@
 #include "renderer/context.h"
 #include "vulkan/vulkan_handles.hpp"
 
-namespace impeller {
+namespace ogre {
 
 //------------------------------------------------------------------------------
 /// @brief      A Vulkan semaphore that can be exported as a platform specific
@@ -79,6 +79,6 @@ class ExternalSemaphoreVK {
   SharedHandleVK<vk::Semaphore> semaphore_;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_SWAPCHAIN_AHB_EXTERNAL_SEMAPHORE_VK_H_
+#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_SWAPCHAIN_AHB_EXTERNAL_SEMAPHORE_VK_H_

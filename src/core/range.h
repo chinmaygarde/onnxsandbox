@@ -2,13 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_CORE_RANGE_H_
-#define FLUTTER_IMPELLER_CORE_RANGE_H_
+#ifndef FLUTTER_OGRE_CORE_RANGE_H_
+#define FLUTTER_OGRE_CORE_RANGE_H_
 
 #include <algorithm>
 #include <cstddef>
 
-namespace impeller {
+namespace ogre {
 
 struct Range {
   size_t offset = 0;
@@ -37,6 +37,6 @@ struct Range {
   }
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_CORE_RANGE_H_
+#endif  // FLUTTER_OGRE_CORE_RANGE_H_

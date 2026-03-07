@@ -6,7 +6,7 @@
 
 #include "geometry/matrix.h"
 
-namespace impeller {
+namespace ogre {
 
 bool RSTransform::IsAxisAligned() const {
   return scaled_cos == 0.0f || scaled_sin == 0.0f;
@@ -54,4 +54,4 @@ std::optional<Rect> RSTransform::GetBounds(Size size) const {
   return Rect::MakePointBounds(GetQuad(size));
 }
 
-}  // namespace impeller
+}  // namespace ogre

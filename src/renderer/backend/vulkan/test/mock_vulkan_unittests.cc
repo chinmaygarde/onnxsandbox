@@ -8,7 +8,7 @@
 #include "renderer/backend/vulkan/test/mock_vulkan.h"
 #include "vulkan/vulkan_enums.hpp"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 TEST(MockVulkanContextTest, IsThreadSafe) {
@@ -56,4 +56,4 @@ TEST(MockVulkanContextTest, MockedFenceReportsStatus) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

@@ -5,7 +5,7 @@
 #include "quaternion.h"
 #include <sstream>
 
-namespace impeller {
+namespace ogre {
 
 Quaternion Quaternion::Slerp(const Quaternion& to, double time) const {
   double cosine = Dot(to);
@@ -27,4 +27,4 @@ Quaternion Quaternion::Slerp(const Quaternion& to, double time) const {
   }
 }
 
-}  // namespace impeller
+}  // namespace ogre

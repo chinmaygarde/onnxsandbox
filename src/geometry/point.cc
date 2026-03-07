@@ -5,8 +5,8 @@
 #include "point.h"
 #include <sstream>
 
-namespace impeller {
+namespace ogre {
 
 //
 
-}  // namespace impeller
+}  // namespace ogre

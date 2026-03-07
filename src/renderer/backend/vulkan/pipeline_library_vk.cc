@@ -15,7 +15,7 @@
 #include "renderer/backend/vulkan/pipeline_vk.h"
 #include "renderer/backend/vulkan/shader_function_vk.h"
 
-namespace impeller {
+namespace ogre {
 
 PipelineLibraryVK::PipelineLibraryVK(
     const std::shared_ptr<DeviceHolderVK>& device_holder,
@@ -308,4 +308,4 @@ PipelineCompileQueue* PipelineLibraryVK::GetPipelineCompileQueue() const {
   return compile_queue_.get();
 }
 
-}  // namespace impeller
+}  // namespace ogre

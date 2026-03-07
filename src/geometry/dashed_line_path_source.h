@@ -2,14 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_GEOMETRY_DASHED_LINE_PATH_SOURCE_H_
-#define FLUTTER_IMPELLER_GEOMETRY_DASHED_LINE_PATH_SOURCE_H_
+#ifndef FLUTTER_OGRE_GEOMETRY_DASHED_LINE_PATH_SOURCE_H_
+#define FLUTTER_OGRE_GEOMETRY_DASHED_LINE_PATH_SOURCE_H_
 
 #include "geometry/path_source.h"
 #include "geometry/point.h"
 #include "geometry/scalar.h"
 
-namespace impeller {
+namespace ogre {
 
 /// @brief A PathSource that generates the various segments of a dashed line.
 class DashedLinePathSource : public PathSource {
@@ -37,6 +37,6 @@ class DashedLinePathSource : public PathSource {
   const Scalar off_length_;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_GEOMETRY_DASHED_LINE_PATH_SOURCE_H_
+#endif  // FLUTTER_OGRE_GEOMETRY_DASHED_LINE_PATH_SOURCE_H_

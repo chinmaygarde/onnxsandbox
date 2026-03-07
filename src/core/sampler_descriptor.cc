@@ -4,7 +4,7 @@
 
 #include "core/sampler_descriptor.h"
 
-namespace impeller {
+namespace ogre {
 
 SamplerDescriptor::SamplerDescriptor() = default;
 
@@ -17,4 +17,4 @@ SamplerDescriptor::SamplerDescriptor(std::string_view label,
       mip_filter(mip_filter),
       label(label) {}
 
-}  // namespace impeller
+}  // namespace ogre

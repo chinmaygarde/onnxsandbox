@@ -4,7 +4,7 @@
 
 #include "core/buffer_view.h"
 
-namespace impeller {
+namespace ogre {
 
 BufferView::BufferView() : buffer_(nullptr), raw_buffer_(nullptr), range_({}) {}
 
@@ -31,4 +31,4 @@ BufferView::operator bool() const {
   return buffer_ || raw_buffer_;
 }
 
-}  // namespace impeller
+}  // namespace ogre

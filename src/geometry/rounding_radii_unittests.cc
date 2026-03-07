@@ -8,7 +8,7 @@
 
 #include "geometry/geometry_asserts.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 TEST(RoudingRadiiTest, RoundingRadiiEmptyDeclaration) {
@@ -318,4 +318,4 @@ TEST(RoudingRadiiTest, RoundingRadiiCornersSameTolerance) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

@@ -9,7 +9,7 @@
 #include "renderer/backend/vulkan/test/mock_vulkan.h"
 #include "vulkan/vulkan_enums.hpp"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 TEST(RenderPassBuilder, CreatesRenderPassWithNoDepthStencil) {
@@ -171,4 +171,4 @@ TEST(RenderPassBuilder, CreatesMSAAResolveWithCorrectStore) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

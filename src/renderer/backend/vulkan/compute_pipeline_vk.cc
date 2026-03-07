@@ -4,7 +4,7 @@
 
 #include "renderer/backend/vulkan/compute_pipeline_vk.h"
 
-namespace impeller {
+namespace ogre {
 
 ComputePipelineVK::ComputePipelineVK(
     std::weak_ptr<DeviceHolderVK> device_holder,
@@ -57,4 +57,4 @@ PipelineKey ComputePipelineVK::GetPipelineKey() const {
   return pipeline_key_;
 }
 
-}  // namespace impeller
+}  // namespace ogre

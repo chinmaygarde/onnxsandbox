@@ -2,14 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_GEOMETRY_ROUNDING_RADII_H_
-#define FLUTTER_IMPELLER_GEOMETRY_ROUNDING_RADII_H_
+#ifndef FLUTTER_OGRE_GEOMETRY_ROUNDING_RADII_H_
+#define FLUTTER_OGRE_GEOMETRY_ROUNDING_RADII_H_
 
 #include "geometry/point.h"
 #include "geometry/rect.h"
 #include "geometry/size.h"
 
-namespace impeller {
+namespace ogre {
 
 struct RoundingRadii {
   Size top_left;
@@ -86,12 +86,12 @@ struct RoundingRadii {
   }
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
 namespace std {
 
 inline std::ostream& operator<<(std::ostream& out,
-                                const impeller::RoundingRadii& rr) {
+                                const ogre::RoundingRadii& rr) {
   out << "("                               //
       << "ul: " << rr.top_left << ", "     //
       << "ur: " << rr.top_right << ", "    //
@@ -103,4 +103,4 @@ inline std::ostream& operator<<(std::ostream& out,
 
 }  // namespace std
 
-#endif  // FLUTTER_IMPELLER_GEOMETRY_ROUNDING_RADII_H_
+#endif  // FLUTTER_OGRE_GEOMETRY_ROUNDING_RADII_H_

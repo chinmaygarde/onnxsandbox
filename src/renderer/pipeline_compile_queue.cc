@@ -7,7 +7,7 @@
 #include "fml/logging.h"
 #include "fml/trace_event.h"
 
-namespace impeller {
+namespace ogre {
 
 std::shared_ptr<PipelineCompileQueue> PipelineCompileQueue::Create(
     std::shared_ptr<fml::ConcurrentTaskRunner> worker_task_runner) {
@@ -78,7 +78,7 @@ fml::closure PipelineCompileQueue::TakeJob(const PipelineDescriptor& desc) {
   // itself. If there were jobs ahead of this one, it means that they were
   // mis-prioritized. This counter dumps the number of job re-prioritizations.
   priorities_elevated_++;
-  FML_TRACE_COUNTER("impeller", "PipelineCompileQueue",
+  FML_TRACE_COUNTER("ogre", "PipelineCompileQueue",
                     reinterpret_cast<int64_t>(this),  // Trace Counter ID
                     "PrioritiesElevated", priorities_elevated_);
   auto job = found->second;
@@ -115,4 +115,4 @@ void PipelineCompileQueue::PerformJobEagerly(const PipelineDescriptor& desc) {
   }
 }
 
-}  // namespace impeller
+}  // namespace ogre

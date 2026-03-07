@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_RENDER_PASS_H_
-#define FLUTTER_IMPELLER_RENDERER_RENDER_PASS_H_
+#ifndef FLUTTER_OGRE_RENDERER_RENDER_PASS_H_
+#define FLUTTER_OGRE_RENDERER_RENDER_PASS_H_
 
 #include <cstddef>
 
@@ -16,7 +16,7 @@
 #include "renderer/command_buffer.h"
 #include "renderer/render_target.h"
 
-namespace impeller {
+namespace ogre {
 
 //------------------------------------------------------------------------------
 /// @brief      Render passes encode render commands directed as one specific
@@ -295,6 +295,6 @@ class RenderPass : public ResourceBinder {
   std::optional<size_t> vertex_buffers_start_ = std::nullopt;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_RENDER_PASS_H_
+#endif  // FLUTTER_OGRE_RENDERER_RENDER_PASS_H_

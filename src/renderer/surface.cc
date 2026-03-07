@@ -6,7 +6,7 @@
 
 #include "fml/logging.h"
 
-namespace impeller {
+namespace ogre {
 
 Surface::Surface() : Surface(RenderTarget{}) {}
 
@@ -38,4 +38,4 @@ bool Surface::Present() const {
   return false;
 };
 
-}  // namespace impeller
+}  // namespace ogre

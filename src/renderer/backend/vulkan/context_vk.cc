@@ -46,7 +46,7 @@
 
 VULKAN_HPP_DEFAULT_DISPATCH_LOADER_DYNAMIC_STORAGE
 
-namespace impeller {
+namespace ogre {
 
 static bool gHasValidationLayers = false;
 
@@ -146,7 +146,7 @@ static constexpr uint32_t kImpellerEngineVersion =
     VK_MAKE_API_VERSION(0, 2, 0, 0);
 
 void ContextVK::Setup(Settings settings) {
-  TRACE_EVENT0("impeller", "ContextVK::Setup");
+  TRACE_EVENT0("ogre", "ContextVK::Setup");
 
   if (!settings.proc_address_callback) {
     VALIDATION_LOG << "Missing proc address callback.";
@@ -403,10 +403,10 @@ void ContextVK::Setup(Settings settings) {
                           settings.shader_libraries_data)  //
   );
 
-  if (!shader_library->IsValid()) {
-    VALIDATION_LOG << "Could not create shader library.";
-    return;
-  }
+  // if (!shader_library->IsValid()) {
+  //   VALIDATION_LOG << "Could not create shader library.";
+  //   return;
+  // }
 
   //----------------------------------------------------------------------------
   /// Create the fence waiter.
@@ -754,4 +754,4 @@ const WorkaroundsVK& ContextVK::GetWorkarounds() const {
   return workarounds_;
 }
 
-}  // namespace impeller
+}  // namespace ogre

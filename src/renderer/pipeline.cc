@@ -12,7 +12,7 @@
 #include "renderer/context.h"
 #include "renderer/pipeline_library.h"
 
-namespace impeller {
+namespace ogre {
 
 template <typename T>
 Pipeline<T>::Pipeline(std::weak_ptr<PipelineLibrary> library, const T& desc)
@@ -78,4 +78,4 @@ PipelineFuture<T> Pipeline<T>::CreateVariant(
 template class Pipeline<PipelineDescriptor>;
 template class Pipeline<ComputePipelineDescriptor>;
 
-}  // namespace impeller
+}  // namespace ogre

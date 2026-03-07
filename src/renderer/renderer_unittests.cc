@@ -14,8 +14,8 @@
 #include "fixtures/box_fade.vert.h"
 #include "fixtures/colors.frag.h"
 #include "fixtures/colors.vert.h"
-#include "fixtures/impeller.frag.h"
-#include "fixtures/impeller.vert.h"
+#include "fixtures/ogre.frag.h"
+#include "fixtures/ogre.vert.h"
 #include "fixtures/inactive_uniforms.frag.h"
 #include "fixtures/inactive_uniforms.vert.h"
 #include "fixtures/instanced_draw.frag.h"
@@ -45,15 +45,15 @@
 // NOLINTBEGIN(bugprone-unchecked-optional-access)
 
 namespace {
-std::pair<std::shared_ptr<impeller::HostBuffer>,
-          std::shared_ptr<impeller::HostBuffer>>
-createHostBuffers(const std::shared_ptr<impeller::Context>& context) {
-  auto data_host_buffer = impeller::HostBuffer::Create(
+std::pair<std::shared_ptr<ogre::HostBuffer>,
+          std::shared_ptr<ogre::HostBuffer>>
+createHostBuffers(const std::shared_ptr<ogre::Context>& context) {
+  auto data_host_buffer = ogre::HostBuffer::Create(
       context->GetResourceAllocator(), context->GetIdleWaiter(),
       context->GetCapabilities()->GetMinimumUniformAlignment());
   auto indexes_host_buffer =
       context->GetCapabilities()->NeedsPartitionedHostBuffer()
-          ? impeller::HostBuffer::Create(
+          ? ogre::HostBuffer::Create(
                 context->GetResourceAllocator(), context->GetIdleWaiter(),
                 context->GetCapabilities()->GetMinimumUniformAlignment())
           : data_host_buffer;
@@ -61,7 +61,7 @@ createHostBuffers(const std::shared_ptr<impeller::Context>& context) {
 }
 }  // namespace
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 using RendererTest = PlaygroundTest;
@@ -1630,6 +1630,6 @@ TEST_P(RendererTest, BindingNullTexturesDoesNotCrash) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre
 
 // NOLINTEND(bugprone-unchecked-optional-access)

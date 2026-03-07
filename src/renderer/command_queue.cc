@@ -5,7 +5,7 @@
 #include "renderer/command_queue.h"
 #include "renderer/command_buffer.h"
 
-namespace impeller {
+namespace ogre {
 
 CommandQueue::CommandQueue() = default;
 
@@ -31,4 +31,4 @@ fml::Status CommandQueue::Submit(
   return fml::Status();
 }
 
-}  // namespace impeller
+}  // namespace ogre

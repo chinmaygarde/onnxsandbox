@@ -6,7 +6,7 @@
 
 #include "geometry/wangs_formula.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 TEST(WangsFormulaTest, Cubic) {
@@ -27,4 +27,4 @@ TEST(WangsFormulaTest, Quadratic) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

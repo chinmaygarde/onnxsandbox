@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_COMMAND_POOL_VK_H_
-#define FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_COMMAND_POOL_VK_H_
+#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_COMMAND_POOL_VK_H_
+#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_COMMAND_POOL_VK_H_
 
 #include <memory>
 #include <optional>
@@ -13,7 +13,7 @@
 #include "renderer/backend/vulkan/vk.h"  // IWYU pragma: keep.
 #include "vulkan/vulkan_handles.hpp"
 
-namespace impeller {
+namespace ogre {
 
 class ContextVK;
 class CommandPoolRecyclerVK;
@@ -160,6 +160,6 @@ class CommandPoolRecyclerVK final
   CommandPoolRecyclerVK& operator=(const CommandPoolRecyclerVK&) = delete;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_COMMAND_POOL_VK_H_
+#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_COMMAND_POOL_VK_H_

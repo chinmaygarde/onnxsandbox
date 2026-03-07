@@ -8,7 +8,7 @@
 
 #include "base/validation.h"
 
-namespace impeller {
+namespace ogre {
 
 struct DescriptorPoolSize {
   size_t buffer_bindings;
@@ -183,4 +183,4 @@ DescriptorPoolRecyclerVK::GetDescriptorPool() {
   return std::make_shared<DescriptorPoolVK>(context_);
 }
 
-}  // namespace impeller
+}  // namespace ogre

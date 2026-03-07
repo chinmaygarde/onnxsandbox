@@ -7,7 +7,7 @@
 #include "geometry/geometry_asserts.h"
 #include "gtest/gtest.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 TEST(PointTest, Length) {
@@ -382,4 +382,4 @@ TEST(PointTest, CrossProductThreePoints) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

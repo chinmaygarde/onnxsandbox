@@ -10,22 +10,22 @@
 #include "renderer/backend/vulkan/formats_vk.h"
 #include "renderer/backend/vulkan/sampler_vk.h"
 
-namespace impeller {
+namespace ogre {
 
 TextureVK::TextureVK(std::weak_ptr<Context> context,
                      std::shared_ptr<TextureSourceVK> source)
     : Texture(source->GetTextureDescriptor()),
       context_(std::move(context)),
       source_(std::move(source)) {
-#ifdef IMPELLER_DEBUG
+#ifdef OGRE_DEBUG
   has_validation_layers_ = HasValidationLayers();
-#endif  // IMPELLER_DEBUG
+#endif  // OGRE_DEBUG
 }
 
 TextureVK::~TextureVK() = default;
 
 void TextureVK::SetLabel(std::string_view label) {
-#ifdef IMPELLER_DEBUG
+#ifdef OGRE_DEBUG
   if (!has_validation_layers_) {
     return;
   }
@@ -36,11 +36,11 @@ void TextureVK::SetLabel(std::string_view label) {
   }
   ContextVK::Cast(*context).SetDebugName(GetImage(), label);
   ContextVK::Cast(*context).SetDebugName(GetImageView(), label);
-#endif  // IMPELLER_DEBUG
+#endif  // OGRE_DEBUG
 }
 
 void TextureVK::SetLabel(std::string_view label, std::string_view trailing) {
-#ifdef IMPELLER_DEBUG
+#ifdef OGRE_DEBUG
   auto context = context_.lock();
   if (!context) {
     // The context may have died.
@@ -49,7 +49,7 @@ void TextureVK::SetLabel(std::string_view label, std::string_view trailing) {
 
   ContextVK::Cast(*context).SetDebugName(GetImage(), label, trailing);
   ContextVK::Cast(*context).SetDebugName(GetImageView(), label, trailing);
-#endif  // IMPELLER_DEBUG
+#endif  // OGRE_DEBUG
 }
 
 bool TextureVK::OnSetContents(const uint8_t* contents,
@@ -229,4 +229,4 @@ std::shared_ptr<SamplerVK> TextureVK::GetImmutableSamplerVariant(
   return sampler.CreateVariantForConversion(std::move(conversion));
 }
 
-}  // namespace impeller
+}  // namespace ogre

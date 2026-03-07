@@ -2,12 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_GEOMETRY_SHEAR_H_
-#define FLUTTER_IMPELLER_GEOMETRY_SHEAR_H_
+#ifndef FLUTTER_OGRE_GEOMETRY_SHEAR_H_
+#define FLUTTER_OGRE_GEOMETRY_SHEAR_H_
 
 #include <string>
 
-namespace impeller {
+namespace ogre {
 
 struct Shear {
   union {
@@ -28,6 +28,6 @@ struct Shear {
   }
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_GEOMETRY_SHEAR_H_
+#endif  // FLUTTER_OGRE_GEOMETRY_SHEAR_H_

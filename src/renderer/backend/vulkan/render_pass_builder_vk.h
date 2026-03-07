@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_RENDER_PASS_BUILDER_VK_H_
-#define FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_RENDER_PASS_BUILDER_VK_H_
+#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_RENDER_PASS_BUILDER_VK_H_
+#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_RENDER_PASS_BUILDER_VK_H_
 
 #include <map>
 #include <optional>
@@ -12,7 +12,7 @@
 #include "renderer/backend/vulkan/context_vk.h"
 #include "renderer/backend/vulkan/vk.h"
 
-namespace impeller {
+namespace ogre {
 
 static constexpr size_t kMaxColorAttachments = 16;
 static constexpr size_t kMaxAttachments =
@@ -93,6 +93,6 @@ class RenderPassBuilderVK {
 void InsertBarrierForInputAttachmentRead(const vk::CommandBuffer& buffer,
                                          const vk::Image& image);
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_RENDER_PASS_BUILDER_VK_H_
+#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_RENDER_PASS_BUILDER_VK_H_

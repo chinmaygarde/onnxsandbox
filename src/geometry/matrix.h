@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_GEOMETRY_MATRIX_H_
-#define FLUTTER_IMPELLER_GEOMETRY_MATRIX_H_
+#ifndef FLUTTER_OGRE_GEOMETRY_MATRIX_H_
+#define FLUTTER_OGRE_GEOMETRY_MATRIX_H_
 
 #include <cmath>
 #include <iomanip>
@@ -20,7 +20,7 @@
 #include "geometry/size.h"
 #include "geometry/vector.h"
 
-namespace impeller {
+namespace ogre {
 
 //------------------------------------------------------------------------------
 /// @brief      A 4x4 matrix using column-major storage.
@@ -722,10 +722,10 @@ struct Matrix {
 static_assert(sizeof(struct Matrix) == sizeof(Scalar) * 16,
               "The matrix must be of consistent size.");
 
-}  // namespace impeller
+}  // namespace ogre
 
 namespace std {
-inline std::ostream& operator<<(std::ostream& out, const impeller::Matrix& m) {
+inline std::ostream& operator<<(std::ostream& out, const ogre::Matrix& m) {
   out << "(" << std::endl << std::fixed;
   for (size_t i = 0; i < 4u; i++) {
     for (size_t j = 0; j < 4u; j++) {
@@ -739,4 +739,4 @@ inline std::ostream& operator<<(std::ostream& out, const impeller::Matrix& m) {
 
 }  // namespace std
 
-#endif  // FLUTTER_IMPELLER_GEOMETRY_MATRIX_H_
+#endif  // FLUTTER_OGRE_GEOMETRY_MATRIX_H_

@@ -4,7 +4,7 @@
 
 #include "core/sampler.h"
 
-namespace impeller {
+namespace ogre {
 
 Sampler::Sampler(const SamplerDescriptor& desc) : desc_(desc) {}
 
@@ -14,4 +14,4 @@ const SamplerDescriptor& Sampler::GetDescriptor() const {
   return desc_;
 }
 
-}  // namespace impeller
+}  // namespace ogre

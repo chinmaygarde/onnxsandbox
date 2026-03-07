@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_TEXTURE_SOURCE_VK_H_
-#define FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_TEXTURE_SOURCE_VK_H_
+#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_TEXTURE_SOURCE_VK_H_
+#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_TEXTURE_SOURCE_VK_H_
 
 #include "core/formats.h"
 #include "core/texture_descriptor.h"
@@ -14,7 +14,7 @@
 #include "renderer/backend/vulkan/vk.h"
 #include "renderer/backend/vulkan/yuv_conversion_vk.h"
 
-namespace impeller {
+namespace ogre {
 
 // These methods should only be used by render_pass_vk.h
 struct FramebufferAndRenderPass {
@@ -26,7 +26,7 @@ struct FramebufferAndRenderPass {
 /// @brief      Abstract base class that represents a vkImage and an
 ///             vkImageView.
 ///
-///             This is intended to be used with an impeller::TextureVK. Example
+///             This is intended to be used with an ogre::TextureVK. Example
 ///             implementations represent swapchain images, uploaded textures,
 ///             Android Hardware Buffer backend textures, etc...
 ///
@@ -158,6 +158,6 @@ class TextureSourceVK {
   mutable vk::ImageLayout layout_ = vk::ImageLayout::eUndefined;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_TEXTURE_SOURCE_VK_H_
+#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_TEXTURE_SOURCE_VK_H_

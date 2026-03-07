@@ -9,7 +9,7 @@
 #include "fml/thread.h"
 #include "fml/trace_event.h"
 
-namespace impeller {
+namespace ogre {
 
 std::shared_ptr<ResourceManagerVK> ResourceManagerVK::Create() {
   // It will be tempting to refactor this to create the waiter thread in the
@@ -94,4 +94,4 @@ void ResourceManagerVK::Terminate() {
   reclaimables_cv_.notify_one();
 }
 
-}  // namespace impeller
+}  // namespace ogre

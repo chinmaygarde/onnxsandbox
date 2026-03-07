@@ -6,7 +6,7 @@
 
 #include <optional>
 
-namespace impeller {
+namespace ogre {
 
 std::optional<Rect> Snapshot::GetCoverage() const {
   if (!texture) {
@@ -32,4 +32,4 @@ std::optional<std::array<Point, 4>> Snapshot::GetCoverageUVs(
   return coverage.GetTransformedPoints(uv_transform.value());
 }
 
-}  // namespace impeller
+}  // namespace ogre

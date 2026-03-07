@@ -2,14 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_POOL_H_
-#define FLUTTER_IMPELLER_RENDERER_POOL_H_
+#ifndef FLUTTER_OGRE_RENDERER_POOL_H_
+#define FLUTTER_OGRE_RENDERER_POOL_H_
 
 #include <cstdint>
 #include <memory>
 #include <mutex>
 
-namespace impeller {
+namespace ogre {
 
 /// @brief A thread-safe pool with a limited byte size.
 /// @tparam T The type that the pool will contain.
@@ -53,6 +53,6 @@ class Pool {
   mutable std::mutex mutex_;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_POOL_H_
+#endif  // FLUTTER_OGRE_RENDERER_POOL_H_

@@ -4,8 +4,8 @@
 
 #include "base/allocation_size.h"
 
-namespace impeller {
+namespace ogre {
 
 //
 
-}  // namespace impeller
+}  // namespace ogre

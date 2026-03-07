@@ -7,7 +7,7 @@
 #include "base/validation.h"
 #include "renderer/backend/vulkan/capabilities_vk.h"
 
-namespace impeller {
+namespace ogre {
 
 DebugReportVK::DebugReportVK(const CapabilitiesVK& caps,
                              const vk::Instance& instance) {
@@ -194,4 +194,4 @@ DebugReportVK::Result DebugReportVK::OnDebugCallback(
   return Result::kContinue;
 }
 
-}  // namespace impeller
+}  // namespace ogre

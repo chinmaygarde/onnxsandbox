@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_COMMAND_BUFFER_VK_H_
-#define FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_COMMAND_BUFFER_VK_H_
+#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_COMMAND_BUFFER_VK_H_
+#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_COMMAND_BUFFER_VK_H_
 
 #include "base/backend_cast.h"
 #include "fml/status_or.h"
@@ -15,7 +15,7 @@
 #include "renderer/backend/vulkan/vk.h"
 #include "renderer/command_buffer.h"
 
-namespace impeller {
+namespace ogre {
 
 class ContextVK;
 class CommandEncoderFactoryVK;
@@ -121,6 +121,6 @@ class CommandBufferVK final
   CommandBufferVK& operator=(const CommandBufferVK&) = delete;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_COMMAND_BUFFER_VK_H_
+#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_COMMAND_BUFFER_VK_H_

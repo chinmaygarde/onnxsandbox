@@ -4,8 +4,8 @@
 
 #include "base/thread_safety.h"
 
-namespace impeller {
+namespace ogre {
 
 //
 
-}  // namespace impeller
+}  // namespace ogre

@@ -8,7 +8,7 @@
 #include "base/thread.h"
 #include "renderer/pipeline_descriptor.h"
 
-namespace impeller {
+namespace ogre {
 
 PipelineLibrary::PipelineLibrary() = default;
 
@@ -78,4 +78,4 @@ PipelineCompileQueue* PipelineLibrary::GetPipelineCompileQueue() const {
   return nullptr;
 }
 
-}  // namespace impeller
+}  // namespace ogre

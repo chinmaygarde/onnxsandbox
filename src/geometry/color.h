@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_GEOMETRY_COLOR_H_
-#define FLUTTER_IMPELLER_GEOMETRY_COLOR_H_
+#ifndef FLUTTER_OGRE_GEOMETRY_COLOR_H_
+#define FLUTTER_OGRE_GEOMETRY_COLOR_H_
 
 #include <stdint.h>
 #include <algorithm>
@@ -16,7 +16,7 @@
 #include "geometry/scalar.h"
 #include "geometry/type_traits.h"
 
-#define IMPELLER_FOR_EACH_BLEND_MODE(V) \
+#define OGRE_FOR_EACH_BLEND_MODE(V) \
   V(Clear)                              \
   V(Src)                                \
   V(Dst)                                \
@@ -47,7 +47,7 @@
   V(Color)                              \
   V(Luminosity)
 
-namespace impeller {
+namespace ogre {
 
 struct Vector4;
 
@@ -920,22 +920,22 @@ std::string ColorToString(const Color& color);
 
 static_assert(sizeof(Color) == 4 * sizeof(Scalar));
 
-}  // namespace impeller
+}  // namespace ogre
 
 namespace std {
 
-inline std::ostream& operator<<(std::ostream& out, const impeller::Color& c) {
+inline std::ostream& operator<<(std::ostream& out, const ogre::Color& c) {
   out << "(" << c.red << ", " << c.green << ", " << c.blue << ", " << c.alpha
       << ")";
   return out;
 }
 
 inline std::ostream& operator<<(std::ostream& out,
-                                const impeller::BlendMode& mode) {
+                                const ogre::BlendMode& mode) {
   out << "BlendMode::k" << BlendModeToString(mode);
   return out;
 }
 
 }  // namespace std
 
-#endif  // FLUTTER_IMPELLER_GEOMETRY_COLOR_H_
+#endif  // FLUTTER_OGRE_GEOMETRY_COLOR_H_

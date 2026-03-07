@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_DESCRIPTOR_POOL_VK_H_
-#define FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_DESCRIPTOR_POOL_VK_H_
+#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_DESCRIPTOR_POOL_VK_H_
+#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_DESCRIPTOR_POOL_VK_H_
 
 #include <cstdint>
 #include <unordered_map>
@@ -12,7 +12,7 @@
 #include "renderer/backend/vulkan/context_vk.h"
 #include "renderer/pipeline.h"
 
-namespace impeller {
+namespace ogre {
 
 /// Used and un-used descriptor sets.
 struct DescriptorCache {
@@ -109,6 +109,6 @@ class DescriptorPoolRecyclerVK final
   DescriptorPoolRecyclerVK& operator=(const DescriptorPoolRecyclerVK&) = delete;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_DESCRIPTOR_POOL_VK_H_
+#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_DESCRIPTOR_POOL_VK_H_

@@ -13,7 +13,7 @@
 #include "geometry/round_rect.h"
 #include "geometry/round_superellipse.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 using ::flutter::testing::DlPathReceiverMock;
@@ -319,4 +319,4 @@ TEST(PathSourceTest, PathTransformerAllSegmentsTest) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

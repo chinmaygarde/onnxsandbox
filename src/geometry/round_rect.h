@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_GEOMETRY_ROUND_RECT_H_
-#define FLUTTER_IMPELLER_GEOMETRY_ROUND_RECT_H_
+#ifndef FLUTTER_OGRE_GEOMETRY_ROUND_RECT_H_
+#define FLUTTER_OGRE_GEOMETRY_ROUND_RECT_H_
 
 #include "geometry/path_source.h"
 #include "geometry/point.h"
@@ -11,7 +11,7 @@
 #include "geometry/rounding_radii.h"
 #include "geometry/size.h"
 
-namespace impeller {
+namespace ogre {
 
 struct RoundRect {
   RoundRect() = default;
@@ -193,12 +193,12 @@ class DiffRoundRectPathSource : public PathSource {
   const RoundRect inner_;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
 namespace std {
 
 inline std::ostream& operator<<(std::ostream& out,
-                                const impeller::RoundRect& rr) {
+                                const ogre::RoundRect& rr) {
   out << "("                                 //
       << "rect: " << rr.GetBounds() << ", "  //
       << "radii: " << rr.GetRadii()          //
@@ -208,4 +208,4 @@ inline std::ostream& operator<<(std::ostream& out,
 
 }  // namespace std
 
-#endif  // FLUTTER_IMPELLER_GEOMETRY_ROUND_RECT_H_
+#endif  // FLUTTER_OGRE_GEOMETRY_ROUND_RECT_H_

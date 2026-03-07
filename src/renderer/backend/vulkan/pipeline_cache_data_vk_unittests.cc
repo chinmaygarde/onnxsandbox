@@ -12,7 +12,7 @@
 #include "renderer/backend/vulkan/surface_context_vk.h"
 #include "renderer/backend/vulkan/test/mock_vulkan.h"
 
-namespace impeller::testing {
+namespace ogre::testing {
 
 TEST(PipelineCacheDataVKTest, CanTestHeaderCompatibility) {
   {
@@ -103,7 +103,7 @@ TEST(PipelineCacheDataVKTest, WritesIncompleteCacheData) {
       temp_dir.fd(), caps.GetPhysicalDeviceProperties(), cache.value));
 
   std::unique_ptr<fml::FileMapping> mapping = fml::FileMapping::CreateReadOnly(
-      temp_dir.fd(), "flutter.impeller.vkcache");
+      temp_dir.fd(), "flutter.ogre.vkcache");
   ASSERT_TRUE(mapping);
   PipelineCacheHeaderVK header;
   ASSERT_GE(mapping->GetSize(), sizeof(header));
@@ -123,11 +123,11 @@ TEST_P(PipelineCacheDataVKPlaygroundTest, CanPersistAndRetrievePipelineCache) {
   {
     auto cache = context_vk.GetDevice().createPipelineCacheUnique({});
     ASSERT_EQ(cache.result, vk::Result::eSuccess);
-    ASSERT_FALSE(fml::FileExists(temp_dir.fd(), "flutter.impeller.vkcache"));
+    ASSERT_FALSE(fml::FileExists(temp_dir.fd(), "flutter.ogre.vkcache"));
     ASSERT_TRUE(PipelineCacheDataPersist(
         temp_dir.fd(), caps.GetPhysicalDeviceProperties(), cache.value));
   }
-  ASSERT_TRUE(fml::FileExists(temp_dir.fd(), "flutter.impeller.vkcache"));
+  ASSERT_TRUE(fml::FileExists(temp_dir.fd(), "flutter.ogre.vkcache"));
 
   auto mapping = PipelineCacheDataRetrieve(temp_dir.fd(),
                                            caps.GetPhysicalDeviceProperties());
@@ -151,11 +151,11 @@ TEST_P(PipelineCacheDataVKPlaygroundTest,
   {
     auto cache = context_vk.GetDevice().createPipelineCacheUnique({});
     ASSERT_EQ(cache.result, vk::Result::eSuccess);
-    ASSERT_FALSE(fml::FileExists(temp_dir.fd(), "flutter.impeller.vkcache"));
+    ASSERT_FALSE(fml::FileExists(temp_dir.fd(), "flutter.ogre.vkcache"));
     ASSERT_TRUE(PipelineCacheDataPersist(
         temp_dir.fd(), caps.GetPhysicalDeviceProperties(), cache.value));
   }
-  ASSERT_TRUE(fml::FileExists(temp_dir.fd(), "flutter.impeller.vkcache"));
+  ASSERT_TRUE(fml::FileExists(temp_dir.fd(), "flutter.ogre.vkcache"));
   auto incompatible_caps = caps.GetPhysicalDeviceProperties();
   // Simulate a driver version bump.
   incompatible_caps.driverVersion =
@@ -164,4 +164,4 @@ TEST_P(PipelineCacheDataVKPlaygroundTest,
   ASSERT_EQ(mapping, nullptr);
 }
 
-}  // namespace impeller::testing
+}  // namespace ogre::testing

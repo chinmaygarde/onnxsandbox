@@ -11,7 +11,7 @@
 #include "renderer/backend/vulkan/test/mock_vulkan.h"
 #include "vulkan/vulkan_core.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 TEST(ContextVKTest, CommonHardwareConcurrencyConfigurations) {
@@ -390,7 +390,7 @@ TEST(ContextVKTest, AHBSwapchainCapabilitiesCanBeMissing) {
 
   EXPECT_TRUE(context->GetShouldEnableSurfaceControlSwapchain());
 
-}  // namespace impeller
+}  // namespace ogre
 
 TEST(ContextVKTest, HashIsUniqueAcrossThreads) {
   uint64_t hash1, hash2;
@@ -409,4 +409,4 @@ TEST(ContextVKTest, HashIsUniqueAcrossThreads) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

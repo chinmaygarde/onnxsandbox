@@ -2,15 +2,15 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_BLIT_COMMAND_H_
-#define FLUTTER_IMPELLER_RENDERER_BLIT_COMMAND_H_
+#ifndef FLUTTER_OGRE_RENDERER_BLIT_COMMAND_H_
+#define FLUTTER_OGRE_RENDERER_BLIT_COMMAND_H_
 
 #include <cstdint>
 #include "core/device_buffer.h"
 #include "core/texture.h"
 #include "geometry/rect.h"
 
-namespace impeller {
+namespace ogre {
 
 struct BlitCommand {
   std::string label;
@@ -47,6 +47,6 @@ struct BlitGenerateMipmapCommand : public BlitCommand {
   std::shared_ptr<Texture> texture;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_BLIT_COMMAND_H_
+#endif  // FLUTTER_OGRE_RENDERER_BLIT_COMMAND_H_

@@ -9,7 +9,7 @@
 #include "renderer/backend/vulkan/texture_vk.h"
 #include "renderer/render_target.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 using RendererTest = PlaygroundTest;
@@ -157,4 +157,4 @@ TEST_P(RendererTest, CachesRenderPassAndFramebufferMixed) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

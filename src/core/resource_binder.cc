@@ -4,8 +4,8 @@
 
 #include "core/resource_binder.h"
 
-namespace impeller {
+namespace ogre {
 
 //
 
-}  // namespace impeller
+}  // namespace ogre

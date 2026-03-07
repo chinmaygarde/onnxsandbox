@@ -2,14 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_SAMPLER_LIBRARY_H_
-#define FLUTTER_IMPELLER_RENDERER_SAMPLER_LIBRARY_H_
+#ifndef FLUTTER_OGRE_RENDERER_SAMPLER_LIBRARY_H_
+#define FLUTTER_OGRE_RENDERER_SAMPLER_LIBRARY_H_
 
 #include "core/raw_ptr.h"
 #include "core/sampler.h"
 #include "core/sampler_descriptor.h"
 
-namespace impeller {
+namespace ogre {
 
 class SamplerLibrary {
  public:
@@ -36,6 +36,6 @@ class SamplerLibrary {
   SamplerLibrary& operator=(const SamplerLibrary&) = delete;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_SAMPLER_LIBRARY_H_
+#endif  // FLUTTER_OGRE_RENDERER_SAMPLER_LIBRARY_H_

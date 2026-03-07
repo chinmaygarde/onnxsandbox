@@ -11,7 +11,7 @@
 #include "vulkan/vulkan_enums.hpp"
 #include "vulkan/vulkan_structs.hpp"
 
-namespace impeller {
+namespace ogre {
 
 static void InsertImageMemoryBarrier(const vk::CommandBuffer& cmd,
                                      const vk::Image& image,
@@ -531,4 +531,4 @@ bool BlitPassVK::OnGenerateMipmapCommand(std::shared_ptr<Texture> texture,
   return true;
 }
 
-}  // namespace impeller
+}  // namespace ogre

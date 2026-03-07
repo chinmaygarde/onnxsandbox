@@ -7,7 +7,7 @@
 #include "fml/logging.h"
 #include "geometry/gradient.h"
 
-namespace impeller {
+namespace ogre {
 
 static void AppendColor(const Color& color, GradientData* data) {
   auto converted = color.ToR8G8B8A8();
@@ -98,4 +98,4 @@ GradientData CreateGradientBuffer(const std::vector<Color>& colors,
   return data;
 }
 
-}  // namespace impeller
+}  // namespace ogre

@@ -5,7 +5,7 @@
 #include "core/buffer_view.h"
 #include "flutter/testing/testing.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 TEST(BufferViewTest, Empty) {
@@ -23,4 +23,4 @@ TEST(BufferViewTest, TakeRaw) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

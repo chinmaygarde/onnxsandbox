@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_GEOMETRY_RECT_H_
-#define FLUTTER_IMPELLER_GEOMETRY_RECT_H_
+#ifndef FLUTTER_OGRE_GEOMETRY_RECT_H_
+#define FLUTTER_OGRE_GEOMETRY_RECT_H_
 
 #include <array>
 #include <optional>
@@ -17,7 +17,7 @@
 #include "geometry/scalar.h"
 #include "geometry/size.h"
 
-namespace impeller {
+namespace ogre {
 
 #define ONLY_ON_FLOAT_M(Modifiers, Return) \
   template <typename U = T>                \
@@ -793,17 +793,17 @@ using IRect = IRect64;
 #undef ONLY_ON_FLOAT
 #undef ONLY_ON_FLOAT_M
 
-}  // namespace impeller
+}  // namespace ogre
 
 namespace std {
 
 template <class T>
 inline std::ostream& operator<<(std::ostream& out,
-                                const impeller::TRect<T>& r) {
+                                const ogre::TRect<T>& r) {
   out << "(" << r.GetLeftTop() << " => " << r.GetRightBottom() << ")";
   return out;
 }
 
 }  // namespace std
 
-#endif  // FLUTTER_IMPELLER_GEOMETRY_RECT_H_
+#endif  // FLUTTER_OGRE_GEOMETRY_RECT_H_

@@ -8,7 +8,7 @@
 #include "renderer/render_pass.h"
 #include "renderer/render_target.h"
 
-namespace impeller {
+namespace ogre {
 
 CommandBuffer::CommandBuffer(std::weak_ptr<const Context> context)
     : context_(std::move(context)) {}
@@ -70,4 +70,4 @@ std::shared_ptr<ComputePass> CommandBuffer::CreateComputePass() {
   return nullptr;
 }
 
-}  // namespace impeller
+}  // namespace ogre

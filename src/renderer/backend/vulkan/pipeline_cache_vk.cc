@@ -13,7 +13,7 @@
 #include "fml/mapping.h"
 #include "renderer/backend/vulkan/pipeline_cache_data_vk.h"
 
-namespace impeller {
+namespace ogre {
 
 PipelineCacheVK::PipelineCacheVK(std::shared_ptr<const Capabilities> caps,
                                  std::shared_ptr<DeviceHolderVK> device_holder,
@@ -126,4 +126,4 @@ const CapabilitiesVK* PipelineCacheVK::GetCapabilities() const {
   return CapabilitiesVK::Cast(caps_.get());
 }
 
-}  // namespace impeller
+}  // namespace ogre

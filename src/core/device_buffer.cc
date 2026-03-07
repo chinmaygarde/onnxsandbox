@@ -4,7 +4,7 @@
 
 #include "core/device_buffer.h"
 
-namespace impeller {
+namespace ogre {
 
 DeviceBuffer::DeviceBuffer(DeviceBufferDescriptor desc) : desc_(desc) {}
 
@@ -50,4 +50,4 @@ const DeviceBufferDescriptor& DeviceBuffer::GetDeviceBufferDescriptor() const {
   return OnCopyHostBuffer(source, source_range, offset);
 }
 
-}  // namespace impeller
+}  // namespace ogre

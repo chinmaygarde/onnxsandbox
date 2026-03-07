@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_TEST_MOCK_VULKAN_H_
-#define FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_TEST_MOCK_VULKAN_H_
+#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_TEST_MOCK_VULKAN_H_
+#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_TEST_MOCK_VULKAN_H_
 
 #include <functional>
 #include <memory>
@@ -15,7 +15,7 @@
 #include "vulkan/vulkan_core.h"
 #include "vulkan/vulkan_enums.hpp"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 std::shared_ptr<std::vector<std::string>> GetMockVulkanFunctions(
@@ -135,6 +135,6 @@ std::vector<VkImageMemoryBarrier>& GetImageMemoryBarriers(
     VkCommandBuffer buffer);
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_TEST_MOCK_VULKAN_H_
+#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_TEST_MOCK_VULKAN_H_

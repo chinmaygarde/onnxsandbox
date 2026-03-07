@@ -7,7 +7,7 @@
 
 #include "gtest/gtest.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 #define CAPABILITY_TEST(name, default_value)                                 \
@@ -85,4 +85,4 @@ TEST(CapabilitiesTest, MinUniformAlignment) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

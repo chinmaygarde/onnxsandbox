@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_VK_H_
-#define FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_VK_H_
+#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_VK_H_
+#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_VK_H_
 
 #include "fml/build_config.h"
 #include "fml/logging.h"
@@ -18,7 +18,7 @@
   }
 #endif
 
-#define VULKAN_HPP_NAMESPACE impeller::vk
+#define VULKAN_HPP_NAMESPACE ogre::vk
 #define VULKAN_HPP_ASSERT_ON_RESULT(ignored) \
   {                                          \
     [[maybe_unused]] auto res = (ignored);   \
@@ -39,4 +39,4 @@
 
 static_assert(VK_HEADER_VERSION >= 215, "Vulkan headers must not be too old.");
 
-#endif  // FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_VK_H_
+#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_VK_H_

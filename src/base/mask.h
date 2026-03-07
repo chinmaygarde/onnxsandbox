@@ -2,12 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_BASE_MASK_H_
-#define FLUTTER_IMPELLER_BASE_MASK_H_
+#ifndef FLUTTER_OGRE_BASE_MASK_H_
+#define FLUTTER_OGRE_BASE_MASK_H_
 
 #include <type_traits>
 
-namespace impeller {
+namespace ogre {
 
 template <typename EnumType_>
 struct MaskTraits {
@@ -15,10 +15,10 @@ struct MaskTraits {
 };
 
 //------------------------------------------------------------------------------
-/// @brief      Declare this in the "impeller" namespace to make the enum
+/// @brief      Declare this in the "ogre" namespace to make the enum
 ///             maskable.
 ///
-#define IMPELLER_ENUM_IS_MASK(enum_name)  \
+#define OGRE_ENUM_IS_MASK(enum_name)  \
   template <>                             \
   struct MaskTraits<enum_name> {          \
     static constexpr bool kIsMask = true; \
@@ -166,6 +166,6 @@ inline constexpr auto operator<=>(const EnumType& lhs,
   return Mask<EnumType>{lhs} <=> rhs;
 }
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_BASE_MASK_H_
+#endif  // FLUTTER_OGRE_BASE_MASK_H_

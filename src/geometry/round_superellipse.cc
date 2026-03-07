@@ -7,7 +7,7 @@
 #include "geometry/round_rect.h"
 #include "geometry/round_superellipse_param.h"
 
-namespace impeller {
+namespace ogre {
 
 RoundSuperellipse RoundSuperellipse::MakeRectRadii(
     const Rect& in_bounds,
@@ -62,4 +62,4 @@ void RoundSuperellipsePathSource::Dispatch(PathReceiver& receiver) const {
   param.Dispatch(receiver);
 }
 
-}  // namespace impeller
+}  // namespace ogre

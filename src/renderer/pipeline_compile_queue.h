@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_PIPELINE_COMPILE_QUEUE_H_
-#define FLUTTER_IMPELLER_RENDERER_PIPELINE_COMPILE_QUEUE_H_
+#ifndef FLUTTER_OGRE_RENDERER_PIPELINE_COMPILE_QUEUE_H_
+#define FLUTTER_OGRE_RENDERER_PIPELINE_COMPILE_QUEUE_H_
 
 #include <unordered_map>
 
@@ -12,7 +12,7 @@
 #include "fml/concurrent_message_loop.h"
 #include "renderer/pipeline_descriptor.h"
 
-namespace impeller {
+namespace ogre {
 
 //------------------------------------------------------------------------------
 /// @brief      A task queue designed for managing compilation of pipeline state
@@ -95,6 +95,6 @@ class PipelineCompileQueue final
   void FinishAllJobs();
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_PIPELINE_COMPILE_QUEUE_H_
+#endif  // FLUTTER_OGRE_RENDERER_PIPELINE_COMPILE_QUEUE_H_

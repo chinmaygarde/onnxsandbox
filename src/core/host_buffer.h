@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_CORE_HOST_BUFFER_H_
-#define FLUTTER_IMPELLER_CORE_HOST_BUFFER_H_
+#ifndef FLUTTER_OGRE_CORE_HOST_BUFFER_H_
+#define FLUTTER_OGRE_CORE_HOST_BUFFER_H_
 
 #include <algorithm>
 #include <array>
@@ -14,7 +14,7 @@
 #include "core/allocator.h"
 #include "core/buffer_view.h"
 
-namespace impeller {
+namespace ogre {
 
 /// Approximately the same size as the max frames in flight.
 static const constexpr size_t kHostBufferArenaSize = 4u;
@@ -175,6 +175,6 @@ class HostBuffer {
   size_t minimum_uniform_alignment_ = 0u;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_CORE_HOST_BUFFER_H_
+#endif  // FLUTTER_OGRE_CORE_HOST_BUFFER_H_

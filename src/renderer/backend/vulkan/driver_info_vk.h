@@ -2,13 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_DRIVER_INFO_VK_H_
-#define FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_DRIVER_INFO_VK_H_
+#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_DRIVER_INFO_VK_H_
+#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_DRIVER_INFO_VK_H_
 
 #include "base/version.h"
 #include "renderer/backend/vulkan/vk.h"
 
-namespace impeller {
+namespace ogre {
 
 // https://en.wikipedia.org/wiki/Adreno
 enum class AdrenoGPU {
@@ -292,6 +292,6 @@ class DriverInfoVK {
   std::string driver_name_;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_DRIVER_INFO_VK_H_
+#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_DRIVER_INFO_VK_H_

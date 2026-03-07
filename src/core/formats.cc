@@ -10,7 +10,7 @@
 #include "base/validation.h"
 #include "core/texture.h"
 
-namespace impeller {
+namespace ogre {
 
 constexpr bool StoreActionNeedsResolveTexture(StoreAction action) {
   switch (action) {
@@ -141,4 +141,4 @@ std::string StencilAttachmentToString(const StencilAttachment& stencil) {
   return stream.str();
 }
 
-}  // namespace impeller
+}  // namespace ogre

@@ -2,15 +2,15 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_GEOMETRY_TRIG_H_
-#define FLUTTER_IMPELLER_GEOMETRY_TRIG_H_
+#ifndef FLUTTER_OGRE_GEOMETRY_TRIG_H_
+#define FLUTTER_OGRE_GEOMETRY_TRIG_H_
 
 #include <functional>
 #include <vector>
 
 #include "geometry/point.h"
 
-namespace impeller {
+namespace ogre {
 
 /// @brief  A structure to store the sine and cosine of an angle.
 struct Trig {
@@ -46,6 +46,6 @@ struct Trig {
   }
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_GEOMETRY_TRIG_H_
+#endif  // FLUTTER_OGRE_GEOMETRY_TRIG_H_

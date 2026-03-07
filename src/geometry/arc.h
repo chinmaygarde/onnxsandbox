@@ -2,13 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_GEOMETRY_ARC_H_
-#define FLUTTER_IMPELLER_GEOMETRY_ARC_H_
+#ifndef FLUTTER_OGRE_GEOMETRY_ARC_H_
+#define FLUTTER_OGRE_GEOMETRY_ARC_H_
 
 #include "geometry/rect.h"
 #include "geometry/scalar.h"
 
-namespace impeller {
+namespace ogre {
 
 struct Arc {
   /// A structure to describe the iteration through a set of angle vectors
@@ -43,7 +43,7 @@ struct Arc {
     // The axis to multiply by each |Trig| value and the half-open [start, end)
     // range of indices into the associated |Trig| vector over which to compute.
     struct Quadrant {
-      impeller::Vector2 axis;
+      ogre::Vector2 axis;
       size_t start_index = 0u;
       size_t end_index = 0u;
 
@@ -55,8 +55,8 @@ struct Arc {
 
     // The true begin and end angles of the arc, expressed as unit direction
     // vectors.
-    impeller::Vector2 start;
-    impeller::Vector2 end;
+    ogre::Vector2 start;
+    ogre::Vector2 end;
 
     // The variable number of quadrants that have to be iterated and
     // cross-referenced with values in a |Trigs| object.
@@ -134,11 +134,11 @@ struct Arc {
   static const Iteration ComputeCircleArcIterations(size_t step_count);
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
 namespace std {
 
-inline std::ostream& operator<<(std::ostream& out, const impeller::Arc& a) {
+inline std::ostream& operator<<(std::ostream& out, const ogre::Arc& a) {
   out << "Arc(" << a.GetOvalBounds() << ", " << a.GetStart() << " + "
       << a.GetSweep()
       << (a.IncludeCenter() ? ", with center)" : ", without center)");
@@ -147,4 +147,4 @@ inline std::ostream& operator<<(std::ostream& out, const impeller::Arc& a) {
 
 }  // namespace std
 
-#endif  // FLUTTER_IMPELLER_GEOMETRY_ARC_H_
+#endif  // FLUTTER_OGRE_GEOMETRY_ARC_H_

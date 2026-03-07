@@ -28,7 +28,7 @@
 #include "gtest/gtest.h"
 #include "third_party/imgui/imgui.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 static void InstantiateTestShaderLibrary(Context::BackendType backend_type) {
@@ -283,7 +283,7 @@ TEST_P(RendererDartTest, CanRunDartInPlaygroundFrame) {
 }
 
 /// These test entries correspond to Dart functions located in
-/// `flutter/impeller/fixtures/dart_tests.dart`
+/// `flutter/ogre/fixtures/dart_tests.dart`
 
 TEST_P(RendererDartTest, CanInstantiateFlutterGPUContext) {
   ASSERT_TRUE(RunDartFunction("instantiateDefaultContext"));
@@ -302,4 +302,4 @@ TEST_P(RendererDartTest, CanCreateRenderPassAndSubmit) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

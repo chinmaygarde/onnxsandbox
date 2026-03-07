@@ -7,7 +7,7 @@
 #include "core/formats.h"
 #include "renderer/backend/vulkan/sampler_vk.h"
 
-namespace impeller {
+namespace ogre {
 
 SamplerLibraryVK::SamplerLibraryVK(
     const std::weak_ptr<DeviceHolderVK>& device_holder)
@@ -42,4 +42,4 @@ raw_ptr<const Sampler> SamplerLibraryVK::GetSampler(
   return raw_ptr(samplers_.back().second);
 }
 
-}  // namespace impeller
+}  // namespace ogre

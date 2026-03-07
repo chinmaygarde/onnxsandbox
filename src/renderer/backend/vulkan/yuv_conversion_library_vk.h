@@ -2,12 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_YUV_CONVERSION_LIBRARY_VK_H_
-#define FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_YUV_CONVERSION_LIBRARY_VK_H_
+#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_YUV_CONVERSION_LIBRARY_VK_H_
+#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_YUV_CONVERSION_LIBRARY_VK_H_
 
 #include "renderer/backend/vulkan/yuv_conversion_vk.h"
 
-namespace impeller {
+namespace ogre {
 
 class DeviceHolderVK;
 
@@ -60,6 +60,6 @@ class YUVConversionLibraryVK {
   explicit YUVConversionLibraryVK(std::weak_ptr<DeviceHolderVK> device_holder);
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_YUV_CONVERSION_LIBRARY_VK_H_
+#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_YUV_CONVERSION_LIBRARY_VK_H_

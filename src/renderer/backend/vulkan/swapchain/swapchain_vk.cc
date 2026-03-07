@@ -13,7 +13,7 @@
 #include "renderer/backend/vulkan/swapchain/ahb/ahb_swapchain_vk.h"
 #endif  // FML_OS_ANDROID
 
-namespace impeller {
+namespace ogre {
 
 std::shared_ptr<SwapchainVK> SwapchainVK::Create(
     const std::shared_ptr<Context>& context,
@@ -35,7 +35,7 @@ std::shared_ptr<SwapchainVK> SwapchainVK::Create(
     ANativeWindow* p_window,
     const CreateTransactionCB& cb,
     bool enable_msaa) {
-  TRACE_EVENT0("impeller", "CreateAndroidSwapchain");
+  TRACE_EVENT0("ogre", "CreateAndroidSwapchain");
   if (!context) {
     return nullptr;
   }
@@ -86,4 +86,4 @@ SwapchainVK::SwapchainVK() = default;
 
 SwapchainVK::~SwapchainVK() = default;
 
-}  // namespace impeller
+}  // namespace ogre

@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_SNAPSHOT_H_
-#define FLUTTER_IMPELLER_RENDERER_SNAPSHOT_H_
+#ifndef FLUTTER_OGRE_RENDERER_SNAPSHOT_H_
+#define FLUTTER_OGRE_RENDERER_SNAPSHOT_H_
 
 #include <functional>
 #include <memory>
@@ -15,7 +15,7 @@
 #include "geometry/matrix.h"
 #include "geometry/rect.h"
 
-namespace impeller {
+namespace ogre {
 
 class ContentContext;
 class Entity;
@@ -69,6 +69,6 @@ struct Snapshot {
       const Rect& coverage) const;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_SNAPSHOT_H_
+#endif  // FLUTTER_OGRE_RENDERER_SNAPSHOT_H_

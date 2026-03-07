@@ -9,7 +9,7 @@
 #include "renderer/backend/vulkan/test/mock_vulkan.h"
 #include "renderer/backend/vulkan/workarounds_vk.h"
 
-namespace impeller::testing {
+namespace ogre::testing {
 
 using DriverInfoVKTest = PlaygroundTest;
 INSTANTIATE_VULKAN_PLAYGROUND_SUITE(DriverInfoVKTest);
@@ -304,4 +304,4 @@ TEST(DriverInfoVKTest, PowerVRBSeries) {
             std::optional<PowerVRGPU>(PowerVRGPU::kBXM));
 }
 
-}  // namespace impeller::testing
+}  // namespace ogre::testing

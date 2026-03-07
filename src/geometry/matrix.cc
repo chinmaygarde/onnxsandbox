@@ -9,7 +9,7 @@
 
 #include "fml/logging.h"
 
-namespace impeller {
+namespace ogre {
 
 Matrix::Matrix(const MatrixDecomposition& d) : Matrix() {
   /*
@@ -461,4 +461,4 @@ uint64_t MatrixDecomposition::GetComponentsMask() const {
   return mask;
 }
 
-}  // namespace impeller
+}  // namespace ogre

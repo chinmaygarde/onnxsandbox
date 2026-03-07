@@ -8,7 +8,7 @@
 #include <cstdlib>
 #include <numeric>
 
-namespace impeller {
+namespace ogre {
 namespace {
 uint32_t AbsToUnsigned(int32_t x) {
   return static_cast<uint32_t>(std::abs(x));
@@ -51,4 +51,4 @@ Rational Rational::Invert() const {
   }
 }
 
-}  // namespace impeller
+}  // namespace ogre

@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_COMMAND_H_
-#define FLUTTER_IMPELLER_RENDERER_COMMAND_H_
+#ifndef FLUTTER_OGRE_RENDERER_COMMAND_H_
+#define FLUTTER_OGRE_RENDERER_COMMAND_H_
 
 #include <cstdint>
 #include <memory>
@@ -18,7 +18,7 @@
 #include "geometry/rect.h"
 #include "renderer/pipeline.h"
 
-namespace impeller {
+namespace ogre {
 
 template <class T>
 class Resource {
@@ -113,12 +113,12 @@ struct Command {
   ///
   std::optional<IRect32> scissor;
 
-#ifdef IMPELLER_DEBUG
+#ifdef OGRE_DEBUG
   //----------------------------------------------------------------------------
   /// The debugging label to use for the command.
   ///
   std::string label;
-#endif  // IMPELLER_DEBUG
+#endif  // OGRE_DEBUG
 
   //----------------------------------------------------------------------------
   /// The offset used when indexing into the vertex buffer.
@@ -156,6 +156,6 @@ struct Command {
   bool IsValid() const { return pipeline && pipeline->IsValid(); }
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_COMMAND_H_
+#endif  // FLUTTER_OGRE_RENDERER_COMMAND_H_

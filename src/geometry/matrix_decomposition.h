@@ -2,15 +2,15 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_GEOMETRY_MATRIX_DECOMPOSITION_H_
-#define FLUTTER_IMPELLER_GEOMETRY_MATRIX_DECOMPOSITION_H_
+#ifndef FLUTTER_OGRE_GEOMETRY_MATRIX_DECOMPOSITION_H_
+#define FLUTTER_OGRE_GEOMETRY_MATRIX_DECOMPOSITION_H_
 
 #include "geometry/quaternion.h"
 #include "geometry/scalar.h"
 #include "geometry/shear.h"
 #include "geometry/vector.h"
 
-namespace impeller {
+namespace ogre {
 
 struct MatrixDecomposition {
   Vector3 translation;
@@ -30,6 +30,6 @@ struct MatrixDecomposition {
   uint64_t GetComponentsMask() const;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_GEOMETRY_MATRIX_DECOMPOSITION_H_
+#endif  // FLUTTER_OGRE_GEOMETRY_MATRIX_DECOMPOSITION_H_

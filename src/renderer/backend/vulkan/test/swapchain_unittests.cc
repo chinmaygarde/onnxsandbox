@@ -10,12 +10,12 @@
 #include "renderer/backend/vulkan/texture_vk.h"
 #include "renderer/render_pass.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 vk::UniqueSurfaceKHR CreateSurface(const ContextVK& context) {
 #if FML_OS_DARWIN
-  impeller::vk::MetalSurfaceCreateInfoEXT createInfo = {};
+  ogre::vk::MetalSurfaceCreateInfoEXT createInfo = {};
   auto [result, surface] =
       context.GetInstance().createMetalSurfaceEXTUnique(createInfo);
   FML_DCHECK(result == vk::Result::eSuccess);
@@ -138,4 +138,4 @@ TEST(SwapchainTest, CachesRenderPassOnSwapchainImage) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

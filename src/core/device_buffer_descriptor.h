@@ -2,14 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_CORE_DEVICE_BUFFER_DESCRIPTOR_H_
-#define FLUTTER_IMPELLER_CORE_DEVICE_BUFFER_DESCRIPTOR_H_
+#ifndef FLUTTER_OGRE_CORE_DEVICE_BUFFER_DESCRIPTOR_H_
+#define FLUTTER_OGRE_CORE_DEVICE_BUFFER_DESCRIPTOR_H_
 
 #include <cstddef>
 
 #include "core/formats.h"
 
-namespace impeller {
+namespace ogre {
 
 struct DeviceBufferDescriptor {
   StorageMode storage_mode = StorageMode::kDeviceTransient;
@@ -19,6 +19,6 @@ struct DeviceBufferDescriptor {
   bool readback = false;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_CORE_DEVICE_BUFFER_DESCRIPTOR_H_
+#endif  // FLUTTER_OGRE_CORE_DEVICE_BUFFER_DESCRIPTOR_H_

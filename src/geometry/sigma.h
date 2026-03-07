@@ -2,12 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_GEOMETRY_SIGMA_H_
-#define FLUTTER_IMPELLER_GEOMETRY_SIGMA_H_
+#ifndef FLUTTER_OGRE_GEOMETRY_SIGMA_H_
+#define FLUTTER_OGRE_GEOMETRY_SIGMA_H_
 
 #include "geometry/scalar.h"
 
-namespace impeller {
+namespace ogre {
 
 /// For filters that use a Gaussian distribution, this is the `Radius` size to
 /// use per `Sigma` (standard deviation).
@@ -55,6 +55,6 @@ struct Radius {
   operator Sigma() const;  // NOLINT(google-explicit-constructor)
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_GEOMETRY_SIGMA_H_
+#endif  // FLUTTER_OGRE_GEOMETRY_SIGMA_H_

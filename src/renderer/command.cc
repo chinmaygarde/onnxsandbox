@@ -4,4 +4,4 @@
 
 #include "renderer/command.h"
 
-namespace impeller {}  // namespace impeller
+namespace ogre {}  // namespace ogre

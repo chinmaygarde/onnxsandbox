@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_GEOMETRY_ROUND_SUPERELLIPSE_PARAM_H_
-#define FLUTTER_IMPELLER_GEOMETRY_ROUND_SUPERELLIPSE_PARAM_H_
+#ifndef FLUTTER_OGRE_GEOMETRY_ROUND_SUPERELLIPSE_PARAM_H_
+#define FLUTTER_OGRE_GEOMETRY_ROUND_SUPERELLIPSE_PARAM_H_
 
 #include "geometry/path_source.h"
 #include "geometry/point.h"
@@ -11,7 +11,7 @@
 #include "geometry/rounding_radii.h"
 #include "geometry/size.h"
 
-namespace impeller {
+namespace ogre {
 
 // A utility struct that expands input parameters for a rounded superellipse to
 // drawing variables.
@@ -127,6 +127,6 @@ struct RoundSuperellipseParam {
   static constexpr Scalar kGapFactor = 0.29289321881f;  // 1-cos(pi/4)
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_GEOMETRY_ROUND_SUPERELLIPSE_PARAM_H_
+#endif  // FLUTTER_OGRE_GEOMETRY_ROUND_SUPERELLIPSE_PARAM_H_

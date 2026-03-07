@@ -14,7 +14,7 @@
 #include "renderer/backend/vulkan/test/mock_vulkan.h"
 #include "vulkan/vulkan_enums.hpp"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 TEST(AllocatorVKTest, ToVKImageUsageFlags) {
@@ -93,7 +93,7 @@ TEST(AllocatorVKTest, ImageResourceKeepsVulkanDeviceAlive) {
   ASSERT_TRUE(weak_allocator.lock());
 }
 
-#ifdef IMPELLER_DEBUG
+#ifdef OGRE_DEBUG
 
 TEST(AllocatorVKTest, RecreateSwapchainWhenSizeChanges) {
   auto const context = MockVulkanContextBuilder().Build();
@@ -119,7 +119,7 @@ TEST(AllocatorVKTest, RecreateSwapchainWhenSizeChanges) {
             16u);
 }
 
-#endif  // IMPELLER_DEBUG
+#endif  // OGRE_DEBUG
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

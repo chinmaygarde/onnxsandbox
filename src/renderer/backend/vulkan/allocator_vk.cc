@@ -18,7 +18,7 @@
 #include "renderer/backend/vulkan/texture_vk.h"
 #include "vulkan/vulkan_enums.hpp"
 
-namespace impeller {
+namespace ogre {
 
 static constexpr vk::Flags<vk::MemoryPropertyFlagBits>
 ToVKBufferMemoryPropertyFlags(StorageMode mode) {
@@ -563,12 +563,12 @@ Bytes AllocatorVK::DebugGetHeapUsage() const {
 }
 
 void AllocatorVK::DebugTraceMemoryStatistics() const {
-#ifdef IMPELLER_DEBUG
+#ifdef OGRE_DEBUG
   FML_TRACE_COUNTER("flutter", "AllocatorVK",
                     reinterpret_cast<int64_t>(this),  // Trace Counter ID
                     "MemoryBudgetUsageMB",
                     DebugGetHeapUsage().ConvertTo<MebiBytes>().GetSize());
-#endif  // IMPELLER_DEBUG
+#endif  // OGRE_DEBUG
 }
 
-}  // namespace impeller
+}  // namespace ogre

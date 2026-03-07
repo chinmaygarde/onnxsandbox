@@ -8,7 +8,7 @@
 
 #include "renderer/backend/vulkan/context_vk.h"
 
-namespace impeller {
+namespace ogre {
 
 QueueVK::QueueVK(QueueIndexVK index, vk::Queue queue)
     : index_(index), queue_(queue) {}
@@ -105,4 +105,4 @@ bool QueuesVK::IsValid() const {
   return graphics_queue && compute_queue && transfer_queue;
 }
 
-}  // namespace impeller
+}  // namespace ogre

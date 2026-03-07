@@ -6,10 +6,10 @@
 #include "flutter/testing/testing.h"
 #include "playground/playground.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 using DeviceBufferTest = Playground;
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

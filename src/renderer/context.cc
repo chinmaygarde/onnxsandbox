@@ -7,13 +7,13 @@
 #include <mutex>
 #include <utility>
 
-namespace impeller {
+namespace ogre {
 
 ImpellerContextFuture::ImpellerContextFuture(
-    std::future<std::shared_ptr<impeller::Context>> context)
+    std::future<std::shared_ptr<ogre::Context>> context)
     : future_(std::move(context)) {}
 
-std::shared_ptr<impeller::Context> ImpellerContextFuture::GetContext() {
+std::shared_ptr<ogre::Context> ImpellerContextFuture::GetContext() {
   std::scoped_lock<std::mutex> lock(mutex_);
   if (!did_wait_ && future_.valid()) {
     context_ = future_.get();
@@ -55,4 +55,4 @@ bool Context::SubmitOnscreen(std::shared_ptr<CommandBuffer> cmd_buffer) {
   return EnqueueCommandBuffer(std::move(cmd_buffer));
 }
 
-}  // namespace impeller
+}  // namespace ogre

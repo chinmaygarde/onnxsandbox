@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_CONTEXT_H_
-#define FLUTTER_IMPELLER_RENDERER_CONTEXT_H_
+#ifndef FLUTTER_OGRE_RENDERER_CONTEXT_H_
+#define FLUTTER_OGRE_RENDERER_CONTEXT_H_
 
 #include <future>
 #include <memory>
@@ -18,25 +18,25 @@
 #include "renderer/command_queue.h"
 #include "renderer/sampler_library.h"
 
-namespace impeller {
+namespace ogre {
 
 class ShaderLibrary;
 class CommandBuffer;
 class PipelineLibrary;
 
-/// A wrapper for provided a deferred initialization of impeller to various
+/// A wrapper for provided a deferred initialization of ogre to various
 /// engine subsystems.
 class ImpellerContextFuture {
  public:
   explicit ImpellerContextFuture(
-      std::future<std::shared_ptr<impeller::Context>> context);
+      std::future<std::shared_ptr<ogre::Context>> context);
 
-  std::shared_ptr<impeller::Context> GetContext();
+  std::shared_ptr<ogre::Context> GetContext();
 
  private:
   std::mutex mutex_;
-  std::future<std::shared_ptr<impeller::Context>> future_;
-  std::shared_ptr<impeller::Context> context_;
+  std::future<std::shared_ptr<ogre::Context>> future_;
+  std::shared_ptr<ogre::Context> context_;
   bool did_wait_ = false;
 };
 
@@ -61,7 +61,7 @@ class ImpellerContextFuture {
 ///
 ///             Contexts are abstract and a concrete instance must be created
 ///             using one of the subclasses of `Context` in
-///             `//impeller/renderer/backend`.
+///             `//ogre/renderer/backend`.
 class Context {
  public:
   enum class BackendType {
@@ -278,6 +278,6 @@ class Context {
   Context& operator=(const Context&) = delete;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_CONTEXT_H_
+#endif  // FLUTTER_OGRE_RENDERER_CONTEXT_H_

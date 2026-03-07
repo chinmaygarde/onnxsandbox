@@ -6,7 +6,7 @@
 
 #include <cstdint>
 
-namespace impeller {
+namespace ogre {
 
 vk::Format ToVertexDescriptorFormat(const ShaderStageIOSlot& input) {
   if (input.columns != 1) {
@@ -164,4 +164,4 @@ vk::Format ToVertexDescriptorFormat(const ShaderStageIOSlot& input) {
   }
 }
 
-}  // namespace impeller
+}  // namespace ogre

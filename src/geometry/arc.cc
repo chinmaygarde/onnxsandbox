@@ -4,7 +4,7 @@
 
 #include "geometry/arc.h"
 
-namespace impeller {
+namespace ogre {
 
 Arc::Arc(const Rect& bounds, Degrees start, Degrees sweep, bool include_center)
     : bounds_(bounds), include_center_(include_center) {
@@ -119,8 +119,8 @@ Arc::Iteration Arc::ComputeIterations(size_t step_count,
   FML_DCHECK(end.degrees < start.degrees + (simplify_360 ? 360.0f : 720.0f));
 
   Iteration iterations;
-  iterations.start = impeller::Matrix::CosSin(start);
-  iterations.end = impeller::Matrix::CosSin(end);
+  iterations.start = ogre::Matrix::CosSin(start);
+  iterations.end = ogre::Matrix::CosSin(end);
 
   // We nudge the start and stop by 1/10th of a step so we don't end
   // up with degenerately small steps at the start and end of the
@@ -177,4 +177,4 @@ Arc::Iteration Arc::ComputeIterations(size_t step_count,
   return iterations;
 }
 
-}  // namespace impeller
+}  // namespace ogre

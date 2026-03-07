@@ -5,7 +5,7 @@
 #include "renderer/capabilities.h"
 #include "core/formats.h"
 
-namespace impeller {
+namespace ogre {
 
 Capabilities::Capabilities() = default;
 
@@ -311,4 +311,4 @@ std::unique_ptr<Capabilities> CapabilitiesBuilder::Build() {
       ));
 }
 
-}  // namespace impeller
+}  // namespace ogre

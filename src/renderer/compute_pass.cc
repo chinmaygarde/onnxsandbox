@@ -4,7 +4,7 @@
 
 #include "renderer/compute_pass.h"
 
-namespace impeller {
+namespace ogre {
 
 ComputePass::ComputePass(std::shared_ptr<const Context> context)
     : context_(std::move(context)) {}
@@ -18,4 +18,4 @@ void ComputePass::SetLabel(const std::string& label) {
   OnSetLabel(label);
 }
 
-}  // namespace impeller
+}  // namespace ogre

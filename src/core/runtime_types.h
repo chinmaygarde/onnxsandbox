@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_CORE_RUNTIME_TYPES_H_
-#define FLUTTER_IMPELLER_CORE_RUNTIME_TYPES_H_
+#ifndef FLUTTER_OGRE_CORE_RUNTIME_TYPES_H_
+#define FLUTTER_OGRE_CORE_RUNTIME_TYPES_H_
 
 #include <cstddef>
 #include <cstdint>
@@ -11,7 +11,7 @@
 #include <string>
 #include <vector>
 
-namespace impeller {
+namespace ogre {
 
 enum class RuntimeStageBackend {
   kSkSL,
@@ -73,6 +73,6 @@ struct RuntimeUniformDescription {
   size_t GetGPUSize() const;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_CORE_RUNTIME_TYPES_H_
+#endif  // FLUTTER_OGRE_CORE_RUNTIME_TYPES_H_

@@ -13,7 +13,7 @@
 #include "fml/thread.h"
 #include "fml/trace_event.h"
 
-namespace impeller {
+namespace ogre {
 
 class WaitSetEntry {
  public:
@@ -169,7 +169,7 @@ bool FenceWaiterVK::Wait() {
   // One or more fences have been signaled. Find out which ones and update
   // their signaled statuses.
   {
-    TRACE_EVENT0("impeller", "CheckFenceStatus");
+    TRACE_EVENT0("ogre", "CheckFenceStatus");
     for (auto& entry : wait_set) {
       entry->UpdateSignalledStatus(device);
     }
@@ -195,7 +195,7 @@ bool FenceWaiterVK::Wait() {
   }
 
   {
-    TRACE_EVENT0("impeller", "ClearSignaledFences");
+    TRACE_EVENT0("ogre", "ClearSignaledFences");
     // Erase the erased entries which will invoke callbacks.
     erased_entries.clear();  // Bit redundant because of scope but hey.
   }
@@ -215,4 +215,4 @@ void FenceWaiterVK::Terminate() {
   waiter_thread_->join();
 }
 
-}  // namespace impeller
+}  // namespace ogre

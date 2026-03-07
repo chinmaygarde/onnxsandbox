@@ -4,7 +4,7 @@
 
 #include "renderer/backend/vulkan/shader_function_vk.h"
 
-namespace impeller {
+namespace ogre {
 
 ShaderFunctionVK::ShaderFunctionVK(
     const std::weak_ptr<DeviceHolderVK>& device_holder,
@@ -29,4 +29,4 @@ const vk::ShaderModule& ShaderFunctionVK::GetModule() const {
   return module_.get();
 }
 
-}  // namespace impeller
+}  // namespace ogre

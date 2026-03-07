@@ -4,7 +4,7 @@
 
 #include "separated_vector.h"
 
-namespace impeller {
+namespace ogre {
 
 SeparatedVector2::SeparatedVector2() = default;
 
@@ -34,4 +34,4 @@ Scalar SeparatedVector2::Cross(const SeparatedVector2& other) const {
   return direction.Cross(other.direction);
 }
 
-}  // namespace impeller
+}  // namespace ogre

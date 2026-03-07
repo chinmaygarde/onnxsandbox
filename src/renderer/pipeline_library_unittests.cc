@@ -4,7 +4,7 @@
 
 #include "renderer/testing/mocks.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 TEST(MockPipelineLibrary, LogAndGetPipelineUsageSinglePipeline) {
@@ -51,4 +51,4 @@ TEST(MockPipelineLibrary, LogAndGetPipelineUsageMultiplePipelines) {
 }
 
 }  // namespace  testing
-}  // namespace impeller
+}  // namespace ogre

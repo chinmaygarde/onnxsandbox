@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_RENDER_PASS_VK_H_
-#define FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_RENDER_PASS_VK_H_
+#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_RENDER_PASS_VK_H_
+#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_RENDER_PASS_VK_H_
 
 #include "core/buffer_view.h"
 #include "renderer/backend/vulkan/context_vk.h"
@@ -13,7 +13,7 @@
 #include "renderer/render_pass.h"
 #include "renderer/render_target.h"
 
-namespace impeller {
+namespace ogre {
 
 class CommandBufferVK;
 class SamplerVK;
@@ -147,6 +147,6 @@ class RenderPassVK final : public RenderPass {
   RenderPassVK& operator=(const RenderPassVK&) = delete;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_RENDER_PASS_VK_H_
+#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_RENDER_PASS_VK_H_

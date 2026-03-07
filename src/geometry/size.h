@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_GEOMETRY_SIZE_H_
-#define FLUTTER_IMPELLER_GEOMETRY_SIZE_H_
+#ifndef FLUTTER_OGRE_GEOMETRY_SIZE_H_
+#define FLUTTER_OGRE_GEOMETRY_SIZE_H_
 
 #include <algorithm>
 #include <cmath>
@@ -14,7 +14,7 @@
 
 #include "geometry/scalar.h"
 
-namespace impeller {
+namespace ogre {
 
 #define ONLY_ON_FLOAT_M(Modifiers, Return) \
   template <typename U = T>                \
@@ -163,17 +163,17 @@ using ISize = ISize64;
 
 static_assert(sizeof(Size) == 2 * sizeof(Scalar));
 
-}  // namespace impeller
+}  // namespace ogre
 
 namespace std {
 
 template <class T>
 inline std::ostream& operator<<(std::ostream& out,
-                                const impeller::TSize<T>& s) {
+                                const ogre::TSize<T>& s) {
   out << "(" << s.width << ", " << s.height << ")";
   return out;
 }
 
 }  // namespace std
 
-#endif  // FLUTTER_IMPELLER_GEOMETRY_SIZE_H_
+#endif  // FLUTTER_OGRE_GEOMETRY_SIZE_H_

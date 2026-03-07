@@ -9,7 +9,7 @@
 #include "renderer/shader_library.h"
 #include "renderer/vertex_descriptor.h"
 
-namespace impeller {
+namespace ogre {
 
 ComputePipelineDescriptor::ComputePipelineDescriptor() = default;
 
@@ -78,4 +78,4 @@ ComputePipelineDescriptor::GetDescriptorSetLayouts() const {
   return descriptor_set_layouts_;
 }
 
-}  // namespace impeller
+}  // namespace ogre

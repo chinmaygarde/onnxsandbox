@@ -2,20 +2,20 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_TEXTURE_UTIL_H_
-#define FLUTTER_IMPELLER_RENDERER_TEXTURE_UTIL_H_
+#ifndef FLUTTER_OGRE_RENDERER_TEXTURE_UTIL_H_
+#define FLUTTER_OGRE_RENDERER_TEXTURE_UTIL_H_
 
 #include "core/texture.h"
 #include "fml/status.h"
 #include "renderer/command_buffer.h"
 #include "renderer/context.h"
 
-namespace impeller {
+namespace ogre {
 
 std::shared_ptr<Texture> CreateTexture(
     const TextureDescriptor& texture_descriptor,
     const std::vector<uint8_t>& data,
-    const std::shared_ptr<impeller::Context>& context,
+    const std::shared_ptr<ogre::Context>& context,
     std::string_view debug_label);
 
 /// Adds a blit command to the render pass.
@@ -24,6 +24,6 @@ std::shared_ptr<Texture> CreateTexture(
     const std::shared_ptr<Context>& context,
     const std::shared_ptr<Texture>& texture);
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_TEXTURE_UTIL_H_
+#endif  // FLUTTER_OGRE_RENDERER_TEXTURE_UTIL_H_

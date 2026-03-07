@@ -12,7 +12,7 @@
 #include "toolkit/android/surface_transaction.h"
 #include "toolkit/android/surface_transaction_stats.h"
 
-namespace impeller {
+namespace ogre {
 
 static TextureDescriptor ToSwapchainTextureDescriptor(
     const android::HardwareBufferDescriptor& ahb_desc) {
@@ -148,11 +148,11 @@ std::unique_ptr<Surface> AHBSwapchainImplVK::AcquireNextDrawable() {
     return nullptr;
   }
 
-#if IMPELLER_DEBUG
+#if OGRE_DEBUG
   if (context) {
     ContextVK::Cast(*context).GetGPUTracer()->MarkFrameStart();
   }
-#endif  // IMPELLER_DEBUG
+#endif  // OGRE_DEBUG
 
   auto surface = SurfaceVK::WrapSwapchainImage(
       transients_, pool_entry.texture,
@@ -181,12 +181,12 @@ bool AHBSwapchainImplVK::Present(
     return false;
   }
 
-#if IMPELLER_DEBUG
+#if OGRE_DEBUG
   auto context = transients_->GetContext().lock();
   if (context) {
     ContextVK::Cast(*context).GetGPUTracer()->MarkFrameEnd();
   }
-#endif  // IMPELLER_DEBUG
+#endif  // OGRE_DEBUG
 
   if (!texture) {
     return false;
@@ -200,7 +200,7 @@ bool AHBSwapchainImplVK::Present(
   }
 
   android::SurfaceTransaction transaction =
-      (cb_) ? cb_() : impeller::android::SurfaceTransaction();
+      (cb_) ? cb_() : ogre::android::SurfaceTransaction();
   if (!transaction.SetContents(control.get(),               //
                                texture->GetBackingStore(),  //
                                present_ready->CreateFD()    //
@@ -361,4 +361,4 @@ void AHBSwapchainImplVK::OnTextureUpdatedOnSurfaceControl(
   pool_->Push(std::move(old_texture), std::move(render_ready_fence));
 }
 
-}  // namespace impeller
+}  // namespace ogre

@@ -2,12 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_WORKAROUNDS_VK_H_
-#define FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_WORKAROUNDS_VK_H_
+#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_WORKAROUNDS_VK_H_
+#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_WORKAROUNDS_VK_H_
 
 #include "renderer/backend/vulkan/driver_info_vk.h"
 
-namespace impeller {
+namespace ogre {
 
 /// A non-exhaustive set of driver specific workarounds.
 struct WorkaroundsVK {
@@ -40,6 +40,6 @@ struct WorkaroundsVK {
 
 WorkaroundsVK GetWorkaroundsFromDriverInfo(DriverInfoVK& driver_info);
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_WORKAROUNDS_VK_H_
+#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_WORKAROUNDS_VK_H_

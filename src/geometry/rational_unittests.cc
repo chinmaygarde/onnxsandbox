@@ -6,7 +6,7 @@
 
 #include "gtest/gtest.h"
 
-namespace impeller {
+namespace ogre {
 
 TEST(RationalTest, Make) {
   Rational value(1, 2);
@@ -54,4 +54,4 @@ TEST(RationalTest, DifferentHashes) {
   EXPECT_NE(Rational(2, 2).GetHash(), Rational(2, 4).GetHash());
 }
 
-}  // namespace impeller
+}  // namespace ogre

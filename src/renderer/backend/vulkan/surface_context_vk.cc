@@ -11,7 +11,7 @@
 #include "renderer/backend/vulkan/swapchain/khr/khr_swapchain_vk.h"
 #include "renderer/surface.h"
 
-namespace impeller {
+namespace ogre {
 
 SurfaceContextVK::SurfaceContextVK(const std::shared_ptr<ContextVK>& parent)
     : Context(parent->GetFlags()), parent_(parent) {}
@@ -89,7 +89,7 @@ bool SurfaceContextVK::SetSwapchain(std::shared_ptr<SwapchainVK> swapchain) {
 }
 
 std::unique_ptr<Surface> SurfaceContextVK::AcquireNextSurface() {
-  TRACE_EVENT0("impeller", __FUNCTION__);
+  TRACE_EVENT0("ogre", __FUNCTION__);
   auto surface = swapchain_ ? swapchain_->AcquireNextDrawable() : nullptr;
   if (!surface) {
     return nullptr;
@@ -100,7 +100,7 @@ std::unique_ptr<Surface> SurfaceContextVK::AcquireNextSurface() {
 
 void SurfaceContextVK::MarkFrameEnd() {
   if (auto pipeline_library = parent_->GetPipelineLibrary()) {
-    impeller::PipelineLibraryVK::Cast(*pipeline_library)
+    ogre::PipelineLibraryVK::Cast(*pipeline_library)
         .DidAcquireSurfaceFrame();
   }
   parent_->DisposeThreadLocalCachedResources();
@@ -146,4 +146,4 @@ RuntimeStageBackend SurfaceContextVK::GetRuntimeStageBackend() const {
   return parent_->GetRuntimeStageBackend();
 }
 
-}  // namespace impeller
+}  // namespace ogre

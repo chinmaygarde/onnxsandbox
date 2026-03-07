@@ -6,7 +6,7 @@
 
 #include "fml/trace_event.h"
 
-namespace impeller {
+namespace ogre {
 
 SwapchainTransientsVK::SwapchainTransientsVK(std::weak_ptr<Context> context,
                                              TextureDescriptor desc,
@@ -33,7 +33,7 @@ SwapchainTransientsVK::GetDepthStencilTexture() {
 }
 
 std::shared_ptr<Texture> SwapchainTransientsVK::CreateMSAATexture() const {
-  TRACE_EVENT0("impeller", __FUNCTION__);
+  TRACE_EVENT0("ogre", __FUNCTION__);
   if (!enable_msaa_) {
     return nullptr;
   }
@@ -59,7 +59,7 @@ std::shared_ptr<Texture> SwapchainTransientsVK::CreateMSAATexture() const {
 
 std::shared_ptr<Texture> SwapchainTransientsVK::CreateDepthStencilTexture()
     const {
-  TRACE_EVENT0("impeller", __FUNCTION__);
+  TRACE_EVENT0("ogre", __FUNCTION__);
   auto context = context_.lock();
   if (!context) {
     return nullptr;
@@ -95,4 +95,4 @@ const std::weak_ptr<Context>& SwapchainTransientsVK::GetContext() const {
   return context_;
 }
 
-}  // namespace impeller
+}  // namespace ogre

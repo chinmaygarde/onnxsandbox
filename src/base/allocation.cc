@@ -9,7 +9,7 @@
 
 #include "base/validation.h"
 
-namespace impeller {
+namespace ogre {
 
 Allocation::Allocation() = default;
 
@@ -115,4 +115,4 @@ std::shared_ptr<fml::Mapping> CreateMappingWithString(std::string string) {
       [buffer](auto, auto) {});
 }
 
-}  // namespace impeller
+}  // namespace ogre

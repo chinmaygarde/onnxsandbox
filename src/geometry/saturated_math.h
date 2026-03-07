@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_GEOMETRY_SATURATED_MATH_H_
-#define FLUTTER_IMPELLER_GEOMETRY_SATURATED_MATH_H_
+#ifndef FLUTTER_OGRE_GEOMETRY_SATURATED_MATH_H_
+#define FLUTTER_OGRE_GEOMETRY_SATURATED_MATH_H_
 
 #include <algorithm>
 #include <limits>
@@ -12,7 +12,7 @@
 #include "fml/logging.h"
 #include "geometry/scalar.h"
 
-namespace impeller {
+namespace ogre {
 
 namespace saturated {
 
@@ -143,6 +143,6 @@ ONLY_ON_DIFFERING_FLOAT(FP1, FP2) Cast(FP1 v) {
 
 }  // namespace saturated
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_GEOMETRY_SATURATED_MATH_H_
+#endif  // FLUTTER_OGRE_GEOMETRY_SATURATED_MATH_H_

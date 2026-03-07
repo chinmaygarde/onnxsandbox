@@ -4,7 +4,7 @@
 
 #include "base/strings.h"
 
-namespace impeller {
+namespace ogre {
 
 bool HasPrefix(const std::string& string, const std::string& prefix) {
   return string.find(prefix) == 0u;
@@ -26,4 +26,4 @@ std::string StripPrefix(const std::string& string,
   return string.substr(to_strip.length());
 }
 
-}  // namespace impeller
+}  // namespace ogre

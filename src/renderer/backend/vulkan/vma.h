@@ -2,15 +2,15 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_VMA_H_
-#define FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_VMA_H_
+#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_VMA_H_
+#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_VMA_H_
 
 #include <vk_mem_alloc.h>
 #include "fml/trace_event.h"
 #include "fml/unique_object.h"
 #include "renderer/backend/vulkan/vk.h"
 
-namespace impeller {
+namespace ogre {
 
 // -----------------------------------------------------------------------------
 // Unique handles to VMA allocators.
@@ -23,7 +23,7 @@ struct AllocatorVMATraits {
   }
 
   static void Free(VmaAllocator allocator) {
-    TRACE_EVENT0("impeller", "DestroyAllocator");
+    TRACE_EVENT0("ogre", "DestroyAllocator");
     ::vmaDestroyAllocator(allocator);
   }
 };
@@ -49,7 +49,7 @@ struct PoolVMATraits {
   }
 
   static void Free(const PoolVMA& pool) {
-    TRACE_EVENT0("impeller", "DestroyPool");
+    TRACE_EVENT0("ogre", "DestroyPool");
     ::vmaDestroyPool(pool.allocator, pool.pool);
   }
 };
@@ -83,7 +83,7 @@ struct BufferVMATraits {
   }
 
   static void Free(const BufferVMA& buffer) {
-    TRACE_EVENT0("impeller", "DestroyBuffer");
+    TRACE_EVENT0("ogre", "DestroyBuffer");
     ::vmaDestroyBuffer(buffer.allocator, static_cast<VkBuffer>(buffer.buffer),
                        buffer.allocation);
   }
@@ -118,7 +118,7 @@ struct ImageVMATraits {
   }
 
   static void Free(const ImageVMA& image) {
-    TRACE_EVENT0("impeller", "DestroyImage");
+    TRACE_EVENT0("ogre", "DestroyImage");
     ::vmaDestroyImage(image.allocator, static_cast<VkImage>(image.image),
                       image.allocation);
   }
@@ -126,6 +126,6 @@ struct ImageVMATraits {
 
 using UniqueImageVMA = fml::UniqueObject<ImageVMA, ImageVMATraits>;
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_VMA_H_
+#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_VMA_H_

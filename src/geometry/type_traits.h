@@ -2,12 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_GEOMETRY_TYPE_TRAITS_H_
-#define FLUTTER_IMPELLER_GEOMETRY_TYPE_TRAITS_H_
+#ifndef FLUTTER_OGRE_GEOMETRY_TYPE_TRAITS_H_
+#define FLUTTER_OGRE_GEOMETRY_TYPE_TRAITS_H_
 
 #include <type_traits>
 
-namespace impeller {
+namespace ogre {
 
 template <class F,
           class I,
@@ -18,6 +18,6 @@ struct MixedOp_ : public std::true_type {};
 template <class F, class I>
 using MixedOp = typename MixedOp_<F, I>::type;
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_GEOMETRY_TYPE_TRAITS_H_
+#endif  // FLUTTER_OGRE_GEOMETRY_TYPE_TRAITS_H_

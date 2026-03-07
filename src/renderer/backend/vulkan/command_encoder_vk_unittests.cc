@@ -9,7 +9,7 @@
 #include "renderer/backend/vulkan/test/mock_vulkan.h"
 #include "renderer/command_buffer.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 TEST(CommandEncoderVKTest, DeleteEncoderAfterThreadDies) {
@@ -71,4 +71,4 @@ TEST(CommandEncoderVKTest, CleanupAfterSubmit) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

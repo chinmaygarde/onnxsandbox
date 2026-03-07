@@ -6,7 +6,7 @@
 
 #include <sstream>
 
-namespace impeller {
+namespace ogre {
 
 Sigma::operator Radius() const {
   return Radius{sigma > 0.5f ? (sigma - 0.5f) * kKernelRadiusPerSigma : 0.0f};
@@ -16,4 +16,4 @@ Radius::operator Sigma() const {
   return Sigma{radius > 0 ? radius / kKernelRadiusPerSigma + 0.5f : 0.0f};
 }
 
-}  // namespace impeller
+}  // namespace ogre

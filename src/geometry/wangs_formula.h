@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_GEOMETRY_WANGS_FORMULA_H_
-#define FLUTTER_IMPELLER_GEOMETRY_WANGS_FORMULA_H_
+#ifndef FLUTTER_OGRE_GEOMETRY_WANGS_FORMULA_H_
+#define FLUTTER_OGRE_GEOMETRY_WANGS_FORMULA_H_
 
 #include "geometry/point.h"
 #include "geometry/scalar.h"
@@ -21,7 +21,7 @@
 // (Goldman, Ron. (2003). 5.6.3 Wang's Formula. "Pyramid Algorithms: A Dynamic
 // Programming Approach to Curves and Surfaces for Geometric Modeling". Morgan
 // Kaufmann Publishers.)
-namespace impeller {
+namespace ogre {
 
 /// Returns the minimum number of evenly spaced (in the parametric sense) line
 /// segments that the cubic must be chopped into in order to guarantee all lines
@@ -54,6 +54,6 @@ Scalar ComputeConicSubdivisions(Scalar scale_factor,
                                 Point p1,
                                 Point p2,
                                 Scalar w);
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_GEOMETRY_WANGS_FORMULA_H_
+#endif  // FLUTTER_OGRE_GEOMETRY_WANGS_FORMULA_H_

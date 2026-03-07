@@ -13,7 +13,7 @@
 // NOLINTBEGIN(clang-analyzer-security.PointerSub)
 // NOLINTBEGIN(clang-analyzer-core.StackAddressEscape)
 
-namespace impeller {
+namespace ogre {
 
 namespace {
 
@@ -266,7 +266,7 @@ AHBTextureSourceVK::AHBTextureSourceVK(
   yuv_conversion_ = std::move(yuv_conversion);
   image_view_ = std::move(image_view.value);
 
-#ifdef IMPELLER_DEBUG
+#ifdef OGRE_DEBUG
   context.SetDebugName(device_memory_.get(), "AHB Device Memory");
   context.SetDebugName(image_.get(), "AHB Image");
   if (yuv_conversion_) {
@@ -274,7 +274,7 @@ AHBTextureSourceVK::AHBTextureSourceVK(
                          "AHB YUV Conversion");
   }
   context.SetDebugName(image_view_.get(), "AHB ImageView");
-#endif  // IMPELLER_DEBUG
+#endif  // OGRE_DEBUG
 
   is_valid_ = true;
 }
@@ -438,7 +438,7 @@ AHBTextureSourceVK::ImageViewInfo AHBTextureSourceVK::CreateImageViewInfo(
   return view_chain;
 }
 
-}  // namespace impeller
+}  // namespace ogre
 
 // NOLINTEND(clang-analyzer-core.StackAddressEscape)
 // NOLINTEND(clang-analyzer-security.PointerSub)

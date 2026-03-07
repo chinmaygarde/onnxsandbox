@@ -11,13 +11,13 @@
 #include "renderer/backend/vulkan/context_vk.h"
 #include "renderer/backend/vulkan/shader_function_vk.h"
 
-namespace impeller {
+namespace ogre {
 
 ShaderLibraryVK::ShaderLibraryVK(
     std::weak_ptr<DeviceHolderVK> device_holder,
     const std::vector<std::shared_ptr<fml::Mapping>>& shader_libraries_data)
     : device_holder_(std::move(device_holder)) {
-  TRACE_EVENT0("impeller", "CreateShaderLibrary");
+  TRACE_EVENT0("ogre", "CreateShaderLibrary");
 }
 
 ShaderLibraryVK::~ShaderLibraryVK() = default;
@@ -129,4 +129,4 @@ void ShaderLibraryVK::UnregisterFunction(std::string name, ShaderStage stage) {
   return;
 }
 
-}  // namespace impeller
+}  // namespace ogre

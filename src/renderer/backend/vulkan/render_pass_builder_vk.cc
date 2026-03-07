@@ -7,7 +7,7 @@
 #include "core/formats.h"
 #include "renderer/backend/vulkan/formats_vk.h"
 
-namespace impeller {
+namespace ogre {
 
 namespace {
 // Compute the final layout for a given image state.
@@ -298,4 +298,4 @@ std::optional<vk::AttachmentDescription> RenderPassBuilderVK::GetColor0Resolve()
   return color0_resolve_;
 }
 
-}  // namespace impeller
+}  // namespace ogre

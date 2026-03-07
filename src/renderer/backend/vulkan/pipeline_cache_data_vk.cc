@@ -8,10 +8,10 @@
 #include "base/validation.h"
 #include "fml/file.h"
 
-namespace impeller {
+namespace ogre {
 
 static constexpr const char* kPipelineCacheFileName =
-    "flutter.impeller.vkcache";
+    "flutter.ogre.vkcache";
 
 bool PipelineCacheDataPersist(const fml::UniqueFD& cache_directory,
                               const VkPhysicalDeviceProperties& props,
@@ -121,4 +121,4 @@ bool PipelineCacheHeaderVK::IsCompatibleWith(
          std::memcmp(uuid, o.uuid, VK_UUID_SIZE) == 0;
 }
 
-}  // namespace impeller
+}  // namespace ogre

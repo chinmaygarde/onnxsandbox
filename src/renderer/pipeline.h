@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_PIPELINE_H_
-#define FLUTTER_IMPELLER_RENDERER_PIPELINE_H_
+#ifndef FLUTTER_OGRE_RENDERER_PIPELINE_H_
+#define FLUTTER_OGRE_RENDERER_PIPELINE_H_
 
 #include <future>
 
@@ -17,7 +17,7 @@
 #include "renderer/pipeline_descriptor.h"
 #include "renderer/shader_stage_compatibility_checker.h"
 
-namespace impeller {
+namespace ogre {
 
 using PipelineKey = int64_t;
 
@@ -160,7 +160,7 @@ class GenericRenderPipelineHandle {
 /// the vertex shader and fragment shader types at compile-time.
 ///
 /// See also:
-///   - impeller::ContentContext::Variants - the typical container for
+///   - ogre::ContentContext::Variants - the typical container for
 ///     RenderPipelineHandles.
 template <class VertexShader_, class FragmentShader_>
 class RenderPipelineHandle : public GenericRenderPipelineHandle {
@@ -230,6 +230,6 @@ class ComputePipelineHandle {
   ComputePipelineHandle& operator=(const ComputePipelineHandle&) = delete;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_PIPELINE_H_
+#endif  // FLUTTER_OGRE_RENDERER_PIPELINE_H_

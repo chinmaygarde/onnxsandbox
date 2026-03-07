@@ -16,7 +16,7 @@
 #include "renderer/backend/vulkan/texture_vk.h"
 #include "renderer/context.h"
 
-namespace impeller {
+namespace ogre {
 
 static constexpr size_t kMaxFramesInFlight = 2u;
 
@@ -523,4 +523,4 @@ bool KHRSwapchainImplVK::Present(
   return true;
 }
 
-}  // namespace impeller
+}  // namespace ogre

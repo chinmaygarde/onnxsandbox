@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_VERTEX_BUFFER_BUILDER_H_
-#define FLUTTER_IMPELLER_RENDERER_VERTEX_BUFFER_BUILDER_H_
+#ifndef FLUTTER_OGRE_RENDERER_VERTEX_BUFFER_BUILDER_H_
+#define FLUTTER_OGRE_RENDERER_VERTEX_BUFFER_BUILDER_H_
 
 #include <format>
 #include <initializer_list>
@@ -17,7 +17,7 @@
 #include "core/host_buffer.h"
 #include "core/vertex_buffer.h"
 
-namespace impeller {
+namespace ogre {
 
 /// @brief Create an index-less vertex buffer from a fixed size array.
 template <class VertexType, size_t size>
@@ -41,17 +41,17 @@ class VertexBufferBuilder {
 
   ~VertexBufferBuilder() = default;
 
-  constexpr impeller::IndexType GetIndexType() const {
+  constexpr ogre::IndexType GetIndexType() const {
     if (indices_.size() == 0) {
-      return impeller::IndexType::kNone;
+      return ogre::IndexType::kNone;
     }
     if constexpr (sizeof(IndexType) == 2) {
-      return impeller::IndexType::k16bit;
+      return ogre::IndexType::k16bit;
     }
     if (sizeof(IndexType) == 4) {
-      return impeller::IndexType::k32bit;
+      return ogre::IndexType::k32bit;
     }
-    return impeller::IndexType::kUnknown;
+    return ogre::IndexType::kUnknown;
   }
 
   void SetLabel(const std::string& label) { label_ = label; }
@@ -172,6 +172,6 @@ class VertexBufferBuilder {
   }
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_VERTEX_BUFFER_BUILDER_H_
+#endif  // FLUTTER_OGRE_RENDERER_VERTEX_BUFFER_BUILDER_H_

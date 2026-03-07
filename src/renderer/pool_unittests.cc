@@ -6,7 +6,7 @@
 
 #include "renderer/pool.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 namespace {
@@ -61,4 +61,4 @@ TEST(PoolTest, Overload) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

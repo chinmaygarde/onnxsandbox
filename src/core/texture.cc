@@ -6,7 +6,7 @@
 
 #include "base/validation.h"
 
-namespace impeller {
+namespace ogre {
 
 Texture::Texture(TextureDescriptor desc) : desc_(desc) {}
 
@@ -86,4 +86,4 @@ bool Texture::NeedsMipmapGeneration() const {
   return !mipmap_generated_ && desc_.mip_count > 1;
 }
 
-}  // namespace impeller
+}  // namespace ogre

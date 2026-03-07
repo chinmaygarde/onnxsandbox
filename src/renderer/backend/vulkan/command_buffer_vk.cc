@@ -17,7 +17,7 @@
 #include "renderer/command_buffer.h"
 #include "renderer/render_target.h"
 
-namespace impeller {
+namespace ogre {
 
 CommandBufferVK::CommandBufferVK(
     std::weak_ptr<const Context> context,
@@ -30,13 +30,13 @@ CommandBufferVK::CommandBufferVK(
 CommandBufferVK::~CommandBufferVK() = default;
 
 void CommandBufferVK::SetLabel(std::string_view label) const {
-#ifdef IMPELLER_DEBUG
+#ifdef OGRE_DEBUG
   auto context = context_.lock();
   if (!context) {
     return;
   }
   ContextVK::Cast(*context).SetDebugName(GetCommandBuffer(), label);
-#endif  // IMPELLER_DEBUG
+#endif  // OGRE_DEBUG
 }
 
 bool CommandBufferVK::IsValid() const {
@@ -206,4 +206,4 @@ DescriptorPoolVK& CommandBufferVK::GetDescriptorPool() const {
   return tracked_objects_->GetDescriptorPool();
 }
 
-}  // namespace impeller
+}  // namespace ogre

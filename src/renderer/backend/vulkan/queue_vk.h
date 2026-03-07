@@ -2,15 +2,15 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_QUEUE_VK_H_
-#define FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_QUEUE_VK_H_
+#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_QUEUE_VK_H_
+#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_QUEUE_VK_H_
 
 #include <memory>
 
 #include "base/thread.h"
 #include "renderer/backend/vulkan/vk.h"
 
-namespace impeller {
+namespace ogre {
 
 struct QueueIndexVK {
   size_t family = 0;
@@ -82,6 +82,6 @@ struct QueuesVK {
   bool IsValid() const;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_QUEUE_VK_H_
+#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_QUEUE_VK_H_

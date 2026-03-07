@@ -2,12 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_SURFACE_H_
-#define FLUTTER_IMPELLER_RENDERER_SURFACE_H_
+#ifndef FLUTTER_OGRE_RENDERER_SURFACE_H_
+#define FLUTTER_OGRE_RENDERER_SURFACE_H_
 
 #include "renderer/render_target.h"
 
-namespace impeller {
+namespace ogre {
 
 class Surface {
  public:
@@ -36,6 +36,6 @@ class Surface {
   Surface& operator=(const Surface&) = delete;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_SURFACE_H_
+#endif  // FLUTTER_OGRE_RENDERER_SURFACE_H_

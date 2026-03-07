@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_ALLOCATOR_VK_H_
-#define FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_ALLOCATOR_VK_H_
+#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_ALLOCATOR_VK_H_
+#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_ALLOCATOR_VK_H_
 
 #include "core/allocator.h"
 #include "renderer/backend/vulkan/context_vk.h"
@@ -14,7 +14,7 @@
 #include <cstdint>
 #include <memory>
 
-namespace impeller {
+namespace ogre {
 
 class AllocatorVK final : public Allocator {
  public:
@@ -82,6 +82,6 @@ class AllocatorVK final : public Allocator {
   AllocatorVK& operator=(const AllocatorVK&) = delete;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_ALLOCATOR_VK_H_
+#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_ALLOCATOR_VK_H_

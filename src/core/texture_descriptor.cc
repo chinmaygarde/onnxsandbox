@@ -6,7 +6,7 @@
 
 #include <sstream>
 
-namespace impeller {
+namespace ogre {
 
 std::string TextureDescriptorToString(const TextureDescriptor& desc) {
   std::stringstream stream;
@@ -20,4 +20,4 @@ std::string TextureDescriptorToString(const TextureDescriptor& desc) {
   return stream.str();
 }
 
-}  // namespace impeller
+}  // namespace ogre

@@ -11,13 +11,13 @@
 #include "renderer/backend/vulkan/test/mock_vulkan.h"
 #include "renderer/surface.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 namespace {
 vk::UniqueSurfaceKHR CreateSurface(const ContextVK& context) {
 #if FML_OS_DARWIN
-  impeller::vk::MetalSurfaceCreateInfoEXT createInfo = {};
+  ogre::vk::MetalSurfaceCreateInfoEXT createInfo = {};
   auto [result, surface] =
       context.GetInstance().createMetalSurfaceEXTUnique(createInfo);
   FML_DCHECK(result == vk::Result::eSuccess);
@@ -44,4 +44,4 @@ TEST(SurfaceContextVK, TearsDownSwapchain) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

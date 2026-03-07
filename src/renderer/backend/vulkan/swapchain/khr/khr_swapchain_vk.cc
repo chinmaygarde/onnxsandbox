@@ -9,7 +9,7 @@
 #include "fml/trace_event.h"
 #include "renderer/backend/vulkan/swapchain/khr/khr_swapchain_impl_vk.h"
 
-namespace impeller {
+namespace ogre {
 
 KHRSwapchainVK::KHRSwapchainVK(const std::shared_ptr<Context>& context,
                                vk::UniqueSurfaceKHR surface,
@@ -55,7 +55,7 @@ std::unique_ptr<Surface> KHRSwapchainVK::AcquireNextDrawable(
     return nullptr;
   }
 
-  TRACE_EVENT0("impeller", __FUNCTION__);
+  TRACE_EVENT0("ogre", __FUNCTION__);
 
   auto result = impl_->AcquireNextDrawable();
   if (!result.out_of_date && size_ == impl_->GetSize()) {
@@ -69,7 +69,7 @@ std::unique_ptr<Surface> KHRSwapchainVK::AcquireNextDrawable(
 // platforms must explicitly set the swapchain size using out-of-band (to
 // Vulkan) APIs.
 //
-// TODO(163070): Expose the API to set surface size in impeller.h
+// TODO(163070): Expose the API to set surface size in ogre.h
 #if !FML_OS_ANDROID
   constexpr const size_t kMaxResizeAttempts = 3u;
   if (resize_retry_count == kMaxResizeAttempts) {
@@ -83,7 +83,7 @@ std::unique_ptr<Surface> KHRSwapchainVK::AcquireNextDrawable(
   size_ = impl_->GetCurrentUnderlyingSurfaceSize().value_or(size_);
 #endif  // !FML_OS_ANDROID
 
-  TRACE_EVENT0("impeller", "RecreateSwapchain");
+  TRACE_EVENT0("ogre", "RecreateSwapchain");
 
   // This swapchain implementation indicates that it is out of date. Tear it
   // down and make a new one.
@@ -115,4 +115,4 @@ vk::Format KHRSwapchainVK::GetSurfaceFormat() const {
   return IsValid() ? impl_->GetSurfaceFormat() : vk::Format::eUndefined;
 }
 
-}  // namespace impeller
+}  // namespace ogre

@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_SWAPCHAIN_SURFACE_VK_H_
-#define FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_SWAPCHAIN_SURFACE_VK_H_
+#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_SWAPCHAIN_SURFACE_VK_H_
+#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_SWAPCHAIN_SURFACE_VK_H_
 
 #include <memory>
 
@@ -12,7 +12,7 @@
 #include "renderer/backend/vulkan/texture_source_vk.h"
 #include "renderer/surface.h"
 
-namespace impeller {
+namespace ogre {
 
 class SurfaceVK final : public Surface {
  public:
@@ -44,6 +44,6 @@ class SurfaceVK final : public Surface {
   SurfaceVK& operator=(const SurfaceVK&) = delete;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_SWAPCHAIN_SURFACE_VK_H_
+#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_SWAPCHAIN_SURFACE_VK_H_

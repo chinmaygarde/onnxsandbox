@@ -25,10 +25,10 @@ TEST(ExecutionProviderTest, CanCreateVulkanContext) {
       vulkan_dylib->ResolveFunction<PFN_vkGetInstanceProcAddr>(
           "vkGetInstanceProcAddr");
   ASSERT_TRUE(instance_proc_addr.has_value());
-  impeller::ContextVK::Settings settings;
+  ogre::ContextVK::Settings settings;
   settings.shader_libraries_data = {};
   settings.proc_address_callback = instance_proc_addr.value();
-  auto context = impeller::ContextVK::Create(std::move(settings));
+  auto context = ogre::ContextVK::Create(std::move(settings));
   ASSERT_TRUE(!!context);
 }
 

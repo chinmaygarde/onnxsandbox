@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_CORE_TEXTURE_H_
-#define FLUTTER_IMPELLER_CORE_TEXTURE_H_
+#ifndef FLUTTER_OGRE_CORE_TEXTURE_H_
+#define FLUTTER_OGRE_CORE_TEXTURE_H_
 
 #include <string_view>
 
@@ -12,7 +12,7 @@
 #include "fml/mapping.h"
 #include "geometry/size.h"
 
-namespace impeller {
+namespace ogre {
 
 class Texture {
  public:
@@ -91,6 +91,6 @@ class Texture {
   Texture& operator=(const Texture&) = delete;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_CORE_TEXTURE_H_
+#endif  // FLUTTER_OGRE_CORE_TEXTURE_H_

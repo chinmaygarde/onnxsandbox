@@ -15,7 +15,7 @@
 #include <sys/system_properties.h>
 #endif  // FML_OS_ANDROID
 
-namespace impeller {
+namespace ogre {
 
 namespace {
 const std::unordered_map<std::string_view, AdrenoGPU> kAdrenoVersions = {
@@ -441,4 +441,4 @@ std::optional<PowerVRGPU> DriverInfoVK::GetPowerVRGPUInfo() const {
   return powervr_gpu_;
 }
 
-}  // namespace impeller
+}  // namespace ogre

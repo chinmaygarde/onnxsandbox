@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_COMMAND_BUFFER_H_
-#define FLUTTER_IMPELLER_RENDERER_COMMAND_BUFFER_H_
+#ifndef FLUTTER_OGRE_RENDERER_COMMAND_BUFFER_H_
+#define FLUTTER_OGRE_RENDERER_COMMAND_BUFFER_H_
 
 #include <functional>
 #include <memory>
@@ -11,7 +11,7 @@
 #include "renderer/blit_pass.h"
 #include "renderer/compute_pass.h"
 
-namespace impeller {
+namespace ogre {
 
 class ComputePass;
 class Context;
@@ -143,6 +143,6 @@ class CommandBuffer {
   CommandBuffer& operator=(const CommandBuffer&) = delete;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_COMMAND_BUFFER_H_
+#endif  // FLUTTER_OGRE_RENDERER_COMMAND_BUFFER_H_

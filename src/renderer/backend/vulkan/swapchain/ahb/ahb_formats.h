@@ -2,13 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_SWAPCHAIN_AHB_AHB_FORMATS_H_
-#define FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_SWAPCHAIN_AHB_AHB_FORMATS_H_
+#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_SWAPCHAIN_AHB_AHB_FORMATS_H_
+#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_SWAPCHAIN_AHB_AHB_FORMATS_H_
 
 #include "core/formats.h"
 #include "toolkit/android/hardware_buffer.h"
 
-namespace impeller {
+namespace ogre {
 
 constexpr PixelFormat ToPixelFormat(android::HardwareBufferFormat format) {
   switch (format) {
@@ -18,6 +18,6 @@ constexpr PixelFormat ToPixelFormat(android::HardwareBufferFormat format) {
   FML_UNREACHABLE();
 }
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_SWAPCHAIN_AHB_AHB_FORMATS_H_
+#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_SWAPCHAIN_AHB_AHB_FORMATS_H_

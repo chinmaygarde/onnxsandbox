@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_CORE_SHADER_TYPES_H_
-#define FLUTTER_IMPELLER_CORE_SHADER_TYPES_H_
+#ifndef FLUTTER_OGRE_CORE_SHADER_TYPES_H_
+#define FLUTTER_OGRE_CORE_SHADER_TYPES_H_
 
 #include <cstddef>
 #include <cstdint>
@@ -17,7 +17,7 @@
 #include "geometry/half.h"
 #include "geometry/matrix.h"
 
-namespace impeller {
+namespace ogre {
 
 enum class ShaderStage {
   kUnknown,
@@ -204,6 +204,6 @@ inline constexpr Vector4 ToVector(Color color) {
   return {color.red, color.green, color.blue, color.alpha};
 }
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_CORE_SHADER_TYPES_H_
+#endif  // FLUTTER_OGRE_CORE_SHADER_TYPES_H_

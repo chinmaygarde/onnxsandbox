@@ -2,12 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_CORE_SAMPLER_H_
-#define FLUTTER_IMPELLER_CORE_SAMPLER_H_
+#ifndef FLUTTER_OGRE_CORE_SAMPLER_H_
+#define FLUTTER_OGRE_CORE_SAMPLER_H_
 
 #include "core/sampler_descriptor.h"
 
-namespace impeller {
+namespace ogre {
 
 class Sampler {
  public:
@@ -26,6 +26,6 @@ class Sampler {
   Sampler& operator=(const Sampler&) = delete;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_CORE_SAMPLER_H_
+#endif  // FLUTTER_OGRE_CORE_SAMPLER_H_

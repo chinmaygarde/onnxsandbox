@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_COMPUTE_PIPELINE_BUILDER_H_
-#define FLUTTER_IMPELLER_RENDERER_COMPUTE_PIPELINE_BUILDER_H_
+#ifndef FLUTTER_OGRE_RENDERER_COMPUTE_PIPELINE_BUILDER_H_
+#define FLUTTER_OGRE_RENDERER_COMPUTE_PIPELINE_BUILDER_H_
 
 #include <format>
 
@@ -12,7 +12,7 @@
 #include "renderer/context.h"
 #include "renderer/shader_library.h"
 
-namespace impeller {
+namespace ogre {
 
 //------------------------------------------------------------------------------
 /// @brief      An optional (but highly recommended) utility for creating
@@ -80,6 +80,6 @@ struct ComputePipelineBuilder {
   }
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_COMPUTE_PIPELINE_BUILDER_H_
+#endif  // FLUTTER_OGRE_RENDERER_COMPUTE_PIPELINE_BUILDER_H_

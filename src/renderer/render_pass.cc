@@ -9,7 +9,7 @@
 #include "core/vertex_buffer.h"
 #include "fml/status.h"
 
-namespace impeller {
+namespace ogre {
 
 RenderPass::RenderPass(std::shared_ptr<const Context> context,
                        const RenderTarget& target)
@@ -95,9 +95,9 @@ void RenderPass::SetPipeline(
 }
 
 void RenderPass::SetCommandLabel(std::string_view label) {
-#ifdef IMPELLER_DEBUG
+#ifdef OGRE_DEBUG
   pending_.label = std::string(label);
-#endif  // IMPELLER_DEBUG
+#endif  // OGRE_DEBUG
 }
 
 void RenderPass::SetStencilReference(uint32_t value) {
@@ -319,4 +319,4 @@ bool RenderPass::BindTexture(ShaderStage stage,
   return true;
 }
 
-}  // namespace impeller
+}  // namespace ogre

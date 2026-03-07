@@ -2,12 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_CORE_RAW_PTR_H_
-#define FLUTTER_IMPELLER_CORE_RAW_PTR_H_
+#ifndef FLUTTER_OGRE_CORE_RAW_PTR_H_
+#define FLUTTER_OGRE_CORE_RAW_PTR_H_
 
 #include <memory>
 
-namespace impeller {
+namespace ogre {
 
 /// @brief A wrapper around a raw ptr that adds additional unopt mode only
 /// checks.
@@ -79,6 +79,6 @@ class raw_ptr {
 #endif
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_CORE_RAW_PTR_H_
+#endif  // FLUTTER_OGRE_CORE_RAW_PTR_H_

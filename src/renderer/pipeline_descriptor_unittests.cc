@@ -7,7 +7,7 @@
 #include "flutter/testing/testing.h"
 #include "renderer/pipeline_descriptor.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 TEST(PipelineDescriptorTest, PrimitiveTypeHashEquality) {
@@ -24,4 +24,4 @@ TEST(PipelineDescriptorTest, PrimitiveTypeHashEquality) {
 }
 
 }  // namespace  testing
-}  // namespace impeller
+}  // namespace ogre

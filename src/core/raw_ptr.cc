@@ -4,7 +4,7 @@
 
 #include "core/raw_ptr.h"
 
-namespace impeller {
+namespace ogre {
 
 //
 

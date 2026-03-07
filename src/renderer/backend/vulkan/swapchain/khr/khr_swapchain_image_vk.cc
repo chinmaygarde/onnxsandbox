@@ -4,7 +4,7 @@
 
 #include "renderer/backend/vulkan/swapchain/khr/khr_swapchain_image_vk.h"
 
-namespace impeller {
+namespace ogre {
 
 KHRSwapchainImageVK::KHRSwapchainImageVK(TextureDescriptor desc,
                                          const vk::Device& device,
@@ -55,4 +55,4 @@ bool KHRSwapchainImageVK::IsSwapchainImage() const {
   return true;
 }
 
-}  // namespace impeller
+}  // namespace ogre

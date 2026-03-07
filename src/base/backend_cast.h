@@ -2,10 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_BASE_BACKEND_CAST_H_
-#define FLUTTER_IMPELLER_BASE_BACKEND_CAST_H_
+#ifndef FLUTTER_OGRE_BASE_BACKEND_CAST_H_
+#define FLUTTER_OGRE_BASE_BACKEND_CAST_H_
 
-namespace impeller {
+namespace ogre {
 
 template <class Sub, class Base>
 class BackendCast {
@@ -23,6 +23,6 @@ class BackendCast {
   }
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_BASE_BACKEND_CAST_H_
+#endif  // FLUTTER_OGRE_BASE_BACKEND_CAST_H_

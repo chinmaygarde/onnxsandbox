@@ -8,7 +8,7 @@
 #include "geometry/arc.h"
 #include "tessellator/tessellator.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 namespace {
@@ -22,14 +22,14 @@ namespace {
 // Special support for shorter starting and ending steps to bridge the gap
 // from the true arc start and the true arc end and the first and last
 // angles iterated from the trigs.
-void TestArcIterator(const impeller::Arc::Iteration arc_iteration,
-                     const impeller::Tessellator::Trigs& trigs,
+void TestArcIterator(const ogre::Arc::Iteration arc_iteration,
+                     const ogre::Tessellator::Trigs& trigs,
                      Degrees start,
                      Degrees sweep,
                      const std::string& label) {
-  EXPECT_POINT_NEAR(arc_iteration.start, impeller::Matrix::CosSin(start))
+  EXPECT_POINT_NEAR(arc_iteration.start, ogre::Matrix::CosSin(start))
       << label;
-  EXPECT_POINT_NEAR(arc_iteration.end, impeller::Matrix::CosSin(start + sweep))
+  EXPECT_POINT_NEAR(arc_iteration.end, ogre::Matrix::CosSin(start + sweep))
       << label;
   if (arc_iteration.quadrant_count == 0u) {
     // There is just the begin and end angle and there are no constraints
@@ -276,4 +276,4 @@ TEST(ArcTest, ArcIterationsAllQuadrantsFromFourth) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

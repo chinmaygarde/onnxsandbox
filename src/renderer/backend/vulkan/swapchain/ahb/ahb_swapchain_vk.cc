@@ -10,7 +10,7 @@
 #include "renderer/backend/vulkan/swapchain/ahb/ahb_formats.h"
 #include "third_party/vulkan-deps/vulkan-headers/src/include/vulkan/vulkan_enums.hpp"
 
-namespace impeller {
+namespace ogre {
 
 bool AHBSwapchainVK::IsAvailableOnPlatform() {
   return android::SurfaceControl::IsAvailableOnPlatform() &&
@@ -43,7 +43,7 @@ std::unique_ptr<Surface> AHBSwapchainVK::AcquireNextDrawable() {
     return nullptr;
   }
 
-  TRACE_EVENT0("impeller", __FUNCTION__);
+  TRACE_EVENT0("ogre", __FUNCTION__);
   return impl_->AcquireNextDrawable();
 }
 
@@ -65,7 +65,7 @@ void AHBSwapchainVK::UpdateSurfaceSize(const ISize& size) {
   if (impl_ && impl_->GetSize() == size) {
     return;
   }
-  TRACE_EVENT0("impeller", __FUNCTION__);
+  TRACE_EVENT0("ogre", __FUNCTION__);
   auto impl = AHBSwapchainImplVK::Create(context_,          //
                                          surface_control_,  //
                                          cb_,               //
@@ -79,4 +79,4 @@ void AHBSwapchainVK::UpdateSurfaceSize(const ISize& size) {
   impl_ = std::move(impl);
 }
 
-}  // namespace impeller
+}  // namespace ogre

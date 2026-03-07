@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_BLIT_PASS_VK_H_
-#define FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_BLIT_PASS_VK_H_
+#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_BLIT_PASS_VK_H_
+#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_BLIT_PASS_VK_H_
 
 #include "base/config.h"
 #include "fml/macros.h"
@@ -11,7 +11,7 @@
 #include "renderer/backend/vulkan/workarounds_vk.h"
 #include "renderer/blit_pass.h"
 
-namespace impeller {
+namespace ogre {
 
 class CommandEncoderVK;
 class CommandBufferVK;
@@ -80,6 +80,6 @@ class BlitPassVK final : public BlitPass {
   BlitPassVK& operator=(const BlitPassVK&) = delete;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_BLIT_PASS_VK_H_
+#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_BLIT_PASS_VK_H_

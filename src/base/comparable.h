@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_BASE_COMPARABLE_H_
-#define FLUTTER_IMPELLER_BASE_COMPARABLE_H_
+#ifndef FLUTTER_OGRE_BASE_COMPARABLE_H_
+#define FLUTTER_OGRE_BASE_COMPARABLE_H_
 
 #include <cstddef>
 #include <functional>
@@ -11,7 +11,7 @@
 #include <memory>
 #include <type_traits>
 
-namespace impeller {
+namespace ogre {
 
 struct UniqueID {
   size_t id;
@@ -90,25 +90,25 @@ bool DeepCompareMap(const std::map<Key, std::shared_ptr<ComparableType>>& lhs,
   return true;
 }
 
-}  // namespace impeller
+}  // namespace ogre
 
 namespace std {
 
 template <>
-struct hash<impeller::UniqueID> {
-  constexpr std::size_t operator()(const impeller::UniqueID& id) {
+struct hash<ogre::UniqueID> {
+  constexpr std::size_t operator()(const ogre::UniqueID& id) {
     return id.id;
   }
 };
 
 template <>
-struct less<impeller::UniqueID> {
-  constexpr bool operator()(const impeller::UniqueID& lhs,
-                            const impeller::UniqueID& rhs) const {
+struct less<ogre::UniqueID> {
+  constexpr bool operator()(const ogre::UniqueID& lhs,
+                            const ogre::UniqueID& rhs) const {
     return lhs.id < rhs.id;
   }
 };
 
 }  // namespace std
 
-#endif  // FLUTTER_IMPELLER_BASE_COMPARABLE_H_
+#endif  // FLUTTER_OGRE_BASE_COMPARABLE_H_

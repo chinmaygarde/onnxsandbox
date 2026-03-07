@@ -10,7 +10,7 @@
 #include "geometry/size.h"
 #include "renderer/testing/mocks.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 TEST(AllocatorTest, TextureDescriptorCompatibility) {
@@ -127,4 +127,4 @@ TEST(AllocatorTest, RangeTest) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

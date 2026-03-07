@@ -6,12 +6,12 @@
 #include "renderer/blit_pass.h"
 #include "renderer/command_buffer.h"
 
-namespace impeller {
+namespace ogre {
 
 std::shared_ptr<Texture> CreateTexture(
     const TextureDescriptor& texture_descriptor,
     const std::vector<uint8_t>& data,
-    const std::shared_ptr<impeller::Context>& context,
+    const std::shared_ptr<ogre::Context>& context,
     std::string_view debug_label) {
   std::shared_ptr<Texture> texture =
       context->GetResourceAllocator()->CreateTexture(texture_descriptor);
@@ -50,4 +50,4 @@ fml::Status AddMipmapGeneration(
   return fml::Status();
 }
 
-}  // namespace impeller
+}  // namespace ogre

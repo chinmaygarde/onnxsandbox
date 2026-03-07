@@ -6,7 +6,7 @@
 
 #include "fml/trace_event.h"
 
-namespace impeller {
+namespace ogre {
 
 AHBTexturePoolVK::AHBTexturePoolVK(std::weak_ptr<Context> context,
                                    android::HardwareBufferDescriptor desc)
@@ -44,7 +44,7 @@ void AHBTexturePoolVK::Push(std::shared_ptr<AHBTextureSourceVK> texture,
 }
 
 std::shared_ptr<AHBTextureSourceVK> AHBTexturePoolVK::CreateTexture() const {
-  TRACE_EVENT0("impeller", "CreateSwapchainTexture");
+  TRACE_EVENT0("ogre", "CreateSwapchainTexture");
   auto context = context_.lock();
   if (!context) {
     VALIDATION_LOG << "Context died before image could be created.";
@@ -74,4 +74,4 @@ bool AHBTexturePoolVK::IsValid() const {
   return is_valid_;
 }
 
-}  // namespace impeller
+}  // namespace ogre

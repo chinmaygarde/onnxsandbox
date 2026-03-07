@@ -9,14 +9,14 @@
 #include "core/formats.h"
 #include "core/texture_descriptor.h"
 #include "display_list/aiks_unittests.h"
-#include "display_list/dl_image_impeller.h"
+#include "display_list/dl_image_ogre.h"
 #include "flutter/display_list/dl_builder.h"
 #include "fml/mapping.h"
 #include "gtest/gtest.h"
 #include "playground/playground_test.h"
 #include "renderer/command_buffer.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 using flutter::DisplayListBuilder;
@@ -270,4 +270,4 @@ TEST_P(BlitPassTest, CanResizeTexturesPlayground) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

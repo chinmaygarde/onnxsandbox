@@ -2,14 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_GEOMETRY_SEPARATED_VECTOR_H_
-#define FLUTTER_IMPELLER_GEOMETRY_SEPARATED_VECTOR_H_
+#ifndef FLUTTER_OGRE_GEOMETRY_SEPARATED_VECTOR_H_
+#define FLUTTER_OGRE_GEOMETRY_SEPARATED_VECTOR_H_
 
 #include "geometry/point.h"
 
 #include "geometry/scalar.h"
 
-namespace impeller {
+namespace ogre {
 
 /// @brief  A Vector2, broken down as a separate magnitude and direction.
 ///         Assumes that the direction given is normalized.
@@ -52,6 +52,6 @@ struct SeparatedVector2 {
   Scalar Cross(const SeparatedVector2& other) const;
 };
 
-#endif  // FLUTTER_IMPELLER_GEOMETRY_SEPARATED_VECTOR_H_
+#endif  // FLUTTER_OGRE_GEOMETRY_SEPARATED_VECTOR_H_
 
-}  // namespace impeller
+}  // namespace ogre

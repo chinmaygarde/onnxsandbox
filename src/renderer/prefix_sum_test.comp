@@ -5,7 +5,7 @@
 layout(local_size_x_id = 0) in;
 layout(std430) buffer;
 
-#include <impeller/prefix_sum.glsl>
+#include <ogre/prefix_sum.glsl>
 
 #define BLOCK_SIZE 1024
 

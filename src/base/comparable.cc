@@ -6,9 +6,9 @@
 
 #include <atomic>
 
-namespace impeller {
+namespace ogre {
 
 static std::atomic_size_t sLastID;
 UniqueID::UniqueID() : id(++sLastID) {}
 
-}  // namespace impeller
+}  // namespace ogre

@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_BLIT_PASS_H_
-#define FLUTTER_IMPELLER_RENDERER_BLIT_PASS_H_
+#ifndef FLUTTER_OGRE_RENDERER_BLIT_PASS_H_
+#define FLUTTER_OGRE_RENDERER_BLIT_PASS_H_
 
 #include <cstdint>
 #include <string>
@@ -11,7 +11,7 @@
 #include "core/device_buffer.h"
 #include "core/texture.h"
 
-namespace impeller {
+namespace ogre {
 
 class HostBuffer;
 class Allocator;
@@ -188,6 +188,6 @@ class BlitPass {
   BlitPass& operator=(const BlitPass&) = delete;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_BLIT_PASS_H_
+#endif  // FLUTTER_OGRE_RENDERER_BLIT_PASS_H_

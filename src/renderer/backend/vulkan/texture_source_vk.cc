@@ -4,7 +4,7 @@
 
 #include "renderer/backend/vulkan/texture_source_vk.h"
 
-namespace impeller {
+namespace ogre {
 
 TextureSourceVK::TextureSourceVK(TextureDescriptor desc) : desc_(desc) {}
 
@@ -68,4 +68,4 @@ const FramebufferAndRenderPass& TextureSourceVK::GetCachedFrameData(
   return frame_data_[static_cast<int>(sample_count) / 4];
 }
 
-}  // namespace impeller
+}  // namespace ogre

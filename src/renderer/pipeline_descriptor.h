@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_PIPELINE_DESCRIPTOR_H_
-#define FLUTTER_IMPELLER_RENDERER_PIPELINE_DESCRIPTOR_H_
+#ifndef FLUTTER_OGRE_RENDERER_PIPELINE_DESCRIPTOR_H_
+#define FLUTTER_OGRE_RENDERER_PIPELINE_DESCRIPTOR_H_
 
 #include <map>
 #include <memory>
@@ -13,7 +13,7 @@
 #include "core/formats.h"
 #include "core/shader_types.h"
 
-namespace impeller {
+namespace ogre {
 
 class ShaderFunction;
 class VertexDescriptor;
@@ -149,6 +149,6 @@ class PipelineDescriptor final : public Comparable<PipelineDescriptor> {
   std::vector<Scalar> specialization_constants_;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_PIPELINE_DESCRIPTOR_H_
+#endif  // FLUTTER_OGRE_RENDERER_PIPELINE_DESCRIPTOR_H_

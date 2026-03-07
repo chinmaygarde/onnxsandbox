@@ -2,15 +2,15 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_SHADER_FUNCTION_H_
-#define FLUTTER_IMPELLER_RENDERER_SHADER_FUNCTION_H_
+#ifndef FLUTTER_OGRE_RENDERER_SHADER_FUNCTION_H_
+#define FLUTTER_OGRE_RENDERER_SHADER_FUNCTION_H_
 
 #include <string>
 
 #include "base/comparable.h"
 #include "core/shader_types.h"
 
-namespace impeller {
+namespace ogre {
 
 class ShaderFunction : public Comparable<ShaderFunction> {
  public:
@@ -42,6 +42,6 @@ class ShaderFunction : public Comparable<ShaderFunction> {
   ShaderFunction& operator=(const ShaderFunction&) = delete;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_SHADER_FUNCTION_H_
+#endif  // FLUTTER_OGRE_RENDERER_SHADER_FUNCTION_H_

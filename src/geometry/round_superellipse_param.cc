@@ -4,7 +4,7 @@
 
 #include "geometry/round_superellipse_param.h"
 
-namespace impeller {
+namespace ogre {
 
 namespace {
 
@@ -644,4 +644,4 @@ bool RoundSuperellipseParam::Contains(const Point& point) const {
          CornerContains(bottom_left, point) && CornerContains(top_left, point);
 }
 
-}  // namespace impeller
+}  // namespace ogre

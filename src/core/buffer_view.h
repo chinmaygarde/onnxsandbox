@@ -2,13 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_CORE_BUFFER_VIEW_H_
-#define FLUTTER_IMPELLER_CORE_BUFFER_VIEW_H_
+#ifndef FLUTTER_OGRE_CORE_BUFFER_VIEW_H_
+#define FLUTTER_OGRE_CORE_BUFFER_VIEW_H_
 
 #include <memory>
 #include "core/range.h"
 
-namespace impeller {
+namespace ogre {
 
 class DeviceBuffer;
 
@@ -42,6 +42,6 @@ struct BufferView {
   Range range_;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_CORE_BUFFER_VIEW_H_
+#endif  // FLUTTER_OGRE_CORE_BUFFER_VIEW_H_

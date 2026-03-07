@@ -2,13 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_CORE_VERTEX_BUFFER_H_
-#define FLUTTER_IMPELLER_CORE_VERTEX_BUFFER_H_
+#ifndef FLUTTER_OGRE_CORE_VERTEX_BUFFER_H_
+#define FLUTTER_OGRE_CORE_VERTEX_BUFFER_H_
 
 #include "core/buffer_view.h"
 #include "core/formats.h"
 
-namespace impeller {
+namespace ogre {
 
 constexpr size_t kMaxVertexBuffers = 16;
 
@@ -36,6 +36,6 @@ struct VertexBuffer {
   }
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_CORE_VERTEX_BUFFER_H_
+#endif  // FLUTTER_OGRE_CORE_VERTEX_BUFFER_H_

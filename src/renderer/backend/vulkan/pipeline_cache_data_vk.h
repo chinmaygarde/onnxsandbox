@@ -2,14 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_PIPELINE_CACHE_DATA_VK_H_
-#define FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_PIPELINE_CACHE_DATA_VK_H_
+#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_PIPELINE_CACHE_DATA_VK_H_
+#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_PIPELINE_CACHE_DATA_VK_H_
 
 #include "fml/mapping.h"
 #include "fml/unique_fd.h"
 #include "renderer/backend/vulkan/vk.h"
 
-namespace impeller {
+namespace ogre {
 
 //------------------------------------------------------------------------------
 /// @brief      An Impeller specific header prepended to all pipeline cache
@@ -104,6 +104,6 @@ std::unique_ptr<fml::Mapping> PipelineCacheDataRetrieve(
     const fml::UniqueFD& cache_directory,
     const VkPhysicalDeviceProperties& props);
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_PIPELINE_CACHE_DATA_VK_H_
+#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_PIPELINE_CACHE_DATA_VK_H_

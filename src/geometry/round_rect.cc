@@ -4,7 +4,7 @@
 
 #include "geometry/round_rect.h"
 
-namespace impeller {
+namespace ogre {
 
 RoundRect RoundRect::MakeRectRadii(const Rect& in_bounds,
                                    const RoundingRadii& in_radii) {
@@ -165,4 +165,4 @@ void DiffRoundRectPathSource::Dispatch(PathReceiver& receiver) const {
   inner_.Dispatch(receiver);
 }
 
-}  // namespace impeller
+}  // namespace ogre

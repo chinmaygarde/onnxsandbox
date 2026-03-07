@@ -4,8 +4,8 @@
 
 #include "renderer/vertex_buffer_builder.h"
 
-namespace impeller {
+namespace ogre {
 
 //
 
-}  // namespace impeller
+}  // namespace ogre

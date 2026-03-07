@@ -2,14 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_SHADER_STAGE_COMPATIBILITY_CHECKER_H_
-#define FLUTTER_IMPELLER_RENDERER_SHADER_STAGE_COMPATIBILITY_CHECKER_H_
+#ifndef FLUTTER_OGRE_RENDERER_SHADER_STAGE_COMPATIBILITY_CHECKER_H_
+#define FLUTTER_OGRE_RENDERER_SHADER_STAGE_COMPATIBILITY_CHECKER_H_
 
 #include <cstddef>
 
 #include "core/shader_types.h"
 
-namespace impeller {
+namespace ogre {
 
 //------------------------------------------------------------------------------
 /// @brief      Checks, at C++ compile-time, if the two pipeline stages are
@@ -80,6 +80,6 @@ class ShaderStageCompatibilityChecker {
   }
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_SHADER_STAGE_COMPATIBILITY_CHECKER_H_
+#endif  // FLUTTER_OGRE_RENDERER_SHADER_STAGE_COMPATIBILITY_CHECKER_H_

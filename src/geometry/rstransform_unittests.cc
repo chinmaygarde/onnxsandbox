@@ -8,7 +8,7 @@
 
 #include "geometry/geometry_asserts.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 TEST(RSTransformTest, Construction) {
@@ -58,4 +58,4 @@ TEST(RSTransformTest, CompareToMatrix) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

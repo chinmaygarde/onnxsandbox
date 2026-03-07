@@ -4,8 +4,8 @@
 
 #include "geometry/constants.h"
 
-namespace impeller {
+namespace ogre {
 
 //
 
-}  // namespace impeller
+}  // namespace ogre

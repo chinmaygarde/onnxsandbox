@@ -14,7 +14,7 @@
 #include "core/texture_descriptor.h"
 #include "renderer/context.h"
 
-namespace impeller {
+namespace ogre {
 
 RenderTarget::RenderTarget() = default;
 
@@ -524,4 +524,4 @@ void RenderTarget::SetupDepthStencilAttachments(
   SetStencilAttachment(std::move(stencil0));
 }
 
-}  // namespace impeller
+}  // namespace ogre

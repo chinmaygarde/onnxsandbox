@@ -6,7 +6,7 @@
 
 #include "geometry/size.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 TEST(SizeTest, SizeIsEmpty) {
@@ -82,4 +82,4 @@ TEST(SizeTest, NegationOperator) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

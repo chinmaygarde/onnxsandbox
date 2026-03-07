@@ -8,7 +8,7 @@
 #include "renderer/backend/vulkan/resource_manager_vk.h"
 #include "renderer/backend/vulkan/test/mock_vulkan.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 TEST(CommandPoolRecyclerVKTest, GetsACommandPoolPerThread) {
@@ -239,4 +239,4 @@ TEST(CommandPoolRecyclerVKTest, RecyclerGlobalPoolMapSize) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

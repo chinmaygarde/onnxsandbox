@@ -8,7 +8,7 @@
 
 #include "geometry/geometry_asserts.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 TEST(RectTest, RectEmptyDeclaration) {
@@ -3115,7 +3115,7 @@ TEST(RectTest, IRectRound) {
 
 TEST(RectTest, TransformAndClipBoundsNoCornersClipped) {
   // This matrix should clip no corners.
-  auto matrix = impeller::Matrix::MakeColumn(
+  auto matrix = ogre::Matrix::MakeColumn(
       // clang-format off
       2.0f, 0.0f, 0.0f, 0.0f,
       0.0f, 4.0f, 0.0f, 0.0f,
@@ -3143,7 +3143,7 @@ TEST(RectTest, TransformAndClipBoundsNoCornersClipped) {
 
 TEST(RectTest, TransformAndClipBoundsOneCornerClipped) {
   // This matrix should clip one corner.
-  auto matrix = impeller::Matrix::MakeColumn(
+  auto matrix = ogre::Matrix::MakeColumn(
       // clang-format off
       2.0f, 0.0f, 0.0f, -0.01f,
       0.0f, 2.0f, 0.0f, -0.006f,
@@ -3200,7 +3200,7 @@ TEST(RectTest, TransformAndClipBoundsOneCornerClipped) {
 
 TEST(RectTest, TransformAndClipBoundsTwoCornersClipped) {
   // This matrix should clip two corners.
-  auto matrix = impeller::Matrix::MakeColumn(
+  auto matrix = ogre::Matrix::MakeColumn(
       // clang-format off
       2.0f, 0.0f, 0.0f, -.015f,
       0.0f, 2.0f, 0.0f, -.006f,
@@ -3258,7 +3258,7 @@ TEST(RectTest, TransformAndClipBoundsTwoCornersClipped) {
 
 TEST(RectTest, TransformAndClipBoundsThreeCornersClipped) {
   // This matrix should clip three corners.
-  auto matrix = impeller::Matrix::MakeColumn(
+  auto matrix = ogre::Matrix::MakeColumn(
       // clang-format off
       2.0f, 0.0f, 0.0f, -.02f,
       0.0f, 2.0f, 0.0f, -.006f,
@@ -3317,7 +3317,7 @@ TEST(RectTest, TransformAndClipBoundsThreeCornersClipped) {
 
 TEST(RectTest, TransformAndClipBoundsAllFourCornersClipped) {
   // This matrix should clip all four corners.
-  auto matrix = impeller::Matrix::MakeColumn(
+  auto matrix = ogre::Matrix::MakeColumn(
       // clang-format off
       2.0f, 0.0f, 0.0f, -.025f,
       0.0f, 2.0f, 0.0f, -.006f,
@@ -3349,4 +3349,4 @@ TEST(RectTest, TransformAndClipBoundsAllFourCornersClipped) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

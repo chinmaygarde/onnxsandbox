@@ -4,7 +4,7 @@
 
 #include "geometry/dashed_line_path_source.h"
 
-namespace impeller {
+namespace ogre {
 
 DashedLinePathSource::DashedLinePathSource(Point p0,
                                            Point p1,
@@ -64,4 +64,4 @@ void DashedLinePathSource::Dispatch(PathReceiver& receiver) const {
   }
 }
 
-}  // namespace impeller
+}  // namespace ogre

@@ -4,7 +4,7 @@
 
 #include "renderer/vertex_descriptor.h"
 
-namespace impeller {
+namespace ogre {
 
 VertexDescriptor::VertexDescriptor() = default;
 
@@ -78,4 +78,4 @@ bool VertexDescriptor::UsesInputAttachments() const {
   return uses_input_attachments_;
 }
 
-}  // namespace impeller
+}  // namespace ogre

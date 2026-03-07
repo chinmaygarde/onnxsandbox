@@ -8,7 +8,7 @@
 #include "renderer/backend/vulkan/texture_vk.h"
 #include "renderer/surface.h"
 
-namespace impeller {
+namespace ogre {
 
 std::unique_ptr<SurfaceVK> SurfaceVK::WrapSwapchainImage(
     const std::shared_ptr<SwapchainTransientsVK>& transients,
@@ -84,4 +84,4 @@ bool SurfaceVK::Present() const {
   return swap_callback_ ? swap_callback_() : false;
 }
 
-}  // namespace impeller
+}  // namespace ogre

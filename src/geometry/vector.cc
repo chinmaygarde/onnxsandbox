@@ -5,7 +5,7 @@
 #include "vector.h"
 #include <sstream>
 
-namespace impeller {
+namespace ogre {
 
 std::string Vector3::ToString() const {
   std::stringstream stream;
@@ -19,4 +19,4 @@ std::string Vector4::ToString() const {
   return stream.str();
 }
 
-}  // namespace impeller
+}  // namespace ogre

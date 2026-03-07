@@ -13,7 +13,7 @@
 #include "renderer/shader_library.h"
 #include "renderer/vertex_descriptor.h"
 
-namespace impeller {
+namespace ogre {
 
 PipelineDescriptor::PipelineDescriptor() = default;
 
@@ -171,12 +171,12 @@ PipelineDescriptor& PipelineDescriptor::SetStencilAttachmentDescriptors(
 void PipelineDescriptor::ClearStencilAttachments() {
   back_stencil_attachment_descriptor_.reset();
   front_stencil_attachment_descriptor_.reset();
-  SetStencilPixelFormat(impeller::PixelFormat::kUnknown);
+  SetStencilPixelFormat(ogre::PixelFormat::kUnknown);
 }
 
 void PipelineDescriptor::ClearDepthAttachment() {
   depth_attachment_descriptor_.reset();
-  SetDepthPixelFormat(impeller::PixelFormat::kUnknown);
+  SetDepthPixelFormat(ogre::PixelFormat::kUnknown);
 }
 
 void PipelineDescriptor::ClearColorAttachment(size_t index) {
@@ -292,4 +292,4 @@ const std::vector<Scalar>& PipelineDescriptor::GetSpecializationConstants()
   return specialization_constants_;
 }
 
-}  // namespace impeller
+}  // namespace ogre

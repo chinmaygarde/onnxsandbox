@@ -5,7 +5,7 @@
 #include "gtest/gtest.h"  // IWYU pragma: keep
 #include "renderer/backend/vulkan/formats_vk.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 TEST(FormatsVKTest, DescriptorMapping) {
@@ -24,4 +24,4 @@ TEST(FormatsVKTest, DescriptorMapping) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

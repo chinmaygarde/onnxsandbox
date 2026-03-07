@@ -4,7 +4,7 @@
 
 #include "renderer/backend/vulkan/formats_vk.h"
 
-namespace impeller {
+namespace ogre {
 
 vk::PipelineDepthStencilStateCreateInfo ToVKPipelineDepthStencilStateCreateInfo(
     std::optional<DepthAttachmentDescriptor> depth,
@@ -33,4 +33,4 @@ vk::PipelineDepthStencilStateCreateInfo ToVKPipelineDepthStencilStateCreateInfo(
   return info;
 }
 
-}  // namespace impeller
+}  // namespace ogre

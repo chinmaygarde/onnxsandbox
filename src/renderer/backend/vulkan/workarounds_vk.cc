@@ -5,7 +5,7 @@
 #include "renderer/backend/vulkan/workarounds_vk.h"
 #include "renderer/backend/vulkan/driver_info_vk.h"
 
-namespace impeller {
+namespace ogre {
 
 WorkaroundsVK GetWorkaroundsFromDriverInfo(DriverInfoVK& driver_info) {
   WorkaroundsVK workarounds;
@@ -27,4 +27,4 @@ WorkaroundsVK GetWorkaroundsFromDriverInfo(DriverInfoVK& driver_info) {
   return workarounds;
 }
 
-}  // namespace impeller
+}  // namespace ogre

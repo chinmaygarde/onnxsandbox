@@ -8,7 +8,7 @@
 #include "renderer/backend/vulkan/command_buffer_vk.h"
 #include "renderer/backend/vulkan/test/mock_vulkan.h"
 
-namespace impeller {
+namespace ogre {
 
 TEST(BlitPassVKTest, MipmapGenerationTransitionsAllLevelsCorrectly) {
   auto context = testing::MockVulkanContextBuilder().Build();
@@ -54,4 +54,4 @@ TEST(BlitPassVKTest, MipmapGenerationTransitionsAllLevelsCorrectly) {
   EXPECT_EQ(barriers[7].subresourceRange.levelCount, 6u);
 }
 
-}  // namespace impeller
+}  // namespace ogre

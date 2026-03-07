@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_GEOMETRY_POINT_H_
-#define FLUTTER_IMPELLER_GEOMETRY_POINT_H_
+#ifndef FLUTTER_OGRE_GEOMETRY_POINT_H_
+#define FLUTTER_OGRE_GEOMETRY_POINT_H_
 
 #include <algorithm>
 #include <cmath>
@@ -17,7 +17,7 @@
 #include "geometry/size.h"
 #include "geometry/type_traits.h"
 
-namespace impeller {
+namespace ogre {
 
 #define ONLY_ON_FLOAT_M(Modifiers, Return) \
   template <typename U = T>                \
@@ -430,7 +430,7 @@ using Vector2 = Point;
 using Quad = std::array<Point, 4>;
 
 [[maybe_unused]]
-static constexpr impeller::Vector2 kQuadrantAxes[4] = {
+static constexpr ogre::Vector2 kQuadrantAxes[4] = {
     {1.0f, 0.0f},
     {0.0f, 1.0f},
     {-1.0f, 0.0f},
@@ -440,17 +440,17 @@ static constexpr impeller::Vector2 kQuadrantAxes[4] = {
 #undef ONLY_ON_FLOAT
 #undef ONLY_ON_FLOAT_M
 
-}  // namespace impeller
+}  // namespace ogre
 
 namespace std {
 
 template <class T>
 inline std::ostream& operator<<(std::ostream& out,
-                                const impeller::TPoint<T>& p) {
+                                const ogre::TPoint<T>& p) {
   out << "(" << p.x << ", " << p.y << ")";
   return out;
 }
 
 }  // namespace std
 
-#endif  // FLUTTER_IMPELLER_GEOMETRY_POINT_H_
+#endif  // FLUTTER_OGRE_GEOMETRY_POINT_H_

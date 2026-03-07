@@ -2,12 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_BASE_PROMISE_H_
-#define FLUTTER_IMPELLER_BASE_PROMISE_H_
+#ifndef FLUTTER_OGRE_BASE_PROMISE_H_
+#define FLUTTER_OGRE_BASE_PROMISE_H_
 
 #include <future>
 
-namespace impeller {
+namespace ogre {
 
 template <class T>
 std::future<T> RealizedFuture(T t) {
@@ -45,6 +45,6 @@ class NoExceptionPromise {
   bool value_set_ = false;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_BASE_PROMISE_H_
+#endif  // FLUTTER_OGRE_BASE_PROMISE_H_

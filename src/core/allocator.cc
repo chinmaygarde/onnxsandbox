@@ -9,7 +9,7 @@
 #include "core/formats.h"
 #include "core/range.h"
 
-namespace impeller {
+namespace ogre {
 
 Allocator::Allocator() = default;
 
@@ -70,4 +70,4 @@ uint16_t Allocator::MinimumBytesPerRow(PixelFormat format) const {
   return BytesPerPixelForPixelFormat(format);
 }
 
-}  // namespace impeller
+}  // namespace ogre

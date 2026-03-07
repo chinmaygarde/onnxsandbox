@@ -4,8 +4,8 @@
 
 #include "type_traits.h"
 
-namespace impeller {
+namespace ogre {
 
 //
 
-}  // namespace impeller
+}  // namespace ogre

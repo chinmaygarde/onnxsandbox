@@ -2,12 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_BARRIER_VK_H_
-#define FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_BARRIER_VK_H_
+#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_BARRIER_VK_H_
+#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_BARRIER_VK_H_
 
 #include "renderer/backend/vulkan/vk.h"
 
-namespace impeller {
+namespace ogre {
 
 //------------------------------------------------------------------------------
 /// @brief      Defines an operations and memory access barrier on a resource.
@@ -52,6 +52,6 @@ struct BarrierVK {
   uint32_t base_mip_level = 0;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_BARRIER_VK_H_
+#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_BARRIER_VK_H_

@@ -15,7 +15,7 @@
 #include "vulkan/vulkan.hpp"
 #include "vulkan/vulkan_core.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 namespace {
@@ -1020,4 +1020,4 @@ std::vector<VkImageMemoryBarrier>& GetImageMemoryBarriers(
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

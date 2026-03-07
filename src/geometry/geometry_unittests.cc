@@ -25,7 +25,7 @@
 // TODO(zanderso): https://github.com/flutter/flutter/issues/127701
 // NOLINTBEGIN(bugprone-unchecked-optional-access)
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 TEST(GeometryTest, ScalarNearlyEqual) {
@@ -1697,7 +1697,7 @@ TEST(GeometryTest, ColorBlendReturnsExpectedResults) {
     Color src = ColorBlendTestData::kSourceColors[source_i];
 
     Color expected;
-    IMPELLER_FOR_EACH_BLEND_MODE(_BLEND_MODE_RESULT_CHECK)
+    OGRE_FOR_EACH_BLEND_MODE(_BLEND_MODE_RESULT_CHECK)
   }
 }
 
@@ -1711,7 +1711,7 @@ TEST(GeometryTest, BlendModeToString) {
   for (BlendT i = 0; i <= static_cast<BlendT>(BlendMode::kLastMode); i++) {
     auto mode = static_cast<BlendMode>(i);
     auto result = BlendModeToString(mode);
-    switch (mode) { IMPELLER_FOR_EACH_BLEND_MODE(_BLEND_MODE_NAME_CHECK) }
+    switch (mode) { OGRE_FOR_EACH_BLEND_MODE(_BLEND_MODE_NAME_CHECK) }
   }
 }
 
@@ -1926,6 +1926,6 @@ TEST(GeometryTest, HalfConversions) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre
 
 // NOLINTEND(bugprone-unchecked-optional-access)

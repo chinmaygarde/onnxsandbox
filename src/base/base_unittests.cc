@@ -8,7 +8,7 @@
 #include "base/thread.h"
 #include "flutter/testing/testing.h"
 
-namespace impeller {
+namespace ogre {
 
 enum class MyMaskBits : uint32_t {
   kFoo = 0,
@@ -19,7 +19,7 @@ enum class MyMaskBits : uint32_t {
 
 using MyMask = Mask<MyMaskBits>;
 
-IMPELLER_ENUM_IS_MASK(MyMaskBits);
+OGRE_ENUM_IS_MASK(MyMaskBits);
 
 namespace testing {
 
@@ -441,4 +441,4 @@ TEST(BaseTest, CanUseTypedMasks) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

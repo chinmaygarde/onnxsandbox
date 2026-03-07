@@ -9,7 +9,7 @@
 
 #include "geometry/trig.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 TEST(TrigTest, TrigAngles) {
@@ -75,4 +75,4 @@ TEST(TrigTest, MultiplyByScalarRadius) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

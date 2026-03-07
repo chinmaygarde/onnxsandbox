@@ -9,7 +9,7 @@
 #include "renderer/backend/vulkan/yuv_conversion_vk.h"
 #include "vulkan/vulkan_core.h"
 
-namespace impeller {
+namespace ogre {
 
 static vk::UniqueSampler CreateSampler(
     const vk::Device& device,
@@ -127,4 +127,4 @@ const std::shared_ptr<YUVConversionVK>& SamplerVK::GetYUVConversion() const {
   return yuv_conversion_;
 }
 
-}  // namespace impeller
+}  // namespace ogre

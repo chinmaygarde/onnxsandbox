@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_GPU_TRACER_VK_H_
-#define FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_GPU_TRACER_VK_H_
+#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_GPU_TRACER_VK_H_
+#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_GPU_TRACER_VK_H_
 
 #include <memory>
 #include <thread>
@@ -12,7 +12,7 @@
 #include "renderer/backend/vulkan/device_holder_vk.h"
 #include "vulkan/vulkan_handles.hpp"
 
-namespace impeller {
+namespace ogre {
 
 class GPUProbe;
 
@@ -122,6 +122,6 @@ class GPUProbe {
   std::optional<size_t> index_ = std::nullopt;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_GPU_TRACER_VK_H_
+#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_GPU_TRACER_VK_H_

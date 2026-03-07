@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_GEOMETRY_HALF_H_
-#define FLUTTER_IMPELLER_GEOMETRY_HALF_H_
+#ifndef FLUTTER_OGRE_GEOMETRY_HALF_H_
+#define FLUTTER_OGRE_GEOMETRY_HALF_H_
 
 #include <cstdint>
 
@@ -23,7 +23,7 @@ using InternalHalf = _Float16;
 using InternalHalf = uint16_t;
 #endif
 
-namespace impeller {
+namespace ogre {
 
 /// @brief Convert a scalar to a half precision float.
 ///
@@ -154,36 +154,36 @@ static_assert(sizeof(HalfVector2) == 2 * sizeof(Half));
 static_assert(sizeof(HalfVector3) == 3 * sizeof(Half));
 static_assert(sizeof(HalfVector4) == 4 * sizeof(Half));
 
-}  // namespace impeller
+}  // namespace ogre
 
 namespace std {
 
-inline std::ostream& operator<<(std::ostream& out, const impeller::Half& p) {
-  out << "(" << static_cast<impeller::Scalar>(p.x) << ")";
+inline std::ostream& operator<<(std::ostream& out, const ogre::Half& p) {
+  out << "(" << static_cast<ogre::Scalar>(p.x) << ")";
   return out;
 }
 
 inline std::ostream& operator<<(std::ostream& out,
-                                const impeller::HalfVector2& p) {
-  out << "(" << static_cast<impeller::Scalar>(p.x) << ", "
-      << static_cast<impeller::Scalar>(p.y) << ")";
+                                const ogre::HalfVector2& p) {
+  out << "(" << static_cast<ogre::Scalar>(p.x) << ", "
+      << static_cast<ogre::Scalar>(p.y) << ")";
   return out;
 }
 
 inline std::ostream& operator<<(std::ostream& out,
-                                const impeller::HalfVector3& p) {
-  out << "(" << static_cast<impeller::Scalar>(p.x) << ", "
-      << static_cast<impeller::Scalar>(p.y) << ", "
-      << static_cast<impeller::Scalar>(p.z) << ")";
+                                const ogre::HalfVector3& p) {
+  out << "(" << static_cast<ogre::Scalar>(p.x) << ", "
+      << static_cast<ogre::Scalar>(p.y) << ", "
+      << static_cast<ogre::Scalar>(p.z) << ")";
   return out;
 }
 
 inline std::ostream& operator<<(std::ostream& out,
-                                const impeller::HalfVector4& p) {
-  out << "(" << static_cast<impeller::Scalar>(p.x) << ", "
-      << static_cast<impeller::Scalar>(p.y) << ", "
-      << static_cast<impeller::Scalar>(p.z) << ", "
-      << static_cast<impeller::Scalar>(p.w) << ")";
+                                const ogre::HalfVector4& p) {
+  out << "(" << static_cast<ogre::Scalar>(p.x) << ", "
+      << static_cast<ogre::Scalar>(p.y) << ", "
+      << static_cast<ogre::Scalar>(p.z) << ", "
+      << static_cast<ogre::Scalar>(p.w) << ")";
   return out;
 }
 
@@ -191,4 +191,4 @@ inline std::ostream& operator<<(std::ostream& out,
 
 }  // namespace std
 
-#endif  // FLUTTER_IMPELLER_GEOMETRY_HALF_H_
+#endif  // FLUTTER_OGRE_GEOMETRY_HALF_H_

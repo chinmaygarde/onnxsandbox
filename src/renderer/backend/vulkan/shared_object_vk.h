@@ -2,14 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_SHARED_OBJECT_VK_H_
-#define FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_SHARED_OBJECT_VK_H_
+#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_SHARED_OBJECT_VK_H_
+#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_SHARED_OBJECT_VK_H_
 
 #include <memory>
 
 #include "renderer/backend/vulkan/vk.h"
 
-namespace impeller {
+namespace ogre {
 
 class SharedObjectVK {
  public:
@@ -52,6 +52,6 @@ auto MakeSharedVK(
 template <class T>
 using SharedHandleVK = std::shared_ptr<SharedObjectVKT<T>>;
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_SHARED_OBJECT_VK_H_
+#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_SHARED_OBJECT_VK_H_

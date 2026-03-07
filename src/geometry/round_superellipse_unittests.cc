@@ -13,7 +13,7 @@
   EXPECT_TRUE(rr.Contains(p));                         \
   EXPECT_FALSE(rr.Contains(p + outward_offset));
 
-namespace impeller {
+namespace ogre {
 
 namespace {
 
@@ -813,4 +813,4 @@ TEST(RoundSuperellipseTest, PathForLongRseShouldBeCorrect) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

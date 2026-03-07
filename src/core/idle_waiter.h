@@ -2,10 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_CORE_IDLE_WAITER_H_
-#define FLUTTER_IMPELLER_CORE_IDLE_WAITER_H_
+#ifndef FLUTTER_OGRE_CORE_IDLE_WAITER_H_
+#define FLUTTER_OGRE_CORE_IDLE_WAITER_H_
 
-namespace impeller {
+namespace ogre {
 
 /// Abstraction over waiting for the GPU to be idle.
 ///
@@ -20,6 +20,6 @@ class IdleWaiter {
   virtual void WaitIdle() const = 0;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_CORE_IDLE_WAITER_H_
+#endif  // FLUTTER_OGRE_CORE_IDLE_WAITER_H_

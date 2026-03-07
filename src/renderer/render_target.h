@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_RENDER_TARGET_H_
-#define FLUTTER_IMPELLER_RENDERER_RENDER_TARGET_H_
+#ifndef FLUTTER_OGRE_RENDERER_RENDER_TARGET_H_
+#define FLUTTER_OGRE_RENDERER_RENDER_TARGET_H_
 
 #include <functional>
 #include <map>
@@ -14,7 +14,7 @@
 #include "fml/hash_combine.h"
 #include "geometry/size.h"
 
-namespace impeller {
+namespace ogre {
 
 class Context;
 
@@ -144,7 +144,7 @@ class RenderTarget final {
   std::map<size_t, ColorAttachment> colors_;
 };
 
-/// @brief a wrapper around the impeller [Allocator] instance that can be used
+/// @brief a wrapper around the ogre [Allocator] instance that can be used
 ///        to provide caching of allocated render target textures.
 class RenderTargetAllocator {
  public:
@@ -200,6 +200,6 @@ class RenderTargetAllocator {
   std::shared_ptr<Allocator> allocator_;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_RENDER_TARGET_H_
+#endif  // FLUTTER_OGRE_RENDERER_RENDER_TARGET_H_

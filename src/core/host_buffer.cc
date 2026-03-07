@@ -14,7 +14,7 @@
 #include "core/device_buffer_descriptor.h"
 #include "core/formats.h"
 
-namespace impeller {
+namespace ogre {
 
 constexpr size_t kAllocatorBlockSize = 1024000;  // 1024 Kb.
 
@@ -242,4 +242,4 @@ size_t HostBuffer::GetMinimumUniformAlignment() const {
   return minimum_uniform_alignment_;
 }
 
-}  // namespace impeller
+}  // namespace ogre

@@ -2,15 +2,15 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_GEOMETRY_GRADIENT_H_
-#define FLUTTER_IMPELLER_GEOMETRY_GRADIENT_H_
+#ifndef FLUTTER_OGRE_GEOMETRY_GRADIENT_H_
+#define FLUTTER_OGRE_GEOMETRY_GRADIENT_H_
 
 #include <cstdint>
 #include <vector>
 
 #include "geometry/color.h"
 
-namespace impeller {
+namespace ogre {
 
 // If texture_size is 0 then the gradient is invalid.
 struct GradientData {
@@ -29,6 +29,6 @@ struct GradientData {
 GradientData CreateGradientBuffer(const std::vector<Color>& colors,
                                   const std::vector<Scalar>& stops);
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_GEOMETRY_GRADIENT_H_
+#endif  // FLUTTER_OGRE_GEOMETRY_GRADIENT_H_

@@ -2,22 +2,22 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_VERTEX_DESCRIPTOR_H_
-#define FLUTTER_IMPELLER_RENDERER_VERTEX_DESCRIPTOR_H_
+#ifndef FLUTTER_OGRE_RENDERER_VERTEX_DESCRIPTOR_H_
+#define FLUTTER_OGRE_RENDERER_VERTEX_DESCRIPTOR_H_
 
 #include <vector>
 
 #include "base/comparable.h"
 #include "core/shader_types.h"
 
-namespace impeller {
+namespace ogre {
 
 //------------------------------------------------------------------------------
 /// @brief        Describes the format and layout of vertices expected by the
 ///               pipeline. While it is possible to construct these descriptors
 ///               manually, it would be tedious to do so. These are usually
 ///               constructed using shader information reflected using
-///               `impellerc`. The usage of this class is indirectly via
+///               `ogrec`. The usage of this class is indirectly via
 ///               `PipelineBuilder<VS, FS>`.
 ///
 class VertexDescriptor final : public Comparable<VertexDescriptor> {
@@ -80,6 +80,6 @@ class VertexDescriptor final : public Comparable<VertexDescriptor> {
   VertexDescriptor& operator=(const VertexDescriptor&) = delete;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_VERTEX_DESCRIPTOR_H_
+#endif  // FLUTTER_OGRE_RENDERER_VERTEX_DESCRIPTOR_H_

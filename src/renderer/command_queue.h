@@ -2,15 +2,15 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_COMMAND_QUEUE_H_
-#define FLUTTER_IMPELLER_RENDERER_COMMAND_QUEUE_H_
+#ifndef FLUTTER_OGRE_RENDERER_COMMAND_QUEUE_H_
+#define FLUTTER_OGRE_RENDERER_COMMAND_QUEUE_H_
 
 #include <functional>
 
 #include "fml/status.h"
 #include "renderer/command_buffer.h"
 
-namespace impeller {
+namespace ogre {
 
 /// @brief An interface for submitting command buffers to the GPU for
 ///        encoding and execution.
@@ -50,6 +50,6 @@ class CommandQueue {
   CommandQueue& operator=(const CommandQueue&) = delete;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_COMMAND_QUEUE_H_
+#endif  // FLUTTER_OGRE_RENDERER_COMMAND_QUEUE_H_

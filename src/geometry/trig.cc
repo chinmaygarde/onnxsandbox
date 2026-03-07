@@ -4,8 +4,8 @@
 
 #include "trig.h"
 
-namespace impeller {
+namespace ogre {
 
 //
 
-}  // namespace impeller
+}  // namespace ogre

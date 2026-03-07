@@ -7,7 +7,7 @@
 #include "renderer/backend/vulkan/context_vk.h"
 #include "renderer/backend/vulkan/vma.h"
 
-namespace impeller {
+namespace ogre {
 
 DeviceBufferVK::DeviceBufferVK(DeviceBufferDescriptor desc,
                                std::weak_ptr<Context> context,
@@ -49,7 +49,7 @@ bool DeviceBufferVK::OnCopyHostBuffer(const uint8_t* source,
 }
 
 bool DeviceBufferVK::SetLabel(std::string_view label) {
-#ifdef IMPELLER_DEBUG
+#ifdef OGRE_DEBUG
   auto context = context_.lock();
   if (!context || !resource_->buffer.is_valid()) {
     // The context could have died at this point.
@@ -65,7 +65,7 @@ bool DeviceBufferVK::SetLabel(std::string_view label) {
                                                 label);
 #else
   return true;
-#endif  // IMPELLER_DEBUG
+#endif  // OGRE_DEBUG
 }
 
 void DeviceBufferVK::Flush(std::optional<Range> range) const {
@@ -99,4 +99,4 @@ vk::Buffer DeviceBufferVK::GetBuffer() const {
   return resource_->buffer.get().buffer;
 }
 
-}  // namespace impeller
+}  // namespace ogre

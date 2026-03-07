@@ -11,7 +11,7 @@
 #include "base/validation.h"
 #include "core/formats.h"
 
-namespace impeller {
+namespace ogre {
 
 BlitPass::BlitPass() {}
 
@@ -177,4 +177,4 @@ bool BlitPass::GenerateMipmap(std::shared_ptr<Texture> texture,
   return OnGenerateMipmapCommand(std::move(texture), label);
 }
 
-}  // namespace impeller
+}  // namespace ogre

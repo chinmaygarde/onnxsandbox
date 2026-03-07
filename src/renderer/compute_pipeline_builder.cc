@@ -4,8 +4,8 @@
 
 #include "renderer/compute_pipeline_builder.h"
 
-namespace impeller {
+namespace ogre {
 
 //
 
-}  // namespace impeller
+}  // namespace ogre

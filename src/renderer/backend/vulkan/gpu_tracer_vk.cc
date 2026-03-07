@@ -15,7 +15,7 @@
 #include "renderer/backend/vulkan/command_buffer_vk.h"
 #include "renderer/backend/vulkan/context_vk.h"
 
-namespace impeller {
+namespace ogre {
 
 static constexpr uint32_t kPoolSize = 128u;
 
@@ -35,9 +35,9 @@ GPUTracerVK::GPUTracerVK(std::weak_ptr<ContextVK> context,
     return;
   }
 // Disable tracing in release mode.
-#ifdef IMPELLER_DEBUG
+#ifdef OGRE_DEBUG
   enabled_ = true;
-#endif  // IMPELLER_DEBUG
+#endif  // OGRE_DEBUG
 }
 
 void GPUTracerVK::InitializeQueryPool(const ContextVK& context) {
@@ -246,4 +246,4 @@ void GPUProbe::RecordCmdBufferEnd(const vk::CommandBuffer& buffer) {
   tracer->RecordCmdBufferEnd(buffer, *this);
 }
 
-}  // namespace impeller
+}  // namespace ogre

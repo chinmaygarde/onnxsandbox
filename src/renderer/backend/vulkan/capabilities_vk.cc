@@ -15,7 +15,7 @@
 // vulkan.hpp generates some clang-tidy warnings.
 // NOLINTBEGIN(clang-analyzer-security.PointerSub)
 
-namespace impeller {
+namespace ogre {
 
 static constexpr const char* kInstanceLayer = "ImpellerInstance";
 
@@ -842,6 +842,6 @@ bool CapabilitiesVK::SupportsExtendedRangeFormats() const {
   return false;
 }
 
-}  // namespace impeller
+}  // namespace ogre
 
 // NOLINTEND(clang-analyzer-security.PointerSub)

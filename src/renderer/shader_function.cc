@@ -4,7 +4,7 @@
 
 #include "renderer/shader_function.h"
 
-namespace impeller {
+namespace ogre {
 
 ShaderFunction::ShaderFunction(UniqueID parent_library_id,
                                std::string name,
@@ -34,4 +34,4 @@ bool ShaderFunction::IsEqual(const ShaderFunction& other) const {
          name_ == other.name_ && stage_ == other.stage_;
 }
 
-}  // namespace impeller
+}  // namespace ogre

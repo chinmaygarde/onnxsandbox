@@ -11,7 +11,7 @@
 #include "renderer/render_target.h"
 #include "vulkan/vulkan_enums.hpp"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 TEST(RenderPassVK, DoesNotRedundantlySetStencil) {
@@ -50,4 +50,4 @@ TEST(RenderPassVK, DoesNotRedundantlySetStencil) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

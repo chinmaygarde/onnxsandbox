@@ -7,7 +7,7 @@
 #include "renderer/backend/vulkan/command_pool_vk.h"
 #include "renderer/backend/vulkan/gpu_tracer_vk.h"
 
-namespace impeller {
+namespace ogre {
 
 TrackedObjectsVK::TrackedObjectsVK(
     const std::weak_ptr<const ContextVK>& context,
@@ -81,4 +81,4 @@ GPUProbe& TrackedObjectsVK::GetGPUProbe() const {
   return *probe_.get();
 }
 
-}  // namespace impeller
+}  // namespace ogre

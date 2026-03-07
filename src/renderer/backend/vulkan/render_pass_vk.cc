@@ -25,13 +25,13 @@
 #include "renderer/backend/vulkan/shared_object_vk.h"
 #include "renderer/backend/vulkan/texture_vk.h"
 
-namespace impeller {
+namespace ogre {
 
 // Warning: if any of the constant values or layouts are changed in the
 // framebuffer fetch shader, then this input binding may need to be
 // manually changed.
 //
-// See: impeller/entity/shaders/blending/framebuffer_blend.frag
+// See: ogre/entity/shaders/blending/framebuffer_blend.frag
 static constexpr size_t kMagicSubpassInputBinding = 64u;
 
 static vk::ClearColorValue VKClearValueFromColor(Color color) {
@@ -270,9 +270,9 @@ bool RenderPassVK::IsValid() const {
 }
 
 void RenderPassVK::OnSetLabel(std::string_view label) {
-#ifdef IMPELLER_DEBUG
+#ifdef OGRE_DEBUG
   ContextVK::Cast(*context_).SetDebugName(render_pass_->Get(), label.data());
-#endif  // IMPELLER_DEBUG
+#endif  // OGRE_DEBUG
 }
 
 SharedHandleVK<vk::Framebuffer> RenderPassVK::CreateVKFramebuffer(
@@ -364,10 +364,10 @@ void RenderPassVK::SetPipeline(PipelineRef pipeline) {
 
 // |RenderPass|
 void RenderPassVK::SetCommandLabel(std::string_view label) {
-#ifdef IMPELLER_DEBUG
+#ifdef OGRE_DEBUG
   command_buffer_->PushDebugGroup(label);
   has_label_ = true;
-#endif  // IMPELLER_DEBUG
+#endif  // OGRE_DEBUG
 }
 
 // |RenderPass|
@@ -569,11 +569,11 @@ fml::Status RenderPassVK::Draw() {
     );
   }
 
-#ifdef IMPELLER_DEBUG
+#ifdef OGRE_DEBUG
   if (has_label_) {
     command_buffer_->PopDebugGroup();
   }
-#endif  // IMPELLER_DEBUG
+#endif  // OGRE_DEBUG
   has_label_ = false;
   has_index_buffer_ = false;
   bound_image_offset_ = 0u;
@@ -694,4 +694,4 @@ bool RenderPassVK::OnEncodeCommands(const Context& context) const {
   return true;
 }
 
-}  // namespace impeller
+}  // namespace ogre

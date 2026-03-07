@@ -17,15 +17,15 @@
 #include "renderer/threadgroup_sizing_test.comp.h"
 
 namespace {
-std::shared_ptr<impeller::HostBuffer> CreateHostBufferFromContext(
-    const std::shared_ptr<impeller::Context>& context) {
-  return impeller::HostBuffer::Create(
+std::shared_ptr<ogre::HostBuffer> CreateHostBufferFromContext(
+    const std::shared_ptr<ogre::Context>& context) {
+  return ogre::HostBuffer::Create(
       context->GetResourceAllocator(), context->GetIdleWaiter(),
       context->GetCapabilities()->GetMinimumUniformAlignment());
 }
 }  // namespace
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 using ComputeTest = ComputePlaygroundTest;
 INSTANTIATE_COMPUTE_SUITE(ComputeTest);
@@ -509,4 +509,4 @@ TEST_P(ComputeTest, ReturnsEarlyWhenAnyGridDimensionIsZero) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

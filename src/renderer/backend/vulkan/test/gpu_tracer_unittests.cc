@@ -10,10 +10,10 @@
 #include "renderer/backend/vulkan/gpu_tracer_vk.h"
 #include "renderer/backend/vulkan/test/mock_vulkan.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
-#ifdef IMPELLER_DEBUG
+#ifdef OGRE_DEBUG
 TEST(GPUTracerVK, CanBeDisabled) {
   auto const context =
       MockVulkanContextBuilder()
@@ -150,7 +150,7 @@ TEST(GPUTracerVK, TracesWithPartialFrameOverlap) {
                         "vkGetQueryPoolResults") != called->end());
 }
 
-#endif  // IMPELLER_DEBUG
+#endif  // OGRE_DEBUG
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

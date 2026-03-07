@@ -7,7 +7,7 @@
 #include "renderer/backend/vulkan/descriptor_pool_vk.h"
 #include "renderer/backend/vulkan/test/mock_vulkan.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 TEST(DescriptorPoolRecyclerVKTest, GetDescriptorPoolRecyclerCreatesNewPools) {
@@ -134,4 +134,4 @@ TEST(DescriptorPoolRecyclerVKTest, DescriptorsAreRecycled) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

@@ -2,13 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_GEOMETRY_PATH_SOURCE_H_
-#define FLUTTER_IMPELLER_GEOMETRY_PATH_SOURCE_H_
+#ifndef FLUTTER_OGRE_GEOMETRY_PATH_SOURCE_H_
+#define FLUTTER_OGRE_GEOMETRY_PATH_SOURCE_H_
 
 #include "geometry/point.h"
 #include "geometry/rect.h"
 
-namespace impeller {
+namespace ogre {
 
 enum class FillType {
   kNonZero,  // The default winding order.
@@ -111,10 +111,10 @@ class EllipsePathSource : public PathSource {
 
 /// A utility class to receive path segments from a source, transform them
 /// by a matrix, and pass them along to a subsequent receiver.
-class PathTransformer : public impeller::PathReceiver {
+class PathTransformer : public ogre::PathReceiver {
  public:
   PathTransformer(PathReceiver& receiver [[clang::lifetimebound]],
-                  const impeller::Matrix& matrix [[clang::lifetimebound]])
+                  const ogre::Matrix& matrix [[clang::lifetimebound]])
       : receiver_(receiver), matrix_(matrix) {}
 
   void MoveTo(const Point& p2, bool will_be_closed) override {
@@ -139,9 +139,9 @@ class PathTransformer : public impeller::PathReceiver {
 
  private:
   PathReceiver& receiver_;
-  const impeller::Matrix& matrix_;
+  const ogre::Matrix& matrix_;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_GEOMETRY_PATH_SOURCE_H_
+#endif  // FLUTTER_OGRE_GEOMETRY_PATH_SOURCE_H_

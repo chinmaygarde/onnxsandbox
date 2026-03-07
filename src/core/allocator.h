@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_CORE_ALLOCATOR_H_
-#define FLUTTER_IMPELLER_CORE_ALLOCATOR_H_
+#ifndef FLUTTER_OGRE_CORE_ALLOCATOR_H_
+#define FLUTTER_OGRE_CORE_ALLOCATOR_H_
 
 #include "base/allocation_size.h"
 #include "core/device_buffer_descriptor.h"
@@ -13,7 +13,7 @@
 #include "fml/mapping.h"
 #include "geometry/size.h"
 
-namespace impeller {
+namespace ogre {
 
 class Context;
 class DeviceBuffer;
@@ -87,6 +87,6 @@ class Allocator {
   Allocator& operator=(const Allocator&) = delete;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_CORE_ALLOCATOR_H_
+#endif  // FLUTTER_OGRE_CORE_ALLOCATOR_H_

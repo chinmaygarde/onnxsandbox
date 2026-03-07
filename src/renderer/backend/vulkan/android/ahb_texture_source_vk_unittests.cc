@@ -13,7 +13,7 @@
 #include "toolkit/android/hardware_buffer.h"
 #include "toolkit/android/surface_transaction.h"
 
-namespace impeller::android::testing {
+namespace ogre::android::testing {
 
 struct UniqueAHardwareBufferTraits {
   static AHardwareBuffer* InvalidValue() { return nullptr; }
@@ -43,7 +43,7 @@ std::shared_ptr<ContextVK> CreateContext() {
     return nullptr;
   }
 
-  impeller::ContextVK::Settings settings;
+  ogre::ContextVK::Settings settings;
   settings.proc_address_callback = instance_proc_addr.value();
   settings.shader_libraries_data = {};
   settings.enable_validation = false;
@@ -152,4 +152,4 @@ TEST(AndroidVulkanTest, CreateImageViewForOpaqueAlpha) {
   context_vk->Shutdown();
 }
 
-}  // namespace impeller::android::testing
+}  // namespace ogre::android::testing

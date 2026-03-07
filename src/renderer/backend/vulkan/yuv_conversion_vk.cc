@@ -10,7 +10,7 @@
 #include "renderer/backend/vulkan/device_holder_vk.h"
 #include "renderer/backend/vulkan/sampler_vk.h"
 
-namespace impeller {
+namespace ogre {
 
 YUVConversionVK::YUVConversionVK(const vk::Device& device,
                                  const YUVConversionDescriptorVK& chain)
@@ -118,4 +118,4 @@ std::size_t ImmutableSamplerKeyVK::GetHash() const {
                           YUVConversionDescriptorVKHash{}(yuv_conversion));
 }
 
-}  // namespace impeller
+}  // namespace ogre

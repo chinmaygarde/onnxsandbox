@@ -11,7 +11,7 @@
 #include "gtest/gtest.h"
 #include "renderer/backend/vulkan/resource_manager_vk.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 // While expected to be a singleton per context, the class does not enforce it.
@@ -85,4 +85,4 @@ TEST(ResourceManagerVKTest, IsThreadSafe) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

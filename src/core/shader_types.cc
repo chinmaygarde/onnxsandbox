@@ -4,8 +4,8 @@
 
 #include "core/shader_types.h"
 
-namespace impeller {
+namespace ogre {
 
 //
 
-}  // namespace impeller
+}  // namespace ogre

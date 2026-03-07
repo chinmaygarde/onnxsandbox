@@ -4,8 +4,8 @@
 
 #include "renderer/shader_key.h"
 
-namespace impeller {
+namespace ogre {
 
 //
 
-}  // namespace impeller
+}  // namespace ogre

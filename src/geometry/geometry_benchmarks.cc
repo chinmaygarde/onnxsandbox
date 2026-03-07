@@ -10,7 +10,7 @@
 #include "flutter/display_list/geometry/dl_path_builder.h"
 #include "tessellator/tessellator_libtess.h"
 
-namespace impeller {
+namespace ogre {
 
 class ImpellerBenchmarkAccessor {
  public:
@@ -621,4 +621,4 @@ flutter::DlPath CreateQuadratic(bool closed) {
 }
 
 }  // namespace
-}  // namespace impeller
+}  // namespace ogre

@@ -4,7 +4,7 @@
 
 #include "renderer/shader_library.h"
 
-namespace impeller {
+namespace ogre {
 
 ShaderLibrary::ShaderLibrary() = default;
 
@@ -22,4 +22,4 @@ void ShaderLibrary::RegisterFunction(
   }
 }
 
-}  // namespace impeller
+}  // namespace ogre

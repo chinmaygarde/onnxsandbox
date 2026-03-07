@@ -2,15 +2,15 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_PIPELINE_CACHE_VK_H_
-#define FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_PIPELINE_CACHE_VK_H_
+#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_PIPELINE_CACHE_VK_H_
+#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_PIPELINE_CACHE_VK_H_
 
 #include "base/thread.h"
 #include "fml/file.h"
 #include "renderer/backend/vulkan/capabilities_vk.h"
 #include "renderer/backend/vulkan/device_holder_vk.h"
 
-namespace impeller {
+namespace ogre {
 
 class PipelineCacheVK {
  public:
@@ -47,6 +47,6 @@ class PipelineCacheVK {
   PipelineCacheVK& operator=(const PipelineCacheVK&) = delete;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_PIPELINE_CACHE_VK_H_
+#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_PIPELINE_CACHE_VK_H_

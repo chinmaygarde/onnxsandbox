@@ -5,7 +5,7 @@
 #include "base/allocation_size.h"
 #include "flutter/testing/testing.h"
 
-namespace impeller::testing {
+namespace ogre::testing {
 
 TEST(AllocationSizeTest, CanCreateTypedAllocations) {
   auto bytes = Bytes{1024};
@@ -122,4 +122,4 @@ TEST(AllocationSizeTest, CanConstructWithArith) {
   }
 }
 
-}  // namespace impeller::testing
+}  // namespace ogre::testing

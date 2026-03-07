@@ -18,7 +18,7 @@
 #include "renderer/backend/vulkan/shader_function_vk.h"
 #include "renderer/backend/vulkan/vertex_descriptor_vk.h"
 
-namespace impeller {
+namespace ogre {
 
 static vk::PipelineCreationFeedbackEXT EmptyFeedback() {
   vk::PipelineCreationFeedbackEXT feedback;
@@ -95,7 +95,7 @@ static void ReportPipelineCreationFeedbackToTrace(
   }
   gPipelines++;
   static constexpr int64_t kImpellerPipelineTraceID = 1988;
-  FML_TRACE_COUNTER("impeller",                                   //
+  FML_TRACE_COUNTER("ogre",                                   //
                     "PipelineCache",                              // series name
                     kImpellerPipelineTraceID,                     // series ID
                     "PipelineCacheHits", gPipelineCacheHits,      //
@@ -161,11 +161,11 @@ static vk::UniqueRenderPass CreateCompatRenderPassForPipeline(
     return {};
   }
 
-#ifdef IMPELLER_DEBUG
+#ifdef OGRE_DEBUG
   ContextVK::SetDebugName(
       device, pass.get(),
       std::format("Compat Render Pass: {}", desc.GetLabel()));
-#endif  // IMPELLER_DEBUG
+#endif  // OGRE_DEBUG
 
   return pass;
 }
@@ -212,11 +212,11 @@ fml::StatusOr<vk::UniqueDescriptorSetLayout> MakeDescriptorSetLayout(
                         "unable to create uniform descriptors")};
   }
 
-#ifdef IMPELLER_DEBUG
+#ifdef OGRE_DEBUG
   ContextVK::SetDebugName(
       device_holder->GetDevice(), descs_layout.get(),
       std::format("Descriptor Set Layout: {}", desc.GetLabel()));
-#endif  // IMPELLER_DEBUG
+#endif  // OGRE_DEBUG
 
   return fml::StatusOr<vk::UniqueDescriptorSetLayout>(std::move(descs_layout));
 }
@@ -237,10 +237,10 @@ fml::StatusOr<vk::UniquePipelineLayout> MakePipelineLayout(
                         "Could not create pipeline layout for pipeline.")};
   }
 
-#ifdef IMPELLER_DEBUG
+#ifdef OGRE_DEBUG
   ContextVK::SetDebugName(device_holder->GetDevice(), *pipeline_layout.value,
                           std::format("Pipeline Layout {}", desc.GetLabel()));
-#endif  // IMPELLER_DEBUG
+#endif  // OGRE_DEBUG
 
   return std::move(pipeline_layout.value);
 }
@@ -452,10 +452,10 @@ fml::StatusOr<vk::UniquePipeline> MakePipeline(
     ReportPipelineCreationFeedback(desc, feedback);
   }
 
-#ifdef IMPELLER_DEBUG
+#ifdef OGRE_DEBUG
   ContextVK::SetDebugName(device_holder->GetDevice(), *pipeline,
                           std::format("Pipeline {}", desc.GetLabel()));
-#endif  // IMPELLER_DEBUG
+#endif  // OGRE_DEBUG
 
   return std::move(pipeline);
 }
@@ -589,4 +589,4 @@ std::shared_ptr<PipelineVK> PipelineVK::CreateVariantForImmutableSamplers(
                      immutable_sampler));
 }
 
-}  // namespace impeller
+}  // namespace ogre

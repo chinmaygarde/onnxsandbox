@@ -4,12 +4,12 @@
 
 #include "core/runtime_types.h"
 
-namespace impeller {
+namespace ogre {
 
 size_t RuntimeUniformDescription::GetDartSize() const {
   size_t size = 0;
   if (!padding_layout.empty()) {
-    for (impeller::RuntimePaddingType byte_type : padding_layout) {
+    for (ogre::RuntimePaddingType byte_type : padding_layout) {
       if (byte_type == RuntimePaddingType::kFloat) {
         size += sizeof(float);
       }
@@ -40,4 +40,4 @@ size_t RuntimeUniformDescription::GetGPUSize() const {
   return size;
 }
 
-}  // namespace impeller
+}  // namespace ogre

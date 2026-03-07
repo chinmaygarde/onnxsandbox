@@ -7,7 +7,7 @@
 #include "base/validation.h"
 #include "renderer/backend/vulkan/device_holder_vk.h"
 
-namespace impeller {
+namespace ogre {
 
 YUVConversionLibraryVK::YUVConversionLibraryVK(
     std::weak_ptr<DeviceHolderVK> device_holder)
@@ -31,4 +31,4 @@ std::shared_ptr<YUVConversionVK> YUVConversionLibraryVK::GetConversion(
               new YUVConversionVK(device_holder->GetDevice(), desc)));
 }
 
-}  // namespace impeller
+}  // namespace ogre

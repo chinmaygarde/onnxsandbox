@@ -12,7 +12,7 @@
 #include "renderer/backend/vulkan/test/mock_vulkan.h"
 #include "renderer/backend/vulkan/workarounds_vk.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 TEST(SamplerLibraryVK, WorkaroundsCanDisableReadingFromMipLevels) {
@@ -36,4 +36,4 @@ TEST(SamplerLibraryVK, WorkaroundsCanDisableReadingFromMipLevels) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

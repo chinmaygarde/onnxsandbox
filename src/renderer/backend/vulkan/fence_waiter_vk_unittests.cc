@@ -7,7 +7,7 @@
 #include "renderer/backend/vulkan/fence_waiter_vk.h"  // IWYU pragma: keep
 #include "renderer/backend/vulkan/test/mock_vulkan.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 TEST(FenceWaiterVKTest, IgnoresNullFence) {
@@ -133,4 +133,4 @@ TEST(FenceWaiterVKTest, InProgressFencesStillWaitIfTerminated) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_GEOMETRY_SCALAR_H_
-#define FLUTTER_IMPELLER_GEOMETRY_SCALAR_H_
+#ifndef FLUTTER_OGRE_GEOMETRY_SCALAR_H_
+#define FLUTTER_OGRE_GEOMETRY_SCALAR_H_
 
 #include <cfloat>
 #include <ostream>
@@ -12,7 +12,7 @@
 
 #include "geometry/constants.h"
 
-namespace impeller {
+namespace ogre {
 
 // NOLINTBEGIN(google-explicit-constructor)
 
@@ -99,18 +99,18 @@ struct Degrees {
 
 // NOLINTEND(google-explicit-constructor)
 
-}  // namespace impeller
+}  // namespace ogre
 
 namespace std {
 
-inline std::ostream& operator<<(std::ostream& out, const impeller::Degrees& d) {
+inline std::ostream& operator<<(std::ostream& out, const ogre::Degrees& d) {
   return out << "Degrees(" << d.degrees << ")";
 }
 
-inline std::ostream& operator<<(std::ostream& out, const impeller::Radians& r) {
+inline std::ostream& operator<<(std::ostream& out, const ogre::Radians& r) {
   return out << "Radians(" << r.radians << ")";
 }
 
 }  // namespace std
 
-#endif  // FLUTTER_IMPELLER_GEOMETRY_SCALAR_H_
+#endif  // FLUTTER_OGRE_GEOMETRY_SCALAR_H_

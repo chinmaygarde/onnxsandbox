@@ -15,9 +15,9 @@
 #include "geometry/scalar.h"
 #include "geometry/vector.h"
 
-namespace impeller {
+namespace ogre {
 
-#define _IMPELLER_ASSERT_BLEND_MODE(blend_mode)                            \
+#define _OGRE_ASSERT_BLEND_MODE(blend_mode)                            \
   auto enum_##blend_mode = static_cast<std::underlying_type_t<BlendMode>>( \
       BlendMode::k##blend_mode);                                           \
   if (i != enum_##blend_mode) {                                            \
@@ -28,7 +28,7 @@ namespace impeller {
 static constexpr inline bool ValidateBlendModes() {
   std::underlying_type_t<BlendMode> i = 0;
   // Ensure the order of the blend modes match.
-  IMPELLER_FOR_EACH_BLEND_MODE(_IMPELLER_ASSERT_BLEND_MODE)
+  OGRE_FOR_EACH_BLEND_MODE(_OGRE_ASSERT_BLEND_MODE)
   // Ensure the total number of blend modes match.
   if (i - 1 !=
       static_cast<std::underlying_type_t<BlendMode>>(BlendMode::kLastMode)) {
@@ -37,12 +37,12 @@ static constexpr inline bool ValidateBlendModes() {
   return true;
 }
 static_assert(ValidateBlendModes(),
-              "IMPELLER_FOR_EACH_BLEND_MODE must match impeller::BlendMode.");
+              "OGRE_FOR_EACH_BLEND_MODE must match ogre::BlendMode.");
 
-#define _IMPELLER_BLEND_MODE_NAME_LIST(blend_mode) #blend_mode,
+#define _OGRE_BLEND_MODE_NAME_LIST(blend_mode) #blend_mode,
 
 static constexpr const char* kBlendModeNames[] = {
-    IMPELLER_FOR_EACH_BLEND_MODE(_IMPELLER_BLEND_MODE_NAME_LIST)};
+    OGRE_FOR_EACH_BLEND_MODE(_OGRE_BLEND_MODE_NAME_LIST)};
 
 const char* BlendModeToString(BlendMode blend_mode) {
   return kBlendModeNames[static_cast<std::underlying_type_t<BlendMode>>(
@@ -58,7 +58,7 @@ static constexpr inline Color Min(Color c, float threshold) {
 }
 
 // The following HSV utilities correspond to the W3C blend definitions
-// implemented in: impeller/compiler/shader_lib/impeller/blending.glsl
+// implemented in: ogre/compiler/shader_lib/ogre/blending.glsl
 
 static constexpr inline Scalar Luminosity(Vector3 color) {
   return color.x * 0.3f + color.y * 0.59f + color.z * 0.11f;
@@ -335,4 +335,4 @@ std::string ColorToString(const Color& color) {
                      color.green, color.blue, color.alpha);
 }
 
-}  // namespace impeller
+}  // namespace ogre

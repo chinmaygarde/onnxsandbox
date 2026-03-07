@@ -2,12 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_DEVICE_HOLDER_VK_H_
-#define FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_DEVICE_HOLDER_VK_H_
+#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_DEVICE_HOLDER_VK_H_
+#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_DEVICE_HOLDER_VK_H_
 
 #include "renderer/backend/vulkan/vk.h"  // IWYU pragma: keep.
 
-namespace impeller {
+namespace ogre {
 
 //------------------------------------------------------------------------------
 /// @brief      Holds a strong reference to the underlying logical Vulkan
@@ -24,6 +24,6 @@ class DeviceHolderVK {
   virtual const vk::PhysicalDevice& GetPhysicalDevice() const = 0;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_DEVICE_HOLDER_VK_H_
+#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_DEVICE_HOLDER_VK_H_

@@ -9,7 +9,7 @@
 #include "geometry/constants.h"
 #include "geometry/geometry_asserts.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 TEST(MatrixTest, Multiply) {
@@ -443,4 +443,4 @@ TEST(MatrixTest, MinMaxScales2D) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

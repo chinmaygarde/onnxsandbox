@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_YUV_CONVERSION_VK_H_
-#define FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_YUV_CONVERSION_VK_H_
+#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_YUV_CONVERSION_VK_H_
+#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_YUV_CONVERSION_VK_H_
 
 #include <unordered_map>
 
@@ -15,7 +15,7 @@
 #include "renderer/backend/vulkan/shared_object_vk.h"
 #include "renderer/backend/vulkan/vk.h"
 
-namespace impeller {
+namespace ogre {
 
 //------------------------------------------------------------------------------
 /// A descriptor used to create a new YUV conversion in a conversion library.
@@ -104,6 +104,6 @@ struct ImmutableSamplerKeyVK : public Comparable<ImmutableSamplerKeyVK> {
   bool IsEqual(const ImmutableSamplerKeyVK& other) const override;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_YUV_CONVERSION_VK_H_
+#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_YUV_CONVERSION_VK_H_

@@ -4,7 +4,7 @@
 
 #include "geometry/path_source.h"
 
-namespace impeller {
+namespace ogre {
 
 RectPathSource::~RectPathSource() = default;
 
@@ -61,4 +61,4 @@ void EllipsePathSource::Dispatch(PathReceiver& receiver) const {
   receiver.Close();
 }
 
-}  // namespace impeller
+}  // namespace ogre

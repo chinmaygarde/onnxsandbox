@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_SWAPCHAIN_SWAPCHAIN_VK_H_
-#define FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_SWAPCHAIN_SWAPCHAIN_VK_H_
+#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_SWAPCHAIN_SWAPCHAIN_VK_H_
+#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_SWAPCHAIN_SWAPCHAIN_VK_H_
 
 #include <memory>
 
@@ -19,7 +19,7 @@
 #include "toolkit/android/surface_transaction.h"
 #endif  // FML_OS_ANDROID
 
-namespace impeller {
+namespace ogre {
 
 #if FML_OS_ANDROID
 using CreateTransactionCB = std::function<android::SurfaceTransaction()>;
@@ -70,6 +70,6 @@ class SwapchainVK {
   SwapchainVK();
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_SWAPCHAIN_SWAPCHAIN_VK_H_
+#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_SWAPCHAIN_SWAPCHAIN_VK_H_

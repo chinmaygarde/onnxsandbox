@@ -2,13 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_BASE_VALIDATION_H_
-#define FLUTTER_IMPELLER_BASE_VALIDATION_H_
+#ifndef FLUTTER_OGRE_BASE_VALIDATION_H_
+#define FLUTTER_OGRE_BASE_VALIDATION_H_
 
 #include <functional>
 #include <sstream>
 
-namespace impeller {
+namespace ogre {
 
 class ValidationLog {
  public:
@@ -73,7 +73,7 @@ struct ScopedValidationFatal {
   ScopedValidationFatal& operator=(const ScopedValidationFatal&) = delete;
 };
 
-}  // namespace impeller
+}  // namespace ogre
 
 //------------------------------------------------------------------------------
 /// Get a stream to the log Impeller uses for all validation errors. The
@@ -88,6 +88,6 @@ struct ScopedValidationFatal {
 ///   are fatal. The runtime-mode restriction still applies. This usually
 ///   happens in test environments.
 ///
-#define VALIDATION_LOG ::impeller::ValidationLog{__FILE__, __LINE__}.GetStream()
+#define VALIDATION_LOG ::ogre::ValidationLog{__FILE__, __LINE__}.GetStream()
 
-#endif  // FLUTTER_IMPELLER_BASE_VALIDATION_H_
+#endif  // FLUTTER_OGRE_BASE_VALIDATION_H_

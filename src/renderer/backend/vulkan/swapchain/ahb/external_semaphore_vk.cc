@@ -8,7 +8,7 @@
 #include "renderer/backend/vulkan/context_vk.h"
 #include "vulkan/vulkan_handles.hpp"
 
-namespace impeller {
+namespace ogre {
 
 ExternalSemaphoreVK::ExternalSemaphoreVK(
     const std::shared_ptr<Context>& context) {
@@ -67,4 +67,4 @@ const SharedHandleVK<vk::Semaphore>& ExternalSemaphoreVK::GetSharedHandle()
   return semaphore_;
 }
 
-}  // namespace impeller
+}  // namespace ogre

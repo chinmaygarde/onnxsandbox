@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_CORE_FORMATS_H_
-#define FLUTTER_IMPELLER_CORE_FORMATS_H_
+#ifndef FLUTTER_OGRE_CORE_FORMATS_H_
+#define FLUTTER_OGRE_CORE_FORMATS_H_
 
 #include <cstdint>
 #include <functional>
@@ -17,7 +17,7 @@
 #include "geometry/rect.h"
 #include "geometry/scalar.h"
 
-namespace impeller {
+namespace ogre {
 
 enum class WindingOrder {
   kClockwise,
@@ -306,7 +306,7 @@ enum class TextureUsage {
   kShaderWrite = 1 << 1,
   kRenderTarget = 1 << 2,
 };
-IMPELLER_ENUM_IS_MASK(TextureUsage);
+OGRE_ENUM_IS_MASK(TextureUsage);
 
 using TextureUsageMask = Mask<TextureUsage>;
 
@@ -462,7 +462,7 @@ enum class ColorWriteMaskBits : uint64_t {
   kAlpha = 1 << 3,
   kAll = kRed | kGreen | kBlue | kAlpha,
 };
-IMPELLER_ENUM_IS_MASK(ColorWriteMaskBits);
+OGRE_ENUM_IS_MASK(ColorWriteMaskBits);
 
 using ColorWriteMask = Mask<ColorWriteMaskBits>;
 
@@ -686,26 +686,26 @@ std::string DepthAttachmentToString(const DepthAttachment& depth);
 
 std::string StencilAttachmentToString(const StencilAttachment& stencil);
 
-}  // namespace impeller
+}  // namespace ogre
 
 namespace std {
 
 template <>
-struct hash<impeller::DepthAttachmentDescriptor> {
+struct hash<ogre::DepthAttachmentDescriptor> {
   constexpr std::size_t operator()(
-      const impeller::DepthAttachmentDescriptor& des) const {
+      const ogre::DepthAttachmentDescriptor& des) const {
     return des.GetHash();
   }
 };
 
 template <>
-struct hash<impeller::StencilAttachmentDescriptor> {
+struct hash<ogre::StencilAttachmentDescriptor> {
   constexpr std::size_t operator()(
-      const impeller::StencilAttachmentDescriptor& des) const {
+      const ogre::StencilAttachmentDescriptor& des) const {
     return des.GetHash();
   }
 };
 
 }  // namespace std
 
-#endif  // FLUTTER_IMPELLER_CORE_FORMATS_H_
+#endif  // FLUTTER_OGRE_CORE_FORMATS_H_

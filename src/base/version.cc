@@ -6,7 +6,7 @@
 
 #include <sstream>
 
-namespace impeller {
+namespace ogre {
 
 std::optional<Version> Version::FromVector(const std::vector<size_t>& version) {
   if (version.size() == 0) {
@@ -30,4 +30,4 @@ std::string Version::ToString() const {
   return stream.str();
 }
 
-}  // namespace impeller
+}  // namespace ogre

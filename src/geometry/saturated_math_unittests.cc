@@ -6,7 +6,7 @@
 
 #include "geometry/saturated_math.h"
 
-namespace impeller {
+namespace ogre {
 namespace testing {
 
 TEST(SaturatedMath, ExplicitAddOfSignedInts) {
@@ -1130,4 +1130,4 @@ TEST(SaturatedMath, CastingNaNScalarToSignedIntProducesZero) {
 }
 
 }  // namespace testing
-}  // namespace impeller
+}  // namespace ogre

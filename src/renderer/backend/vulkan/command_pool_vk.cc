@@ -16,7 +16,7 @@
 #include "vulkan/vulkan_handles.hpp"
 #include "vulkan/vulkan_structs.hpp"
 
-namespace impeller {
+namespace ogre {
 
 // Holds the command pool in a background thread, recyling it when not in use.
 class BackgroundCommandPoolVK final {
@@ -327,4 +327,4 @@ void CommandPoolRecyclerVK::DestroyThreadLocalPools() {
   }
 }
 
-}  // namespace impeller
+}  // namespace ogre

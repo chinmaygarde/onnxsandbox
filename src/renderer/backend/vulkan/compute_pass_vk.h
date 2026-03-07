@@ -2,14 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_COMPUTE_PASS_VK_H_
-#define FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_COMPUTE_PASS_VK_H_
+#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_COMPUTE_PASS_VK_H_
+#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_COMPUTE_PASS_VK_H_
 
 #include "renderer/backend/vulkan/pipeline_vk.h"
 #include "renderer/backend/vulkan/vk.h"
 #include "renderer/compute_pass.h"
 
-namespace impeller {
+namespace ogre {
 
 class CommandBufferVK;
 
@@ -85,5 +85,5 @@ class ComputePassVK final : public ComputePass {
   bool BindResource(size_t binding, DescriptorType type, BufferView view);
 };
 
-}  // namespace impeller
-#endif  // FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_COMPUTE_PASS_VK_H_
+}  // namespace ogre
+#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_COMPUTE_PASS_VK_H_

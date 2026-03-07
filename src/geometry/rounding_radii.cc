@@ -4,7 +4,7 @@
 
 #include "geometry/rounding_radii.h"
 
-namespace impeller {
+namespace ogre {
 
 static inline void NormalizeEmptyToZero(Size& radii) {
   if (radii.IsEmpty()) {
@@ -65,4 +65,4 @@ RoundingRadii RoundingRadii::Scaled(const Rect& in_bounds) const {
   return radii;
 }
 
-}  // namespace impeller
+}  // namespace ogre

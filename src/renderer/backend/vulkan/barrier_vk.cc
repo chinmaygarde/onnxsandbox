@@ -4,4 +4,4 @@
 
 #include "renderer/backend/vulkan/barrier_vk.h"
 
-namespace impeller {}  // namespace impeller
+namespace ogre {}  // namespace ogre

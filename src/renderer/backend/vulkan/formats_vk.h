@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_FORMATS_VK_H_
-#define FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_FORMATS_VK_H_
+#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_FORMATS_VK_H_
+#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_FORMATS_VK_H_
 
 #include <cstdint>
 #include <ostream>
@@ -15,7 +15,7 @@
 #include "renderer/backend/vulkan/vk.h"
 #include "vulkan/vulkan_enums.hpp"
 
-namespace impeller {
+namespace ogre {
 
 constexpr std::optional<PixelFormat> VkFormatToImpellerFormat(
     vk::Format format) {
@@ -615,6 +615,6 @@ constexpr vk::ImageAspectFlags ToImageAspectFlags(PixelFormat format) {
   FML_UNREACHABLE();
 }
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_RENDERER_BACKEND_VULKAN_FORMATS_VK_H_
+#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_FORMATS_VK_H_

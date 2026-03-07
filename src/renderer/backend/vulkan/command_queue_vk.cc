@@ -13,7 +13,7 @@
 #include "renderer/backend/vulkan/tracked_objects_vk.h"
 #include "renderer/command_buffer.h"
 
-namespace impeller {
+namespace ogre {
 
 CommandQueueVK::CommandQueueVK(const std::weak_ptr<ContextVK>& context)
     : context_(context) {}
@@ -87,4 +87,4 @@ fml::Status CommandQueueVK::Submit(
   return fml::Status();
 }
 
-}  // namespace impeller
+}  // namespace ogre

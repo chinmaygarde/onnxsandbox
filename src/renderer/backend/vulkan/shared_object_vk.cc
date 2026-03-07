@@ -4,8 +4,8 @@
 
 #include "renderer/backend/vulkan/shared_object_vk.h"
 
-namespace impeller {
+namespace ogre {
 
 //
 
-}  // namespace impeller
+}  // namespace ogre

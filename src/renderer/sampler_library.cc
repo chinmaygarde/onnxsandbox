@@ -4,10 +4,10 @@
 
 #include "renderer/sampler_library.h"
 
-namespace impeller {
+namespace ogre {
 
 SamplerLibrary::SamplerLibrary() = default;
 
 SamplerLibrary::~SamplerLibrary() = default;
 
-}  // namespace impeller
+}  // namespace ogre

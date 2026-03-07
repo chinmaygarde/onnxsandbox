@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_GEOMETRY_VECTOR_H_
-#define FLUTTER_IMPELLER_GEOMETRY_VECTOR_H_
+#ifndef FLUTTER_OGRE_GEOMETRY_VECTOR_H_
+#define FLUTTER_OGRE_GEOMETRY_VECTOR_H_
 
 #include <cmath>
 #include <string>
@@ -13,7 +13,7 @@
 #include "geometry/scalar.h"
 #include "geometry/size.h"
 
-namespace impeller {
+namespace ogre {
 
 // NOLINTBEGIN(google-explicit-constructor)
 
@@ -323,16 +323,16 @@ struct Vector4 {
 static_assert(sizeof(Vector3) == 3 * sizeof(Scalar));
 static_assert(sizeof(Vector4) == 4 * sizeof(Scalar));
 
-}  // namespace impeller
+}  // namespace ogre
 
 namespace std {
 
-inline std::ostream& operator<<(std::ostream& out, const impeller::Vector3& p) {
+inline std::ostream& operator<<(std::ostream& out, const ogre::Vector3& p) {
   out << "(" << p.x << ", " << p.y << ", " << p.z << ")";
   return out;
 }
 
-inline std::ostream& operator<<(std::ostream& out, const impeller::Vector4& p) {
+inline std::ostream& operator<<(std::ostream& out, const ogre::Vector4& p) {
   out << "(" << p.x << ", " << p.y << ", " << p.z << ", " << p.w << ")";
   return out;
 }
@@ -341,4 +341,4 @@ inline std::ostream& operator<<(std::ostream& out, const impeller::Vector4& p) {
 
 }  // namespace std
 
-#endif  // FLUTTER_IMPELLER_GEOMETRY_VECTOR_H_
+#endif  // FLUTTER_OGRE_GEOMETRY_VECTOR_H_

@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_BASE_ALLOCATION_SIZE_H_
-#define FLUTTER_IMPELLER_BASE_ALLOCATION_SIZE_H_
+#ifndef FLUTTER_OGRE_BASE_ALLOCATION_SIZE_H_
+#define FLUTTER_OGRE_BASE_ALLOCATION_SIZE_H_
 
 #include <cmath>
 #include <compare>
@@ -11,7 +11,7 @@
 #include <cstdint>
 #include <type_traits>
 
-namespace impeller {
+namespace ogre {
 
 enum class FromBytesTag { kFromBytes };
 
@@ -175,6 +175,6 @@ constexpr GibiBytes operator""_gib(unsigned long long int size) {
 
 }  // namespace allocation_size_literals
 
-}  // namespace impeller
+}  // namespace ogre
 
-#endif  // FLUTTER_IMPELLER_BASE_ALLOCATION_SIZE_H_
+#endif  // FLUTTER_OGRE_BASE_ALLOCATION_SIZE_H_

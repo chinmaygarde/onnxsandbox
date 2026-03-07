@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_IMPELLER_GEOMETRY_GEOMETRY_ASSERTS_H_
-#define FLUTTER_IMPELLER_GEOMETRY_GEOMETRY_ASSERTS_H_
+#ifndef FLUTTER_OGRE_GEOMETRY_GEOMETRY_ASSERTS_H_
+#define FLUTTER_OGRE_GEOMETRY_GEOMETRY_ASSERTS_H_
 
 #include <array>
 #include <iostream>
@@ -53,8 +53,8 @@ inline bool NumberNear(double a, double b) {
   return (std::min(ab_ulps, ba_ulps) < kImpellerTestingMaxULP);
 }
 
-inline ::testing::AssertionResult MatrixNear(impeller::Matrix a,
-                                             impeller::Matrix b) {
+inline ::testing::AssertionResult MatrixNear(ogre::Matrix a,
+                                             ogre::Matrix b) {
   auto equal = NumberNear(a.m[0], b.m[0])       //
                && NumberNear(a.m[1], b.m[1])    //
                && NumberNear(a.m[2], b.m[2])    //
@@ -77,8 +77,8 @@ inline ::testing::AssertionResult MatrixNear(impeller::Matrix a,
                      << "Matrixes are not equal " << a << " " << b;
 }
 
-inline ::testing::AssertionResult QuaternionNear(impeller::Quaternion a,
-                                                 impeller::Quaternion b) {
+inline ::testing::AssertionResult QuaternionNear(ogre::Quaternion a,
+                                                 ogre::Quaternion b) {
   auto equal = NumberNear(a.x, b.x) && NumberNear(a.y, b.y) &&
                NumberNear(a.z, b.z) && NumberNear(a.w, b.w);
 
@@ -86,7 +86,7 @@ inline ::testing::AssertionResult QuaternionNear(impeller::Quaternion a,
                : ::testing::AssertionFailure() << "Quaternions are not equal.";
 }
 
-inline ::testing::AssertionResult RectNear(impeller::Rect a, impeller::Rect b) {
+inline ::testing::AssertionResult RectNear(ogre::Rect a, ogre::Rect b) {
   auto equal = NumberNear(a.GetLeft(), b.GetLeft()) &&
                NumberNear(a.GetTop(), b.GetTop()) &&
                NumberNear(a.GetRight(), b.GetRight()) &&
@@ -97,8 +97,8 @@ inline ::testing::AssertionResult RectNear(impeller::Rect a, impeller::Rect b) {
                      << "Rects are not equal (" << a << " " << b << ")";
 }
 
-inline ::testing::AssertionResult ColorNear(impeller::Color a,
-                                            impeller::Color b) {
+inline ::testing::AssertionResult ColorNear(ogre::Color a,
+                                            ogre::Color b) {
   auto equal = NumberNear(a.red, b.red) && NumberNear(a.green, b.green) &&
                NumberNear(a.blue, b.blue) && NumberNear(a.alpha, b.alpha);
 
@@ -106,8 +106,8 @@ inline ::testing::AssertionResult ColorNear(impeller::Color a,
                : ::testing::AssertionFailure() << "Colors are not equal.";
 }
 
-inline ::testing::AssertionResult PointNear(impeller::Point a,
-                                            impeller::Point b) {
+inline ::testing::AssertionResult PointNear(ogre::Point a,
+                                            ogre::Point b) {
   auto equal = NumberNear(a.x, b.x) && NumberNear(a.y, b.y);
 
   return equal ? ::testing::AssertionSuccess()
@@ -115,8 +115,8 @@ inline ::testing::AssertionResult PointNear(impeller::Point a,
                      << "Points are not equal (" << a << " " << b << ").";
 }
 
-inline ::testing::AssertionResult Vector3Near(impeller::Vector3 a,
-                                              impeller::Vector3 b) {
+inline ::testing::AssertionResult Vector3Near(ogre::Vector3 a,
+                                              ogre::Vector3 b) {
   auto equal =
       NumberNear(a.x, b.x) && NumberNear(a.y, b.y) && NumberNear(a.z, b.z);
 
@@ -124,8 +124,8 @@ inline ::testing::AssertionResult Vector3Near(impeller::Vector3 a,
                : ::testing::AssertionFailure() << "Vector3s are not equal.";
 }
 
-inline ::testing::AssertionResult Vector4Near(impeller::Vector4 a,
-                                              impeller::Vector4 b) {
+inline ::testing::AssertionResult Vector4Near(ogre::Vector4 a,
+                                              ogre::Vector4 b) {
   auto equal = NumberNear(a.x, b.x) && NumberNear(a.y, b.y) &&
                NumberNear(a.z, b.z) && NumberNear(a.w, b.w);
 
@@ -133,7 +133,7 @@ inline ::testing::AssertionResult Vector4Near(impeller::Vector4 a,
                : ::testing::AssertionFailure() << "Vector4s are not equal.";
 }
 
-inline ::testing::AssertionResult SizeNear(impeller::Size a, impeller::Size b) {
+inline ::testing::AssertionResult SizeNear(ogre::Size a, ogre::Size b) {
   auto equal = NumberNear(a.width, b.width) && NumberNear(a.height, b.height);
 
   return equal ? ::testing::AssertionSuccess()
@@ -151,7 +151,7 @@ inline ::testing::AssertionResult Array4Near(std::array<uint8_t, 4> a,
 
 inline ::testing::AssertionResult ColorBufferNear(
     std::vector<uint8_t> a,
-    std::vector<impeller::Color> b) {
+    std::vector<ogre::Color> b) {
   if (a.size() != b.size() * 4) {
     return ::testing::AssertionFailure()
            << "Color buffer length does not match";
@@ -169,8 +169,8 @@ inline ::testing::AssertionResult ColorBufferNear(
   return ::testing::AssertionSuccess();
 }
 
-inline ::testing::AssertionResult ColorsNear(std::vector<impeller::Color> a,
-                                             std::vector<impeller::Color> b) {
+inline ::testing::AssertionResult ColorsNear(std::vector<ogre::Color> a,
+                                             std::vector<ogre::Color> b) {
   if (a.size() != b.size()) {
     return ::testing::AssertionFailure() << "Colors length does not match";
   }
@@ -210,4 +210,4 @@ inline ::testing::AssertionResult ColorsNear(std::vector<impeller::Color> a,
 #define EXPECT_COLOR_BUFFER_NEAR(a, b) EXPECT_PRED2(&::ColorBufferNear, a, b)
 #define EXPECT_COLORS_NEAR(a, b) EXPECT_PRED2(&::ColorsNear, a, b)
 
-#endif  // FLUTTER_IMPELLER_GEOMETRY_GEOMETRY_ASSERTS_H_
+#endif  // FLUTTER_OGRE_GEOMETRY_GEOMETRY_ASSERTS_H_

@@ -4,8 +4,8 @@
 
 #include "base/promise.h"
 
-namespace impeller {
+namespace ogre {
 
 //
 
-}  // namespace impeller
+}  // namespace ogre

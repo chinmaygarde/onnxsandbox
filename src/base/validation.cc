@@ -8,7 +8,7 @@
 
 #include "fml/logging.h"
 
-namespace impeller {
+namespace ogre {
 
 static std::atomic_int32_t sValidationLogsDisabledCount = 0;
 static std::atomic_int32_t sValidationLogsAreFatal = 0;
@@ -72,4 +72,4 @@ bool ImpellerValidationErrorsAreFatal() {
   return sValidationLogsAreFatal;
 }
 
-}  // namespace impeller
+}  // namespace ogre

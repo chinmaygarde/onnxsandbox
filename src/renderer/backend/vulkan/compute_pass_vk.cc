@@ -11,7 +11,7 @@
 #include "renderer/backend/vulkan/texture_vk.h"
 #include "vulkan/vulkan_structs.hpp"
 
-namespace impeller {
+namespace ogre {
 
 ComputePassVK::ComputePassVK(std::shared_ptr<const Context> context,
                              std::shared_ptr<CommandBufferVK> command_buffer)
@@ -41,10 +41,10 @@ void ComputePassVK::OnSetLabel(const std::string& label) {
 
 // |RenderPass|
 void ComputePassVK::SetCommandLabel(std::string_view label) {
-#ifdef IMPELLER_DEBUG
+#ifdef OGRE_DEBUG
   command_buffer_->PushDebugGroup(label);
   has_label_ = true;
-#endif  // IMPELLER_DEBUG
+#endif  // OGRE_DEBUG
 }
 
 // |ComputePass|
@@ -115,12 +115,12 @@ fml::Status ComputePassVK::Compute(const ISize& grid_size) {
     command_buffer_vk.dispatch(width, height, 1);
   }
 
-#ifdef IMPELLER_DEBUG
+#ifdef OGRE_DEBUG
   if (has_label_) {
     command_buffer_->PopDebugGroup();
   }
   has_label_ = false;
-#endif  // IMPELLER_DEBUG
+#endif  // OGRE_DEBUG
 
   bound_image_offset_ = 0u;
   bound_buffer_offset_ = 0u;
@@ -261,4 +261,4 @@ bool ComputePassVK::EncodeCommands() const {
   return true;
 }
 
-}  // namespace impeller
+}  // namespace ogre

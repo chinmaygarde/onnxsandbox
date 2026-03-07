@@ -4,7 +4,7 @@
 
 #include "geometry/wangs_formula.h"
 
-namespace impeller {
+namespace ogre {
 
 namespace {
 
@@ -79,4 +79,4 @@ Scalar ComputeConicSubdivisions(Scalar scale_factor,
   return std::sqrt(numer / denom);
 }
 
-}  // namespace impeller
+}  // namespace ogre
