@@ -6,6 +6,8 @@ add_library(onnx_sandbox
   vk_connection.h
 )
 
+target_link_libraries(onnx_sandbox PUBLIC fml)
+
 # Configure Fixtures Location
 get_filename_component(TEST_ASSETS_LOCATION ../assets ABSOLUTE)
 configure_file(fixtures_location.h.in fixtures_location.h @ONLY)
@@ -47,3 +49,7 @@ target_include_directories(onnx_sandbox_tests
     ${CMAKE_CURRENT_BINARY_DIR}
 )
 gtest_discover_tests(onnx_sandbox_tests)
+
+add_subdirectory(base)
+add_subdirectory(fml)
+
