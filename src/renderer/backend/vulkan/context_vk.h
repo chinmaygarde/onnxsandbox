@@ -36,7 +36,6 @@ class CommandPoolRecycler;
 class DebugReport;
 class FenceWaiter;
 class ResourceManager;
-class SurfaceContext;
 class GPUTracer;
 class DescriptorPoolRecycler;
 class CommandQueue;
@@ -180,8 +179,6 @@ class ContextVK final : public Context,
 
   const std::shared_ptr<fml::ConcurrentTaskRunner>
   GetConcurrentWorkerTaskRunner() const;
-
-  std::shared_ptr<SurfaceContext> CreateSurfaceContext();
 
   const std::shared_ptr<QueueVK>& GetGraphicsQueue() const;
 

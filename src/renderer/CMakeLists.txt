@@ -97,8 +97,6 @@ add_library(renderer
   backend/vulkan/shader_library_vk.h
   backend/vulkan/shared_object_vk.cc
   backend/vulkan/shared_object_vk.h
-  backend/vulkan/surface_context_vk.cc
-  backend/vulkan/surface_context_vk.h
   backend/vulkan/swapchain/khr/khr_swapchain_image_vk.cc
   backend/vulkan/swapchain/khr/khr_swapchain_image_vk.h
   backend/vulkan/swapchain/khr/khr_swapchain_impl_vk.cc

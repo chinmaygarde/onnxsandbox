@@ -39,7 +39,6 @@
 #include "renderer/backend/vulkan/fence_waiter_vk.h"
 #include "renderer/backend/vulkan/gpu_tracer_vk.h"
 #include "renderer/backend/vulkan/resource_manager_vk.h"
-#include "renderer/backend/vulkan/surface_context_vk.h"
 #include "renderer/backend/vulkan/tracked_objects_vk.h"
 #include "renderer/backend/vulkan/yuv_conversion_library_vk.h"
 
@@ -608,10 +607,6 @@ void ContextVK::Shutdown() {
   resource_manager_.reset();
 
   raster_message_loop_->Terminate();
-}
-
-std::shared_ptr<SurfaceContext> ContextVK::CreateSurfaceContext() {
-  return std::make_shared<SurfaceContext>(shared_from_this());
 }
 
 const std::shared_ptr<const Capabilities>& ContextVK::GetCapabilities() const {
