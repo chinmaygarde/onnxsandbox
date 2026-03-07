@@ -9,7 +9,7 @@
 
 namespace ogre {
 
-DebugReport::DebugReport(const CapabilitiesVK& caps,
+DebugReport::DebugReport(const Capabilities& caps,
                          const vk::Instance& instance) {
   if (!caps.AreValidationsEnabled()) {
     is_valid_ = true;

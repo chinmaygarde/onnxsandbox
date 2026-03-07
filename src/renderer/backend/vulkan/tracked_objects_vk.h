@@ -31,7 +31,7 @@ class TrackedObjectsVK {
 
   void Track(const std::shared_ptr<const DeviceBuffer>& buffer);
 
-  void Track(const std::shared_ptr<const TextureSourceVK>& texture);
+  void Track(const std::shared_ptr<const TextureSource>& texture);
 
   vk::CommandBuffer GetCommandBuffer() const;
 
@@ -46,7 +46,7 @@ class TrackedObjectsVK {
   vk::UniqueCommandBuffer buffer_;
   std::vector<std::shared_ptr<SharedObjectVK>> tracked_objects_;
   std::vector<std::shared_ptr<const DeviceBuffer>> tracked_buffers_;
-  std::vector<std::shared_ptr<const TextureSourceVK>> tracked_textures_;
+  std::vector<std::shared_ptr<const TextureSource>> tracked_textures_;
   std::unique_ptr<GPUProbe> probe_;
   bool is_valid_ = false;
 

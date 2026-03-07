@@ -30,9 +30,9 @@ struct FramebufferAndRenderPass {
 ///             implementations represent swapchain images, uploaded textures,
 ///             Android Hardware Buffer backend textures, etc...
 ///
-class TextureSourceVK {
+class TextureSource {
  public:
-  virtual ~TextureSourceVK();
+  virtual ~TextureSource();
 
   //----------------------------------------------------------------------------
   /// @brief      Gets the texture descriptor for this image source.
@@ -103,7 +103,7 @@ class TextureSourceVK {
   vk::ImageLayout SetLayoutWithoutEncoding(vk::ImageLayout layout) const;
 
   //----------------------------------------------------------------------------
-  /// @brief      Get the last layout assigned to the TextureSourceVK.
+  /// @brief      Get the last layout assigned to the TextureSource.
   ///
   ///             This value is synchronized with the GPU via SetLayout so it
   ///             may not reflect the actual layout.
@@ -151,7 +151,7 @@ class TextureSourceVK {
  protected:
   const TextureDescriptor desc_;
 
-  explicit TextureSourceVK(TextureDescriptor desc);
+  explicit TextureSource(TextureDescriptor desc);
 
  private:
   std::array<FramebufferAndRenderPass, 2> frame_data_;

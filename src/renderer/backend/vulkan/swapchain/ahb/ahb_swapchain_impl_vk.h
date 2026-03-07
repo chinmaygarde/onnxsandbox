@@ -120,12 +120,12 @@ class AHBSwapchainImplVK final
   std::weak_ptr<android::SurfaceControl> surface_control_;
   android::HardwareBufferDescriptor desc_;
   std::shared_ptr<AHBTexturePoolVK> pool_;
-  std::shared_ptr<SwapchainTransientsVK> transients_;
+  std::shared_ptr<SwapchainTransients> transients_;
 
   // In C++20, this mutex can be replaced by the shared pointer specialization
   // of std::atomic.
   Mutex currently_displayed_texture_mutex_;
-  std::shared_ptr<AHBTextureSourceVK> currently_displayed_texture_
+  std::shared_ptr<AHBTextureSource> currently_displayed_texture_
       IPLR_GUARDED_BY(currently_displayed_texture_mutex_);
 
   std::vector<std::unique_ptr<AHBFrameSynchronizerVK>> frame_data_;
@@ -140,20 +140,20 @@ class AHBSwapchainImplVK final
       const ISize& size,
       bool enable_msaa);
 
-  bool Present(const std::shared_ptr<AHBTextureSourceVK>& texture);
+  bool Present(const std::shared_ptr<AHBTextureSource>& texture);
 
   vk::UniqueSemaphore CreateRenderReadySemaphore(
       const std::shared_ptr<fml::UniqueFD>& fd) const;
 
   bool ImportRenderReady(
       const std::shared_ptr<fml::UniqueFD>& render_ready_fence,
-      const std::shared_ptr<AHBTextureSourceVK>& texture);
+      const std::shared_ptr<AHBTextureSource>& texture);
 
   std::shared_ptr<ExternalSemaphoreVK> SubmitSignalForPresentReady(
-      const std::shared_ptr<AHBTextureSourceVK>& texture) const;
+      const std::shared_ptr<AHBTextureSource>& texture) const;
 
   void OnTextureUpdatedOnSurfaceControl(
-      std::shared_ptr<AHBTextureSourceVK> texture,
+      std::shared_ptr<AHBTextureSource> texture,
       ASurfaceTransactionStats* stats);
 };
 

@@ -9,11 +9,11 @@
 
 namespace ogre {
 
-class CapabilitiesVK;
+class Capabilities;
 
 class DebugReport {
  public:
-  DebugReport(const CapabilitiesVK& caps, const vk::Instance& instance);
+  DebugReport(const Capabilities& caps, const vk::Instance& instance);
 
   ~DebugReport();
 

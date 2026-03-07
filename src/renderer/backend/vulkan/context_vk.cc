@@ -54,7 +54,7 @@ bool HasValidationLayers() {
 }
 
 static std::optional<vk::PhysicalDevice> PickPhysicalDevice(
-    const CapabilitiesVK& caps,
+    const Capabilities& caps,
     const vk::Instance& instance) {
   for (const auto& device : instance.enumeratePhysicalDevices().value) {
     if (caps.GetEnabledDeviceFeatures(device).has_value()) {
@@ -164,7 +164,7 @@ void ContextVK::Setup(Settings settings) {
     embedder_instance_extensions = settings.embedder_data->instance_extensions;
     embedder_device_extensions = settings.embedder_data->device_extensions;
   }
-  auto caps = std::shared_ptr<CapabilitiesVK>(new CapabilitiesVK(
+  auto caps = std::shared_ptr<Capabilities>(new Capabilities(
       settings.enable_validation,                                      //
       settings.fatal_missing_validations,                              //
       /*use_embedder_extensions=*/settings.embedder_data.has_value(),  //
@@ -507,7 +507,7 @@ void ContextVK::Setup(Settings settings) {
 }
 
 void ContextVK::SetOffscreenFormat(PixelFormat pixel_format) {
-  const_cast<CapabilitiesVK&>(*device_capabilities_)
+  const_cast<Capabilities&>(*device_capabilities_)
       .SetOffscreenFormat(pixel_format);
 }
 
@@ -614,8 +614,7 @@ std::shared_ptr<SurfaceContext> ContextVK::CreateSurfaceContext() {
   return std::make_shared<SurfaceContext>(shared_from_this());
 }
 
-const std::shared_ptr<const CapabilitiesVK>& ContextVK::GetCapabilities()
-    const {
+const std::shared_ptr<const Capabilities>& ContextVK::GetCapabilities() const {
   return device_capabilities_;
 }
 

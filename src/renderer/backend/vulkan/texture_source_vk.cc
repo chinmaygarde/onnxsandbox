@@ -6,30 +6,30 @@
 
 namespace ogre {
 
-TextureSourceVK::TextureSourceVK(TextureDescriptor desc) : desc_(desc) {}
+TextureSource::TextureSource(TextureDescriptor desc) : desc_(desc) {}
 
-TextureSourceVK::~TextureSourceVK() = default;
+TextureSource::~TextureSource() = default;
 
-const TextureDescriptor& TextureSourceVK::GetTextureDescriptor() const {
+const TextureDescriptor& TextureSource::GetTextureDescriptor() const {
   return desc_;
 }
 
-std::shared_ptr<YUVConversionVK> TextureSourceVK::GetYUVConversion() const {
+std::shared_ptr<YUVConversionVK> TextureSource::GetYUVConversion() const {
   return nullptr;
 }
 
-vk::ImageLayout TextureSourceVK::GetLayout() const {
+vk::ImageLayout TextureSource::GetLayout() const {
   return layout_;
 }
 
-vk::ImageLayout TextureSourceVK::SetLayoutWithoutEncoding(
+vk::ImageLayout TextureSource::SetLayoutWithoutEncoding(
     vk::ImageLayout layout) const {
   const auto old_layout = layout_;
   layout_ = layout;
   return old_layout;
 }
 
-fml::Status TextureSourceVK::SetLayout(const Barrier& barrier) const {
+fml::Status TextureSource::SetLayout(const Barrier& barrier) const {
   const vk::ImageLayout old_layout =
       SetLayoutWithoutEncoding(barrier.new_layout);
   vk::ImageMemoryBarrier image_barrier;
@@ -58,12 +58,12 @@ fml::Status TextureSourceVK::SetLayout(const Barrier& barrier) const {
   return {};
 }
 
-void TextureSourceVK::SetCachedFrameData(const FramebufferAndRenderPass& data,
-                                         SampleCount sample_count) {
+void TextureSource::SetCachedFrameData(const FramebufferAndRenderPass& data,
+                                       SampleCount sample_count) {
   frame_data_[static_cast<int>(sample_count) / 4] = data;
 }
 
-const FramebufferAndRenderPass& TextureSourceVK::GetCachedFrameData(
+const FramebufferAndRenderPass& TextureSource::GetCachedFrameData(
     SampleCount sample_count) const {
   return frame_data_[static_cast<int>(sample_count) / 4];
 }

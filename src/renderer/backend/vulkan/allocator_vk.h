@@ -82,7 +82,7 @@ class Allocator final {
             const vk::PhysicalDevice& physical_device,
             const std::shared_ptr<DeviceHolderVK>& device_holder,
             const vk::Instance& instance,
-            const CapabilitiesVK& capabilities);
+            const Capabilities& capabilities);
 
   std::shared_ptr<DeviceBuffer> OnCreateBuffer(
       const DeviceBufferDescriptor& desc);

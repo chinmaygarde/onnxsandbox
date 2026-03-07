@@ -9,7 +9,7 @@ namespace ogre {
 KHRSwapchainImage::KHRSwapchainImage(TextureDescriptor desc,
                                      const vk::Device& device,
                                      vk::Image image)
-    : TextureSourceVK(desc), image_(image) {
+    : TextureSource(desc), image_(image) {
   vk::ImageViewCreateInfo view_info;
   view_info.image = image_;
   view_info.viewType = vk::ImageViewType::e2D;
@@ -35,22 +35,22 @@ bool KHRSwapchainImage::IsValid() const {
   return is_valid_;
 }
 
-// |TextureSourceVK|
+// |TextureSource|
 vk::Image KHRSwapchainImage::GetImage() const {
   return image_;
 }
 
-// |TextureSourceVK|
+// |TextureSource|
 vk::ImageView KHRSwapchainImage::GetImageView() const {
   return image_view_.get();
 }
 
-// |TextureSourceVK|
+// |TextureSource|
 vk::ImageView KHRSwapchainImage::GetRenderTargetView() const {
   return image_view_.get();
 }
 
-// |TextureSourceVK|
+// |TextureSource|
 bool KHRSwapchainImage::IsSwapchainImage() const {
   return true;
 }

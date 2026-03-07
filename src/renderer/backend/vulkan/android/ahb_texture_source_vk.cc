@@ -17,7 +17,7 @@ namespace ogre {
 
 namespace {
 
-using AHBProperties = AHBTextureSourceVK::AHBProperties;
+using AHBProperties = AHBTextureSource::AHBProperties;
 
 bool RequiresYCBCRConversion(vk::Format format) {
   switch (format) {
@@ -190,11 +190,10 @@ TextureDescriptor ToTextureDescriptor(const AHardwareBuffer_Desc& ahb_desc) {
 }
 }  // namespace
 
-AHBTextureSourceVK::AHBTextureSourceVK(
-    const std::shared_ptr<Context>& p_context,
-    struct AHardwareBuffer* ahb,
-    const AHardwareBuffer_Desc& ahb_desc)
-    : TextureSourceVK(ToTextureDescriptor(ahb_desc)) {
+AHBTextureSource::AHBTextureSource(const std::shared_ptr<Context>& p_context,
+                                   struct AHardwareBuffer* ahb,
+                                   const AHardwareBuffer_Desc& ahb_desc)
+    : TextureSource(ToTextureDescriptor(ahb_desc)) {
   if (!p_context) {
     return;
   }
@@ -279,54 +278,54 @@ AHBTextureSourceVK::AHBTextureSourceVK(
   is_valid_ = true;
 }
 
-AHBTextureSourceVK::AHBTextureSourceVK(
+AHBTextureSource::AHBTextureSource(
     const std::shared_ptr<Context>& context,
     std::unique_ptr<android::HardwareBuffer> backing_store,
     bool is_swapchain_image)
-    : AHBTextureSourceVK(context,
-                         backing_store->GetHandle(),
-                         backing_store->GetAndroidDescriptor()) {
+    : AHBTextureSource(context,
+                       backing_store->GetHandle(),
+                       backing_store->GetAndroidDescriptor()) {
   backing_store_ = std::move(backing_store);
   is_swapchain_image_ = is_swapchain_image;
 }
 
-// |TextureSourceVK|
-AHBTextureSourceVK::~AHBTextureSourceVK() = default;
+// |TextureSource|
+AHBTextureSource::~AHBTextureSource() = default;
 
-bool AHBTextureSourceVK::IsValid() const {
+bool AHBTextureSource::IsValid() const {
   return is_valid_;
 }
 
-// |TextureSourceVK|
-vk::Image AHBTextureSourceVK::GetImage() const {
+// |TextureSource|
+vk::Image AHBTextureSource::GetImage() const {
   return image_.get();
 }
 
-// |TextureSourceVK|
-vk::ImageView AHBTextureSourceVK::GetImageView() const {
+// |TextureSource|
+vk::ImageView AHBTextureSource::GetImageView() const {
   return image_view_.get();
 }
 
-// |TextureSourceVK|
-vk::ImageView AHBTextureSourceVK::GetRenderTargetView() const {
+// |TextureSource|
+vk::ImageView AHBTextureSource::GetRenderTargetView() const {
   return image_view_.get();
 }
 
-// |TextureSourceVK|
-bool AHBTextureSourceVK::IsSwapchainImage() const {
+// |TextureSource|
+bool AHBTextureSource::IsSwapchainImage() const {
   return is_swapchain_image_;
 }
 
-// |TextureSourceVK|
-std::shared_ptr<YUVConversionVK> AHBTextureSourceVK::GetYUVConversion() const {
+// |TextureSource|
+std::shared_ptr<YUVConversionVK> AHBTextureSource::GetYUVConversion() const {
   return needs_yuv_conversion_ ? yuv_conversion_ : nullptr;
 }
 
-const android::HardwareBuffer* AHBTextureSourceVK::GetBackingStore() const {
+const android::HardwareBuffer* AHBTextureSource::GetBackingStore() const {
   return backing_store_.get();
 }
 
-vk::UniqueImage AHBTextureSourceVK::CreateVKImageWrapperForAndroidHarwareBuffer(
+vk::UniqueImage AHBTextureSource::CreateVKImageWrapperForAndroidHarwareBuffer(
     const vk::Device& device,
     const AHBProperties& ahb_props,
     const AHardwareBuffer_Desc& ahb_desc) {
@@ -399,7 +398,7 @@ vk::UniqueImage AHBTextureSourceVK::CreateVKImageWrapperForAndroidHarwareBuffer(
   return std::move(image.value);
 }
 
-AHBTextureSourceVK::ImageViewInfo AHBTextureSourceVK::CreateImageViewInfo(
+AHBTextureSource::ImageViewInfo AHBTextureSource::CreateImageViewInfo(
     const vk::Image& image,
     const std::shared_ptr<YUVConversionVK>& yuv_conversion_wrapper,
     const AHBProperties& ahb_props,

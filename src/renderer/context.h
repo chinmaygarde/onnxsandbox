@@ -17,7 +17,7 @@
 namespace ogre {
 
 class Allocator;
-class CapabilitiesVK;
+class Capabilities;
 class Context;
 class CommandBuffer;
 class CommandQueue;
@@ -128,7 +128,7 @@ class Context {
   ///
   /// @return     The capabilities. Can never be `nullptr` for a valid context.
   ///
-  virtual const std::shared_ptr<const CapabilitiesVK>& GetCapabilities()
+  virtual const std::shared_ptr<const Capabilities>& GetCapabilities()
       const = 0;
 
   // TODO(129920): Refactor and move to capabilities.

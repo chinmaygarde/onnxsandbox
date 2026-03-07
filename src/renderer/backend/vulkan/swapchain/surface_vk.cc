@@ -10,8 +10,8 @@
 namespace ogre {
 
 std::unique_ptr<SurfaceVK> SurfaceVK::WrapSwapchainImage(
-    const std::shared_ptr<SwapchainTransientsVK>& transients,
-    const std::shared_ptr<TextureSourceVK>& swapchain_image,
+    const std::shared_ptr<SwapchainTransients>& transients,
+    const std::shared_ptr<TextureSource>& swapchain_image,
     SwapCallback swap_callback) {
   if (!transients || !swapchain_image || !swap_callback) {
     return nullptr;

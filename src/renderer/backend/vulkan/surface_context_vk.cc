@@ -54,7 +54,7 @@ std::shared_ptr<CommandQueue> SurfaceContext::GetCommandQueue() const {
   return parent_->GetCommandQueue();
 }
 
-const std::shared_ptr<const CapabilitiesVK>& SurfaceContext::GetCapabilities()
+const std::shared_ptr<const Capabilities>& SurfaceContext::GetCapabilities()
     const {
   return parent_->GetCapabilities();
 }

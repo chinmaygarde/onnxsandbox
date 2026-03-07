@@ -20,17 +20,17 @@ namespace ogre {
 ///
 ///             The same textures are used for all swapchain images.
 ///
-class SwapchainTransientsVK {
+class SwapchainTransients {
  public:
-  explicit SwapchainTransientsVK(std::weak_ptr<Context> context,
-                                 TextureDescriptor desc,
-                                 bool enable_msaa);
+  explicit SwapchainTransients(std::weak_ptr<Context> context,
+                               TextureDescriptor desc,
+                               bool enable_msaa);
 
-  ~SwapchainTransientsVK();
+  ~SwapchainTransients();
 
-  SwapchainTransientsVK(const SwapchainTransientsVK&) = delete;
+  SwapchainTransients(const SwapchainTransients&) = delete;
 
-  SwapchainTransientsVK& operator=(const SwapchainTransientsVK&) = delete;
+  SwapchainTransients& operator=(const SwapchainTransients&) = delete;
 
   const std::weak_ptr<Context>& GetContext() const;
 

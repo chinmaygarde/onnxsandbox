@@ -25,8 +25,8 @@ class SurfaceVK final {
   ///
   ///        This creates the associated MSAA and depth+stencil texture.
   static std::unique_ptr<SurfaceVK> WrapSwapchainImage(
-      const std::shared_ptr<SwapchainTransientsVK>& transients,
-      const std::shared_ptr<TextureSourceVK>& swapchain_image,
+      const std::shared_ptr<SwapchainTransients>& transients,
+      const std::shared_ptr<TextureSource>& swapchain_image,
       SwapCallback swap_callback);
 
   ~SurfaceVK();

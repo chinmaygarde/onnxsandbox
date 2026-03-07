@@ -86,7 +86,7 @@ AHBSwapchainImplVK::AHBSwapchainImplVK(
   if (!pool_->IsValid()) {
     return;
   }
-  transients_ = std::make_shared<SwapchainTransientsVK>(
+  transients_ = std::make_shared<SwapchainTransients>(
       context, ToSwapchainTextureDescriptor(desc_), enable_msaa);
 
   for (auto i = 0u; i < kMaxPendingPresents; i++) {
@@ -173,7 +173,7 @@ std::unique_ptr<SurfaceVK> AHBSwapchainImplVK::AcquireNextDrawable() {
 }
 
 bool AHBSwapchainImplVK::Present(
-    const std::shared_ptr<AHBTextureSourceVK>& texture) {
+    const std::shared_ptr<AHBTextureSource>& texture) {
   auto control = surface_control_.lock();
   if (!control || !control->IsValid()) {
     VALIDATION_LOG << "Surface control died before swapchain image could be "
@@ -226,7 +226,7 @@ void AHBSwapchainImplVK::AddFinalCommandBuffer(
 
 std::shared_ptr<ExternalSemaphoreVK>
 AHBSwapchainImplVK::SubmitSignalForPresentReady(
-    const std::shared_ptr<AHBTextureSourceVK>& texture) const {
+    const std::shared_ptr<AHBTextureSource>& texture) const {
   auto context = transients_->GetContext().lock();
   if (!context) {
     return nullptr;
@@ -315,7 +315,7 @@ vk::UniqueSemaphore AHBSwapchainImplVK::CreateRenderReadySemaphore(
 
 bool AHBSwapchainImplVK::ImportRenderReady(
     const std::shared_ptr<fml::UniqueFD>& render_ready_fence,
-    const std::shared_ptr<AHBTextureSourceVK>& texture) {
+    const std::shared_ptr<AHBTextureSource>& texture) {
   auto context = transients_->GetContext().lock();
   if (!context) {
     return false;
@@ -339,7 +339,7 @@ bool AHBSwapchainImplVK::ImportRenderReady(
 }
 
 void AHBSwapchainImplVK::OnTextureUpdatedOnSurfaceControl(
-    std::shared_ptr<AHBTextureSourceVK> texture,
+    std::shared_ptr<AHBTextureSource> texture,
     ASurfaceTransactionStats* stats) {
   auto control = surface_control_.lock();
   if (!control) {

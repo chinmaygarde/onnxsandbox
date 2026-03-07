@@ -14,7 +14,7 @@
 namespace ogre {
 
 TextureVK::TextureVK(std::weak_ptr<Context> context,
-                     std::shared_ptr<TextureSourceVK> source)
+                     std::shared_ptr<TextureSource> source)
     : Texture(source->GetTextureDescriptor()),
       context_(std::move(context)),
       source_(std::move(source)) {
@@ -174,7 +174,7 @@ vk::ImageView TextureVK::GetImageView() const {
   return source_->GetImageView();
 }
 
-std::shared_ptr<const TextureSourceVK> TextureVK::GetTextureSource() const {
+std::shared_ptr<const TextureSource> TextureVK::GetTextureSource() const {
   return source_;
 }
 

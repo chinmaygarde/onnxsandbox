@@ -29,10 +29,10 @@ namespace ogre {
 class AHBTexturePoolVK {
  public:
   struct PoolEntry {
-    std::shared_ptr<AHBTextureSourceVK> texture;
+    std::shared_ptr<AHBTextureSource> texture;
     std::shared_ptr<fml::UniqueFD> render_ready_fence;
 
-    explicit PoolEntry(std::shared_ptr<AHBTextureSourceVK> p_item,
+    explicit PoolEntry(std::shared_ptr<AHBTextureSource> p_item,
                        fml::UniqueFD p_render_ready_fence = {})
         : texture(std::move(p_item)),
           render_ready_fence(std::make_shared<fml::UniqueFD>(
@@ -93,7 +93,7 @@ class AHBTexturePoolVK {
   ///
   /// @param[in]  texture  The texture to be returned to the pool.
   ///
-  void Push(std::shared_ptr<AHBTextureSourceVK> texture,
+  void Push(std::shared_ptr<AHBTextureSource> texture,
             fml::UniqueFD render_ready_fence);
 
  private:
@@ -103,7 +103,7 @@ class AHBTexturePoolVK {
   Mutex pool_mutex_;
   std::deque<PoolEntry> pool_ IPLR_GUARDED_BY(pool_mutex_);
 
-  std::shared_ptr<AHBTextureSourceVK> CreateTexture() const;
+  std::shared_ptr<AHBTextureSource> CreateTexture() const;
 };
 
 }  // namespace ogre

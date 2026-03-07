@@ -112,7 +112,7 @@ class ContextVK final : public Context,
   std::shared_ptr<CommandBuffer> CreateCommandBuffer() const override;
 
   // |Context|
-  const std::shared_ptr<const CapabilitiesVK>& GetCapabilities() const override;
+  const std::shared_ptr<const Capabilities>& GetCapabilities() const override;
 
   // |Context|
   virtual bool SubmitOnscreen(
@@ -256,7 +256,7 @@ class ContextVK final : public Context,
   std::shared_ptr<PipelineLibraryVK> pipeline_library_;
   std::shared_ptr<YUVConversionLibraryVK> yuv_conversion_library_;
   QueuesVK queues_;
-  std::shared_ptr<const CapabilitiesVK> device_capabilities_;
+  std::shared_ptr<const Capabilities> device_capabilities_;
   std::shared_ptr<FenceWaiter> fence_waiter_;
   std::shared_ptr<ResourceManager> resource_manager_;
   std::shared_ptr<DescriptorPoolRecycler> descriptor_pool_recycler_;

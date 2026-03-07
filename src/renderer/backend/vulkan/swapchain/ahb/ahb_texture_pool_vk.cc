@@ -34,7 +34,7 @@ AHBTexturePoolVK::PoolEntry AHBTexturePoolVK::Pop() {
   return PoolEntry{CreateTexture()};
 }
 
-void AHBTexturePoolVK::Push(std::shared_ptr<AHBTextureSourceVK> texture,
+void AHBTexturePoolVK::Push(std::shared_ptr<AHBTextureSource> texture,
                             fml::UniqueFD render_ready_fence) {
   if (!texture) {
     return;
@@ -43,7 +43,7 @@ void AHBTexturePoolVK::Push(std::shared_ptr<AHBTextureSourceVK> texture,
   pool_.push_back(PoolEntry{std::move(texture), std::move(render_ready_fence)});
 }
 
-std::shared_ptr<AHBTextureSourceVK> AHBTexturePoolVK::CreateTexture() const {
+std::shared_ptr<AHBTextureSource> AHBTexturePoolVK::CreateTexture() const {
   TRACE_EVENT0("ogre", "CreateSwapchainTexture");
   auto context = context_.lock();
   if (!context) {
@@ -59,7 +59,7 @@ std::shared_ptr<AHBTextureSourceVK> AHBTexturePoolVK::CreateTexture() const {
   }
 
   auto ahb_texture_source =
-      std::make_shared<AHBTextureSourceVK>(context, std::move(ahb), true);
+      std::make_shared<AHBTextureSource>(context, std::move(ahb), true);
   if (!ahb_texture_source->IsValid()) {
     VALIDATION_LOG << "Could not create hardware buffer texture source for "
                       "swapchain image of size: "

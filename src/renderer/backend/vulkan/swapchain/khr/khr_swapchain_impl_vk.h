@@ -72,7 +72,7 @@ class KHRSwapchainImpl final
   vk::UniqueSurfaceKHR surface_;
   vk::Format surface_format_ = vk::Format::eUndefined;
   vk::UniqueSwapchainKHR swapchain_;
-  std::shared_ptr<SwapchainTransientsVK> transients_;
+  std::shared_ptr<SwapchainTransients> transients_;
   std::vector<std::shared_ptr<KHRSwapchainImage>> images_;
   std::vector<std::unique_ptr<KHRFrameSynchronizer>> synchronizers_;
   std::vector<vk::UniqueSemaphore> present_semaphores_;

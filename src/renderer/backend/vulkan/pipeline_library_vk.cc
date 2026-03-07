@@ -19,7 +19,7 @@ namespace ogre {
 
 PipelineLibraryVK::PipelineLibraryVK(
     const std::shared_ptr<DeviceHolderVK>& device_holder,
-    std::shared_ptr<const CapabilitiesVK> caps,
+    std::shared_ptr<const Capabilities> caps,
     fml::UniqueFD cache_directory,
     std::shared_ptr<fml::ConcurrentTaskRunner> worker_task_runner)
     : device_holder_(device_holder),
@@ -183,12 +183,11 @@ PipelineFuture<PipelineDescriptor> PipelineLibraryVK::GetPipeline(
       return;
     }
 
-    promise->set_value(PipelineVK::Create(
-        descriptor,                  //
-        thiz->device_holder_.lock(), //
-        weak_this,                   //
-        next_key                     //
-        ));
+    promise->set_value(PipelineVK::Create(descriptor,                   //
+                                          thiz->device_holder_.lock(),  //
+                                          weak_this,                    //
+                                          next_key                      //
+                                          ));
   };
 
   if (async) {

@@ -20,7 +20,7 @@ namespace ogre {
 class TextureVK final : public Texture, public BackendCast<TextureVK, Texture> {
  public:
   TextureVK(std::weak_ptr<Context> context,
-            std::shared_ptr<TextureSourceVK> source);
+            std::shared_ptr<TextureSource> source);
 
   // |Texture|
   ~TextureVK() override;
@@ -37,7 +37,7 @@ class TextureVK final : public Texture, public BackendCast<TextureVK, Texture> {
 
   vk::ImageLayout GetLayout() const;
 
-  std::shared_ptr<const TextureSourceVK> GetTextureSource() const;
+  std::shared_ptr<const TextureSource> GetTextureSource() const;
 
   // |Texture|
   ISize GetSize() const override;
@@ -67,7 +67,7 @@ class TextureVK final : public Texture, public BackendCast<TextureVK, Texture> {
 
  private:
   std::weak_ptr<Context> context_;
-  std::shared_ptr<TextureSourceVK> source_;
+  std::shared_ptr<TextureSource> source_;
   bool has_validation_layers_ = false;
 
   // |Texture|

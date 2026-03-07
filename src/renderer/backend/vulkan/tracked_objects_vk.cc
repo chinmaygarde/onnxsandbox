@@ -61,7 +61,7 @@ void TrackedObjectsVK::Track(
 }
 
 void TrackedObjectsVK::Track(
-    const std::shared_ptr<const TextureSourceVK>& texture) {
+    const std::shared_ptr<const TextureSource>& texture) {
   if (!texture || (!tracked_textures_.empty() &&
                    texture.get() == tracked_textures_.back().get())) {
     return;

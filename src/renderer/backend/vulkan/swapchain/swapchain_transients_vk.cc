@@ -10,14 +10,14 @@
 
 namespace ogre {
 
-SwapchainTransientsVK::SwapchainTransientsVK(std::weak_ptr<Context> context,
-                                             TextureDescriptor desc,
-                                             bool enable_msaa)
+SwapchainTransients::SwapchainTransients(std::weak_ptr<Context> context,
+                                         TextureDescriptor desc,
+                                         bool enable_msaa)
     : context_(std::move(context)), desc_(desc), enable_msaa_(enable_msaa) {}
 
-SwapchainTransientsVK::~SwapchainTransientsVK() = default;
+SwapchainTransients::~SwapchainTransients() = default;
 
-const std::shared_ptr<Texture>& SwapchainTransientsVK::GetMSAATexture() {
+const std::shared_ptr<Texture>& SwapchainTransients::GetMSAATexture() {
   if (cached_msaa_texture_) {
     return cached_msaa_texture_;
   }
@@ -25,8 +25,7 @@ const std::shared_ptr<Texture>& SwapchainTransientsVK::GetMSAATexture() {
   return cached_msaa_texture_;
 }
 
-const std::shared_ptr<Texture>&
-SwapchainTransientsVK::GetDepthStencilTexture() {
+const std::shared_ptr<Texture>& SwapchainTransients::GetDepthStencilTexture() {
   if (cached_depth_stencil_) {
     return cached_depth_stencil_;
   }
@@ -34,7 +33,7 @@ SwapchainTransientsVK::GetDepthStencilTexture() {
   return cached_depth_stencil_;
 }
 
-std::shared_ptr<Texture> SwapchainTransientsVK::CreateMSAATexture() const {
+std::shared_ptr<Texture> SwapchainTransients::CreateMSAATexture() const {
   TRACE_EVENT0("ogre", __FUNCTION__);
   if (!enable_msaa_) {
     return nullptr;
@@ -59,7 +58,7 @@ std::shared_ptr<Texture> SwapchainTransientsVK::CreateMSAATexture() const {
   return texture;
 }
 
-std::shared_ptr<Texture> SwapchainTransientsVK::CreateDepthStencilTexture()
+std::shared_ptr<Texture> SwapchainTransients::CreateDepthStencilTexture()
     const {
   TRACE_EVENT0("ogre", __FUNCTION__);
   auto context = context_.lock();
@@ -89,11 +88,11 @@ std::shared_ptr<Texture> SwapchainTransientsVK::CreateDepthStencilTexture()
   return texture;
 }
 
-bool SwapchainTransientsVK::IsMSAAEnabled() const {
+bool SwapchainTransients::IsMSAAEnabled() const {
   return enable_msaa_;
 }
 
-const std::weak_ptr<Context>& SwapchainTransientsVK::GetContext() const {
+const std::weak_ptr<Context>& SwapchainTransients::GetContext() const {
   return context_;
 }
 

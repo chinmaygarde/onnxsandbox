@@ -19,11 +19,11 @@ namespace ogre {
 
 static constexpr const char* kInstanceLayer = "ImpellerInstance";
 
-CapabilitiesVK::CapabilitiesVK(bool enable_validations,
-                               bool fatal_missing_validations,
-                               bool use_embedder_extensions,
-                               std::vector<std::string> instance_extensions,
-                               std::vector<std::string> device_extensions)
+Capabilities::Capabilities(bool enable_validations,
+                           bool fatal_missing_validations,
+                           bool use_embedder_extensions,
+                           std::vector<std::string> instance_extensions,
+                           std::vector<std::string> device_extensions)
     : use_embedder_extensions_(use_embedder_extensions),
       embedder_instance_extensions_(std::move(instance_extensions)),
       embedder_device_extensions_(std::move(device_extensions)) {
@@ -73,18 +73,17 @@ CapabilitiesVK::CapabilitiesVK(bool enable_validations,
   is_valid_ = true;
 }
 
-CapabilitiesVK::~CapabilitiesVK() = default;
+Capabilities::~Capabilities() = default;
 
-bool CapabilitiesVK::IsValid() const {
+bool Capabilities::IsValid() const {
   return is_valid_;
 }
 
-bool CapabilitiesVK::AreValidationsEnabled() const {
+bool Capabilities::AreValidationsEnabled() const {
   return validations_enabled_;
 }
 
-std::optional<std::vector<std::string>> CapabilitiesVK::GetEnabledLayers()
-    const {
+std::optional<std::vector<std::string>> Capabilities::GetEnabledLayers() const {
   std::vector<std::string> required;
 
   if (validations_enabled_) {
@@ -96,7 +95,7 @@ std::optional<std::vector<std::string>> CapabilitiesVK::GetEnabledLayers()
 }
 
 std::optional<std::vector<std::string>>
-CapabilitiesVK::GetEnabledInstanceExtensions() const {
+Capabilities::GetEnabledInstanceExtensions() const {
   std::vector<std::string> required;
 
   // Surface and WSI extensions are optional; the context supports headless
@@ -239,7 +238,7 @@ static std::optional<std::set<std::string>> GetSupportedDeviceExtensions(
 }
 
 std::optional<std::vector<std::string>>
-CapabilitiesVK::GetEnabledDeviceExtensions(
+Capabilities::GetEnabledDeviceExtensions(
     const vk::PhysicalDevice& physical_device) const {
   std::set<std::string> exts;
 
@@ -374,9 +373,8 @@ static bool IsExtensionInList(const std::vector<std::string>& list,
   return std::find(list.begin(), list.end(), name) != list.end();
 }
 
-std::optional<CapabilitiesVK::PhysicalDeviceFeatures>
-CapabilitiesVK::GetEnabledDeviceFeatures(
-    const vk::PhysicalDevice& device) const {
+std::optional<Capabilities::PhysicalDeviceFeatures>
+Capabilities::GetEnabledDeviceFeatures(const vk::PhysicalDevice& device) const {
   if (!PhysicalDeviceSupportsRequiredFormats(device)) {
     VALIDATION_LOG << "Device doesn't support the required formats.";
     return std::nullopt;
@@ -468,7 +466,7 @@ CapabilitiesVK::GetEnabledDeviceFeatures(
   return required_chain;
 }
 
-bool CapabilitiesVK::HasLayer(const std::string& layer) const {
+bool Capabilities::HasLayer(const std::string& layer) const {
   for (const auto& [found_layer, exts] : exts_) {
     if (found_layer == layer) {
       return true;
@@ -477,7 +475,7 @@ bool CapabilitiesVK::HasLayer(const std::string& layer) const {
   return false;
 }
 
-bool CapabilitiesVK::HasExtension(const std::string& ext) const {
+bool Capabilities::HasExtension(const std::string& ext) const {
   for (const auto& [layer, exts] : exts_) {
     if (exts.find(ext) != exts.end()) {
       return true;
@@ -486,19 +484,19 @@ bool CapabilitiesVK::HasExtension(const std::string& ext) const {
   return false;
 }
 
-bool CapabilitiesVK::SupportsPrimitiveRestart() const {
+bool Capabilities::SupportsPrimitiveRestart() const {
   return has_primitive_restart_;
 }
 
-bool CapabilitiesVK::Supports32BitPrimitiveIndices() const {
+bool Capabilities::Supports32BitPrimitiveIndices() const {
   return true;
 }
 
-void CapabilitiesVK::SetOffscreenFormat(PixelFormat pixel_format) const {
+void Capabilities::SetOffscreenFormat(PixelFormat pixel_format) const {
   default_color_format_ = pixel_format;
 }
 
-bool CapabilitiesVK::SetPhysicalDevice(
+bool Capabilities::SetPhysicalDevice(
     const vk::PhysicalDevice& device,
     const PhysicalDeviceFeatures& enabled_features) {
   if (HasSuitableColorFormat(device, vk::Format::eR8G8B8A8Unorm)) {
@@ -637,119 +635,119 @@ bool CapabilitiesVK::SetPhysicalDevice(
 }
 
 // |Capabilities|
-bool CapabilitiesVK::SupportsOffscreenMSAA() const {
+bool Capabilities::SupportsOffscreenMSAA() const {
   return true;
 }
 
 // |Capabilities|
-bool CapabilitiesVK::SupportsImplicitResolvingMSAA() const {
+bool Capabilities::SupportsImplicitResolvingMSAA() const {
   return false;
 }
 
 // |Capabilities|
-bool CapabilitiesVK::SupportsSSBO() const {
+bool Capabilities::SupportsSSBO() const {
   return true;
 }
 
 // |Capabilities|
-bool CapabilitiesVK::SupportsTextureToTextureBlits() const {
+bool Capabilities::SupportsTextureToTextureBlits() const {
   return true;
 }
 
 // |Capabilities|
-bool CapabilitiesVK::SupportsFramebufferFetch() const {
+bool Capabilities::SupportsFramebufferFetch() const {
   return has_framebuffer_fetch_;
 }
 
 // |Capabilities|
-bool CapabilitiesVK::SupportsCompute() const {
+bool Capabilities::SupportsCompute() const {
   // Vulkan 1.1 requires support for compute.
   return true;
 }
 
 // |Capabilities|
-bool CapabilitiesVK::SupportsComputeSubgroups() const {
+bool Capabilities::SupportsComputeSubgroups() const {
   // Set by |SetPhysicalDevice|.
   return supports_compute_subgroups_;
 }
 
 // |Capabilities|
-bool CapabilitiesVK::SupportsReadFromResolve() const {
+bool Capabilities::SupportsReadFromResolve() const {
   return false;
 }
 
-bool CapabilitiesVK::SupportsDecalSamplerAddressMode() const {
+bool Capabilities::SupportsDecalSamplerAddressMode() const {
   return true;
 }
 
 // |Capabilities|
-bool CapabilitiesVK::SupportsDeviceTransientTextures() const {
+bool Capabilities::SupportsDeviceTransientTextures() const {
   return supports_device_transient_textures_;
 }
 
 // |Capabilities|
-PixelFormat CapabilitiesVK::GetDefaultColorFormat() const {
+PixelFormat Capabilities::GetDefaultColorFormat() const {
   return default_color_format_;
 }
 
 // |Capabilities|
-PixelFormat CapabilitiesVK::GetDefaultStencilFormat() const {
+PixelFormat Capabilities::GetDefaultStencilFormat() const {
   return default_stencil_format_;
 }
 
 // |Capabilities|
-PixelFormat CapabilitiesVK::GetDefaultDepthStencilFormat() const {
+PixelFormat Capabilities::GetDefaultDepthStencilFormat() const {
   return default_depth_stencil_format_;
 }
 
-const vk::PhysicalDeviceProperties&
-CapabilitiesVK::GetPhysicalDeviceProperties() const {
+const vk::PhysicalDeviceProperties& Capabilities::GetPhysicalDeviceProperties()
+    const {
   return device_properties_;
 }
 
-PixelFormat CapabilitiesVK::GetDefaultGlyphAtlasFormat() const {
+PixelFormat Capabilities::GetDefaultGlyphAtlasFormat() const {
   return PixelFormat::kR8UNormInt;
 }
 
-size_t CapabilitiesVK::GetMinimumUniformAlignment() const {
+size_t Capabilities::GetMinimumUniformAlignment() const {
   return minimum_uniform_alignment_;
 }
 
-size_t CapabilitiesVK::GetMinimumStorageBufferAlignment() const {
+size_t Capabilities::GetMinimumStorageBufferAlignment() const {
   return minimum_storage_alignment_;
 }
 
-bool CapabilitiesVK::NeedsPartitionedHostBuffer() const {
+bool Capabilities::NeedsPartitionedHostBuffer() const {
   return false;
 }
 
-bool CapabilitiesVK::HasExtension(RequiredCommonDeviceExtensionVK ext) const {
+bool Capabilities::HasExtension(RequiredCommonDeviceExtensionVK ext) const {
   return required_common_device_extensions_.find(ext) !=
          required_common_device_extensions_.end();
 }
 
-bool CapabilitiesVK::HasExtension(RequiredAndroidDeviceExtensionVK ext) const {
+bool Capabilities::HasExtension(RequiredAndroidDeviceExtensionVK ext) const {
   return required_android_device_extensions_.find(ext) !=
          required_android_device_extensions_.end();
 }
 
-bool CapabilitiesVK::HasExtension(OptionalDeviceExtensionVK ext) const {
+bool Capabilities::HasExtension(OptionalDeviceExtensionVK ext) const {
   return optional_device_extensions_.find(ext) !=
          optional_device_extensions_.end();
 }
 
-bool CapabilitiesVK::HasExtension(OptionalAndroidDeviceExtensionVK ext) const {
+bool Capabilities::HasExtension(OptionalAndroidDeviceExtensionVK ext) const {
   return optional_android_device_extensions_.find(ext) !=
          optional_android_device_extensions_.end();
 }
 
-bool CapabilitiesVK::SupportsTextureFixedRateCompression() const {
+bool Capabilities::SupportsTextureFixedRateCompression() const {
   return supports_texture_fixed_rate_compression_;
 }
 
 std::optional<vk::ImageCompressionFixedRateFlagBitsEXT>
-CapabilitiesVK::GetSupportedFRCRate(CompressionType compression_type,
-                                    const FRCFormatDescriptor& desc) const {
+Capabilities::GetSupportedFRCRate(CompressionType compression_type,
+                                  const FRCFormatDescriptor& desc) const {
   if (compression_type != CompressionType::kLossy) {
     return std::nullopt;
   }
@@ -800,24 +798,24 @@ CapabilitiesVK::GetSupportedFRCRate(CompressionType compression_type,
   return std::nullopt;
 }
 
-bool CapabilitiesVK::SupportsTriangleFan() const {
+bool Capabilities::SupportsTriangleFan() const {
   return has_triangle_fans_;
 }
 
-ISize CapabilitiesVK::GetMaximumRenderPassAttachmentSize() const {
+ISize Capabilities::GetMaximumRenderPassAttachmentSize() const {
   return max_render_pass_attachment_size_;
 }
 
-void CapabilitiesVK::ApplyWorkarounds(const WorkaroundsVK& workarounds) {
+void Capabilities::ApplyWorkarounds(const WorkaroundsVK& workarounds) {
   has_primitive_restart_ = !workarounds.slow_primitive_restart_performance;
   has_framebuffer_fetch_ = !workarounds.input_attachment_self_dependency_broken;
 }
 
-bool CapabilitiesVK::SupportsExternalSemaphoreExtensions() const {
+bool Capabilities::SupportsExternalSemaphoreExtensions() const {
   return supports_external_fence_and_semaphore_;
 }
 
-bool CapabilitiesVK::SupportsExtendedRangeFormats() const {
+bool Capabilities::SupportsExtendedRangeFormats() const {
   return false;
 }
 

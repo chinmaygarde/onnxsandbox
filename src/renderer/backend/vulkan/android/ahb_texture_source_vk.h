@@ -29,34 +29,34 @@ class ContextVK;
 ///             descriptors. The objects are meant to be used directly (either
 ///             as render targets or sources for sampling), not copied.
 ///
-class AHBTextureSourceVK final : public TextureSourceVK {
+class AHBTextureSource final : public TextureSource {
  public:
-  AHBTextureSourceVK(const std::shared_ptr<Context>& context,
-                     struct AHardwareBuffer* hardware_buffer,
-                     const AHardwareBuffer_Desc& hardware_buffer_desc);
+  AHBTextureSource(const std::shared_ptr<Context>& context,
+                   struct AHardwareBuffer* hardware_buffer,
+                   const AHardwareBuffer_Desc& hardware_buffer_desc);
 
-  AHBTextureSourceVK(const std::shared_ptr<Context>& context,
-                     std::unique_ptr<android::HardwareBuffer> backing_store,
-                     bool is_swapchain_image);
+  AHBTextureSource(const std::shared_ptr<Context>& context,
+                   std::unique_ptr<android::HardwareBuffer> backing_store,
+                   bool is_swapchain_image);
 
-  // |TextureSourceVK|
-  ~AHBTextureSourceVK() override;
+  // |TextureSource|
+  ~AHBTextureSource() override;
 
-  // |TextureSourceVK|
+  // |TextureSource|
   vk::Image GetImage() const override;
 
-  // |TextureSourceVK|
+  // |TextureSource|
   vk::ImageView GetImageView() const override;
 
-  // |TextureSourceVK|
+  // |TextureSource|
   vk::ImageView GetRenderTargetView() const override;
 
   bool IsValid() const;
 
-  // |TextureSourceVK|
+  // |TextureSource|
   bool IsSwapchainImage() const override;
 
-  // |TextureSourceVK|
+  // |TextureSource|
   std::shared_ptr<YUVConversionVK> GetYUVConversion() const override;
 
   const android::HardwareBuffer* GetBackingStore() const;
@@ -95,9 +95,9 @@ class AHBTextureSourceVK final : public TextureSourceVK {
   bool is_swapchain_image_ = false;
   bool is_valid_ = false;
 
-  AHBTextureSourceVK(const AHBTextureSourceVK&) = delete;
+  AHBTextureSource(const AHBTextureSource&) = delete;
 
-  AHBTextureSourceVK& operator=(const AHBTextureSourceVK&) = delete;
+  AHBTextureSource& operator=(const AHBTextureSource&) = delete;
 };
 
 }  // namespace ogre

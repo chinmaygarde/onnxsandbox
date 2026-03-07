@@ -103,7 +103,7 @@ Allocator::Allocator(std::weak_ptr<Context> context,
                      const vk::PhysicalDevice& physical_device,
                      const std::shared_ptr<DeviceHolderVK>& device_holder,
                      const vk::Instance& instance,
-                     const CapabilitiesVK& capabilities)
+                     const Capabilities& capabilities)
     : context_(std::move(context)), device_holder_(device_holder) {
   auto limits = physical_device.getProperties().limits;
   max_texture_size_.width = max_texture_size_.height =
@@ -339,14 +339,14 @@ static VmaAllocationCreateFlags ToVmaAllocationCreateFlags(StorageMode mode) {
   FML_UNREACHABLE();
 }
 
-class AllocatedTextureSourceVK final : public TextureSourceVK {
+class AllocatedTextureSource final : public TextureSource {
  public:
-  AllocatedTextureSourceVK(const ContextVK& context,
-                           const TextureDescriptor& desc,
-                           VmaAllocator allocator,
-                           vk::Device device,
-                           bool supports_memoryless_textures)
-      : TextureSourceVK(desc), resource_(context.GetResourceManager()) {
+  AllocatedTextureSource(const ContextVK& context,
+                         const TextureDescriptor& desc,
+                         VmaAllocator allocator,
+                         vk::Device device,
+                         bool supports_memoryless_textures)
+      : TextureSource(desc), resource_(context.GetResourceManager()) {
     FML_DCHECK(desc.format != PixelFormat::kUnknown);
     vk::StructureChain<vk::ImageCreateInfo, vk::ImageCompressionControlEXT>
         image_info_chain;
@@ -467,7 +467,7 @@ class AllocatedTextureSourceVK final : public TextureSourceVK {
     is_valid_ = true;
   }
 
-  ~AllocatedTextureSourceVK() = default;
+  ~AllocatedTextureSource() = default;
 
   bool IsValid() const { return is_valid_; }
 
@@ -514,9 +514,9 @@ class AllocatedTextureSourceVK final : public TextureSourceVK {
   UniqueResourceVKT<ImageResource> resource_;
   bool is_valid_ = false;
 
-  AllocatedTextureSourceVK(const AllocatedTextureSourceVK&) = delete;
+  AllocatedTextureSource(const AllocatedTextureSource&) = delete;
 
-  AllocatedTextureSourceVK& operator=(const AllocatedTextureSourceVK&) = delete;
+  AllocatedTextureSource& operator=(const AllocatedTextureSource&) = delete;
 };
 
 std::shared_ptr<Texture> Allocator::OnCreateTexture(
@@ -533,13 +533,13 @@ std::shared_ptr<Texture> Allocator::OnCreateTexture(
   if (!context) {
     return nullptr;
   }
-  auto source = std::make_shared<AllocatedTextureSourceVK>(
-      ContextVK::Cast(*context),     //
-      desc,                          //
-      allocator_.get(),              //
-      device_holder->GetDevice(),    //
-      supports_memoryless_textures_  //
-  );
+  auto source =
+      std::make_shared<AllocatedTextureSource>(ContextVK::Cast(*context),     //
+                                               desc,                          //
+                                               allocator_.get(),              //
+                                               device_holder->GetDevice(),    //
+                                               supports_memoryless_textures_  //
+      );
   if (!source->IsValid()) {
     return nullptr;
   }

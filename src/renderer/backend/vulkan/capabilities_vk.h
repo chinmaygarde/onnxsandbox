@@ -124,7 +124,7 @@ enum class OptionalAndroidDeviceExtensionVK : uint32_t {
 ///             assume availability and must check if these extensions are
 ///             available.
 ///
-/// @see        `CapabilitiesVK::HasExtension`.
+/// @see        `Capabilities::HasExtension`.
 ///
 enum class OptionalDeviceExtensionVK : uint32_t {
   //----------------------------------------------------------------------------
@@ -175,15 +175,15 @@ struct FRCFormatDescriptor {
 //------------------------------------------------------------------------------
 /// @brief      The Vulkan layers and extensions wrangler.
 ///
-class CapabilitiesVK final {
+class Capabilities final {
  public:
-  explicit CapabilitiesVK(bool enable_validations,
-                          bool fatal_missing_validations = false,
-                          bool use_embedder_extensions = false,
-                          std::vector<std::string> instance_extensions = {},
-                          std::vector<std::string> device_extensions = {});
+  explicit Capabilities(bool enable_validations,
+                        bool fatal_missing_validations = false,
+                        bool use_embedder_extensions = false,
+                        std::vector<std::string> instance_extensions = {},
+                        std::vector<std::string> device_extensions = {});
 
-  ~CapabilitiesVK();
+  ~Capabilities();
 
   bool IsValid() const;
 
@@ -350,9 +350,9 @@ class CapabilitiesVK final {
 
   bool HasLayer(const std::string& layer) const;
 
-  CapabilitiesVK(const CapabilitiesVK&) = delete;
+  Capabilities(const Capabilities&) = delete;
 
-  CapabilitiesVK& operator=(const CapabilitiesVK&) = delete;
+  Capabilities& operator=(const Capabilities&) = delete;
 };
 
 }  // namespace ogre

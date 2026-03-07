@@ -13,7 +13,6 @@
 #include "base/thread.h"
 #include "base/thread_safety.h"
 #include "fml/concurrent_message_loop.h"
-#include "renderer/compute_pipeline_descriptor.h"
 #include "fml/unique_fd.h"
 #include "renderer/backend/vulkan/capabilities_vk.h"
 #include "renderer/backend/vulkan/compute_pipeline_vk.h"
@@ -21,6 +20,7 @@
 #include "renderer/backend/vulkan/pipeline_cache_vk.h"
 #include "renderer/backend/vulkan/pipeline_vk.h"
 #include "renderer/backend/vulkan/vk.h"
+#include "renderer/compute_pipeline_descriptor.h"
 #include "renderer/pipeline.h"
 #include "renderer/pipeline_compile_queue.h"
 #include "renderer/pipeline_descriptor.h"
@@ -61,10 +61,9 @@ class PipelineLibraryVK final
       std::optional<ComputePipelineDescriptor> descriptor,
       bool async = true);
 
-  PipelineFuture<PipelineDescriptor> GetPipeline(
-      PipelineDescriptor descriptor,
-      bool async = true,
-      bool threadsafe = false);
+  PipelineFuture<PipelineDescriptor> GetPipeline(PipelineDescriptor descriptor,
+                                                 bool async = true,
+                                                 bool threadsafe = false);
 
   PipelineFuture<ComputePipelineDescriptor> GetPipeline(
       ComputePipelineDescriptor descriptor,
@@ -115,7 +114,7 @@ class PipelineLibraryVK final
 
   PipelineLibraryVK(
       const std::shared_ptr<DeviceHolderVK>& device_holder,
-      std::shared_ptr<const CapabilitiesVK> caps,
+      std::shared_ptr<const Capabilities> caps,
       fml::UniqueFD cache_directory,
       std::shared_ptr<fml::ConcurrentTaskRunner> worker_task_runner);
 

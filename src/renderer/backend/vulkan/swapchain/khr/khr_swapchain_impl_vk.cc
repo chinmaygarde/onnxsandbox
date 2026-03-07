@@ -263,8 +263,8 @@ KHRSwapchainImpl::KHRSwapchainImpl(const std::shared_ptr<Context>& context,
   surface_ = std::move(surface);
   surface_format_ = swapchain_info.imageFormat;
   swapchain_ = std::move(swapchain);
-  transients_ = std::make_shared<SwapchainTransientsVK>(context, texture_desc,
-                                                        enable_msaa);
+  transients_ =
+      std::make_shared<SwapchainTransients>(context, texture_desc, enable_msaa);
   images_ = std::move(swapchain_images);
   synchronizers_ = std::move(synchronizers);
   present_semaphores_ = std::move(present_semaphores);

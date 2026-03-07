@@ -25,7 +25,7 @@ class RenderPassVK;
 class RenderTarget;
 class SharedObjectVK;
 class Texture;
-class TextureSourceVK;
+class TextureSource;
 class TrackedObjectsVK;
 
 class CommandBuffer final : public std::enable_shared_from_this<CommandBuffer> {
@@ -71,7 +71,7 @@ class CommandBuffer final : public std::enable_shared_from_this<CommandBuffer> {
 
   /// @brief Ensure that [texture] is kept alive until this command buffer
   ///        completes execution.
-  bool Track(const std::shared_ptr<const TextureSourceVK>& texture);
+  bool Track(const std::shared_ptr<const TextureSource>& texture);
 
   /// @brief Retrieve the native command buffer from this object.
   vk::CommandBuffer GetCommandBuffer() const;

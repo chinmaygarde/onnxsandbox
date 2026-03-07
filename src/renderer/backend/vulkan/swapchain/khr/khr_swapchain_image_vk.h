@@ -12,27 +12,27 @@
 
 namespace ogre {
 
-class KHRSwapchainImage final : public TextureSourceVK {
+class KHRSwapchainImage final : public TextureSource {
  public:
   KHRSwapchainImage(TextureDescriptor desc,
                     const vk::Device& device,
                     vk::Image image);
 
-  // |TextureSourceVK|
+  // |TextureSource|
   ~KHRSwapchainImage() override;
 
   bool IsValid() const;
 
-  // |TextureSourceVK|
+  // |TextureSource|
   vk::Image GetImage() const override;
 
-  // |TextureSourceVK|
+  // |TextureSource|
   vk::ImageView GetImageView() const override;
 
-  // |TextureSourceVK|
+  // |TextureSource|
   vk::ImageView GetRenderTargetView() const override;
 
-  // |TextureSourceVK|
+  // |TextureSource|
   bool IsSwapchainImage() const override;
 
  private:

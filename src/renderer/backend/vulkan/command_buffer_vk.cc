@@ -139,8 +139,7 @@ bool CommandBuffer::Track(const std::shared_ptr<const DeviceBuffer>& buffer) {
   return true;
 }
 
-bool CommandBuffer::Track(
-    const std::shared_ptr<const TextureSourceVK>& texture) {
+bool CommandBuffer::Track(const std::shared_ptr<const TextureSource>& texture) {
   if (!IsValid()) {
     return false;
   }

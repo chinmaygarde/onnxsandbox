@@ -15,7 +15,7 @@
 
 namespace ogre {
 
-PipelineCacheVK::PipelineCacheVK(std::shared_ptr<const CapabilitiesVK> caps,
+PipelineCacheVK::PipelineCacheVK(std::shared_ptr<const Capabilities> caps,
                                  std::shared_ptr<DeviceHolderVK> device_holder,
                                  fml::UniqueFD cache_directory)
     : caps_(std::move(caps)),
@@ -122,7 +122,7 @@ void PipelineCacheVK::PersistCacheToDisk() {
   );
 }
 
-const CapabilitiesVK* PipelineCacheVK::GetCapabilities() const {
+const Capabilities* PipelineCacheVK::GetCapabilities() const {
   return caps_.get();
 }
 
