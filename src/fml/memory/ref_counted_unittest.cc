@@ -18,6 +18,11 @@
   _Pragma("clang diagnostic push")                                          \
       _Pragma("clang diagnostic ignored \"-Wpessimizing-move\"") code_line; \
   _Pragma("clang diagnostic pop")
+#elif defined(__GNUC__)
+#define ALLOW_PESSIMIZING_MOVE(code_line)                                 \
+  _Pragma("GCC diagnostic push")                                          \
+      _Pragma("GCC diagnostic ignored \"-Wpessimizing-move\"") code_line; \
+  _Pragma("GCC diagnostic pop")
 #else
 #define ALLOW_PESSIMIZING_MOVE(code_line) code_line;
 #endif
@@ -27,6 +32,11 @@
   _Pragma("clang diagnostic push")                                   \
       _Pragma("clang diagnostic ignored \"-Wself-move\"") code_line; \
   _Pragma("clang diagnostic pop")
+#elif defined(__GNUC__)
+#define ALLOW_SELF_MOVE(code_line)                                 \
+  _Pragma("GCC diagnostic push")                                   \
+      _Pragma("GCC diagnostic ignored \"-Wself-move\"") code_line; \
+  _Pragma("GCC diagnostic pop")
 #else
 #define ALLOW_SELF_MOVE(code_line) code_line;
 #endif
