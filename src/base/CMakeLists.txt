@@ -7,7 +7,6 @@ add_library(base
   comparable.cc
   comparable.h
   config.h
-  flags.h
   mask.h
   promise.cc
   promise.h

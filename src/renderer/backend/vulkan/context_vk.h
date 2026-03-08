@@ -4,13 +4,11 @@
 
 #pragma once
 
+#include <absl/log/check.h>
 #include <format>
 #include <memory>
 
-#include <absl/log/check.h>
-#include "base/flags.h"
 #include "base/thread_safety.h"
-
 #include "core/formats.h"
 #include "core/runtime_types.h"
 #include "fml/closure.h"
@@ -83,8 +81,6 @@ class Context final : public std::enable_shared_from_this<Context> {
     bool enable_surface_control = false;
     /// If validations are requested but cannot be enabled, log a fatal error.
     bool fatal_missing_validations = false;
-    Flags flags;
-
     std::optional<EmbedderData> embedder_data;
 
     Settings() = default;
@@ -231,8 +227,6 @@ class Context final : public std::enable_shared_from_this<Context> {
 
   void ResetThreadLocalState() const;
 
-  const Flags& GetFlags() const { return flags_; }
-
  private:
   struct DeviceHolderImpl : public DeviceHolder {
     // |DeviceHolder|
@@ -275,7 +269,7 @@ class Context final : public std::enable_shared_from_this<Context> {
   std::shared_ptr<CommandQueue> command_queue_vk_;
   std::shared_ptr<const IdleWaiter> idle_waiter_vk_;
   Workarounds workarounds_;
-  Flags flags_;
+
   std::vector<std::function<void()>> per_frame_task_;
 
   using DescriptorPoolMap =
@@ -292,7 +286,7 @@ class Context final : public std::enable_shared_from_this<Context> {
 
   bool is_valid_ = false;
 
-  explicit Context(const Flags& flags);
+  Context();
 
   void Setup(Settings settings);
 
