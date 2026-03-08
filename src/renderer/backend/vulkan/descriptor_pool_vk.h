@@ -35,9 +35,9 @@ using DescriptorCacheMap = std::unordered_map<PipelineKey, DescriptorCache>;
 ///             threading and lifecycle restrictions.
 class DescriptorPool {
  public:
-  explicit DescriptorPool(std::weak_ptr<const ContextVK> context);
+  explicit DescriptorPool(std::weak_ptr<const Context> context);
 
-  DescriptorPool(std::weak_ptr<const ContextVK> context,
+  DescriptorPool(std::weak_ptr<const Context> context,
                  DescriptorCacheMap descriptor_sets,
                  std::vector<vk::UniqueDescriptorPool> pools);
 
@@ -46,18 +46,18 @@ class DescriptorPool {
   fml::StatusOr<vk::DescriptorSet> AllocateDescriptorSets(
       const vk::DescriptorSetLayout& layout,
       PipelineKey pipeline_key,
-      const ContextVK& context_vk);
+      const Context& context_vk);
 
  private:
   friend class DescriptorPoolRecycler;
 
-  std::weak_ptr<const ContextVK> context_;
+  std::weak_ptr<const Context> context_;
   DescriptorCacheMap descriptor_sets_;
   std::vector<vk::UniqueDescriptorPool> pools_;
 
   void Destroy();
 
-  fml::Status CreateNewPool(const ContextVK& context_vk);
+  fml::Status CreateNewPool(const Context& context_vk);
 
   DescriptorPool(const DescriptorPool&) = delete;
 
@@ -75,10 +75,10 @@ class DescriptorPoolRecycler final
   /// The maximum number of descriptor pools this recycler will hold onto.
   static constexpr size_t kMaxRecycledPools = 32u;
 
-  /// @brief      Creates a recycler for the given |ContextVK|.
+  /// @brief      Creates a recycler for the given |Context|.
   ///
   /// @param[in]  context The context to create the recycler for.
-  explicit DescriptorPoolRecycler(std::weak_ptr<ContextVK> context)
+  explicit DescriptorPoolRecycler(std::weak_ptr<Context> context)
       : context_(std::move(context)) {}
 
   /// @brief      Gets a descriptor pool.
@@ -93,7 +93,7 @@ class DescriptorPoolRecycler final
                std::vector<vk::UniqueDescriptorPool> pools);
 
  private:
-  std::weak_ptr<ContextVK> context_;
+  std::weak_ptr<Context> context_;
 
   Mutex recycled_mutex_;
   std::vector<std::shared_ptr<DescriptorPool>> recycled_

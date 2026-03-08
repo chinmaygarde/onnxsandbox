@@ -10,6 +10,7 @@
 #include "core/runtime_types.h"
 #include "fml/concurrent_message_loop.h"
 #include "renderer/backend/vulkan/command_queue_vk.h"
+#include "renderer/backend/vulkan/pipeline_library_vk.h"
 #include "renderer/backend/vulkan/descriptor_pool_vk.h"
 #include "renderer/backend/vulkan/render_pass_builder_vk.h"
 #include "renderer/backend/vulkan/workarounds_vk.h"
@@ -100,8 +101,8 @@ static std::optional<QueueIndex> PickQueue(const vk::PhysicalDevice& device,
   return std::nullopt;
 }
 
-std::shared_ptr<ContextVK> ContextVK::Create(Settings settings) {
-  auto context = std::shared_ptr<ContextVK>(new ContextVK(settings.flags));
+std::shared_ptr<Context> Context::Create(Settings settings) {
+  auto context = std::shared_ptr<Context>(new Context(settings.flags));
   context->Setup(std::move(settings));
   if (!context->IsValid()) {
     return nullptr;
@@ -110,7 +111,7 @@ std::shared_ptr<ContextVK> ContextVK::Create(Settings settings) {
 }
 
 // static
-size_t ContextVK::ChooseThreadCountForWorkers(size_t hardware_concurrency) {
+size_t Context::ChooseThreadCountForWorkers(size_t hardware_concurrency) {
   // Never create more than 4 worker threads. Attempt to use up to
   // half of the available concurrency.
   return std::clamp(hardware_concurrency / 2ull, /*lo=*/1ull, /*hi=*/4ull);
@@ -123,10 +124,10 @@ uint64_t CalculateHash(void* ptr) {
 }
 }  // namespace
 
-ContextVK::ContextVK(const Flags& flags)
-    : Context(flags), hash_(CalculateHash(this)) {}
+Context::Context(const Flags& flags)
+    : flags_(flags), hash_(CalculateHash(this)) {}
 
-ContextVK::~ContextVK() {
+Context::~Context() {
   if (device_holder_ && device_holder_->device) {
     [[maybe_unused]] auto result = device_holder_->device->waitIdle();
   }
@@ -135,7 +136,7 @@ ContextVK::~ContextVK() {
   }
 }
 
-Context::BackendType ContextVK::GetBackendType() const {
+Context::BackendType Context::GetBackendType() const {
   return Context::BackendType::kVulkan;
 }
 
@@ -143,7 +144,7 @@ Context::BackendType ContextVK::GetBackendType() const {
 static constexpr uint32_t kImpellerEngineVersion =
     VK_MAKE_API_VERSION(0, 2, 0, 0);
 
-void ContextVK::Setup(Settings settings) {
+void Context::Setup(Settings settings) {
   TRACE_EVENT0("ogre", "ContextVK::Setup");
 
   if (!settings.proc_address_callback) {
@@ -505,37 +506,37 @@ void ContextVK::Setup(Settings settings) {
   SetDebugName(GetDevice(), device_holder_->device.get(), "ImpellerDevice");
 }
 
-void ContextVK::SetOffscreenFormat(PixelFormat pixel_format) {
+void Context::SetOffscreenFormat(PixelFormat pixel_format) {
   const_cast<Capabilities&>(*device_capabilities_)
       .SetOffscreenFormat(pixel_format);
 }
 
 // |Context|
-std::string ContextVK::DescribeGpuModel() const {
+std::string Context::DescribeGpuModel() const {
   return device_name_;
 }
 
-bool ContextVK::IsValid() const {
+bool Context::IsValid() const {
   return is_valid_;
 }
 
-std::shared_ptr<Allocator> ContextVK::GetResourceAllocator() const {
+std::shared_ptr<Allocator> Context::GetResourceAllocator() const {
   return allocator_;
 }
 
-std::shared_ptr<ShaderLibrary> ContextVK::GetShaderLibrary() const {
+std::shared_ptr<ShaderLibrary> Context::GetShaderLibrary() const {
   return shader_library_;
 }
 
-std::shared_ptr<SamplerLibrary> ContextVK::GetSamplerLibrary() const {
+std::shared_ptr<SamplerLibrary> Context::GetSamplerLibrary() const {
   return sampler_library_;
 }
 
-std::shared_ptr<PipelineLibrary> ContextVK::GetPipelineLibrary() const {
+std::shared_ptr<PipelineLibrary> Context::GetPipelineLibrary() const {
   return pipeline_library_;
 }
 
-std::shared_ptr<CommandBuffer> ContextVK::CreateCommandBuffer() const {
+std::shared_ptr<CommandBuffer> Context::CreateCommandBuffer() const {
   const auto& recycler = GetCommandPoolRecycler();
   auto tls_pool = recycler->Get();
   if (!tls_pool) {
@@ -584,20 +585,20 @@ std::shared_ptr<CommandBuffer> ContextVK::CreateCommandBuffer() const {
       ));
 }
 
-vk::Instance ContextVK::GetInstance() const {
+vk::Instance Context::GetInstance() const {
   return *device_holder_->instance;
 }
 
-const vk::Device& ContextVK::GetDevice() const {
+const vk::Device& Context::GetDevice() const {
   return device_holder_->device.get();
 }
 
 const std::shared_ptr<fml::ConcurrentTaskRunner>
-ContextVK::GetConcurrentWorkerTaskRunner() const {
+Context::GetConcurrentWorkerTaskRunner() const {
   return raster_message_loop_->GetTaskRunner();
 }
 
-void ContextVK::Shutdown() {
+void Context::Shutdown() {
   // There are multiple objects, for example |CommandPool|, that in their
   // destructors make a strong reference to |ContextVK|. Resetting these shared
   // pointers ensures that cleanup happens in a correct order.
@@ -609,44 +610,44 @@ void ContextVK::Shutdown() {
   raster_message_loop_->Terminate();
 }
 
-const std::shared_ptr<const Capabilities>& ContextVK::GetCapabilities() const {
+const std::shared_ptr<const Capabilities>& Context::GetCapabilities() const {
   return device_capabilities_;
 }
 
-const std::shared_ptr<Queue>& ContextVK::GetGraphicsQueue() const {
+const std::shared_ptr<Queue>& Context::GetGraphicsQueue() const {
   return queues_.graphics_queue;
 }
 
-vk::PhysicalDevice ContextVK::GetPhysicalDevice() const {
+vk::PhysicalDevice Context::GetPhysicalDevice() const {
   return device_holder_->physical_device;
 }
 
-std::shared_ptr<FenceWaiter> ContextVK::GetFenceWaiter() const {
+std::shared_ptr<FenceWaiter> Context::GetFenceWaiter() const {
   return fence_waiter_;
 }
 
-std::shared_ptr<ResourceManager> ContextVK::GetResourceManager() const {
+std::shared_ptr<ResourceManager> Context::GetResourceManager() const {
   return resource_manager_;
 }
 
-std::shared_ptr<CommandPoolRecycler> ContextVK::GetCommandPoolRecycler() const {
+std::shared_ptr<CommandPoolRecycler> Context::GetCommandPoolRecycler() const {
   return command_pool_recycler_;
 }
 
-std::shared_ptr<GPUTracer> ContextVK::GetGPUTracer() const {
+std::shared_ptr<GPUTracer> Context::GetGPUTracer() const {
   return gpu_tracer_;
 }
 
-std::shared_ptr<DescriptorPoolRecycler> ContextVK::GetDescriptorPoolRecycler()
+std::shared_ptr<DescriptorPoolRecycler> Context::GetDescriptorPoolRecycler()
     const {
   return descriptor_pool_recycler_;
 }
 
-std::shared_ptr<CommandQueue> ContextVK::GetCommandQueue() const {
+std::shared_ptr<CommandQueue> Context::GetCommandQueue() const {
   return command_queue_vk_;
 }
 
-bool ContextVK::EnqueueCommandBuffer(
+bool Context::EnqueueCommandBuffer(
     std::shared_ptr<CommandBuffer> command_buffer) {
   if (should_batch_cmd_buffers_) {
     pending_command_buffers_.push_back(std::move(command_buffer));
@@ -656,7 +657,7 @@ bool ContextVK::EnqueueCommandBuffer(
   }
 }
 
-bool ContextVK::FlushCommandBuffers() {
+bool Context::FlushCommandBuffers() {
   if (pending_command_buffers_.empty()) {
     return true;
   }
@@ -673,7 +674,7 @@ bool ContextVK::FlushCommandBuffers() {
 // Creating a render pass is observed to take an additional 6ms on a Pixel 7
 // device as the driver will lazily bootstrap and compile shaders to do so.
 // The render pass does not need to be begun or executed.
-void ContextVK::InitializeCommonlyUsedShadersIfNeeded() const {
+void Context::InitializeCommonlyUsedShadersIfNeeded() const {
   RenderTargetAllocator rt_allocator(GetResourceAllocator());
   RenderTarget render_target =
       rt_allocator.CreateOffscreenMSAA(*this, {1, 1}, 1);
@@ -713,7 +714,7 @@ void ContextVK::InitializeCommonlyUsedShadersIfNeeded() const {
   auto pass = builder.Build(GetDevice());
 }
 
-void ContextVK::DisposeThreadLocalCachedResources() {
+void Context::DisposeThreadLocalCachedResources() {
   {
     Lock lock(desc_pool_mutex_);
     cached_descriptor_pool_.erase(std::this_thread::get_id());
@@ -722,29 +723,41 @@ void ContextVK::DisposeThreadLocalCachedResources() {
 }
 
 const std::shared_ptr<YUVConversionLibrary>&
-ContextVK::GetYUVConversionLibrary() const {
+Context::GetYUVConversionLibrary() const {
   return yuv_conversion_library_;
 }
 
-const std::unique_ptr<DriverInfo>& ContextVK::GetDriverInfo() const {
+const std::unique_ptr<DriverInfo>& Context::GetDriverInfo() const {
   return driver_info_;
 }
 
-bool ContextVK::GetShouldEnableSurfaceControlSwapchain() const {
+bool Context::GetShouldEnableSurfaceControlSwapchain() const {
   return should_enable_surface_control_ &&
          device_capabilities_->SupportsExternalSemaphoreExtensions();
 }
 
-RuntimeStageBackend ContextVK::GetRuntimeStageBackend() const {
+RuntimeStageBackend Context::GetRuntimeStageBackend() const {
   return RuntimeStageBackend::kVulkan;
 }
 
-bool ContextVK::SubmitOnscreen(std::shared_ptr<CommandBuffer> cmd_buffer) {
+bool Context::SubmitOnscreen(std::shared_ptr<CommandBuffer> cmd_buffer) {
   return EnqueueCommandBuffer(std::move(cmd_buffer));
 }
 
-const Workarounds& ContextVK::GetWorkarounds() const {
+const Workarounds& Context::GetWorkarounds() const {
   return workarounds_;
+}
+
+bool Context::UpdateOffscreenLayerPixelFormat(PixelFormat format) {
+  return false;
+}
+
+bool Context::AddTrackingFence(const std::shared_ptr<Texture>& texture) const {
+  return false;
+}
+
+void Context::ResetThreadLocalState() const {
+  // Nothing to do.
 }
 
 }  // namespace ogre

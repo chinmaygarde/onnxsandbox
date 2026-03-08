@@ -83,7 +83,7 @@ vk::UniqueDeviceMemory ImportVKDeviceMemoryFromAndroidHarwareBuffer(
 }
 
 std::shared_ptr<YUVConversion> CreateYUVConversion(
-    const ContextVK& context,
+    const Context& context,
     const AHBProperties& ahb_props) {
   YUVConversionDescriptor conversion_chain;
 
@@ -198,7 +198,7 @@ AHBTextureSource::AHBTextureSource(const std::shared_ptr<Context>& p_context,
     return;
   }
 
-  const auto& context = ContextVK::Cast(*p_context);
+  const auto& context = (*p_context);
   const auto& device = context.GetDevice();
   const auto& physical_device = context.GetPhysicalDevice();
 

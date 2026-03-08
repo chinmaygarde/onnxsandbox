@@ -341,7 +341,7 @@ static VmaAllocationCreateFlags ToVmaAllocationCreateFlags(StorageMode mode) {
 
 class AllocatedTextureSource final : public TextureSource {
  public:
-  AllocatedTextureSource(const ContextVK& context,
+  AllocatedTextureSource(const Context& context,
                          const TextureDescriptor& desc,
                          VmaAllocator allocator,
                          vk::Device device,
@@ -534,7 +534,7 @@ std::shared_ptr<Texture> Allocator::OnCreateTexture(
     return nullptr;
   }
   auto source =
-      std::make_shared<AllocatedTextureSource>(ContextVK::Cast(*context),     //
+      std::make_shared<AllocatedTextureSource>((*context),     //
                                                desc,                          //
                                                allocator_.get(),              //
                                                device_holder->GetDevice(),    //

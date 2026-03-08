@@ -9,9 +9,9 @@
 #include <string>
 
 #include "fml/status.h"
+#include "renderer/backend/vulkan/context_vk.h"
 #include "renderer/backend/vulkan/pipeline_vk.h"
 #include "renderer/backend/vulkan/vk.h"
-#include "renderer/context.h"
 #include "renderer/resource_binder.h"
 
 namespace ogre {

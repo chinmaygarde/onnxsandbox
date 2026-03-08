@@ -10,9 +10,9 @@
 #include "fml/build_config.h"
 #include "geometry/size.h"
 #include "renderer/backend/vulkan/command_buffer_vk.h"
+#include "renderer/backend/vulkan/context_vk.h"
 #include "renderer/backend/vulkan/swapchain/surface_vk.h"
 #include "renderer/backend/vulkan/vk.h"
-#include "renderer/context.h"
 
 #if FML_OS_ANDROID
 #include "toolkit/android/native_window.h"

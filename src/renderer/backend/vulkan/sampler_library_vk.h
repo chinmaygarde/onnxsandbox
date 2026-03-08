@@ -22,7 +22,7 @@ class SamplerLibrary final {
   void ApplyWorkarounds(const Workarounds& workarounds);
 
  private:
-  friend class ContextVK;
+  friend class Context;
 
   std::weak_ptr<DeviceHolder> device_holder_;
   std::vector<std::pair<uint64_t, std::shared_ptr<const Sampler>>> samplers_;

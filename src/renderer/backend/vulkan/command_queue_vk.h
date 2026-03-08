@@ -14,13 +14,13 @@
 
 namespace ogre {
 
-class ContextVK;
+class Context;
 
 class CommandQueue {
  public:
   using CompletionCallback = std::function<void(CommandBuffer::Status)>;
 
-  explicit CommandQueue(const std::weak_ptr<ContextVK>& context);
+  explicit CommandQueue(const std::weak_ptr<Context>& context);
 
   ~CommandQueue();
 
@@ -29,7 +29,7 @@ class CommandQueue {
                      bool block_on_schedule = false);
 
  private:
-  std::weak_ptr<ContextVK> context_;
+  std::weak_ptr<Context> context_;
 
   CommandQueue(const CommandQueue&) = delete;
 

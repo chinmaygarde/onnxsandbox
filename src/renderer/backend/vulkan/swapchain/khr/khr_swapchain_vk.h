@@ -8,9 +8,9 @@
 #include <memory>
 
 #include "geometry/size.h"
+#include "renderer/backend/vulkan/context_vk.h"
 #include "renderer/backend/vulkan/swapchain/swapchain_vk.h"
 #include "renderer/backend/vulkan/vk.h"
-#include "renderer/context.h"
 
 namespace ogre {
 

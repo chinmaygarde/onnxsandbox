@@ -39,7 +39,7 @@ class ShaderLibrary final : public std::enable_shared_from_this<ShaderLibrary> {
   void UnregisterFunction(std::string name, ShaderStage stage);
 
  private:
-  friend class ContextVK;
+  friend class Context;
   std::weak_ptr<DeviceHolder> device_holder_;
   const UniqueID library_id_;
   mutable RWMutex functions_mutex_;

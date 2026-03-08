@@ -10,8 +10,6 @@ add_library(renderer
   compute_pipeline_builder.h
   compute_pipeline_descriptor.cc
   compute_pipeline_descriptor.h
-  context.cc
-  context.h
   pipeline.cc
   pipeline.h
   pipeline_builder.cc

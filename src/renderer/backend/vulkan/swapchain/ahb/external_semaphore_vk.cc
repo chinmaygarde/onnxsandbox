@@ -20,7 +20,7 @@ ExternalSemaphore::ExternalSemaphore(const std::shared_ptr<Context>& context) {
   info.get<vk::ExportSemaphoreCreateInfoKHR>().handleTypes =
       vk::ExternalSemaphoreHandleTypeFlagBits::eSyncFd;
 
-  const auto& context_vk = ContextVK::Cast(*context);
+  const auto& context_vk = (*context);
   auto [result, semaphore] =
       context_vk.GetDevice().createSemaphoreUnique(info.get());
   if (result != vk::Result::eSuccess) {

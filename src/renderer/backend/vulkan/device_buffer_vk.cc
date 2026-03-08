@@ -16,7 +16,7 @@ DeviceBufferVK::DeviceBufferVK(DeviceBufferDescriptor desc,
                                bool is_host_coherent)
     : DeviceBuffer(desc),
       context_(std::move(context)),
-      resource_(ContextVK::Cast(*context_.lock().get()).GetResourceManager(),
+      resource_((*context_.lock().get()).GetResourceManager(),
                 BufferResource{
                     std::move(buffer),  //
                     info                //
@@ -61,7 +61,7 @@ bool DeviceBufferVK::SetLabel(std::string_view label) {
                          label.data()                         //
   );
 
-  return ContextVK::Cast(*context).SetDebugName(resource_->buffer.get().buffer,
+  return (*context).SetDebugName(resource_->buffer.get().buffer,
                                                 label);
 #else
   return true;

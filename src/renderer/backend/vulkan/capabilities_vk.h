@@ -18,7 +18,7 @@
 
 namespace ogre {
 
-class ContextVK;
+class Context;
 
 //------------------------------------------------------------------------------
 /// @brief      A device extension available on all platforms. Without the

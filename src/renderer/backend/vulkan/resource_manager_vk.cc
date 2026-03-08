@@ -25,8 +25,8 @@ ResourceManager::ResourceManager() : waiter_([&]() { Start(); }) {}
 ResourceManager::~ResourceManager() {
   FML_DCHECK(waiter_.get_id() != std::this_thread::get_id())
       << "The ResourceManager being destructed on its own spawned thread is a "
-      << "sign that ContextVK was not properly destroyed. A usual fix for this "
-      << "is to ensure that ContextVK is shutdown (i.e. context->Shutdown()) "
+      << "sign that Context was not properly destroyed. A usual fix for this "
+      << "is to ensure that Context is shutdown (i.e. context->Shutdown()) "
          "before the ResourceManager is destroyed (i.e. at the end of a test).";
   Terminate();
   waiter_.join();

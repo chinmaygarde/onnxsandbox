@@ -7,9 +7,10 @@
 
 #include "core/texture.h"
 #include "core/texture_descriptor.h"
-#include "renderer/context.h"
 
 namespace ogre {
+
+class Context;
 
 //------------------------------------------------------------------------------
 /// @brief      Resources, meant to be memoized by the texture descriptor of the

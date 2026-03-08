@@ -18,7 +18,7 @@ namespace ogre {
 
 class BlitPass;
 class ComputePass;
-class ContextVK;
+class Context;
 class DescriptorPool;
 class DeviceBuffer;
 class RenderPass;
@@ -101,20 +101,20 @@ class CommandBuffer final : public std::enable_shared_from_this<CommandBuffer> {
   fml::StatusOr<vk::DescriptorSet> AllocateDescriptorSets(
       const vk::DescriptorSetLayout& layout,
       PipelineKey pipeline_key,
-      const ContextVK& context);
+      const Context& context);
 
   // Visible for testing.
   DescriptorPool& GetDescriptorPool() const;
 
  private:
-  friend class ContextVK;
+  friend class Context;
   friend class CommandQueue;
 
-  std::weak_ptr<const ContextVK> context_;
+  std::weak_ptr<const Context> context_;
   std::weak_ptr<const DeviceHolder> device_holder_;
   std::shared_ptr<TrackedObjects> tracked_objects_;
 
-  CommandBuffer(std::weak_ptr<const ContextVK> context,
+  CommandBuffer(std::weak_ptr<const Context> context,
                 std::weak_ptr<const DeviceHolder> device_holder,
                 std::shared_ptr<TrackedObjects> tracked_objects);
 

@@ -74,7 +74,7 @@ QueuesVK QueuesVK::FromQueueIndices(const vk::Device& device,
 
   // Always set up the graphics queue.
   auto graphics_queue = std::make_shared<Queue>(graphics, vk_graphics);
-  ContextVK::SetDebugName(device, vk_graphics, "ImpellerGraphicsQ");
+  Context::SetDebugName(device, vk_graphics, "ImpellerGraphicsQ");
 
   // Setup the compute queue if its different from the graphics queue.
   std::shared_ptr<Queue> compute_queue;
@@ -82,7 +82,7 @@ QueuesVK QueuesVK::FromQueueIndices(const vk::Device& device,
     compute_queue = graphics_queue;
   } else {
     compute_queue = std::make_shared<Queue>(compute, vk_compute);
-    ContextVK::SetDebugName(device, vk_compute, "ImpellerComputeQ");
+    Context::SetDebugName(device, vk_compute, "ImpellerComputeQ");
   }
 
   // Setup the transfer queue if its different from the graphics or compute
@@ -94,7 +94,7 @@ QueuesVK QueuesVK::FromQueueIndices(const vk::Device& device,
     transfer_queue = compute_queue;
   } else {
     transfer_queue = std::make_shared<Queue>(transfer, vk_transfer);
-    ContextVK::SetDebugName(device, vk_transfer, "ImpellerTransferQ");
+    Context::SetDebugName(device, vk_transfer, "ImpellerTransferQ");
   }
 
   return QueuesVK(std::move(graphics_queue), std::move(compute_queue),

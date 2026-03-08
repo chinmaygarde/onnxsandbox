@@ -8,6 +8,7 @@
 #include "core/texture_descriptor.h"
 #include "renderer/backend/vulkan/allocator_vk.h"
 #include "renderer/backend/vulkan/command_buffer_vk.h"
+#include "renderer/backend/vulkan/command_queue_vk.h"
 #include "renderer/backend/vulkan/formats_vk.h"
 #include "renderer/backend/vulkan/sampler_vk.h"
 
@@ -35,8 +36,8 @@ void TextureVK::SetLabel(std::string_view label) {
     // The context may have died.
     return;
   }
-  ContextVK::Cast(*context).SetDebugName(GetImage(), label);
-  ContextVK::Cast(*context).SetDebugName(GetImageView(), label);
+  (*context).SetDebugName(GetImage(), label);
+  (*context).SetDebugName(GetImageView(), label);
 #endif  // OGRE_DEBUG
 }
 
@@ -48,8 +49,8 @@ void TextureVK::SetLabel(std::string_view label, std::string_view trailing) {
     return;
   }
 
-  ContextVK::Cast(*context).SetDebugName(GetImage(), label, trailing);
-  ContextVK::Cast(*context).SetDebugName(GetImageView(), label, trailing);
+  (*context).SetDebugName(GetImage(), label, trailing);
+  (*context).SetDebugName(GetImageView(), label, trailing);
 #endif  // OGRE_DEBUG
 }
 

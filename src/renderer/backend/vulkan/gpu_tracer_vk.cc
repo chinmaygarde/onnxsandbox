@@ -13,13 +13,14 @@
 #include "fml/logging.h"
 #include "fml/trace_event.h"
 #include "renderer/backend/vulkan/command_buffer_vk.h"
+#include "renderer/backend/vulkan/command_queue_vk.h"
 #include "renderer/backend/vulkan/context_vk.h"
 
 namespace ogre {
 
 static constexpr uint32_t kPoolSize = 128u;
 
-GPUTracer::GPUTracer(std::weak_ptr<ContextVK> context, bool enable_gpu_tracing)
+GPUTracer::GPUTracer(std::weak_ptr<Context> context, bool enable_gpu_tracing)
     : context_(std::move(context)) {
   if (!enable_gpu_tracing) {
     return;
@@ -39,7 +40,7 @@ GPUTracer::GPUTracer(std::weak_ptr<ContextVK> context, bool enable_gpu_tracing)
 #endif  // OGRE_DEBUG
 }
 
-void GPUTracer::InitializeQueryPool(const ContextVK& context) {
+void GPUTracer::InitializeQueryPool(const Context& context) {
   if (!enabled_) {
     return;
   }
@@ -178,7 +179,7 @@ void GPUTracer::OnFenceComplete(size_t frame_index) {
 
   if (pending == 0) {
     std::vector<uint64_t> bits(query_count);
-    std::shared_ptr<ContextVK> context = context_.lock();
+    std::shared_ptr<Context> context = context_.lock();
     if (!context) {
       return;
     }

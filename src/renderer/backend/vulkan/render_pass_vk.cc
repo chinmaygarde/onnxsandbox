@@ -18,6 +18,7 @@
 #include "renderer/backend/vulkan/barrier_vk.h"
 #include "renderer/backend/vulkan/command_buffer_vk.h"
 #include "renderer/backend/vulkan/context_vk.h"
+#include "renderer/backend/vulkan/pipeline_library_vk.h"
 #include "renderer/backend/vulkan/device_buffer_vk.h"
 #include "renderer/backend/vulkan/formats_vk.h"
 #include "renderer/backend/vulkan/pipeline_vk.h"
@@ -78,7 +79,7 @@ static size_t GetVKClearValues(
 }
 
 SharedHandleVK<vk::RenderPass> RenderPass::CreateVKRenderPass(
-    const ContextVK& context,
+    const Context& context,
     const SharedHandleVK<vk::RenderPass>& recycled_renderpass,
     const std::shared_ptr<CommandBuffer>& command_buffer,
     bool is_swapchain) const {
@@ -146,7 +147,7 @@ RenderPass::RenderPass(const std::shared_ptr<const Context>& context,
   color_image_vk_ = color0.texture;
   resolve_image_vk_ = color0.resolve_texture;
 
-  const auto& vk_context = ContextVK::Cast(*context);
+  const auto& vk_context = (*context);
   command_buffer_vk_ = command_buffer_->GetCommandBuffer();
   render_target_.IterateAllAttachments([&](const auto& attachment) -> bool {
     command_buffer_->Track(attachment.texture);
@@ -377,12 +378,12 @@ bool RenderPass::IsValid() const {
 
 void RenderPass::OnSetLabel(std::string_view label) {
 #ifdef OGRE_DEBUG
-  ContextVK::Cast(*context_).SetDebugName(render_pass_->Get(), label.data());
+  (*context_).SetDebugName(render_pass_->Get(), label.data());
 #endif  // OGRE_DEBUG
 }
 
 SharedHandleVK<vk::Framebuffer> RenderPass::CreateVKFramebuffer(
-    const ContextVK& context,
+    const Context& context,
     const vk::RenderPass& pass) const {
   vk::FramebufferCreateInfo fb_info;
 
@@ -622,7 +623,7 @@ fml::Status RenderPass::Draw() {
     pipeline_ = raw_ptr(pipeline_variant);
   }
 
-  const auto& context_vk = ContextVK::Cast(*context_);
+  const auto& context_vk = (*context_);
   const auto& pipeline_vk = PipelineVK::Cast(*pipeline_);
 
   auto descriptor_result = command_buffer_->AllocateDescriptorSets(

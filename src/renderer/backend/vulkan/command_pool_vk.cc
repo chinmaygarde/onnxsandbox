@@ -175,12 +175,12 @@ static std::unordered_map<
     g_all_pools_map IPLR_GUARDED_BY(g_all_pools_map_mutex);
 
 CommandPoolRecycler::CommandPoolRecycler(
-    const std::shared_ptr<ContextVK>& context)
+    const std::shared_ptr<Context>& context)
     : context_(context), context_hash_(context->GetHash()) {}
 
 // Visible for testing.
 // Returns the number of pools in g_all_pools_map for the given context.
-int CommandPoolRecycler::GetGlobalPoolCount(const ContextVK& context) {
+int CommandPoolRecycler::GetGlobalPoolCount(const Context& context) {
   Lock all_pools_lock(g_all_pools_map_mutex);
   auto it = g_all_pools_map.find(context.GetHash());
   return it != g_all_pools_map.end() ? it->second.size() : 0;

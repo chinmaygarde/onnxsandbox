@@ -7,7 +7,7 @@
 
 #include "core/texture.h"
 #include "fml/status.h"
-#include "renderer/context.h"
+#include "renderer/backend/vulkan/context_vk.h"
 
 namespace ogre {
 

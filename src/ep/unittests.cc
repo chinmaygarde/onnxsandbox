@@ -31,10 +31,10 @@ TEST(ExecutionProviderTest, CanCreateVulkanContext) {
       vulkan_dylib->ResolveFunction<PFN_vkGetInstanceProcAddr>(
           "vkGetInstanceProcAddr");
   ASSERT_TRUE(instance_proc_addr.has_value());
-  ogre::ContextVK::Settings settings;
+  ogre::Context::Settings settings;
   settings.shader_libraries_data = {};
   settings.proc_address_callback = instance_proc_addr.value();
-  auto context = ogre::ContextVK::Create(std::move(settings));
+  auto context = ogre::Context::Create(std::move(settings));
   if (!context) {
     GTEST_SKIP() << "Vulkan context could not be created (no compatible ICD).";
   }

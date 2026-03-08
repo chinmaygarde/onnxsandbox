@@ -15,7 +15,6 @@
 
 namespace ogre {
 
-class ContextVK;
 
 //------------------------------------------------------------------------------
 /// @brief      A texture source that wraps an instance of AHardwareBuffer.

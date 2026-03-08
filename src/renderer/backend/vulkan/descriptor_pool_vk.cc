@@ -26,14 +26,14 @@ static const constexpr DescriptorPoolSize kDefaultBindingSize =
         .subpass_bindings = 4u  // Subpass Bindings
     };
 
-DescriptorPool::DescriptorPool(std::weak_ptr<const ContextVK> context)
+DescriptorPool::DescriptorPool(std::weak_ptr<const Context> context)
     : context_(std::move(context)) {}
 
 void DescriptorPool::Destroy() {
   pools_.clear();
 }
 
-DescriptorPool::DescriptorPool(std::weak_ptr<const ContextVK> context,
+DescriptorPool::DescriptorPool(std::weak_ptr<const Context> context,
                                DescriptorCacheMap descriptor_sets,
                                std::vector<vk::UniqueDescriptorPool> pools)
     : context_(std::move(context)),
@@ -60,7 +60,7 @@ DescriptorPool::~DescriptorPool() {
 fml::StatusOr<vk::DescriptorSet> DescriptorPool::AllocateDescriptorSets(
     const vk::DescriptorSetLayout& layout,
     PipelineKey pipeline_key,
-    const ContextVK& context_vk) {
+    const Context& context_vk) {
   DescriptorCacheMap::iterator existing = descriptor_sets_.find(pipeline_key);
   if (existing != descriptor_sets_.end() && !existing->second.unused.empty()) {
     auto descriptor_set = existing->second.unused.back();
@@ -98,7 +98,7 @@ fml::StatusOr<vk::DescriptorSet> DescriptorPool::AllocateDescriptorSets(
   return set;
 }
 
-fml::Status DescriptorPool::CreateNewPool(const ContextVK& context_vk) {
+fml::Status DescriptorPool::CreateNewPool(const Context& context_vk) {
   auto new_pool = context_vk.GetDescriptorPoolRecycler()->Get();
   if (!new_pool) {
     return fml::Status(fml::StatusCode::kUnknown,

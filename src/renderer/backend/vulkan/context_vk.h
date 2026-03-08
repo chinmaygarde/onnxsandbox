@@ -8,43 +8,61 @@
 #include <format>
 #include <memory>
 
-#include "base/backend_cast.h"
+#include "base/flags.h"
+#include "base/thread_safety.h"
+#include "base/validation.h"
 #include "core/formats.h"
 #include "core/runtime_types.h"
+#include "fml/closure.h"
 #include "fml/concurrent_message_loop.h"
 #include "fml/mapping.h"
 #include "fml/unique_fd.h"
 #include "renderer/backend/vulkan/capabilities_vk.h"
 #include "renderer/backend/vulkan/command_pool_vk.h"
-#include "renderer/backend/vulkan/command_queue_vk.h"
 #include "renderer/backend/vulkan/device_holder_vk.h"
 #include "renderer/backend/vulkan/driver_info_vk.h"
 #include "renderer/backend/vulkan/idle_waiter_vk.h"
-#include "renderer/backend/vulkan/pipeline_library_vk.h"
 #include "renderer/backend/vulkan/queue_vk.h"
 #include "renderer/backend/vulkan/sampler_library_vk.h"
 #include "renderer/backend/vulkan/shader_library_vk.h"
 #include "renderer/backend/vulkan/workarounds_vk.h"
-#include "renderer/context.h"
 
 namespace ogre {
 
 bool HasValidationLayers();
 
+class Allocator;
+class Capabilities;
+class CommandBuffer;
 class CommandEncoder;
+class CommandPool;
 class CommandPoolRecycler;
-class DebugReport;
-class FenceWaiter;
-class ResourceManager;
-class GPUTracer;
-class DescriptorPoolRecycler;
 class CommandQueue;
+class DebugReport;
 class DescriptorPool;
+class DescriptorPoolRecycler;
+class FenceWaiter;
+class GPUTracer;
+class IdleWaiter;
+class PipelineLibrary;
+class ResourceManager;
+class SamplerLibrary;
+class ShaderLibrary;
+class Texture;
+class YUVConversionLibrary;
 
-class ContextVK final : public Context,
-                        public BackendCast<ContextVK, Context>,
-                        public std::enable_shared_from_this<ContextVK> {
+class Context final : public std::enable_shared_from_this<Context> {
  public:
+  enum class BackendType {
+    kMetal,
+    kOpenGLES,
+    kVulkan,
+  };
+
+  /// The maximum number of tasks that should ever be stored for
+  /// `StoreTaskForGPU`.
+  static constexpr int32_t kMaxTasksAwaitingGPU = 1024;
+
   /// Embedder Stuff
   struct EmbedderData {
     VkInstance instance;
@@ -79,48 +97,37 @@ class ContextVK final : public Context,
   /// Visible for testing.
   static size_t ChooseThreadCountForWorkers(size_t hardware_concurrency);
 
-  static std::shared_ptr<ContextVK> Create(Settings settings);
+  static std::shared_ptr<Context> Create(Settings settings);
 
   uint64_t GetHash() const { return hash_; }
 
-  // |Context|
-  ~ContextVK() override;
+  ~Context();
 
-  // |Context|
-  BackendType GetBackendType() const override;
+  BackendType GetBackendType() const;
 
-  // |Context|
-  std::string DescribeGpuModel() const override;
+  std::string DescribeGpuModel() const;
 
-  // |Context|
-  bool IsValid() const override;
+  bool IsValid() const;
 
-  // |Context|
-  std::shared_ptr<Allocator> GetResourceAllocator() const override;
+  std::shared_ptr<Allocator> GetResourceAllocator() const;
 
-  // |Context|
-  std::shared_ptr<ShaderLibrary> GetShaderLibrary() const override;
+  std::shared_ptr<ShaderLibrary> GetShaderLibrary() const;
 
-  // |Context|
-  std::shared_ptr<SamplerLibrary> GetSamplerLibrary() const override;
+  std::shared_ptr<SamplerLibrary> GetSamplerLibrary() const;
 
-  // |Context|
-  std::shared_ptr<PipelineLibrary> GetPipelineLibrary() const override;
+  std::shared_ptr<PipelineLibrary> GetPipelineLibrary() const;
 
-  // |Context|
-  std::shared_ptr<CommandBuffer> CreateCommandBuffer() const override;
+  std::shared_ptr<CommandBuffer> CreateCommandBuffer() const;
 
-  // |Context|
-  const std::shared_ptr<const Capabilities>& GetCapabilities() const override;
+  const std::shared_ptr<const Capabilities>& GetCapabilities() const;
 
-  // |Context|
-  virtual bool SubmitOnscreen(
-      std::shared_ptr<CommandBuffer> cmd_buffer) override;
+  bool UpdateOffscreenLayerPixelFormat(PixelFormat format);
+
+  bool SubmitOnscreen(std::shared_ptr<CommandBuffer> cmd_buffer);
 
   const std::shared_ptr<YUVConversionLibrary>& GetYUVConversionLibrary() const;
 
-  // |Context|
-  void Shutdown() override;
+  void Shutdown();
 
   const Workarounds& GetWorkarounds() const;
 
@@ -192,34 +199,39 @@ class ContextVK final : public Context,
 
   std::shared_ptr<DescriptorPoolRecycler> GetDescriptorPoolRecycler() const;
 
-  std::shared_ptr<CommandQueue> GetCommandQueue() const override;
+  std::shared_ptr<CommandQueue> GetCommandQueue() const;
 
   std::shared_ptr<GPUTracer> GetGPUTracer() const;
 
   void RecordFrameEndTime() const;
 
-  // |Context|
-  void InitializeCommonlyUsedShadersIfNeeded() const override;
+  void InitializeCommonlyUsedShadersIfNeeded() const;
 
-  // |Context|
-  void DisposeThreadLocalCachedResources() override;
+  void DisposeThreadLocalCachedResources();
 
   /// @brief Whether the Android Surface control based swapchain should be
   ///        enabled
   bool GetShouldEnableSurfaceControlSwapchain() const;
 
-  // | Context |
-  bool EnqueueCommandBuffer(
-      std::shared_ptr<CommandBuffer> command_buffer) override;
+  bool EnqueueCommandBuffer(std::shared_ptr<CommandBuffer> command_buffer);
 
-  // | Context |
-  bool FlushCommandBuffers() override;
+  bool FlushCommandBuffers();
 
-  RuntimeStageBackend GetRuntimeStageBackend() const override;
+  RuntimeStageBackend GetRuntimeStageBackend() const;
 
-  std::shared_ptr<const IdleWaiter> GetIdleWaiter() const override {
+  std::shared_ptr<const IdleWaiter> GetIdleWaiter() const {
     return idle_waiter_vk_;
   }
+
+  void StoreTaskForGPU(const fml::closure& task, const fml::closure& failure) {
+    FML_CHECK(false && "not supported in this context");
+  }
+
+  bool AddTrackingFence(const std::shared_ptr<Texture>& texture) const;
+
+  void ResetThreadLocalState() const;
+
+  const Flags& GetFlags() const { return flags_; }
 
  private:
   struct DeviceHolderImpl : public DeviceHolder {
@@ -263,6 +275,8 @@ class ContextVK final : public Context,
   std::shared_ptr<CommandQueue> command_queue_vk_;
   std::shared_ptr<const IdleWaiter> idle_waiter_vk_;
   Workarounds workarounds_;
+  Flags flags_;
+  std::vector<std::function<void()>> per_frame_task_;
 
   using DescriptorPoolMap =
       std::unordered_map<std::thread::id, std::shared_ptr<DescriptorPool>>;
@@ -278,13 +292,13 @@ class ContextVK final : public Context,
 
   bool is_valid_ = false;
 
-  explicit ContextVK(const Flags& flags);
+  explicit Context(const Flags& flags);
 
   void Setup(Settings settings);
 
-  ContextVK(const ContextVK&) = delete;
+  Context(const Context&) = delete;
 
-  ContextVK& operator=(const ContextVK&) = delete;
+  Context& operator=(const Context&) = delete;
 };
 
 }  // namespace ogre

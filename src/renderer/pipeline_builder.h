@@ -10,8 +10,8 @@
 #include "base/validation.h"
 #include "core/formats.h"
 #include "renderer/backend/vulkan/capabilities_vk.h"
+#include "renderer/backend/vulkan/context_vk.h"
 #include "renderer/backend/vulkan/shader_library_vk.h"
-#include "renderer/context.h"
 #include "renderer/pipeline_descriptor.h"
 #include "renderer/vertex_descriptor.h"
 

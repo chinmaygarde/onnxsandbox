@@ -27,7 +27,7 @@
 
 namespace ogre {
 
-class ContextVK;
+class Context;
 
 using PipelineMap = std::unordered_map<PipelineDescriptor,
                                        PipelineFuture<PipelineDescriptor>,
@@ -87,7 +87,7 @@ class PipelineLibrary final
   GetPipelineUseCounts() const;
 
  private:
-  friend ContextVK;
+  friend Context;
 
   std::weak_ptr<DeviceHolder> device_holder_;
   std::shared_ptr<PipelineCache> pso_cache_;

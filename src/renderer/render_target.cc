@@ -13,7 +13,7 @@
 #include "core/texture_descriptor.h"
 #include "renderer/backend/vulkan/allocator_vk.h"
 #include "renderer/backend/vulkan/capabilities_vk.h"
-#include "renderer/context.h"
+#include "renderer/backend/vulkan/context_vk.h"
 
 namespace ogre {
 

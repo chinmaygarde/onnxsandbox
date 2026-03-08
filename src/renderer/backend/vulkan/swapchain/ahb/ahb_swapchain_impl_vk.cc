@@ -91,7 +91,7 @@ AHBSwapchainImpl::AHBSwapchainImpl(
 
   for (auto i = 0u; i < kMaxPendingPresents; i++) {
     auto sync = std::make_unique<AHBFrameSynchronizer>(
-        ContextVK::Cast(*context.lock()).GetDeviceHolder()->GetDevice());
+        (*context.lock()).GetDeviceHolder()->GetDevice());
     if (!sync->IsValid()) {
       return;
     }
@@ -126,7 +126,7 @@ std::unique_ptr<Surface> AHBSwapchainImpl::AcquireNextDrawable() {
   frame_index_ = (frame_index_ + 1) % kMaxPendingPresents;
 
   if (!frame_data_[frame_index_]->WaitForFence(
-          ContextVK::Cast(*context).GetDevice())) {
+          (*context).GetDevice())) {
     return nullptr;
   }
 
@@ -150,7 +150,7 @@ std::unique_ptr<Surface> AHBSwapchainImpl::AcquireNextDrawable() {
 
 #if OGRE_DEBUG
   if (context) {
-    ContextVK::Cast(*context).GetGPUTracer()->MarkFrameStart();
+    (*context).GetGPUTracer()->MarkFrameStart();
   }
 #endif  // OGRE_DEBUG
 
@@ -184,7 +184,7 @@ bool AHBSwapchainImpl::Present(
 #if OGRE_DEBUG
   auto context = transients_->GetContext().lock();
   if (context) {
-    ContextVK::Cast(*context).GetGPUTracer()->MarkFrameEnd();
+    (*context).GetGPUTracer()->MarkFrameEnd();
   }
 #endif  // OGRE_DEBUG
 
@@ -260,7 +260,7 @@ AHBSwapchainImpl::SubmitSignalForPresentReady(
   submit_info.setPSignalSemaphores(&sync->present_ready->GetHandle());
   submit_info.setSignalSemaphoreCount(1);
 
-  auto result = ContextVK::Cast(*context).GetGraphicsQueue()->Submit(
+  auto result = (*context).GetGraphicsQueue()->Submit(
       submit_info, *sync->acquire);
   if (result != vk::Result::eSuccess) {
     return nullptr;
@@ -279,7 +279,7 @@ vk::UniqueSemaphore AHBSwapchainImpl::CreateRenderReadySemaphore(
     return {};
   }
 
-  const auto& context_vk = ContextVK::Cast(*context);
+  const auto& context_vk = (*context);
   const auto& device = context_vk.GetDevice();
 
   auto signal_wait = device.createSemaphoreUnique({});

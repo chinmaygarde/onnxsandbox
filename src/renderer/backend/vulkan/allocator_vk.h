@@ -64,7 +64,7 @@ class Allocator final {
       bool supports_memoryless_textures);
 
  private:
-  friend class ContextVK;
+  friend class Context;
 
   UniqueAllocatorVMA allocator_;
   UniquePoolVMA staging_buffer_pool_;

@@ -6,9 +6,9 @@
 #define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_SWAPCHAIN_AHB_EXTERNAL_SEMAPHORE_VK_H_
 
 #include "fml/unique_fd.h"
+#include "renderer/backend/vulkan/context_vk.h"
 #include "renderer/backend/vulkan/shared_object_vk.h"
 #include "renderer/backend/vulkan/vk.h"
-#include "renderer/context.h"
 #include "vulkan/vulkan_handles.hpp"
 
 namespace ogre {

@@ -14,7 +14,6 @@
 #include "renderer/backend/vulkan/swapchain/khr/khr_swapchain_image_vk.h"
 #include "renderer/backend/vulkan/swapchain/surface_vk.h"
 #include "renderer/backend/vulkan/texture_vk.h"
-#include "renderer/context.h"
 
 namespace ogre {
 
@@ -128,7 +127,7 @@ KHRSwapchainImpl::KHRSwapchainImpl(const std::shared_ptr<Context>& context,
     return;
   }
 
-  auto& vk_context = ContextVK::Cast(*context);
+  auto& vk_context = (*context);
 
   const auto [caps_result, surface_caps] =
       vk_context.GetPhysicalDevice().getSurfaceCapabilitiesKHR(*surface);
@@ -231,10 +230,10 @@ KHRSwapchainImpl::KHRSwapchainImpl(const std::shared_ptr<Context>& context,
       VALIDATION_LOG << "Could not create swapchain image.";
       return;
     }
-    ContextVK::SetDebugName(
+    Context::SetDebugName(
         vk_context.GetDevice(), swapchain_image->GetImage(),
         "SwapchainImage" + std::to_string(swapchain_images.size()));
-    ContextVK::SetDebugName(
+    Context::SetDebugName(
         vk_context.GetDevice(), swapchain_image->GetImageView(),
         "SwapchainImageView" + std::to_string(swapchain_images.size()));
 
@@ -292,7 +291,7 @@ std::optional<ISize> KHRSwapchainImpl::GetCurrentUnderlyingSurfaceSize() const {
     return std::nullopt;
   }
 
-  auto& vk_context = ContextVK::Cast(*context);
+  auto& vk_context = (*context);
   const auto [result, surface_caps] =
       vk_context.GetPhysicalDevice().getSurfaceCapabilitiesKHR(surface_.get());
   if (result != vk::Result::eSuccess) {
@@ -319,8 +318,7 @@ bool KHRSwapchainImpl::IsValid() const {
 
 void KHRSwapchainImpl::WaitIdle() const {
   if (auto context = context_.lock()) {
-    [[maybe_unused]] auto result =
-        ContextVK::Cast(*context).GetDevice().waitIdle();
+    [[maybe_unused]] auto result = (*context).GetDevice().waitIdle();
   }
 }
 
@@ -348,7 +346,7 @@ KHRSwapchainImpl::AcquireResult KHRSwapchainImpl::AcquireNextDrawable() {
     return KHRSwapchainImpl::AcquireResult{};
   }
 
-  const auto& context = ContextVK::Cast(*context_strong);
+  const auto& context = (*context_strong);
 
   current_frame_ = (current_frame_ + 1u) % synchronizers_.size();
 
@@ -429,7 +427,7 @@ bool KHRSwapchainImpl::Present(const std::shared_ptr<KHRSwapchainImage>& image,
     return false;
   }
 
-  const auto& context = ContextVK::Cast(*context_strong);
+  const auto& context = (*context_strong);
   const auto& sync = synchronizers_[current_frame_];
   context.GetGPUTracer()->MarkFrameEnd();
 

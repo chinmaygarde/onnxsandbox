@@ -15,7 +15,7 @@
 
 namespace ogre {
 
-class ContextVK;
+class Context;
 class CommandPoolRecycler;
 
 //------------------------------------------------------------------------------
@@ -39,7 +39,7 @@ class CommandPool final {
   /// @param[in]  recycler  The context that will be notified on destruction.
   CommandPool(vk::UniqueCommandPool pool,
               std::vector<vk::UniqueCommandBuffer>&& buffers,
-              std::weak_ptr<ContextVK>& context)
+              std::weak_ptr<Context>& context)
       : pool_(std::move(pool)),
         unused_command_buffers_(std::move(buffers)),
         context_(context) {}
@@ -69,7 +69,7 @@ class CommandPool final {
   Mutex pool_mutex_;
   vk::UniqueCommandPool pool_ IPLR_GUARDED_BY(pool_mutex_);
   std::vector<vk::UniqueCommandBuffer> unused_command_buffers_;
-  std::weak_ptr<ContextVK>& context_;
+  std::weak_ptr<Context>& context_;
 
   // Used to retain a reference on these until the pool is reset.
   std::vector<vk::UniqueCommandBuffer> collected_buffers_
@@ -83,7 +83,7 @@ class CommandPool final {
 /// the lifecycle of |vk::CommandPool| objects by creating and recycling them;
 /// or in other words, a pool for command pools.
 ///
-/// A single instance should be created per |ContextVK|.
+/// A single instance should be created per |Context|.
 ///
 /// Every "frame", a single |CommandPoolResourceVk| is made available for each
 /// thread that calls |Get|. After calling |Dispose|, the current thread's pool
@@ -97,7 +97,7 @@ class CommandPool final {
 /// @note       This class is thread-safe.
 ///
 /// @see        |vk::CommandPoolResourceVk|
-/// @see        |ContextVK|
+/// @see        |Context|
 /// @see
 /// https://arm-software.github.io/vulkan_best_practice_for_mobile_developers/samples/performance/command_buffer_usage/command_buffer_usage_tutorial.html
 class CommandPoolRecycler final
@@ -113,10 +113,10 @@ class CommandPoolRecycler final
   ///             associated with the context.
   void DestroyThreadLocalPools();
 
-  /// @brief      Creates a recycler for the given |ContextVK|.
+  /// @brief      Creates a recycler for the given |Context|.
   ///
   /// @param[in]  context The context to create the recycler for.
-  explicit CommandPoolRecycler(const std::shared_ptr<ContextVK>& context);
+  explicit CommandPoolRecycler(const std::shared_ptr<Context>& context);
 
   /// @brief      Gets a command pool for the current thread.
   ///
@@ -136,10 +136,10 @@ class CommandPoolRecycler final
   void Dispose();
 
   // Visible for testing.
-  static int GetGlobalPoolCount(const ContextVK& context);
+  static int GetGlobalPoolCount(const Context& context);
 
  private:
-  std::weak_ptr<ContextVK> context_;
+  std::weak_ptr<Context> context_;
   uint64_t context_hash_;
 
   Mutex recycled_mutex_;

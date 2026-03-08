@@ -46,7 +46,7 @@ class YUVConversionLibrary {
       const YUVConversionDescriptor& chain);
 
  private:
-  friend class ContextVK;
+  friend class Context;
 
   using ConversionsMap = std::unordered_map<YUVConversionDescriptor,
                                             std::shared_ptr<YUVConversion>,

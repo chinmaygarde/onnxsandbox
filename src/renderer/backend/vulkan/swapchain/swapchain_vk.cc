@@ -46,7 +46,7 @@ std::shared_ptr<Swapchain> Swapchain::Create(
   }
 
   // Use AHB Swapchains if they are opted in.
-  if (ContextVK::Cast(*context).GetShouldEnableSurfaceControlSwapchain() &&
+  if ((*context).GetShouldEnableSurfaceControlSwapchain() &&
       AHBSwapchain::IsAvailableOnPlatform()) {
     CreateTransactionCB callback =
         android_get_device_api_level() >= 34 ? cb : CreateTransactionCB({});
@@ -69,7 +69,7 @@ std::shared_ptr<Swapchain> Swapchain::Create(
   vk::AndroidSurfaceCreateInfoKHR surface_info;
   surface_info.setWindow(window.GetHandle());
   auto [result, surface] =
-      ContextVK::Cast(*context).GetInstance().createAndroidSurfaceKHRUnique(
+      (*context).GetInstance().createAndroidSurfaceKHRUnique(
           surface_info);
   if (result != vk::Result::eSuccess) {
     VALIDATION_LOG << "Could not create KHR Android Surface: "

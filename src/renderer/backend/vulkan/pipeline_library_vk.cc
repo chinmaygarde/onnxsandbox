@@ -108,7 +108,7 @@ std::unique_ptr<ComputePipeline> PipelineLibrary::CreateComputePipeline(
     return nullptr;
   }
 
-  ContextVK::SetDebugName(strong_device->GetDevice(), descs_layout.get(),
+  Context::SetDebugName(strong_device->GetDevice(), descs_layout.get(),
                           "Descriptor Set Layout " + desc.GetLabel());
 
   //----------------------------------------------------------------------------
@@ -135,9 +135,9 @@ std::unique_ptr<ComputePipeline> PipelineLibrary::CreateComputePipeline(
     return nullptr;
   }
 
-  ContextVK::SetDebugName(strong_device->GetDevice(), *pipeline_layout.value,
+  Context::SetDebugName(strong_device->GetDevice(), *pipeline_layout.value,
                           "Pipeline Layout " + desc.GetLabel());
-  ContextVK::SetDebugName(strong_device->GetDevice(), *pipeline,
+  Context::SetDebugName(strong_device->GetDevice(), *pipeline,
                           "Pipeline " + desc.GetLabel());
 
   return std::make_unique<ComputePipeline>(device_holder_,

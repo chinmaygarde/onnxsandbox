@@ -12,7 +12,7 @@
 
 namespace ogre {
 
-CommandQueue::CommandQueue(const std::weak_ptr<ContextVK>& context)
+CommandQueue::CommandQueue(const std::weak_ptr<Context>& context)
     : context_(context) {}
 
 CommandQueue::~CommandQueue() = default;

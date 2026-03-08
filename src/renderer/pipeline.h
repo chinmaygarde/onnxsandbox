@@ -11,7 +11,6 @@
 #include "core/raw_ptr.h"
 #include "renderer/compute_pipeline_builder.h"
 #include "renderer/compute_pipeline_descriptor.h"
-#include "renderer/context.h"
 #include "renderer/pipeline_builder.h"
 #include "renderer/pipeline_compile_queue.h"
 #include "renderer/pipeline_descriptor.h"
@@ -19,6 +18,7 @@
 
 namespace ogre {
 
+class Context;
 using PipelineKey = int64_t;
 
 class PipelineLibrary;

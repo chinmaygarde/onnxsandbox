@@ -21,7 +21,7 @@
 
 namespace ogre {
 
-CommandBuffer::CommandBuffer(std::weak_ptr<const ContextVK> context,
+CommandBuffer::CommandBuffer(std::weak_ptr<const Context> context,
                              std::weak_ptr<const DeviceHolder> device_holder,
                              std::shared_ptr<TrackedObjects> tracked_objects)
     : context_(std::move(context)),
@@ -159,7 +159,7 @@ bool CommandBuffer::Track(const std::shared_ptr<const Texture>& texture) {
 fml::StatusOr<vk::DescriptorSet> CommandBuffer::AllocateDescriptorSets(
     const vk::DescriptorSetLayout& layout,
     PipelineKey pipeline_key,
-    const ContextVK& context) {
+    const Context& context) {
   if (!IsValid()) {
     return fml::Status(fml::StatusCode::kUnknown, "command encoder invalid");
   }

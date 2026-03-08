@@ -18,7 +18,7 @@ ComputePass::ComputePass(std::shared_ptr<const Context> context,
     : context_(std::move(context)), command_buffer_(std::move(command_buffer)) {
   // TOOD(dnfield): This should be moved to caps. But for now keeping this
   // in parallel with Metal.
-  max_wg_size_ = ContextVK::Cast(*context_)
+  max_wg_size_ = (*context_)
                      .GetPhysicalDevice()
                      .getProperties()
                      .limits.maxComputeWorkGroupSize;
@@ -65,7 +65,7 @@ void ComputePass::SetPipeline(
 
   auto descriptor_result = command_buffer_->AllocateDescriptorSets(
       pipeline_vk.GetDescriptorSetLayout(), pipeline_vk.GetPipelineKey(),
-      ContextVK::Cast(*context_));
+      (*context_));
   if (!descriptor_result.ok()) {
     return;
   }
@@ -85,7 +85,7 @@ fml::Status ComputePass::Compute(const ISize& grid_size) {
                        "Invalid pipeline or empty grid.");
   }
 
-  const ContextVK& context_vk = ContextVK::Cast(*context_);
+  const Context& context_vk = (*context_);
   for (auto i = 0u; i < descriptor_write_offset_; i++) {
     write_workspace_[i].dstSet = descriptor_set_;
   }

@@ -171,13 +171,13 @@ class RenderPass final : public ResourceBinder {
   bool BindResource(size_t binding, DescriptorType type, BufferView view);
 
   SharedHandleVK<vk::RenderPass> CreateVKRenderPass(
-      const ContextVK& context,
+      const Context& context,
       const SharedHandleVK<vk::RenderPass>& recycled_renderpass,
       const std::shared_ptr<CommandBuffer>& command_buffer,
       bool is_swapchain) const;
 
   SharedHandleVK<vk::Framebuffer> CreateVKFramebuffer(
-      const ContextVK& context,
+      const Context& context,
       const vk::RenderPass& pass) const;
 
   RenderPass(const RenderPass&) = delete;

@@ -9,7 +9,7 @@
 
 namespace ogre {
 
-TrackedObjects::TrackedObjects(const std::weak_ptr<const ContextVK>& context,
+TrackedObjects::TrackedObjects(const std::weak_ptr<const Context>& context,
                                const std::shared_ptr<CommandPool>& pool,
                                std::shared_ptr<DescriptorPool> descriptor_pool,
                                std::unique_ptr<GPUProbe> probe)

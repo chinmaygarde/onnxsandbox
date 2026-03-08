@@ -25,7 +25,7 @@ class GPUProbe;
 ///       android:value="false" />
 class GPUTracer : public std::enable_shared_from_this<GPUTracer> {
  public:
-  GPUTracer(std::weak_ptr<ContextVK> context, bool enable_gpu_tracing);
+  GPUTracer(std::weak_ptr<Context> context, bool enable_gpu_tracing);
 
   ~GPUTracer() = default;
 
@@ -46,7 +46,7 @@ class GPUTracer : public std::enable_shared_from_this<GPUTracer> {
   bool IsEnabled() const;
 
   /// Initialize the set of query pools.
-  void InitializeQueryPool(const ContextVK& context);
+  void InitializeQueryPool(const Context& context);
 
  private:
   friend class GPUProbe;
@@ -66,7 +66,7 @@ class GPUTracer : public std::enable_shared_from_this<GPUTracer> {
   ///        time.
   void RecordCmdBufferEnd(const vk::CommandBuffer& buffer, GPUProbe& probe);
 
-  std::weak_ptr<ContextVK> context_;
+  std::weak_ptr<Context> context_;
 
   struct GPUTraceState {
     size_t current_index = 0;

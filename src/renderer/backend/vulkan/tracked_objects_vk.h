@@ -7,6 +7,7 @@
 
 #include <memory>
 
+#include "core/device_buffer.h"
 #include "renderer/backend/vulkan/context_vk.h"
 #include "renderer/backend/vulkan/descriptor_pool_vk.h"
 #include "renderer/backend/vulkan/gpu_tracer_vk.h"
@@ -18,7 +19,7 @@ namespace ogre {
 ///        command buffers and descriptor sets.
 class TrackedObjects {
  public:
-  explicit TrackedObjects(const std::weak_ptr<const ContextVK>& context,
+  explicit TrackedObjects(const std::weak_ptr<const Context>& context,
                           const std::shared_ptr<CommandPool>& pool,
                           std::shared_ptr<DescriptorPool> descriptor_pool,
                           std::unique_ptr<GPUProbe> probe);

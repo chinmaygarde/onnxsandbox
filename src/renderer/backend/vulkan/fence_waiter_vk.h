@@ -15,7 +15,7 @@
 
 namespace ogre {
 
-class ContextVK;
+class Context;
 class WaitSetEntry;
 
 using WaitSet = std::vector<std::shared_ptr<WaitSetEntry>>;
@@ -31,7 +31,7 @@ class FenceWaiter {
   bool AddFence(vk::UniqueFence fence, const fml::closure& callback);
 
  private:
-  friend class ContextVK;
+  friend class Context;
 
   std::weak_ptr<DeviceHolder> device_holder_;
   std::unique_ptr<std::thread> waiter_thread_;
