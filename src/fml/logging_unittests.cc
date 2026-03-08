@@ -4,6 +4,9 @@
 
 #include <signal.h>
 
+#include <absl/log/log.h>
+
+#include <absl/log/check.h>
 #include "fml/build_config.h"
 #include "fml/log_level.h"
 #include "fml/log_settings.h"
@@ -24,7 +27,7 @@ class MakeSureFmlLogDoesNotSegfaultWhenStaticallyCalled {
     SegfaultCatcher catcher;
     // If this line causes a segfault, FML is using a method of logging that is
     // not safe from static initialization on your platform.
-    FML_LOG(INFO)
+    LOG(INFO)
         << "This log exists to verify that static logging from FML works.";
   }
 
@@ -34,10 +37,10 @@ class MakeSureFmlLogDoesNotSegfaultWhenStaticallyCalled {
 
     SegfaultCatcher() {
       handler = ::signal(SIGSEGV, SegfaultHandler);
-      FML_CHECK(handler != SIG_ERR);
+      CHECK(handler != SIG_ERR);
     }
 
-    ~SegfaultCatcher() { FML_CHECK(::signal(SIGSEGV, handler) != SIG_ERR); }
+    ~SegfaultCatcher() { CHECK(::signal(SIGSEGV, handler) != SIG_ERR); }
 
     static void SegfaultHandler(int signal) {
       fprintf(stderr,
@@ -58,7 +61,7 @@ int UnreachableScopeWithoutReturnDoesNotMakeCompilerMad() {
 }
 
 int UnreachableScopeWithMacroWithoutReturnDoesNotMakeCompilerMad() {
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
   // return 0; <--- Missing but compiler is fine.
 }
 
@@ -69,7 +72,7 @@ TEST(LoggingTest, UnreachableKillProcess) {
 
 TEST(LoggingTest, UnreachableKillProcessWithMacro) {
   ::testing::FLAGS_gtest_death_test_style = "threadsafe";
-  ASSERT_DEATH({ FML_UNREACHABLE(); }, "");
+  ASSERT_DEATH({ LOG(FATAL) << "Reached unreachable code."; }, "");
 }
 
 #ifndef OS_FUCHSIA

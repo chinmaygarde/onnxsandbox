@@ -4,7 +4,8 @@
 
 #include "renderer/pipeline_compile_queue.h"
 
-#include "fml/logging.h"
+#include <absl/log/log.h>
+
 #include "fml/trace_event.h"
 
 namespace ogre {
@@ -37,8 +38,8 @@ bool PipelineCompileQueue::PostJobForDescriptor(const PipelineDescriptor& desc,
       // place, someone gave the compile queue a job for the same description.
       // This is highly unusual but technically not impossible. Just run the job
       // eagerly.
-      FML_LOG(ERROR) << "Got multiple compile jobs for the same descriptor. "
-                        "Running eagerly.";
+      LOG(ERROR) << "Got multiple compile jobs for the same descriptor. "
+                    "Running eagerly.";
       // Don't invoke the job here has there are we have currently acquired a
       // mutex.
       worker_task_runner_->PostTask(job);

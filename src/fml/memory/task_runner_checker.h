@@ -4,6 +4,7 @@
 
 #pragma once
 
+#include <absl/log/check.h>
 #include "fml/message_loop.h"
 #include "fml/task_runner.h"
 
@@ -29,7 +30,7 @@ class TaskRunnerChecker final {
 #if !defined(NDEBUG)
 #define FML_DECLARE_TASK_RUNNER_CHECKER(c) fml::TaskRunnerChecker c
 #define FML_DCHECK_TASK_RUNNER_IS_CURRENT(c) \
-  FML_DCHECK((c).RunsOnCreationTaskRunner())
+  DCHECK((c).RunsOnCreationTaskRunner())
 #else
 #define FML_DECLARE_TASK_RUNNER_CHECKER(c)
 #define FML_DCHECK_TASK_RUNNER_IS_CURRENT(c) ((void)0)

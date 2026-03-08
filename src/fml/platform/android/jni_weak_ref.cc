@@ -4,6 +4,8 @@
 
 #include "fml/platform/android/jni_weak_ref.h"
 
+#include <absl/log/check.h>
+#include <absl/log/log.h>
 #include "fml/logging.h"
 #include "fml/platform/android/jni_util.h"
 
@@ -20,7 +22,7 @@ JavaObjectWeakGlobalRef::JavaObjectWeakGlobalRef(
 
 JavaObjectWeakGlobalRef::JavaObjectWeakGlobalRef(JNIEnv* env, jobject obj)
     : obj_(env->NewWeakGlobalRef(obj)) {
-  FML_DCHECK(obj_);
+  DCHECK(obj_);
 }
 
 JavaObjectWeakGlobalRef::~JavaObjectWeakGlobalRef() {
@@ -47,7 +49,7 @@ ScopedJavaLocalRef<jobject> GetRealObject(JNIEnv* env, jweak obj) {
   if (obj) {
     real = env->NewLocalRef(obj);
     if (!real) {
-      FML_DLOG(ERROR) << "The real object has been deleted!";
+      DLOG(ERROR) << "The real object has been deleted!";
     }
   }
   return ScopedJavaLocalRef<jobject>(env, real);

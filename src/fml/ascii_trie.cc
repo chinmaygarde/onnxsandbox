@@ -4,6 +4,7 @@
 
 #include "fml/ascii_trie.h"
 
+#include <absl/log/check.h>
 #include "fml/logging.h"
 
 namespace fml {
@@ -13,7 +14,7 @@ typedef AsciiTrie::TrieNodePtr TrieNodePtr;
 namespace {
 void Add(TrieNodePtr* trie, const char* entry) {
   int ch = entry[0];
-  FML_DCHECK(ch < AsciiTrie::kMaxAsciiValue);
+  DCHECK(ch < AsciiTrie::kMaxAsciiValue);
   if (ch != 0) {
     if (!*trie) {
       *trie = std::make_unique<TrieNode>();
@@ -37,7 +38,7 @@ void AsciiTrie::Fill(const std::vector<std::string>& entries) {
 }
 
 bool AsciiTrie::Query(TrieNode* trie, const char* query) {
-  FML_DCHECK(trie);
+  DCHECK(trie);
   const char* char_position = query;
   TrieNode* trie_position = trie;
   TrieNode* child = nullptr;

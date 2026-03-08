@@ -8,6 +8,7 @@
 
 #include <utility>
 
+#include <absl/log/check.h>
 #include "fml/message_loop_impl.h"
 
 namespace fml {
@@ -59,7 +60,7 @@ void RasterThreadMerger::MergeWithLease(size_t lease_term) {
   if (!IsEnabledUnSafe()) {
     return;
   }
-  FML_DCHECK(lease_term > 0) << "lease_term should be positive.";
+  DCHECK(lease_term > 0) << "lease_term should be positive.";
 
   if (IsMergedUnSafe()) {
     merged_condition_.notify_one();
@@ -104,7 +105,7 @@ bool RasterThreadMerger::IsOnRasterizingThread() {
 }
 
 void RasterThreadMerger::ExtendLeaseTo(size_t lease_term) {
-  FML_DCHECK(lease_term > 0) << "lease_term should be positive.";
+  DCHECK(lease_term > 0) << "lease_term should be positive.";
   if (TaskQueuesAreSame()) {
     return;
   }
@@ -151,7 +152,7 @@ void RasterThreadMerger::WaitUntilMerged() {
   if (TaskQueuesAreSame()) {
     return;
   }
-  FML_CHECK(IsOnPlatformThread());
+  CHECK(IsOnPlatformThread());
   std::unique_lock<std::mutex> lock(mutex_);
   merged_condition_.wait(lock, [&] { return IsMergedUnSafe(); });
 }

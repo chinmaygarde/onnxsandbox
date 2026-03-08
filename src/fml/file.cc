@@ -4,6 +4,9 @@
 
 #include "fml/file.h"
 
+#include <absl/log/log.h>
+
+#include <absl/log/check.h>
 #include "fml/logging.h"
 #include "fml/unique_fd.h"
 
@@ -13,7 +16,7 @@ static fml::UniqueFD CreateDirectory(const fml::UniqueFD& base_directory,
                                      const std::vector<std::string>& components,
                                      FilePermission permission,
                                      size_t index) {
-  FML_DCHECK(index <= components.size());
+  DCHECK(index <= components.size());
 
   const char* file_path = components[index].c_str();
 
@@ -55,7 +58,7 @@ ScopedTemporaryDirectory::~ScopedTemporaryDirectory() {
   // POSIX requires the directory to be empty before UnlinkDirectory.
   if (path_ != "") {
     if (!RemoveFilesInDirectory(dir_fd_)) {
-      FML_LOG(ERROR) << "Could not clean directory: " << path_;
+      LOG(ERROR) << "Could not clean directory: " << path_;
     }
   }
 
@@ -63,7 +66,7 @@ ScopedTemporaryDirectory::~ScopedTemporaryDirectory() {
   dir_fd_.reset();
   if (path_ != "") {
     if (!UnlinkDirectory(path_.c_str())) {
-      FML_LOG(ERROR) << "Could not remove directory: " << path_;
+      LOG(ERROR) << "Could not remove directory: " << path_;
     }
   }
 }
@@ -79,7 +82,7 @@ bool VisitFilesRecursively(const fml::UniqueFD& directory,
     if (IsDirectory(directory, filename.c_str())) {
       UniqueFD sub_dir = OpenDirectoryReadOnly(directory, filename.c_str());
       if (!sub_dir.is_valid()) {
-        FML_LOG(ERROR) << "Can't open sub-directory: " << filename;
+        LOG(ERROR) << "Can't open sub-directory: " << filename;
         return true;
       }
       return VisitFiles(sub_dir, recursive_visitor);

@@ -4,6 +4,7 @@
 
 #include "fml/memory/weak_ptr_internal.h"
 
+#include <absl/log/check.h>
 #include "fml/logging.h"
 
 namespace fml {
@@ -13,12 +14,12 @@ WeakPtrFlag::WeakPtrFlag() : is_valid_(true) {}
 
 WeakPtrFlag::~WeakPtrFlag() {
   // Should be invalidated before destruction.
-  FML_DCHECK(!is_valid_);
+  DCHECK(!is_valid_);
 }
 
 void WeakPtrFlag::Invalidate() {
   // Invalidation should happen exactly once.
-  FML_DCHECK(is_valid_);
+  DCHECK(is_valid_);
   is_valid_ = false;
 }
 

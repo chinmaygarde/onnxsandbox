@@ -9,6 +9,9 @@
 #include <memory>
 #include <string>
 
+#include <absl/log/log.h>
+
+#include <absl/log/check.h>
 #include "fml/logging.h"
 #include "fml/string_conversion.h"
 
@@ -17,7 +20,7 @@ namespace jni {
 
 static JavaVM* g_jvm = nullptr;
 
-#define ASSERT_NO_EXCEPTION() FML_CHECK(env->ExceptionCheck() == JNI_FALSE);
+#define ASSERT_NO_EXCEPTION() CHECK(env->ExceptionCheck() == JNI_FALSE);
 
 struct JNIDetach {
   ~JNIDetach() { DetachFromVM(); }
@@ -27,12 +30,12 @@ struct JNIDetach {
 static thread_local std::unique_ptr<JNIDetach> tls_jni_detach;
 
 void InitJavaVM(JavaVM* vm) {
-  FML_DCHECK(g_jvm == nullptr);
+  DCHECK(g_jvm == nullptr);
   g_jvm = vm;
 }
 
 JNIEnv* AttachCurrentThread() {
-  FML_DCHECK(g_jvm != nullptr)
+  DCHECK(g_jvm != nullptr)
       << "Trying to attach to current thread without calling InitJavaVM first.";
 
   JNIEnv* env = nullptr;
@@ -53,9 +56,9 @@ JNIEnv* AttachCurrentThread() {
     args.name = thread_name;
   }
   [[maybe_unused]] jint ret = g_jvm->AttachCurrentThread(&env, &args);
-  FML_DCHECK(JNI_OK == ret);
+  DCHECK(JNI_OK == ret);
 
-  FML_DCHECK(tls_jni_detach.get() == nullptr);
+  DCHECK(tls_jni_detach.get() == nullptr);
   tls_jni_detach.reset(new JNIDetach());
 
   return env;
@@ -122,7 +125,7 @@ std::vector<std::string> StringListToVector(JNIEnv* env, jobject list) {
   }
 
   ScopedJavaLocalRef<jclass> list_clazz(env, env->FindClass("java/util/List"));
-  FML_DCHECK(!list_clazz.is_null());
+  DCHECK(!list_clazz.is_null());
 
   jmethodID list_get =
       env->GetMethodID(list_clazz.obj(), "get", "(I)Ljava/lang/Object;");
@@ -147,10 +150,10 @@ std::vector<std::string> StringListToVector(JNIEnv* env, jobject list) {
 ScopedJavaLocalRef<jobjectArray> VectorToStringArray(
     JNIEnv* env,
     const std::vector<std::string>& vector) {
-  FML_DCHECK(env);
+  DCHECK(env);
   ScopedJavaLocalRef<jclass> string_clazz(env,
                                           env->FindClass("java/lang/String"));
-  FML_DCHECK(!string_clazz.is_null());
+  DCHECK(!string_clazz.is_null());
   jobjectArray java_array =
       env->NewObjectArray(vector.size(), string_clazz.obj(), NULL);
   ASSERT_NO_EXCEPTION();
@@ -164,10 +167,10 @@ ScopedJavaLocalRef<jobjectArray> VectorToStringArray(
 ScopedJavaLocalRef<jobjectArray> VectorToBufferArray(
     JNIEnv* env,
     const std::vector<std::vector<uint8_t>>& vector) {
-  FML_DCHECK(env);
+  DCHECK(env);
   ScopedJavaLocalRef<jclass> byte_buffer_clazz(
       env, env->FindClass("java/nio/ByteBuffer"));
-  FML_DCHECK(!byte_buffer_clazz.is_null());
+  DCHECK(!byte_buffer_clazz.is_null());
   jobjectArray java_array =
       env->NewObjectArray(vector.size(), byte_buffer_clazz.obj(), NULL);
   ASSERT_NO_EXCEPTION();
@@ -203,7 +206,7 @@ bool CheckException(JNIEnv* env) {
 
   jthrowable exception = env->ExceptionOccurred();
   env->ExceptionClear();
-  FML_LOG(ERROR) << fml::jni::GetJavaExceptionInfo(env, exception);
+  LOG(ERROR) << fml::jni::GetJavaExceptionInfo(env, exception);
   env->DeleteLocalRef(exception);
   return false;
 }

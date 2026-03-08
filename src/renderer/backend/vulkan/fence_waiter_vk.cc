@@ -8,6 +8,7 @@
 #include <chrono>
 #include <utility>
 
+#include <absl/log/check.h>
 #include "base/validation.h"
 #include "fml/cpu_affinity.h"
 #include "fml/thread.h"
@@ -123,7 +124,7 @@ void FenceWaiter::Main() {
 void FenceWaiter::WaitUntilEmpty() {
   // Note, there is no lock because once terminate_ is set to true, no other
   // fence can be added to the wait set. Just in case, here's a FML_DCHECK:
-  FML_DCHECK(terminate_) << "Fence waiter must be terminated.";
+  DCHECK(terminate_) << "Fence waiter must be terminated.";
   while (!wait_set_.empty() && Wait()) {
     // Intentionally empty.
   }

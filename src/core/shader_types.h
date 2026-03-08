@@ -10,6 +10,7 @@
 #include <string_view>
 #include <vector>
 
+#include <absl/log/log.h>
 #include "core/runtime_types.h"
 #include "fml/hash_combine.h"
 #include "fml/logging.h"
@@ -34,7 +35,7 @@ constexpr ShaderStage ToShaderStage(RuntimeShaderStage stage) {
     case RuntimeShaderStage::kCompute:
       return ShaderStage::kCompute;
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 enum class ShaderType {

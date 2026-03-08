@@ -4,6 +4,7 @@
 
 #include <algorithm>
 
+#include <absl/log/check.h>
 #include "fml/logging.h"
 #include "geometry/gradient.h"
 
@@ -19,7 +20,7 @@ static void AppendColor(const Color& color, GradientData* data) {
 
 GradientData CreateGradientBuffer(const std::vector<Color>& colors,
                                   const std::vector<Scalar>& stops) {
-  FML_DCHECK(stops.size() == colors.size());
+  DCHECK(stops.size() == colors.size());
 
   uint32_t texture_size;
   if (stops.size() == 2) {

@@ -19,6 +19,8 @@
 #elif defined(OS_FUCHSIA)
 #include <lib/zx/thread.h>
 #else
+#include <absl/log/check.h>
+#include <absl/log/log.h>
 #include <pthread.h>
 #endif
 
@@ -52,7 +54,7 @@ ThreadHandle::ThreadHandle(ThreadFunction&& function) {
         return 0;
       },
       new ThreadFunction(std::move(function)), 0, nullptr);
-  FML_CHECK(thread_ != nullptr);
+  CHECK(thread_ != nullptr);
 }
 
 void ThreadHandle::Join() {
@@ -67,7 +69,7 @@ ThreadHandle::ThreadHandle(ThreadFunction&& function) {
   pthread_attr_t attr;
   pthread_attr_init(&attr);
   int result = pthread_attr_setstacksize(&attr, Thread::GetDefaultStackSize());
-  FML_CHECK(result == 0);
+  CHECK(result == 0);
   result = pthread_create(
       &thread_, &attr,
       [](void* arg) -> void* {
@@ -77,9 +79,9 @@ ThreadHandle::ThreadHandle(ThreadFunction&& function) {
         return nullptr;
       },
       new ThreadFunction(std::move(function)));
-  FML_CHECK(result == 0);
+  CHECK(result == 0);
   result = pthread_attr_destroy(&attr);
-  FML_CHECK(result == 0);
+  CHECK(result == 0);
 }
 
 void ThreadHandle::Join() {
@@ -127,8 +129,8 @@ void SetThreadName(const std::string& name) {
 #elif defined(OS_FUCHSIA)
   zx::thread::self()->set_property(ZX_PROP_NAME, name.c_str(), name.size());
 #else
-  FML_DLOG(INFO) << "Could not set the thread name to '" << name
-                 << "' on this platform.";
+  DLOG(INFO) << "Could not set the thread name to '" << name
+             << "' on this platform.";
 #endif
 }
 

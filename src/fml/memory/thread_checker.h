@@ -14,6 +14,8 @@
 #if defined(FML_OS_WIN)
 #include "fml/platform/win/windows_shim.h"
 #else
+#include <absl/log/check.h>
+#include <absl/log/log.h>
 #include <pthread.h>
 #endif
 
@@ -74,10 +76,10 @@ class ThreadChecker final {
       if (0 == pthread_getname_np(current_thread, actual_thread,
                                   buffer_length) &&
           0 == pthread_getname_np(self_, expected_thread, buffer_length)) {
-        FML_DLOG(ERROR) << "Object referenced on a thread other than the one "
-                           "on which it was created. Expected thread: '"
-                        << expected_thread << "'. Actual thread: '"
-                        << actual_thread << "'.";
+        DLOG(ERROR) << "Object referenced on a thread other than the one "
+                       "on which it was created. Expected thread: '"
+                    << expected_thread << "'. Actual thread: '" << actual_thread
+                    << "'.";
       }
     }
 #endif  // __APPLE__
@@ -92,7 +94,7 @@ class ThreadChecker final {
 #if !defined(NDEBUG)
 #define FML_DECLARE_THREAD_CHECKER(c) fml::ThreadChecker c
 #define FML_DCHECK_CREATION_THREAD_IS_CURRENT(c) \
-  FML_DCHECK((c).IsCreationThreadCurrent())
+  DCHECK((c).IsCreationThreadCurrent())
 #else
 #define FML_DECLARE_THREAD_CHECKER(c)
 #define FML_DCHECK_CREATION_THREAD_IS_CURRENT(c) ((void)0)

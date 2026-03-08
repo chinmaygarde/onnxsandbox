@@ -11,6 +11,7 @@
 #include <sstream>
 #include <type_traits>
 
+#include <absl/log/log.h>
 #include "geometry/constants.h"
 #include "geometry/scalar.h"
 #include "geometry/vector.h"
@@ -296,7 +297,7 @@ Color Color::Blend(Color src, BlendMode blend_mode) const {
         return SetLuminosity(d, Luminosity(s));
       });
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 Color Color::ApplyColorMatrix(const ColorMatrix& color_matrix) const {

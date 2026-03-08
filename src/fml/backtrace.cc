@@ -7,6 +7,8 @@
 #include <csignal>
 #include <sstream>
 
+#include <absl/log/log.h>
+
 #include "fml/build_config.h"
 #include "fml/logging.h"
 #include "fml/paths.h"
@@ -105,9 +107,9 @@ static void SignalHandler(int signal) {
   // and re-raising the signal.
   ToggleSignalHandlers(false);
 
-  FML_LOG(ERROR) << "Caught signal " << SignalNameToString(signal)
-                 << " during program execution." << std::endl
-                 << BacktraceHere(3);
+  LOG(ERROR) << "Caught signal " << SignalNameToString(signal)
+             << " during program execution." << std::endl
+             << BacktraceHere(3);
 
   ::raise(signal);
 }
@@ -118,7 +120,7 @@ static void ToggleSignalHandlers(bool set) {
     auto handler = set ? &SignalHandler : SIG_DFL;
 
     if (::signal(signal_name, handler) == SIG_ERR) {
-      FML_LOG(ERROR) << "Could not attach signal handler for " << signal_name;
+      LOG(ERROR) << "Could not attach signal handler for " << signal_name;
     }
   }
 }

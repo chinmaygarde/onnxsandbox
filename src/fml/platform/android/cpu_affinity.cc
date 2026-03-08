@@ -4,6 +4,7 @@
 
 #include "fml/platform/android/cpu_affinity.h"
 
+#include <absl/log/check.h>
 #include <pthread.h>
 #include <sys/resource.h>
 #include <sys/time.h>
@@ -52,7 +53,7 @@ std::optional<size_t> AndroidEfficiencyCoreCount() {
     return true;
   }
   auto result = gCPUTracker->GetIndices(CpuAffinity::kEfficiency).size();
-  FML_DCHECK(result > 0);
+  DCHECK(result > 0);
   return result;
 }
 

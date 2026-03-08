@@ -7,6 +7,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
+#include <absl/log/check.h>
 #include "fml/platform/linux/timerfd.h"
 
 namespace fml {
@@ -31,8 +32,8 @@ static ALooper* AcquireLooperForThread() {
 MessageLoopAndroid::MessageLoopAndroid()
     : looper_(AcquireLooperForThread()),
       timer_fd_(::timerfd_create(kClockType, TFD_NONBLOCK | TFD_CLOEXEC)) {
-  FML_CHECK(looper_.is_valid());
-  FML_CHECK(timer_fd_.is_valid());
+  CHECK(looper_.is_valid());
+  CHECK(timer_fd_.is_valid());
 
   static const int kWakeEvents = ALOOPER_EVENT_INPUT;
 
@@ -50,16 +51,16 @@ MessageLoopAndroid::MessageLoopAndroid()
                                    read_event_fd,          // callback
                                    this                    // baton
   );
-  FML_CHECK(add_result == 1);
+  CHECK(add_result == 1);
 }
 
 MessageLoopAndroid::~MessageLoopAndroid() {
   int remove_result = ::ALooper_removeFd(looper_.get(), timer_fd_.get());
-  FML_CHECK(remove_result == 1);
+  CHECK(remove_result == 1);
 }
 
 void MessageLoopAndroid::Run() {
-  FML_DCHECK(looper_.get() == ALooper_forThread());
+  DCHECK(looper_.get() == ALooper_forThread());
 
   running_ = true;
 
@@ -83,7 +84,7 @@ void MessageLoopAndroid::Terminate() {
 
 void MessageLoopAndroid::WakeUp(fml::TimePoint time_point) {
   [[maybe_unused]] bool result = TimerRearm(timer_fd_.get(), time_point);
-  FML_DCHECK(result);
+  DCHECK(result);
 }
 
 void MessageLoopAndroid::OnEventFired() {

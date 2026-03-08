@@ -9,6 +9,9 @@
 #include <algorithm>
 #include <vector>
 
+#include <absl/log/check.h>
+#include <absl/log/log.h>
+
 #include "fml/build_config.h"
 #include "fml/logging.h"
 
@@ -55,7 +58,7 @@ MessageLoopImpl::~MessageLoopImpl() {
 
 void MessageLoopImpl::PostTask(const fml::closure& task,
                                fml::TimePoint target_time) {
-  FML_DCHECK(task != nullptr);
+  DCHECK(task != nullptr);
   if (terminated_) {
     // If the message loop has already been terminated, PostTask should destruct
     // |task| synchronously within this function.
@@ -66,19 +69,19 @@ void MessageLoopImpl::PostTask(const fml::closure& task,
 
 void MessageLoopImpl::AddTaskObserver(intptr_t key,
                                       const fml::closure& callback) {
-  FML_DCHECK(callback != nullptr);
-  FML_DCHECK(MessageLoop::GetCurrent().GetLoopImpl().get() == this)
+  DCHECK(callback != nullptr);
+  DCHECK(MessageLoop::GetCurrent().GetLoopImpl().get() == this)
       << "Message loop task observer must be added on the same thread as the "
          "loop.";
   if (callback != nullptr) {
     task_queue_->AddTaskObserver(queue_id_, key, callback);
   } else {
-    FML_LOG(ERROR) << "Tried to add a null TaskObserver.";
+    LOG(ERROR) << "Tried to add a null TaskObserver.";
   }
 }
 
 void MessageLoopImpl::RemoveTaskObserver(intptr_t key) {
-  FML_DCHECK(MessageLoop::GetCurrent().GetLoopImpl().get() == this)
+  DCHECK(MessageLoop::GetCurrent().GetLoopImpl().get() == this)
       << "Message loop task observer must be removed from the same thread as "
          "the loop.";
   task_queue_->RemoveTaskObserver(queue_id_, key);

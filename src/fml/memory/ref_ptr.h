@@ -10,6 +10,7 @@
 #include <functional>
 #include <utility>
 
+#include <absl/log/check.h>
 #include "fml/logging.h"
 #include "fml/macros.h"
 #include "fml/memory/ref_ptr_internal.h"
@@ -116,12 +117,12 @@ class RefPtr final {
   T* get() const { return ptr_; }
 
   T& operator*() const {
-    FML_DCHECK(ptr_);
+    DCHECK(ptr_);
     return *ptr_;
   }
 
   T* operator->() const {
-    FML_DCHECK(ptr_);
+    DCHECK(ptr_);
     return ptr_;
   }
 
@@ -211,7 +212,7 @@ class RefPtr final {
   friend RefPtr<T> AdoptRef<T>(T*);
 
   enum AdoptTag { kAdopt };
-  RefPtr(T* ptr, AdoptTag) : ptr_(ptr) { FML_DCHECK(ptr_); }
+  RefPtr(T* ptr, AdoptTag) : ptr_(ptr) { DCHECK(ptr_); }
 
   T* ptr_;
 };

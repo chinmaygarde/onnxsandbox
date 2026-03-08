@@ -11,6 +11,10 @@
 #include <memory>
 #include <optional>
 
+#include <absl/log/log.h>
+
+#include <absl/log/check.h>
+#include "fml/logging.h"
 #include "fml/make_copyable.h"
 #include "fml/task_source.h"
 
@@ -65,7 +69,7 @@ MessageLoopTaskQueues::~MessageLoopTaskQueues() = default;
 void MessageLoopTaskQueues::Dispose(TaskQueueId queue_id) {
   std::lock_guard guard(queue_mutex_);
   const auto& queue_entry = queue_entries_.at(queue_id);
-  FML_DCHECK(queue_entry->subsumed_by == kUnmerged);
+  DCHECK(queue_entry->subsumed_by == kUnmerged);
   auto& subsumed_set = queue_entry->owner_of;
   for (auto& subsumed : subsumed_set) {
     queue_entries_.erase(subsumed);
@@ -77,7 +81,7 @@ void MessageLoopTaskQueues::Dispose(TaskQueueId queue_id) {
 void MessageLoopTaskQueues::DisposeTasks(TaskQueueId queue_id) {
   std::lock_guard guard(queue_mutex_);
   const auto& queue_entry = queue_entries_.at(queue_id);
-  FML_DCHECK(queue_entry->subsumed_by == kUnmerged);
+  DCHECK(queue_entry->subsumed_by == kUnmerged);
   auto& subsumed_set = queue_entry->owner_of;
   queue_entry->task_source->ShutDown();
   for (auto& subsumed : subsumed_set) {
@@ -168,7 +172,7 @@ void MessageLoopTaskQueues::AddTaskObserver(TaskQueueId queue_id,
                                             intptr_t key,
                                             const fml::closure& callback) {
   std::lock_guard guard(queue_mutex_);
-  FML_DCHECK(callback != nullptr) << "Observer callback must be non-null.";
+  DCHECK(callback != nullptr) << "Observer callback must be non-null.";
   queue_entries_.at(queue_id)->task_observers[key] = callback;
 }
 
@@ -204,7 +208,7 @@ std::vector<fml::closure> MessageLoopTaskQueues::GetObserversToNotify(
 void MessageLoopTaskQueues::SetWakeable(TaskQueueId queue_id,
                                         fml::Wakeable* wakeable) {
   std::lock_guard guard(queue_mutex_);
-  FML_CHECK(!queue_entries_.at(queue_id)->wakeable)
+  CHECK(!queue_entries_.at(queue_id)->wakeable)
       << "Wakeable can only be set once.";
   queue_entries_.at(queue_id)->wakeable = wakeable;
 }
@@ -226,15 +230,15 @@ bool MessageLoopTaskQueues::Merge(TaskQueueId owner, TaskQueueId subsumed) {
 
   // Ensure owner_entry->subsumed_by being kUnmerged
   if (owner_entry->subsumed_by != kUnmerged) {
-    FML_LOG(WARNING) << "Thread merging failed: owner_entry was already "
-                        "subsumed by others, owner="
-                     << owner << ", subsumed=" << subsumed
-                     << ", owner->subsumed_by=" << owner_entry->subsumed_by;
+    LOG(WARNING) << "Thread merging failed: owner_entry was already "
+                    "subsumed by others, owner="
+                 << owner << ", subsumed=" << subsumed
+                 << ", owner->subsumed_by=" << owner_entry->subsumed_by;
     return false;
   }
   // Ensure subsumed_entry->owner_of being empty
   if (!subsumed_entry->owner_of.empty()) {
-    FML_LOG(WARNING)
+    LOG(WARNING)
         << "Thread merging failed: subsumed_entry already owns others, owner="
         << owner << ", subsumed=" << subsumed
         << ", subsumed->owner_of.size()=" << subsumed_entry->owner_of.size();
@@ -242,11 +246,10 @@ bool MessageLoopTaskQueues::Merge(TaskQueueId owner, TaskQueueId subsumed) {
   }
   // Ensure subsumed_entry->subsumed_by being kUnmerged
   if (subsumed_entry->subsumed_by != kUnmerged) {
-    FML_LOG(WARNING) << "Thread merging failed: subsumed_entry was already "
-                        "subsumed by others, owner="
-                     << owner << ", subsumed=" << subsumed
-                     << ", subsumed->subsumed_by="
-                     << subsumed_entry->subsumed_by;
+    LOG(WARNING) << "Thread merging failed: subsumed_entry was already "
+                    "subsumed by others, owner="
+                 << owner << ", subsumed=" << subsumed
+                 << ", subsumed->subsumed_by=" << subsumed_entry->subsumed_by;
     return false;
   }
   // All checking is OK, set merged state.
@@ -264,28 +267,28 @@ bool MessageLoopTaskQueues::Unmerge(TaskQueueId owner, TaskQueueId subsumed) {
   std::lock_guard guard(queue_mutex_);
   const auto& owner_entry = queue_entries_.at(owner);
   if (owner_entry->owner_of.empty()) {
-    FML_LOG(WARNING)
+    LOG(WARNING)
         << "Thread unmerging failed: owner_entry doesn't own anyone, owner="
         << owner << ", subsumed=" << subsumed;
     return false;
   }
   if (owner_entry->subsumed_by != kUnmerged) {
-    FML_LOG(WARNING)
+    LOG(WARNING)
         << "Thread unmerging failed: owner_entry was subsumed by others, owner="
         << owner << ", subsumed=" << subsumed
         << ", owner_entry->subsumed_by=" << owner_entry->subsumed_by;
     return false;
   }
   if (queue_entries_.at(subsumed)->subsumed_by == kUnmerged) {
-    FML_LOG(WARNING) << "Thread unmerging failed: subsumed_entry wasn't "
-                        "subsumed by others, owner="
-                     << owner << ", subsumed=" << subsumed;
+    LOG(WARNING) << "Thread unmerging failed: subsumed_entry wasn't "
+                    "subsumed by others, owner="
+                 << owner << ", subsumed=" << subsumed;
     return false;
   }
   if (owner_entry->owner_of.find(subsumed) == owner_entry->owner_of.end()) {
-    FML_LOG(WARNING) << "Thread unmerging failed: owner_entry didn't own the "
-                        "given subsumed queue id, owner="
-                     << owner << ", subsumed=" << subsumed;
+    LOG(WARNING) << "Thread unmerging failed: owner_entry didn't own the "
+                    "given subsumed queue id, owner="
+                 << owner << ", subsumed=" << subsumed;
     return false;
   }
 
@@ -361,10 +364,10 @@ fml::TimePoint MessageLoopTaskQueues::GetNextWakeTimeUnlocked(
 
 TaskSource::TopTask MessageLoopTaskQueues::PeekNextTaskUnlocked(
     TaskQueueId owner) const {
-  FML_DCHECK(HasPendingTasksUnlocked(owner));
+  DCHECK(HasPendingTasksUnlocked(owner));
   const auto& entry = queue_entries_.at(owner);
   if (entry->owner_of.empty()) {
-    FML_CHECK(!entry->task_source->IsEmpty());
+    CHECK(!entry->task_source->IsEmpty());
     return entry->task_source->Top();
   }
 
@@ -390,7 +393,7 @@ TaskSource::TopTask MessageLoopTaskQueues::PeekNextTaskUnlocked(
   }
   // At least one task at the top because PeekNextTaskUnlocked() is called after
   // HasPendingTasksUnlocked()
-  FML_CHECK(top_task.has_value());
+  CHECK(top_task.has_value());
   // Covered by FML_CHECK.
   // NOLINTNEXTLINE(bugprone-unchecked-optional-access)
   return top_task.value();

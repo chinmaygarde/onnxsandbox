@@ -10,6 +10,7 @@
 #include <lib/zx/time.h>
 #include <zircon/status.h>
 
+#include <absl/log/check.h>
 #include "fml/platform/fuchsia/task_observers.h"
 
 namespace fml {
@@ -33,7 +34,7 @@ MessageLoopFuchsia::MessageLoopFuchsia() : loop_(&kLoopConfig) {
 
   zx_status_t timer_status =
       zx::timer::create(ZX_TIMER_SLACK_LATE, ZX_CLOCK_MONOTONIC, &timer_);
-  FML_CHECK(timer_status == ZX_OK)
+  CHECK(timer_status == ZX_OK)
       << "MessageLoopFuchsia failed to create timer; status="
       << zx_status_get_string(timer_status);
 }
@@ -54,7 +55,7 @@ void MessageLoopFuchsia::Run() {
         if (status == ZX_ERR_CANCELED) {
           return;
         }
-        FML_CHECK(signal->observed & ZX_TIMER_SIGNALED);
+        CHECK(signal->observed & ZX_TIMER_SIGNALED);
 
         // Cancel the timer now, because `RunExpiredTasksNow` might not re-arm
         // the timer.  That would leave the timer in a signalled state and it
@@ -74,14 +75,14 @@ void MessageLoopFuchsia::Run() {
 
         // Kick off the next iteration of the timer wait loop.
         zx_status_t wait_status = wait->Begin(loop_.dispatcher());
-        FML_CHECK(wait_status == ZX_OK)
+        CHECK(wait_status == ZX_OK)
             << "MessageLoopFuchsia::WakeUp failed to wait for timer; status="
             << zx_status_get_string(wait_status);
       });
 
   // Kick off the first iteration of the timer wait loop.
   zx_status_t wait_status = timer_wait_->Begin(loop_.dispatcher());
-  FML_CHECK(wait_status == ZX_OK)
+  CHECK(wait_status == ZX_OK)
       << "MessageLoopFuchsia::WakeUp failed to wait for timer; status="
       << zx_status_get_string(wait_status);
 
@@ -105,7 +106,7 @@ void MessageLoopFuchsia::WakeUp(fml::TimePoint time_point) {
   zx::time due_time(time_point.ToEpochDelta().ToNanoseconds());
 
   zx_status_t timer_status = timer_.set(due_time, kZeroSlack);
-  FML_CHECK(timer_status == ZX_OK)
+  CHECK(timer_status == ZX_OK)
       << "MessageLoopFuchsia::WakeUp failed to set timer; status="
       << zx_status_get_string(timer_status);
 }

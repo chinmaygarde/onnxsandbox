@@ -4,6 +4,7 @@
 
 #include "renderer/compute_pipeline_descriptor.h"
 
+#include <absl/log/check.h>
 #include "core/formats.h"
 #include "renderer/backend/vulkan/shader_function_vk.h"
 #include "renderer/vertex_descriptor.h"
@@ -39,7 +40,7 @@ ComputePipelineDescriptor& ComputePipelineDescriptor::SetLabel(
 
 ComputePipelineDescriptor& ComputePipelineDescriptor::SetStageEntrypoint(
     std::shared_ptr<const ShaderFunction> function) {
-  FML_DCHECK(!function || function->GetStage() == ShaderStage::kCompute);
+  DCHECK(!function || function->GetStage() == ShaderStage::kCompute);
   if (!function || function->GetStage() != ShaderStage::kCompute) {
     return *this;
   }

@@ -6,6 +6,7 @@
 
 #include <cstdlib>
 
+#include <absl/log/check.h>
 #include "fml/logging.h"
 
 #if defined(__GNUC__) || defined(__clang__)
@@ -29,8 +30,7 @@ namespace ogre {
 [[noreturn]] inline void OgreUnimplemented(const char* method,
                                            const char* file,
                                            int line) {
-  FML_CHECK(false) << "Unimplemented: " << method << " in " << file << ":"
-                   << line;
+  CHECK(false) << "Unimplemented: " << method << " in " << file << ":" << line;
   std::abort();
 }
 

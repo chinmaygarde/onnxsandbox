@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 #include "fml/memory/task_runner_checker.h"
+#include <absl/log/check.h>
 
 namespace fml {
 
@@ -15,7 +16,7 @@ TaskRunnerChecker::TaskRunnerChecker()
 TaskRunnerChecker::~TaskRunnerChecker() = default;
 
 bool TaskRunnerChecker::RunsOnCreationTaskRunner() const {
-  FML_CHECK(fml::MessageLoop::IsInitializedForCurrentThread());
+  CHECK(fml::MessageLoop::IsInitializedForCurrentThread());
   const auto current_queue_id = MessageLoop::GetCurrentTaskQueueId();
   if (RunsOnTheSameThread(current_queue_id, initialized_queue_id_)) {
     return true;

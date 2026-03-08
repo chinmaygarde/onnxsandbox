@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 #include "geometry/round_rect.h"
+#include <absl/log/check.h>
 
 namespace ogre {
 
@@ -31,7 +32,7 @@ static bool CornerContains(const Point& p,
                            const Point& corner,
                            const Point& direction,
                            const Size& radii) {
-  FML_DCHECK(radii.width >= 0.0f && radii.height >= 0.0f);
+  DCHECK(radii.width >= 0.0f && radii.height >= 0.0f);
   if (radii.IsEmpty()) {
     // This corner is not curved, therefore the containment is the same as
     // the previously checked bounds containment.

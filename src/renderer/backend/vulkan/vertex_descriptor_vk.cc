@@ -4,6 +4,7 @@
 
 #include "renderer/backend/vulkan/vertex_descriptor_vk.h"
 
+#include <absl/log/log.h>
 #include <cstdint>
 
 namespace ogre {
@@ -162,7 +163,7 @@ vk::Format ToVertexDescriptorFormat(const ShaderStageIOSlot& input) {
     case ShaderType::kSampler:
       return vk::Format::eUndefined;
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 }  // namespace ogre

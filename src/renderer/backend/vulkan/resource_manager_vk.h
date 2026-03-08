@@ -4,6 +4,7 @@
 
 #pragma once
 
+#include <absl/log/check.h>
 #include <condition_variable>
 #include <memory>
 #include <mutex>
@@ -169,7 +170,7 @@ class UniqueResourceVKT final {
   /// @brief      Returns a pointer to the resource.
   const ResourceType* operator->() const {
     // If this would segfault, fail with a nicer error message.
-    FML_CHECK(resource_) << "UniqueResourceVKT was reclaimed.";
+    CHECK(resource_) << "UniqueResourceVKT was reclaimed.";
 
     return resource_.get()->Get();
   }

@@ -4,6 +4,7 @@
 
 #include "fml/mapping.h"
 
+#include <absl/log/check.h>
 #include <algorithm>
 #include <cstring>
 #include <memory>
@@ -135,7 +136,7 @@ MallocMapping::~MallocMapping() {
 MallocMapping MallocMapping::Copy(const void* begin, size_t length) {
   auto result =
       MallocMapping(reinterpret_cast<uint8_t*>(malloc(length)), length);
-  FML_CHECK(result.GetMapping() != nullptr);
+  CHECK(result.GetMapping() != nullptr);
   memcpy(const_cast<uint8_t*>(result.GetMapping()), begin, length);
   return result;
 }

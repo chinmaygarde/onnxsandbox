@@ -7,6 +7,8 @@
 #include <memory>
 #include <utility>
 
+#include <absl/log/check.h>
+#include <absl/log/log.h>
 #include "base/allocation_size.h"
 #include "base/validation.h"
 #include "core/formats.h"
@@ -32,7 +34,7 @@ ToVKBufferMemoryPropertyFlags(StorageMode mode) {
     case StorageMode::kDeviceTransient:
       return vk::MemoryPropertyFlagBits::eLazilyAllocated;
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 static VmaAllocationCreateFlags ToVmaAllocationBufferCreateFlags(
@@ -49,13 +51,13 @@ static VmaAllocationCreateFlags ToVmaAllocationBufferCreateFlags(
       flags |= VMA_ALLOCATION_CREATE_MAPPED_BIT;
       return flags;
     case StorageMode::kDevicePrivate:
-      FML_DCHECK(!readback);
+      DCHECK(!readback);
       return flags;
     case StorageMode::kDeviceTransient:
-      FML_DCHECK(!readback);
+      DCHECK(!readback);
       return flags;
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 static PoolVMA CreateBufferPool(VmaAllocator allocator) {
@@ -323,7 +325,7 @@ ToVKTextureMemoryPropertyFlags(StorageMode mode,
       }
       return vk::MemoryPropertyFlagBits::eDeviceLocal;
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 static VmaAllocationCreateFlags ToVmaAllocationCreateFlags(StorageMode mode) {
@@ -336,7 +338,7 @@ static VmaAllocationCreateFlags ToVmaAllocationCreateFlags(StorageMode mode) {
     case StorageMode::kDeviceTransient:
       return flags;
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 class AllocatedTextureSource final : public TextureSource {
@@ -347,7 +349,7 @@ class AllocatedTextureSource final : public TextureSource {
                          vk::Device device,
                          bool supports_memoryless_textures)
       : TextureSource(desc), resource_(context.GetResourceManager()) {
-    FML_DCHECK(desc.format != PixelFormat::kUnknown);
+    DCHECK(desc.format != PixelFormat::kUnknown);
     vk::StructureChain<vk::ImageCreateInfo, vk::ImageCompressionControlEXT>
         image_info_chain;
     auto& image_info = image_info_chain.get();

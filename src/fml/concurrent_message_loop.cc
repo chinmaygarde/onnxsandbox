@@ -6,6 +6,8 @@
 
 #include <algorithm>
 
+#include <absl/log/check.h>
+#include <absl/log/log.h>
 #include "fml/thread.h"
 #include "fml/trace_event.h"
 
@@ -29,7 +31,7 @@ ConcurrentMessageLoop::ConcurrentMessageLoop(size_t worker_count)
 ConcurrentMessageLoop::~ConcurrentMessageLoop() {
   Terminate();
   for (auto& worker : workers_) {
-    FML_DCHECK(worker.joinable());
+    DCHECK(worker.joinable());
     worker.join();
   }
 }
@@ -51,9 +53,8 @@ void ConcurrentMessageLoop::PostTask(const fml::closure& task) {
 
   // Don't just drop tasks on the floor in case of shutdown.
   if (shutdown_) {
-    FML_DLOG(WARNING)
-        << "Tried to post a task to shutdown concurrent message "
-           "loop. The task will be executed on the callers thread.";
+    DLOG(WARNING) << "Tried to post a task to shutdown concurrent message "
+                     "loop. The task will be executed on the callers thread.";
     lock.unlock();
     ExecuteTask(task);
     return;
@@ -88,7 +89,7 @@ void ConcurrentMessageLoop::WorkerMain() {
 
     if (HasThreadTasksLocked()) {
       thread_tasks = GetThreadTasksLocked();
-      FML_DCHECK(!HasThreadTasksLocked());
+      DCHECK(!HasThreadTasksLocked());
     }
 
     // Don't hold onto the mutex while tasks are being executed as they could
@@ -140,7 +141,7 @@ bool ConcurrentMessageLoop::HasThreadTasksLocked() const {
 
 std::vector<fml::closure> ConcurrentMessageLoop::GetThreadTasksLocked() {
   auto found = thread_tasks_.find(std::this_thread::get_id());
-  FML_DCHECK(found != thread_tasks_.end());
+  DCHECK(found != thread_tasks_.end());
   std::vector<fml::closure> pending_tasks;
   std::swap(pending_tasks, found->second);
   thread_tasks_.erase(found);
@@ -163,7 +164,7 @@ void ConcurrentTaskRunner::PostTask(const fml::closure& task) {
     return;
   }
 
-  FML_DLOG(WARNING)
+  DLOG(WARNING)
       << "Tried to post to a concurrent message loop that has already died. "
          "Executing the task on the callers thread.";
   task();

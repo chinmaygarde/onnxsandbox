@@ -4,6 +4,7 @@
 
 #pragma once
 
+#include <absl/log/log.h>
 #include "core/formats.h"
 #include "toolkit/android/hardware_buffer.h"
 
@@ -14,7 +15,7 @@ constexpr PixelFormat ToPixelFormat(android::HardwareBufferFormat format) {
     case android::HardwareBufferFormat::kR8G8B8A8UNormInt:
       return PixelFormat::kR8G8B8A8UNormInt;
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 }  // namespace ogre

@@ -109,6 +109,7 @@ class PlatformSemaphore {
 }  // namespace fml
 
 #else
+#include <absl/log/check.h>
 #include <semaphore.h>
 #include "fml/eintr_wrapper.h"
 
@@ -125,7 +126,7 @@ class PlatformSemaphore {
       (void)result;
       // Can only be EINVAL which should not be possible since we checked for
       // validity.
-      FML_DCHECK(result == 0);
+      DCHECK(result == 0);
     }
   }
 

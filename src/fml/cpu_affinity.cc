@@ -4,13 +4,14 @@
 
 #include "fml/cpu_affinity.h"
 
-#include "fml/build_config.h"
-#include "fml/logging.h"
-
+#include <absl/log/log.h>
 #include <cstdint>
 #include <fstream>
 #include <optional>
 #include <string>
+
+#include "fml/build_config.h"
+#include "fml/logging.h"
 
 #ifdef FML_OS_ANDROID
 #include "fml/platform/android/cpu_affinity.h"
@@ -85,7 +86,7 @@ const std::vector<size_t>& CPUSpeedTracker::GetIndices(
     case CpuAffinity::kNotEfficiency:
       return not_efficiency_;
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 // Get the size of the cpuinfo file by reading it until the end. This is

@@ -6,6 +6,7 @@
 
 #include <format>
 
+#include <absl/log/log.h>
 #include "base/timing.h"
 #include "fml/make_copyable.h"
 #include "fml/status_or.h"
@@ -37,7 +38,7 @@ constexpr vk::FrontFace ToVKFrontFace(WindingOrder order) {
     case WindingOrder::kCounterClockwise:
       return vk::FrontFace::eCounterClockwise;
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 static void ReportPipelineCreationFeedbackToLog(
@@ -79,7 +80,7 @@ static void ReportPipelineCreationFeedbackToLog(
     }
   }
   stream << std::endl << "<<<<<<" << std::endl;
-  FML_LOG(ERROR) << stream.str();
+  LOG(ERROR) << stream.str();
 }
 
 static void ReportPipelineCreationFeedbackToTrace(

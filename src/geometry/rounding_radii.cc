@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 #include "geometry/rounding_radii.h"
+#include <absl/log/check.h>
 
 namespace ogre {
 
@@ -16,8 +17,8 @@ static inline void AdjustScale(Scalar& radius1,
                                Scalar& radius2,
                                Scalar dimension,
                                Scalar& scale) {
-  FML_DCHECK(radius1 >= 0.0f && radius2 >= 0.0f);
-  FML_DCHECK(dimension > 0.0f);
+  DCHECK(radius1 >= 0.0f && radius2 >= 0.0f);
+  DCHECK(dimension > 0.0f);
   if (radius1 + radius2 > dimension) {
     scale = std::min(scale, dimension / (radius1 + radius2));
   }

@@ -7,6 +7,7 @@
 #include <format>
 #include <memory>
 
+#include <absl/log/check.h>
 #include "base/flags.h"
 #include "base/thread_safety.h"
 #include "base/validation.h"
@@ -223,7 +224,7 @@ class Context final : public std::enable_shared_from_this<Context> {
   }
 
   void StoreTaskForGPU(const fml::closure& task, const fml::closure& failure) {
-    FML_CHECK(false && "not supported in this context");
+    CHECK(false && "not supported in this context");
   }
 
   bool AddTrackingFence(const std::shared_ptr<Texture>& texture) const;

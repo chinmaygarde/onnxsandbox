@@ -4,6 +4,8 @@
 
 #include "renderer/backend/vulkan/debug_report_vk.h"
 
+#include <absl/log/log.h>
+
 #include "base/validation.h"
 #include "renderer/backend/vulkan/capabilities_vk.h"
 
@@ -30,8 +32,8 @@ DebugReport::DebugReport(const Capabilities& caps,
   auto messenger = instance.createDebugUtilsMessengerEXTUnique(messenger_info);
 
   if (messenger.result != vk::Result::eSuccess) {
-    FML_LOG(ERROR) << "Could not create debug messenger: "
-                   << vk::to_string(messenger.result);
+    LOG(ERROR) << "Could not create debug messenger: "
+               << vk::to_string(messenger.result);
     return;
   }
 
@@ -186,7 +188,7 @@ DebugReport::Result DebugReport::OnDebugCallback(
   stream << "-----------------------------------------------------------------";
 
   if (type == vk::DebugUtilsMessageTypeFlagBitsEXT::ePerformance) {
-    FML_LOG(INFO) << stream.str();
+    LOG(INFO) << stream.str();
   } else {
     VALIDATION_LOG << stream.str();
   }

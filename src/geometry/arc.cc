@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 #include "geometry/arc.h"
+#include <absl/log/check.h>
 
 namespace ogre {
 
@@ -63,8 +64,8 @@ Rect Arc::GetTightArcBounds() const {
 
   Degrees start_angle = start_.GetPositive();
   Degrees end_angle = start_angle + sweep_;
-  FML_DCHECK(start_angle.degrees >= 0 && start_angle.degrees < 360);
-  FML_DCHECK(end_angle > start_angle && end_angle.degrees < 720);
+  DCHECK(start_angle.degrees >= 0 && start_angle.degrees < 360);
+  DCHECK(end_angle > start_angle && end_angle.degrees < 720);
 
   // 1. start vector
   // 2. end vector
@@ -88,7 +89,7 @@ Rect Arc::GetTightArcBounds() const {
     extrema[count++] = kQuadrantAxes[cur_axis & 3];
   }
 
-  FML_DCHECK(count <= 7);
+  DCHECK(count <= 7);
 
   Point center = bounds_.GetCenter();
   Size radii = bounds_.GetSize() * 0.5f;
@@ -105,18 +106,18 @@ Arc::Iteration Arc::ComputeIterations(size_t step_count,
     return {};
   }
 
-  FML_DCHECK(sweep_.degrees >= 0);
+  DCHECK(sweep_.degrees >= 0);
 
   if (simplify_360 && sweep_.degrees >= 360) {
     return ComputeCircleArcIterations(step_count);
   }
-  FML_DCHECK(sweep_.degrees < 720);
+  DCHECK(sweep_.degrees < 720);
 
   Degrees start = start_.GetPositive();
   Degrees end = start + sweep_;
-  FML_DCHECK(start.degrees >= 0.0f && start.degrees < 360.0f);
-  FML_DCHECK(end >= start);
-  FML_DCHECK(end.degrees < start.degrees + (simplify_360 ? 360.0f : 720.0f));
+  DCHECK(start.degrees >= 0.0f && start.degrees < 360.0f);
+  DCHECK(end >= start);
+  DCHECK(end.degrees < start.degrees + (simplify_360 ? 360.0f : 720.0f));
 
   Iteration iterations;
   iterations.start = ogre::Matrix::CosSin(start);
@@ -136,12 +137,12 @@ Arc::Iteration Arc::ComputeIterations(size_t step_count,
       static_cast<int>(std::floor((start + nudge).degrees / 90.0f));
   int end_quadrant =
       static_cast<int>(std::floor((end - nudge).degrees / 90.0f));
-  FML_DCHECK(cur_quadrant >= 0 &&  //
-             cur_quadrant <= 4);
-  FML_DCHECK(end_quadrant >= cur_quadrant &&  //
-             end_quadrant <= cur_quadrant + 8);
-  FML_DCHECK(cur_quadrant * 90 <= (start + nudge).degrees);
-  FML_DCHECK(end_quadrant * 90 + 90 >= (end - nudge).degrees);
+  DCHECK(cur_quadrant >= 0 &&  //
+         cur_quadrant <= 4);
+  DCHECK(end_quadrant >= cur_quadrant &&  //
+         end_quadrant <= cur_quadrant + 8);
+  DCHECK(cur_quadrant * 90 <= (start + nudge).degrees);
+  DCHECK(end_quadrant * 90 + 90 >= (end - nudge).degrees);
 
   auto next_step = [step_count](Degrees angle, int quadrant) -> size_t {
     Scalar quadrant_fract = angle.degrees / 90.0f - quadrant;
@@ -164,7 +165,7 @@ Arc::Iteration Arc::ComputeIterations(size_t step_count,
         step_count,
     };
   }
-  FML_DCHECK(i <= 9);
+  DCHECK(i <= 9);
   if (i > 0) {
     iterations.quadrants[i - 1].end_index =
         next_step(end - nudge, cur_quadrant);

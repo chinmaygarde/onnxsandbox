@@ -9,6 +9,7 @@
 
 #include <utility>
 
+#include <absl/log/check.h>
 #include "fml/logging.h"
 #include "fml/message_loop.h"
 #include "fml/message_loop_impl.h"
@@ -37,7 +38,7 @@ void TaskRunner::PostDelayedTask(const fml::closure& task,
 }
 
 TaskQueueId TaskRunner::GetTaskQueueId() {
-  FML_DCHECK(loop_);
+  DCHECK(loop_);
   return loop_->GetTaskQueueId();
 }
 
@@ -56,7 +57,7 @@ bool TaskRunner::RunsTasksOnCurrentThread() {
 // static
 void TaskRunner::RunNowOrPostTask(const fml::RefPtr<fml::TaskRunner>& runner,
                                   const fml::closure& task) {
-  FML_DCHECK(runner);
+  DCHECK(runner);
   if (runner->RunsTasksOnCurrentThread()) {
     task();
   } else {
@@ -68,7 +69,7 @@ void TaskRunner::RunNowOrPostTask(const fml::RefPtr<fml::TaskRunner>& runner,
 void TaskRunner::RunNowAndFlushMessages(
     const fml::RefPtr<fml::TaskRunner>& runner,
     const fml::closure& task) {
-  FML_DCHECK(runner);
+  DCHECK(runner);
   if (runner->RunsTasksOnCurrentThread()) {
     task();
     // Post an empty task to make the UI message loop run its task observers.

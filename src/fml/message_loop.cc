@@ -7,6 +7,7 @@
 #include <memory>
 #include <utility>
 
+#include <absl/log/check.h>
 #include "fml/memory/ref_counted.h"
 #include "fml/memory/ref_ptr.h"
 #include "fml/message_loop_impl.h"
@@ -18,7 +19,7 @@ static thread_local std::unique_ptr<MessageLoop> tls_message_loop;
 
 MessageLoop& MessageLoop::GetCurrent() {
   auto* loop = tls_message_loop.get();
-  FML_CHECK(loop != nullptr)
+  CHECK(loop != nullptr)
       << "MessageLoop::EnsureInitializedForCurrentThread was not called on "
          "this thread prior to message loop use.";
   return *loop;
@@ -39,8 +40,8 @@ bool MessageLoop::IsInitializedForCurrentThread() {
 MessageLoop::MessageLoop()
     : loop_(MessageLoopImpl::Create()),
       task_runner_(fml::MakeRefCounted<fml::TaskRunner>(loop_)) {
-  FML_CHECK(loop_);
-  FML_CHECK(task_runner_);
+  CHECK(loop_);
+  CHECK(task_runner_);
 }
 
 MessageLoop::~MessageLoop() = default;
@@ -75,7 +76,7 @@ void MessageLoop::RunExpiredTasksNow() {
 
 TaskQueueId MessageLoop::GetCurrentTaskQueueId() {
   auto* loop = tls_message_loop.get();
-  FML_CHECK(loop != nullptr)
+  CHECK(loop != nullptr)
       << "MessageLoop::EnsureInitializedForCurrentThread was not called on "
          "this thread prior to message loop use.";
   return loop->GetLoopImpl()->GetTaskQueueId();

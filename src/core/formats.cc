@@ -7,6 +7,7 @@
 #include <format>
 #include <sstream>
 
+#include <absl/log/log.h>
 #include "base/validation.h"
 #include "core/texture.h"
 
@@ -21,7 +22,7 @@ constexpr bool StoreActionNeedsResolveTexture(StoreAction action) {
     case StoreAction::kStoreAndMultisampleResolve:
       return true;
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 bool Attachment::IsValid() const {

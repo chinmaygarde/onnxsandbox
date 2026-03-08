@@ -7,6 +7,7 @@
 #include <climits>
 #include <sstream>
 
+#include <absl/log/check.h>
 #include "fml/logging.h"
 
 namespace ogre {
@@ -414,7 +415,7 @@ std::optional<std::pair<Scalar, Scalar>> Matrix::GetScales2D() const {
   double quadratic_sqrt;
   if (B_squared_minus_4AC <= 0.0f) {
     // This test should never fail, but we might be slightly negative
-    FML_DCHECK(B_squared_minus_4AC + kEhCloseEnough >= 0.0f);
+    DCHECK(B_squared_minus_4AC + kEhCloseEnough >= 0.0f);
     // Uniform scales (possibly rotated) would tend to end up here
     // in which case both eigenvalues are identical
     quadratic_sqrt = 0.0f;
@@ -424,8 +425,8 @@ std::optional<std::pair<Scalar, Scalar>> Matrix::GetScales2D() const {
 
   // Since this is returning the sqrt of the values, we can guarantee that
   // the returned scales are non-negative.
-  FML_DCHECK(minus_B - quadratic_sqrt >= 0.0f);
-  FML_DCHECK(minus_B + quadratic_sqrt >= 0.0f);
+  DCHECK(minus_B - quadratic_sqrt >= 0.0f);
+  DCHECK(minus_B + quadratic_sqrt >= 0.0f);
   return {{std::sqrt((minus_B - quadratic_sqrt) / 2.0f),
            std::sqrt((minus_B + quadratic_sqrt) / 2.0f)}};
 }

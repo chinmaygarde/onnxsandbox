@@ -5,6 +5,7 @@
 #define FML_USED_ON_EMBEDDER
 
 #include "fml/task_source.h"
+#include <absl/log/check.h>
 
 namespace fml {
 
@@ -61,7 +62,7 @@ bool TaskSource::IsEmpty() const {
 }
 
 TaskSource::TopTask TaskSource::Top() const {
-  FML_CHECK(!IsEmpty());
+  CHECK(!IsEmpty());
   if (secondary_pause_requests_ > 0 || secondary_task_queue_.empty()) {
     const auto& primary_top = primary_task_queue_.top();
     return {
@@ -97,7 +98,7 @@ void TaskSource::PauseSecondary() {
 
 void TaskSource::ResumeSecondary() {
   secondary_pause_requests_--;
-  FML_DCHECK(secondary_pause_requests_ >= 0);
+  DCHECK(secondary_pause_requests_ >= 0);
 }
 
 }  // namespace fml

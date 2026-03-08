@@ -9,6 +9,7 @@
 #include <memory>
 #include <string>
 
+#include <absl/log/log.h>
 #include "base/mask.h"
 #include "fml/hash_combine.h"
 #include "fml/logging.h"
@@ -65,7 +66,7 @@ constexpr const char* StorageModeToString(StorageMode mode) {
     case StorageMode::kDeviceTransient:
       return "DeviceTransient";
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 //------------------------------------------------------------------------------
@@ -174,7 +175,7 @@ constexpr const char* PixelFormatToString(PixelFormat format) {
     case PixelFormat::kR32Float:
       return "R32Float";
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 enum class BlendFactor {
@@ -223,7 +224,7 @@ constexpr const char* LoadActionToString(LoadAction action) {
     case LoadAction::kClear:
       return "Clear";
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 constexpr const char* StoreActionToString(StoreAction action) {
@@ -237,7 +238,7 @@ constexpr const char* StoreActionToString(StoreAction action) {
     case StoreAction::kStoreAndMultisampleResolve:
       return "StoreAndMultisampleResolve";
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 constexpr bool CanClearAttachment(LoadAction action) {
@@ -248,7 +249,7 @@ constexpr bool CanClearAttachment(LoadAction action) {
     case LoadAction::kClear:
       return true;
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 constexpr bool CanDiscardAttachmentWhenDone(StoreAction action) {
@@ -260,7 +261,7 @@ constexpr bool CanDiscardAttachmentWhenDone(StoreAction action) {
     case StoreAction::kMultisampleResolve:
       return true;
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 enum class TextureType {
@@ -281,7 +282,7 @@ constexpr const char* TextureTypeToString(TextureType type) {
     case TextureType::kTextureExternalOES:
       return "TextureExternalOES";
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 constexpr bool IsMultisampleCapable(TextureType type) {
@@ -322,7 +323,7 @@ constexpr const char* TextureUsageToString(TextureUsage usage) {
     case TextureUsage::kRenderTarget:
       return "RenderTarget";
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 std::string TextureUsageMaskToString(TextureUsageMask mask);

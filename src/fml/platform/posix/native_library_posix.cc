@@ -7,14 +7,18 @@
 #include <dlfcn.h>
 #include <fcntl.h>
 
+#include <absl/log/log.h>
+
+#include "fml/logging.h"
+
 namespace fml {
 
 NativeLibrary::NativeLibrary(const char* path) {
   ::dlerror();
   handle_ = ::dlopen(path, RTLD_NOW);
   if (handle_ == nullptr) {
-    FML_DLOG(ERROR) << "Could not open library '" << path << "' due to error '"
-                    << ::dlerror() << "'.";
+    DLOG(ERROR) << "Could not open library '" << path << "' due to error '"
+                << ::dlerror() << "'.";
   }
 }
 
@@ -30,8 +34,8 @@ NativeLibrary::~NativeLibrary() {
     ::dlerror();
     if (::dlclose(handle_) != 0) {
       handle_ = nullptr;
-      FML_LOG(ERROR) << "Could not close library due to error '" << ::dlerror()
-                     << "'.";
+      LOG(ERROR) << "Could not close library due to error '" << ::dlerror()
+                 << "'.";
     }
   }
 }

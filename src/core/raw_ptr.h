@@ -4,6 +4,7 @@
 
 #pragma once
 
+#include <absl/log/check.h>
 #include <memory>
 
 namespace ogre {
@@ -26,35 +27,35 @@ class raw_ptr {
 
   T* operator->() {
 #if !NDEBUG
-    FML_CHECK(weak_ptr_.lock());
+    CHECK(weak_ptr_.lock());
 #endif
     return ptr_;
   }
 
   const T* operator->() const {
 #if !NDEBUG
-    FML_CHECK(weak_ptr_.lock());
+    CHECK(weak_ptr_.lock());
 #endif
     return ptr_;
   }
 
   T* get() {
 #if !NDEBUG
-    FML_CHECK(weak_ptr_.lock());
+    CHECK(weak_ptr_.lock());
 #endif
     return ptr_;
   }
 
   T& operator*() {
 #if !NDEBUG
-    FML_CHECK(weak_ptr_.lock());
+    CHECK(weak_ptr_.lock());
 #endif
     return *ptr_;
   }
 
   const T& operator*() const {
 #if !NDEBUG
-    FML_CHECK(weak_ptr_.lock());
+    CHECK(weak_ptr_.lock());
 #endif
     return *ptr_;
   }

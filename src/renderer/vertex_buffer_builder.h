@@ -10,6 +10,7 @@
 #include <type_traits>
 #include <vector>
 
+#include <absl/log/check.h>
 #include "core/device_buffer.h"
 #include "core/formats.h"
 #include "core/vertex_buffer.h"
@@ -68,7 +69,7 @@ class VertexBufferBuilder {
   }
 
   const VertexType& Last() const {
-    FML_DCHECK(!vertices_.empty());
+    DCHECK(!vertices_.empty());
     return vertices_.back();
   }
 

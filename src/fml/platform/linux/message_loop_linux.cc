@@ -7,6 +7,7 @@
 #include <sys/epoll.h>
 #include <unistd.h>
 
+#include <absl/log/check.h>
 #include "fml/eintr_wrapper.h"
 #include "fml/platform/linux/timerfd.h"
 
@@ -17,15 +18,15 @@ static constexpr int kClockType = CLOCK_MONOTONIC;
 MessageLoopLinux::MessageLoopLinux()
     : epoll_fd_(FML_HANDLE_EINTR(::epoll_create(1 /* unused */))),
       timer_fd_(::timerfd_create(kClockType, TFD_NONBLOCK | TFD_CLOEXEC)) {
-  FML_CHECK(epoll_fd_.is_valid());
-  FML_CHECK(timer_fd_.is_valid());
+  CHECK(epoll_fd_.is_valid());
+  CHECK(timer_fd_.is_valid());
   bool added_source = AddOrRemoveTimerSource(true);
-  FML_CHECK(added_source);
+  CHECK(added_source);
 }
 
 MessageLoopLinux::~MessageLoopLinux() {
   bool removed_source = AddOrRemoveTimerSource(false);
-  FML_CHECK(removed_source);
+  CHECK(removed_source);
 }
 
 bool MessageLoopLinux::AddOrRemoveTimerSource(bool add) {
@@ -81,7 +82,7 @@ void MessageLoopLinux::Terminate() {
 void MessageLoopLinux::WakeUp(fml::TimePoint time_point) {
   bool result = TimerRearm(timer_fd_.get(), time_point);
   (void)result;
-  FML_DCHECK(result);
+  DCHECK(result);
 }
 
 void MessageLoopLinux::OnEventFired() {

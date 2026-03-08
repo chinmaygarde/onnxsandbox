@@ -9,6 +9,7 @@
 #include <thread>
 #include <utility>
 
+#include <absl/log/check.h>
 #include "base/validation.h"
 #include "fml/logging.h"
 #include "fml/trace_event.h"
@@ -76,7 +77,7 @@ void GPUTracer::MarkFrameStart() {
   if (!enabled_) {
     return;
   }
-  FML_DCHECK(!in_frame_);
+  DCHECK(!in_frame_);
   in_frame_ = true;
   raster_thread_id_ = std::this_thread::get_id();
 }
@@ -97,7 +98,7 @@ void GPUTracer::MarkFrameEnd() {
   // never finished. This shouldn't happen unless there is a bug in the
   // encoder logic. We set it to zero anyway to prevent a validation error
   // from becoming a memory leak.
-  FML_DCHECK(state.pending_buffers == 0u);
+  DCHECK(state.pending_buffers == 0u);
   state.pending_buffers = 0;
   state.current_index = 0;
 }
@@ -170,7 +171,7 @@ void GPUTracer::OnFenceComplete(size_t frame_index) {
     Lock lock(trace_state_mutex_);
     GPUTraceState& state = trace_states_[frame_index];
 
-    FML_DCHECK(state.pending_buffers > 0);
+    DCHECK(state.pending_buffers > 0);
     state.pending_buffers -= 1;
     pending = state.pending_buffers;
     query_count = state.current_index;

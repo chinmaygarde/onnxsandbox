@@ -7,6 +7,7 @@
 #include <string_view>
 #include <utility>
 
+#include <absl/log/check.h>
 #include "fml/logging.h"
 
 namespace fml {
@@ -15,14 +16,14 @@ template <int from_length, int to_length, int buffer_length>
 class BitConverter {
  public:
   void Append(int bits) {
-    FML_DCHECK(bits >= 0 && bits < (1 << from_length));
-    FML_DCHECK(CanAppend());
+    DCHECK(bits >= 0 && bits < (1 << from_length));
+    DCHECK(CanAppend());
     lower_free_bits_ -= from_length;
     buffer_ |= (bits << lower_free_bits_);
   }
 
   int Extract() {
-    FML_DCHECK(CanExtract());
+    DCHECK(CanExtract());
     int result = Peek();
     buffer_ = (buffer_ << to_length) & kMask;
     lower_free_bits_ += to_length;

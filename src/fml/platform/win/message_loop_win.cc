@@ -7,6 +7,7 @@
 #include <VersionHelpers.h>
 #include <timeapi.h>
 
+#include <absl/log/check.h>
 #include "fml/logging.h"
 
 constexpr uint32_t kHighResolutionTimer = 1;  // 1 ms
@@ -16,7 +17,7 @@ namespace fml {
 
 MessageLoopWin::MessageLoopWin()
     : timer_(CreateWaitableTimer(NULL, FALSE, NULL)) {
-  FML_CHECK(timer_.is_valid());
+  CHECK(timer_.is_valid());
   // Flutter uses timers to schedule frames. By default, Windows timers do
   // not have the precision to reliably schedule frame rates greater than
   // 60hz. We can increase the precision, but on versions of Windows before
@@ -37,7 +38,7 @@ void MessageLoopWin::Run() {
   running_ = true;
 
   while (running_) {
-    FML_CHECK(WaitForSingleObject(timer_.get(), INFINITE) == 0);
+    CHECK(WaitForSingleObject(timer_.get(), INFINITE) == 0);
     RunExpiredTasksNow();
   }
 }
@@ -54,7 +55,7 @@ void MessageLoopWin::WakeUp(fml::TimePoint time_point) {
   if (time_point > now) {
     due_time.QuadPart = (time_point - now).ToNanoseconds() / -100;
   }
-  FML_CHECK(SetWaitableTimer(timer_.get(), &due_time, 0, NULL, NULL, FALSE));
+  CHECK(SetWaitableTimer(timer_.get(), &due_time, 0, NULL, NULL, FALSE));
 }
 
 }  // namespace fml

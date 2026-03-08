@@ -9,6 +9,7 @@
 #include <string>
 #include <vector>
 
+#include <absl/log/check.h>
 #include "fml/build_config.h"
 #include "fml/file.h"
 #include "fml/macros.h"
@@ -159,7 +160,7 @@ class MallocMapping final : public Mapping {
   /// for `uint8_t` and `char`.
   template <typename T>
   static MallocMapping Copy(const T* begin, const T* end) {
-    FML_DCHECK(end >= begin);
+    DCHECK(end >= begin);
     size_t length = end - begin;
     return Copy(begin, length);
   }

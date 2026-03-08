@@ -14,6 +14,7 @@
 #include <memory>
 #include <sstream>
 
+#include <absl/log/log.h>
 #include "fml/eintr_wrapper.h"
 #include "fml/logging.h"
 #include "fml/mapping.h"
@@ -175,7 +176,7 @@ bool UnlinkFile(const char* path) {
 bool UnlinkFile(const fml::UniqueFD& base_directory, const char* path) {
   int code = ::unlinkat(base_directory.get(), path, 0);
   if (code != 0) {
-    FML_DLOG(ERROR) << strerror(errno);
+    DLOG(ERROR) << strerror(errno);
   }
   return code == 0;
 }
@@ -236,13 +237,13 @@ bool WriteAtomically(const fml::UniqueFD& base_directory,
 bool VisitFiles(const fml::UniqueFD& directory, const FileVisitor& visitor) {
   fml::UniqueFD dup_fd(dup(directory.get()));
   if (!dup_fd.is_valid()) {
-    FML_DLOG(ERROR) << "Can't dup the directory fd. Error: " << strerror(errno);
+    DLOG(ERROR) << "Can't dup the directory fd. Error: " << strerror(errno);
     return true;  // continue to visit other files
   }
 
   fml::UniqueDir dir(::fdopendir(dup_fd.get()));
   if (!dir.is_valid()) {
-    FML_DLOG(ERROR) << "Can't open the directory. Error: " << strerror(errno);
+    DLOG(ERROR) << "Can't open the directory. Error: " << strerror(errno);
     return true;  // continue to visit other files
   }
 

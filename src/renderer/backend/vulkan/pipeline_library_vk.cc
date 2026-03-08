@@ -6,6 +6,7 @@
 
 #include <cstdint>
 
+#include <absl/log/check.h>
 #include "base/promise.h"
 #include "base/validation.h"
 #include "fml/container.h"
@@ -28,7 +29,7 @@ PipelineLibrary::PipelineLibrary(
                                                  std::move(cache_directory))),
       worker_task_runner_(std::move(worker_task_runner)),
       compile_queue_(PipelineCompileQueue::Create(worker_task_runner_)) {
-  FML_DCHECK(worker_task_runner_);
+  DCHECK(worker_task_runner_);
   if (!pso_cache_->IsValid() || !worker_task_runner_) {
     return;
   }

@@ -7,6 +7,7 @@
 #include <concepts>
 #include <utility>
 
+#include <absl/log/check.h>
 #include "fml/logging.h"
 #include "fml/macros.h"
 
@@ -64,8 +65,7 @@ class UniqueObject {
   }
 
   void reset(const T& value = Traits::InvalidValue()) {
-    FML_CHECK(data_.generic == Traits::InvalidValue() ||
-              data_.generic != value);
+    CHECK(data_.generic == Traits::InvalidValue() || data_.generic != value);
     FreeIfNecessary();
     data_.generic = value;
   }

@@ -7,6 +7,7 @@
 #include <cstdint>
 #include <ostream>
 
+#include <absl/log/log.h>
 #include "base/validation.h"
 #include "core/formats.h"
 #include "core/shader_types.h"
@@ -35,7 +36,7 @@ constexpr vk::SampleCountFlagBits ToVKSampleCountFlagBits(SampleCount count) {
     case SampleCount::kCount4:
       return vk::SampleCountFlagBits::e4;
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 constexpr vk::BlendFactor ToVKBlendFactor(BlendFactor factor) {
@@ -71,7 +72,7 @@ constexpr vk::BlendFactor ToVKBlendFactor(BlendFactor factor) {
     case BlendFactor::kOneMinusBlendAlpha:
       return vk::BlendFactor::eOneMinusConstantAlpha;
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 constexpr vk::BlendOp ToVKBlendOp(BlendOperation op) {
@@ -83,7 +84,7 @@ constexpr vk::BlendOp ToVKBlendOp(BlendOperation op) {
     case BlendOperation::kReverseSubtract:
       return vk::BlendOp::eReverseSubtract;
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 constexpr vk::ColorComponentFlags ToVKColorComponentFlags(ColorWriteMask type) {
@@ -139,7 +140,7 @@ constexpr std::optional<vk::ShaderStageFlagBits> ToVKShaderStageFlagBits(
     case ShaderStage::kCompute:
       return vk::ShaderStageFlagBits::eCompute;
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 constexpr vk::Format ToVKImageFormat(PixelFormat format) {
@@ -178,7 +179,7 @@ constexpr vk::Format ToVKImageFormat(PixelFormat format) {
       return vk::Format::eR32Sfloat;
   }
 
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 constexpr PixelFormat ToPixelFormat(vk::Format format) {
@@ -220,7 +221,7 @@ constexpr vk::SampleCountFlagBits ToVKSampleCount(SampleCount sample_count) {
       return vk::SampleCountFlagBits::e4;
   }
 
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 constexpr vk::Filter ToVKSamplerMinMagFilter(MinMagFilter filter) {
@@ -231,7 +232,7 @@ constexpr vk::Filter ToVKSamplerMinMagFilter(MinMagFilter filter) {
       return vk::Filter::eLinear;
   }
 
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 constexpr vk::SamplerMipmapMode ToVKSamplerMipmapMode(MipFilter filter) {
@@ -243,7 +244,7 @@ constexpr vk::SamplerMipmapMode ToVKSamplerMipmapMode(MipFilter filter) {
       return vk::SamplerMipmapMode::eLinear;
   }
 
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 constexpr vk::SamplerAddressMode ToVKSamplerAddressMode(
@@ -259,7 +260,7 @@ constexpr vk::SamplerAddressMode ToVKSamplerAddressMode(
       return vk::SamplerAddressMode::eClampToBorder;
   }
 
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 constexpr vk::ShaderStageFlags ToVkShaderStage(ShaderStage stage) {
@@ -274,7 +275,7 @@ constexpr vk::ShaderStageFlags ToVkShaderStage(ShaderStage stage) {
       return vk::ShaderStageFlagBits::eVertex;
   }
 
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 static_assert(static_cast<int>(DescriptorType::kSampledImage) ==
@@ -314,7 +315,7 @@ constexpr vk::AttachmentLoadOp ToVKAttachmentLoadOp(LoadAction load_action) {
       return vk::AttachmentLoadOp::eDontCare;
   }
 
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 constexpr vk::AttachmentStoreOp ToVKAttachmentStoreOp(StoreAction store_action,
@@ -338,7 +339,7 @@ constexpr vk::AttachmentStoreOp ToVKAttachmentStoreOp(StoreAction store_action,
       // performed.
       return vk::AttachmentStoreOp::eStore;
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 constexpr bool StoreActionPerformsResolve(StoreAction store_action) {
@@ -350,7 +351,7 @@ constexpr bool StoreActionPerformsResolve(StoreAction store_action) {
     case StoreAction::kStoreAndMultisampleResolve:
       return true;
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 constexpr vk::IndexType ToVKIndexType(IndexType index_type) {
@@ -362,10 +363,10 @@ constexpr vk::IndexType ToVKIndexType(IndexType index_type) {
     case IndexType::kUnknown:
       return vk::IndexType::eUint32;
     case IndexType::kNone:
-      FML_UNREACHABLE();
+      LOG(FATAL) << "Reached unreachable code.";
   }
 
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 constexpr vk::PolygonMode ToVKPolygonMode(PolygonMode mode) {
@@ -375,7 +376,7 @@ constexpr vk::PolygonMode ToVKPolygonMode(PolygonMode mode) {
     case PolygonMode::kLine:
       return vk::PolygonMode::eLine;
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 constexpr bool PrimitiveTopologySupportsPrimitiveRestart(
@@ -390,7 +391,7 @@ constexpr bool PrimitiveTopologySupportsPrimitiveRestart(
     case PrimitiveType::kLineStrip:
       return false;
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 constexpr vk::PrimitiveTopology ToVKPrimitiveTopology(PrimitiveType primitive) {
@@ -409,7 +410,7 @@ constexpr vk::PrimitiveTopology ToVKPrimitiveTopology(PrimitiveType primitive) {
       return vk::PrimitiveTopology::eTriangleFan;
   }
 
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 constexpr bool PixelFormatIsDepthStencil(PixelFormat format) {
@@ -449,7 +450,7 @@ constexpr vk::CullModeFlags ToVKCullModeFlags(CullMode mode) {
     case CullMode::kBackFace:
       return vk::CullModeFlagBits::eBack;
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 constexpr vk::CompareOp ToVKCompareOp(CompareFunction op) {
@@ -471,7 +472,7 @@ constexpr vk::CompareOp ToVKCompareOp(CompareFunction op) {
     case CompareFunction::kGreaterEqual:
       return vk::CompareOp::eGreaterOrEqual;
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 constexpr vk::StencilOp ToVKStencilOp(StencilOperation op) {
@@ -494,7 +495,7 @@ constexpr vk::StencilOp ToVKStencilOp(StencilOperation op) {
       return vk::StencilOp::eDecrementAndWrap;
       break;
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 constexpr vk::StencilOpState ToVKStencilOpState(
@@ -536,7 +537,7 @@ constexpr vk::ImageAspectFlags ToVKImageAspectFlags(PixelFormat format) {
       return vk::ImageAspectFlagBits::eDepth |
              vk::ImageAspectFlagBits::eStencil;
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 constexpr uint32_t ToArrayLayerCount(TextureType type) {
@@ -550,7 +551,7 @@ constexpr uint32_t ToArrayLayerCount(TextureType type) {
       VALIDATION_LOG
           << "kTextureExternalOES can not be used with the Vulkan backend.";
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 constexpr vk::ImageViewType ToVKImageViewType(TextureType type) {
@@ -564,7 +565,7 @@ constexpr vk::ImageViewType ToVKImageViewType(TextureType type) {
       VALIDATION_LOG
           << "kTextureExternalOES can not be used with the Vulkan backend.";
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 constexpr vk::ImageCreateFlags ToVKImageCreateFlags(TextureType type) {
@@ -578,7 +579,7 @@ constexpr vk::ImageCreateFlags ToVKImageCreateFlags(TextureType type) {
       VALIDATION_LOG
           << "kTextureExternalOES can not be used with the Vulkan backend.";
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 vk::PipelineDepthStencilStateCreateInfo ToVKPipelineDepthStencilStateCreateInfo(
@@ -611,7 +612,7 @@ constexpr vk::ImageAspectFlags ToImageAspectFlags(PixelFormat format) {
       return vk::ImageAspectFlagBits::eDepth |
              vk::ImageAspectFlagBits::eStencil;
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 }  // namespace ogre

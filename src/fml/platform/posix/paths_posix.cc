@@ -8,6 +8,7 @@
 
 #include <climits>
 
+#include <absl/log/check.h>
 #include "fml/logging.h"
 
 namespace fml {
@@ -20,7 +21,7 @@ constexpr size_t kFileURLPrefixLength = sizeof(kFileURLPrefix) - 1;
 
 std::string GetCurrentDirectory() {
   char buffer[PATH_MAX];
-  FML_CHECK(getcwd(buffer, sizeof(buffer)));
+  CHECK(getcwd(buffer, sizeof(buffer)));
   return std::string(buffer);
 }
 

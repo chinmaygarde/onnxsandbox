@@ -7,6 +7,7 @@
 #include <cstring>
 #include <tuple>
 
+#include <absl/log/check.h>
 #include "base/validation.h"
 #include "core/buffer_view.h"
 #include "core/device_buffer.h"
@@ -36,7 +37,7 @@ HostBuffer::HostBuffer(const std::shared_ptr<Allocator>& allocator,
   desc.storage_mode = StorageMode::kHostVisible;
   for (auto i = 0u; i < kHostBufferArenaSize; i++) {
     std::shared_ptr<DeviceBuffer> device_buffer = allocator->CreateBuffer(desc);
-    FML_CHECK(device_buffer) << "Failed to allocate device buffer.";
+    CHECK(device_buffer) << "Failed to allocate device buffer.";
     device_buffers_[i].push_back(device_buffer);
   }
 }

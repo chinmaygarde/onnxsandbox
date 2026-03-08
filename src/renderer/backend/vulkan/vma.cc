@@ -27,7 +27,7 @@ void VMADebugPrint(const char* message, ...) {
   char buffer[256];
   vsnprintf(buffer, sizeof(buffer) - 1, message, args);
   va_end(args);
-  FML_DLOG(INFO) << buffer;
+  DLOG(INFO) << buffer;
 }
 #endif
 
@@ -37,4 +37,5 @@ void VMADebugPrint(const char* message, ...) {
 #define VMA_HEAVY_ASSERT(expr) \
   DCHECK((expr)) << "Vulkan Memory Allocator Failure!"
 
+#include <absl/log/log.h>
 #include <vk_mem_alloc.h>

@@ -4,6 +4,7 @@
 
 #include "core/texture.h"
 
+#include <absl/log/log.h>
 #include "base/validation.h"
 
 namespace ogre {
@@ -67,7 +68,7 @@ bool Texture::IsSliceValid(size_t slice) const {
     case TextureType::kTextureCube:
       return slice <= 5;
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 void Texture::SetCoordinateSystem(TextureCoordinateSystem coordinate_system) {

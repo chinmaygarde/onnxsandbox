@@ -8,6 +8,7 @@
 
 #include <atomic>
 
+#include <absl/log/check.h>
 #include "fml/logging.h"
 #include "fml/macros.h"
 
@@ -19,8 +20,8 @@ class RefCountedThreadSafeBase {
  public:
   void AddRef() const {
 #ifndef NDEBUG
-    FML_DCHECK(!adoption_required_);
-    FML_DCHECK(!destruction_started_);
+    DCHECK(!adoption_required_);
+    DCHECK(!destruction_started_);
 #endif
     ref_count_.fetch_add(1u, std::memory_order_relaxed);
   }
@@ -29,7 +30,7 @@ class RefCountedThreadSafeBase {
     return ref_count_.load(std::memory_order_acquire) == 1u;
   }
 
-  void AssertHasOneRef() const { FML_DCHECK(HasOneRef()); }
+  void AssertHasOneRef() const { DCHECK(HasOneRef()); }
 
  protected:
   RefCountedThreadSafeBase();
@@ -38,10 +39,10 @@ class RefCountedThreadSafeBase {
   // Returns true if the object should self-delete.
   bool Release() const {
 #ifndef NDEBUG
-    FML_DCHECK(!adoption_required_);
-    FML_DCHECK(!destruction_started_);
+    DCHECK(!adoption_required_);
+    DCHECK(!destruction_started_);
 #endif
-    FML_DCHECK(ref_count_.load(std::memory_order_acquire) != 0u);
+    DCHECK(ref_count_.load(std::memory_order_acquire) != 0u);
     // TODO(vtl): We could add the following:
     //     if (ref_count_.load(std::memory_order_relaxed) == 1u) {
     // #ifndef NDEBUG
@@ -66,7 +67,7 @@ class RefCountedThreadSafeBase {
 
 #ifndef NDEBUG
   void Adopt() {
-    FML_DCHECK(adoption_required_);
+    DCHECK(adoption_required_);
     adoption_required_ = false;
   }
 #endif
@@ -93,9 +94,9 @@ inline RefCountedThreadSafeBase::RefCountedThreadSafeBase()
 
 inline RefCountedThreadSafeBase::~RefCountedThreadSafeBase() {
 #ifndef NDEBUG
-  FML_DCHECK(!adoption_required_);
+  DCHECK(!adoption_required_);
   // Should only be destroyed as a result of |Release()|.
-  FML_DCHECK(destruction_started_);
+  DCHECK(destruction_started_);
 #endif
 }
 

@@ -4,6 +4,7 @@
 
 #include "renderer/backend/vulkan/swapchain/khr/khr_swapchain_impl_vk.h"
 
+#include <absl/log/check.h>
 #include "base/validation.h"
 #include "core/formats.h"
 #include "fml/synchronization/semaphore.h"
@@ -256,7 +257,7 @@ KHRSwapchainImpl::KHRSwapchainImpl(const std::shared_ptr<Context>& context,
     }
     synchronizers.emplace_back(std::move(sync));
   }
-  FML_DCHECK(!synchronizers.empty());
+  DCHECK(!synchronizers.empty());
 
   context_ = context;
   surface_ = std::move(surface);

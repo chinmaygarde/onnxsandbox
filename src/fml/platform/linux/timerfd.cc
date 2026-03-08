@@ -13,6 +13,7 @@
 
 #if FML_TIMERFD_AVAILABLE == 0
 
+#include <absl/log/log.h>
 #include <asm/unistd.h>
 #include <sys/syscall.h>
 
@@ -51,7 +52,7 @@ bool TimerRearm(int fd, fml::TimePoint time_point) {
 
   int result = ::timerfd_settime(fd, TFD_TIMER_ABSTIME, &spec, nullptr);
   if (result != 0) {
-    FML_DLOG(ERROR) << "timerfd_settime err:" << strerror(errno);
+    DLOG(ERROR) << "timerfd_settime err:" << strerror(errno);
   }
   return result == 0;
 }

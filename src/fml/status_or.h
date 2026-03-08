@@ -6,6 +6,9 @@
 
 #include <optional>
 
+#include <absl/log/log.h>
+
+#include <absl/log/check.h>
 #include "fml/logging.h"
 #include "fml/status.h"
 
@@ -42,7 +45,7 @@ class StatusOr {
   // NOLINTNEXTLINE(google-explicit-constructor)
   StatusOr(const Status& status) : status_(status), value_() {
     // It's not valid to construct a StatusOr with an OK status and no value.
-    FML_CHECK(!status_.ok());
+    CHECK(!status_.ok());
   }
 
   StatusOr(const StatusOr&) = default;
@@ -75,20 +78,18 @@ class StatusOr {
 
   const T& value() const {
     if (value_.has_value()) {
-      FML_DCHECK(status_.ok());
+      DCHECK(status_.ok());
       return value_.value();
     }
-    FML_LOG(FATAL) << "StatusOr::value() called on error Status";
-    FML_UNREACHABLE();
+    LOG(FATAL) << "StatusOr::value() called on error Status";
   }
 
   T& value() {
     if (value_.has_value()) {
-      FML_DCHECK(status_.ok());
+      DCHECK(status_.ok());
       return value_.value();
     }
-    FML_LOG(FATAL) << "StatusOr::value() called on error Status";
-    FML_UNREACHABLE();
+    LOG(FATAL) << "StatusOr::value() called on error Status";
   }
 
  private:

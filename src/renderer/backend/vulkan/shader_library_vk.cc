@@ -6,6 +6,7 @@
 
 #include <cstdint>
 
+#include <absl/log/check.h>
 #include "fml/logging.h"
 #include "fml/trace_event.h"
 #include "renderer/backend/vulkan/context_vk.h"
@@ -83,7 +84,7 @@ bool ShaderLibrary::RegisterFunction(
   if (!device_holder) {
     return false;
   }
-  FML_DCHECK(device_holder->GetDevice());
+  DCHECK(device_holder->GetDevice());
   auto module =
       device_holder->GetDevice().createShaderModuleUnique(shader_module_info);
 

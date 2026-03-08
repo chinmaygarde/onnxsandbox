@@ -4,6 +4,7 @@
 
 #include "fml/platform/android/scoped_java_ref.h"
 
+#include <absl/log/check.h>
 #include "fml/logging.h"
 #include "fml/platform/android/jni_util.h"
 
@@ -15,13 +16,13 @@ static const int kDefaultLocalFrameCapacity = 16;
 ScopedJavaLocalFrame::ScopedJavaLocalFrame(JNIEnv* env) : env_(env) {
   [[maybe_unused]] int failed =
       env_->PushLocalFrame(kDefaultLocalFrameCapacity);
-  FML_DCHECK(!failed);
+  DCHECK(!failed);
 }
 
 ScopedJavaLocalFrame::ScopedJavaLocalFrame(JNIEnv* env, int capacity)
     : env_(env) {
   [[maybe_unused]] int failed = env_->PushLocalFrame(capacity);
-  FML_DCHECK(!failed);
+  DCHECK(!failed);
 }
 
 ScopedJavaLocalFrame::~ScopedJavaLocalFrame() {
@@ -32,7 +33,7 @@ JavaRef<jobject>::JavaRef() : obj_(NULL) {}
 
 JavaRef<jobject>::JavaRef(JNIEnv* env, jobject obj) : obj_(obj) {
   if (obj) {
-    FML_DCHECK(env && env->GetObjectRefType(obj) == JNILocalRefType);
+    DCHECK(env && env->GetObjectRefType(obj) == JNILocalRefType);
   }
 }
 
@@ -42,7 +43,7 @@ JNIEnv* JavaRef<jobject>::SetNewLocalRef(JNIEnv* env, jobject obj) {
   if (!env) {
     env = AttachCurrentThread();
   } else {
-    FML_DCHECK(env == AttachCurrentThread());  // Is |env| on correct thread.
+    DCHECK(env == AttachCurrentThread());  // Is |env| on correct thread.
   }
   if (obj) {
     obj = env->NewLocalRef(obj);
@@ -58,7 +59,7 @@ void JavaRef<jobject>::SetNewGlobalRef(JNIEnv* env, jobject obj) {
   if (!env) {
     env = AttachCurrentThread();
   } else {
-    FML_DCHECK(env == AttachCurrentThread());  // Is |env| on correct thread.
+    DCHECK(env == AttachCurrentThread());  // Is |env| on correct thread.
   }
   if (obj) {
     obj = env->NewGlobalRef(obj);
@@ -71,7 +72,7 @@ void JavaRef<jobject>::SetNewGlobalRef(JNIEnv* env, jobject obj) {
 
 void JavaRef<jobject>::ResetLocalRef(JNIEnv* env) {
   if (obj_) {
-    FML_DCHECK(env == AttachCurrentThread());  // Is |env| on correct thread.
+    DCHECK(env == AttachCurrentThread());  // Is |env| on correct thread.
     env->DeleteLocalRef(obj_);
     obj_ = NULL;
   }

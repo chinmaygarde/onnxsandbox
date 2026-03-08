@@ -9,6 +9,8 @@
 #include <string_view>
 #include <unordered_map>
 
+#include <absl/log/log.h>
+
 #include "fml/build_config.h"
 
 #ifdef FML_OS_ANDROID
@@ -243,7 +245,7 @@ constexpr const char* VendorToString(VendorVK vendor) {
     case VendorVK::kSamsung:
       return "Samsung";
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 constexpr const char* DeviceTypeToString(DeviceTypeVK type) {
@@ -259,7 +261,7 @@ constexpr const char* DeviceTypeToString(DeviceTypeVK type) {
     case DeviceTypeVK::kCPU:
       return "CPU";
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 constexpr DeviceTypeVK ToDeviceType(const vk::PhysicalDeviceType& type) {
@@ -288,8 +290,8 @@ DriverInfo::DriverInfo(const vk::PhysicalDevice& device) {
   device_id_ = props.deviceID;
   vendor_ = IdentifyVendor(props.vendorID);
   if (vendor_ == VendorVK::kUnknown) {
-    FML_LOG(WARNING) << "Unknown GPU Driver Vendor: " << props.vendorID
-                     << ". This is not an error.";
+    LOG(WARNING) << "Unknown GPU Driver Vendor: " << props.vendorID
+                 << ". This is not an error.";
   }
   type_ = ToDeviceType(props.deviceType);
   if (props.deviceName.data() != nullptr) {
@@ -361,7 +363,7 @@ void DriverInfo::DumpToLog() const {
 
   stream << "-----------------------------------------------------------------";
 
-  FML_LOG(IMPORTANT) << stream.str();
+  LOG(WARNING) << stream.str();
 }
 
 bool DriverInfo::IsEmulator() const {
@@ -382,9 +384,9 @@ bool DriverInfo::IsKnownBadDriver() const {
   // to 6794074 or greater.
   if (vendor_ == VendorVK::kPowerVR && device_id_ == kPixel10DeviceID &&
       driver_version_ < kPixel10MinDriverVersion) {
-    FML_LOG(WARNING) << "Pixel 10 driver version "
-                     << std::to_string(driver_version_)
-                     << " is less than 25.1. Blocking Vulkan initialization.";
+    LOG(WARNING) << "Pixel 10 driver version "
+                 << std::to_string(driver_version_)
+                 << " is less than 25.1. Blocking Vulkan initialization.";
     return true;
   }
 #endif  // FML_OS_ANDROID

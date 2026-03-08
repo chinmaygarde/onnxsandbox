@@ -4,6 +4,8 @@
 
 #include "renderer/backend/vulkan/pipeline_cache_data_vk.h"
 
+#include <absl/log/log.h>
+
 #include "base/allocation.h"
 #include "base/validation.h"
 #include "fml/file.h"
@@ -83,9 +85,8 @@ std::unique_ptr<fml::Mapping> PipelineCacheDataRetrieve(
   );
   const auto current_header = PipelineCacheHeaderVK{props, 0u};
   if (!on_disk_header.IsCompatibleWith(current_header)) {
-    FML_LOG(WARNING)
-        << "Persisted pipeline cache is not compatible with current "
-           "Vulkan context. Ignoring.";
+    LOG(WARNING) << "Persisted pipeline cache is not compatible with current "
+                    "Vulkan context. Ignoring.";
     return nullptr;
   }
   // Zero sized data is known to cause issues.

@@ -9,6 +9,7 @@
 #include <ostream>
 #include <vector>
 
+#include <absl/log/log.h>
 #include "fml/logging.h"
 #include "geometry/matrix.h"
 #include "geometry/point.h"
@@ -477,7 +478,7 @@ struct TRect {
     if (bounds.has_value()) {
       return bounds.value();
     }
-    FML_UNREACHABLE();
+    LOG(FATAL) << "Reached unreachable code.";
   }
 
   /// @brief  Constructs a Matrix that will map all points in the coordinate

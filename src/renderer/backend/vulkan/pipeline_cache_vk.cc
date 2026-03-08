@@ -8,6 +8,8 @@
 
 #include <sstream>
 
+#include <absl/log/log.h>
+
 #include "base/allocation_size.h"
 #include "base/validation.h"
 #include "fml/mapping.h"
@@ -45,8 +47,8 @@ PipelineCache::PipelineCache(std::shared_ptr<const Capabilities> caps,
     // Even though we perform consistency checks because we don't trust the
     // driver, the driver may have additional information that may cause it to
     // reject the cache too.
-    FML_LOG(INFO) << "Existing pipeline cache was invalid: "
-                  << vk::to_string(result) << ". Starting with a fresh cache.";
+    LOG(INFO) << "Existing pipeline cache was invalid: "
+              << vk::to_string(result) << ". Starting with a fresh cache.";
     cache_info.pInitialData = nullptr;
     cache_info.initialDataSize = 0u;
     auto [result2, new_cache] =

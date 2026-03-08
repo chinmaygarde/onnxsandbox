@@ -4,6 +4,7 @@
 
 #pragma once
 
+#include <absl/log/log.h>
 #include <cstdint>
 #include "core/formats.h"
 #include "geometry/size.h"
@@ -27,7 +28,7 @@ constexpr const char* CompressionTypeToString(CompressionType type) {
     case CompressionType::kLossy:
       return "Lossy";
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 //------------------------------------------------------------------------------

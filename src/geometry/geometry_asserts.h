@@ -7,6 +7,7 @@
 #include <array>
 #include <iostream>
 
+#include <absl/log/check.h>
 #include "geometry/matrix.h"
 #include "geometry/point.h"
 #include "geometry/rect.h"
@@ -47,7 +48,7 @@ inline bool NumberNear(double a, double b) {
 
   float ab_ulps = (a - b) / step_ab;
   float ba_ulps = (b - a) / step_ba;
-  FML_CHECK(ab_ulps >= 0 && ba_ulps >= 0);
+  CHECK(ab_ulps >= 0 && ba_ulps >= 0);
 
   return (std::min(ab_ulps, ba_ulps) < kImpellerTestingMaxULP);
 }

@@ -9,6 +9,7 @@
 
 #include <utility>
 
+#include <absl/log/check.h>
 #include "fml/logging.h"
 #include "fml/memory/ref_counted.h"
 #include "fml/memory/task_runner_checker.h"
@@ -90,13 +91,13 @@ class WeakPtr {
 
   T& operator*() const {
     CheckThreadSafety();
-    FML_DCHECK(*this);
+    DCHECK(*this);
     return *get();
   }
 
   T* operator->() const {
     CheckThreadSafety();
-    FML_DCHECK(*this);
+    DCHECK(*this);
     return get();
   }
 
@@ -179,13 +180,13 @@ class TaskRunnerAffineWeakPtr {
 
   T& operator*() const {
     CheckThreadSafety();
-    FML_DCHECK(*this);
+    DCHECK(*this);
     return *get();
   }
 
   T* operator->() const {
     CheckThreadSafety();
-    FML_DCHECK(*this);
+    DCHECK(*this);
     return get();
   }
 
@@ -257,7 +258,7 @@ class WeakPtrFactory {
  public:
   explicit WeakPtrFactory(T* ptr)
       : ptr_(ptr), flag_(fml::MakeRefCounted<fml::internal::WeakPtrFlag>()) {
-    FML_DCHECK(ptr_);
+    DCHECK(ptr_);
   }
 
   ~WeakPtrFactory() {
@@ -293,7 +294,7 @@ class TaskRunnerAffineWeakPtrFactory {
  public:
   explicit TaskRunnerAffineWeakPtrFactory(T* ptr)
       : ptr_(ptr), flag_(fml::MakeRefCounted<fml::internal::WeakPtrFlag>()) {
-    FML_DCHECK(ptr_);
+    DCHECK(ptr_);
   }
 
   ~TaskRunnerAffineWeakPtrFactory() {

@@ -132,6 +132,9 @@ endif()
 
 target_include_directories(fml PUBLIC ..)
 
+find_package(absl CONFIG REQUIRED)
+target_link_libraries(fml PUBLIC absl::log absl::check)
+
 add_library(fml_unittests OBJECT
   ascii_trie_unittests.cc
   backtrace_unittests.cc

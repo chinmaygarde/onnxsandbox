@@ -6,6 +6,7 @@
 
 #include "geometry/rect.h"
 
+#include <absl/log/check.h>
 #include "geometry/geometry_asserts.h"
 
 namespace ogre {
@@ -1339,7 +1340,7 @@ static constexpr inline R flip_lrtb(R rect) {
 
 static constexpr inline Rect swap_nan(const Rect& rect, int index) {
   Scalar nan = std::numeric_limits<Scalar>::quiet_NaN();
-  FML_DCHECK(index >= 0 && index <= 15);
+  DCHECK(index >= 0 && index <= 15);
   Scalar l = ((index & (1 << 0)) != 0) ? nan : rect.GetLeft();
   Scalar t = ((index & (1 << 1)) != 0) ? nan : rect.GetTop();
   Scalar r = ((index & (1 << 2)) != 0) ? nan : rect.GetRight();
@@ -1349,7 +1350,7 @@ static constexpr inline Rect swap_nan(const Rect& rect, int index) {
 
 static constexpr inline Point swap_nan(const Point& point, int index) {
   Scalar nan = std::numeric_limits<Scalar>::quiet_NaN();
-  FML_DCHECK(index >= 0 && index <= 3);
+  DCHECK(index >= 0 && index <= 3);
   Scalar x = ((index & (1 << 0)) != 0) ? nan : point.x;
   Scalar y = ((index & (1 << 1)) != 0) ? nan : point.y;
   return Point(x, y);

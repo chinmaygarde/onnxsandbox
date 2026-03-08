@@ -56,6 +56,9 @@ add_library(geometry
 
 target_include_directories(geometry PUBLIC ..)
 
+find_package(absl CONFIG REQUIRED)
+target_link_libraries(geometry PUBLIC absl::log absl::check)
+
 add_library(geometry_unittests OBJECT
   geometry_unittests.cc
   matrix_unittests.cc

@@ -7,6 +7,7 @@
 #include <memory>
 #include <mutex>
 
+#include <absl/log/check.h>
 #include "fml/build_config.h"
 #include "fml/logging.h"
 #include "fml/mapping.h"
@@ -94,7 +95,7 @@ class ICUContext {
 
 void InitializeICUOnce(const std::string& icu_data_path) {
   static ICUContext* context = new ICUContext(icu_data_path);
-  FML_CHECK(context->IsValid())
+  CHECK(context->IsValid())
       << "Must be able to initialize the ICU context. Tried: " << icu_data_path;
 }
 
@@ -106,7 +107,7 @@ void InitializeICU(const std::string& icu_data_path) {
 
 void InitializeICUFromMappingOnce(std::unique_ptr<Mapping> mapping) {
   static ICUContext* context = new ICUContext(std::move(mapping));
-  FML_CHECK(context->IsValid())
+  CHECK(context->IsValid())
       << "Unable to initialize the ICU context from a mapping.";
 }
 

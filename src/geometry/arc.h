@@ -4,6 +4,7 @@
 
 #pragma once
 
+#include <absl/log/check.h>
 #include "geometry/rect.h"
 #include "geometry/scalar.h"
 
@@ -47,7 +48,7 @@ struct Arc {
       size_t end_index = 0u;
 
       size_t GetPointCount() const {
-        FML_DCHECK(start_index < end_index);
+        DCHECK(start_index < end_index);
         return end_index - start_index;
       }
     };

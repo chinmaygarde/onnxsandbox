@@ -7,6 +7,8 @@
 #include <algorithm>
 #include <array>
 
+#include <absl/log/log.h>
+
 #include "base/validation.h"
 #include "core/formats.h"
 #include "renderer/backend/vulkan/vk.h"
@@ -59,16 +61,16 @@ Capabilities::Capabilities(bool enable_validations,
   validations_enabled_ =
       enable_validations && HasLayer("VK_LAYER_KHRONOS_validation");
   if (enable_validations && !validations_enabled_) {
-    FML_LOG(ERROR)
+    LOG(ERROR)
         << "Requested Impeller context creation with validations but the "
            "validation layers could not be found. Expect no Vulkan validation "
            "checks!";
     if (fatal_missing_validations) {
-      FML_LOG(FATAL) << "Validation missing. Exiting.";
+      LOG(FATAL) << "Validation missing. Exiting.";
     }
   }
   if (validations_enabled_) {
-    FML_LOG(INFO) << "Vulkan validations are enabled.";
+    LOG(INFO) << "Vulkan validations are enabled.";
   }
   is_valid_ = true;
 }
@@ -125,7 +127,7 @@ Capabilities::GetEnabledInstanceExtensions() const {
       required.push_back("VK_KHR_wayland_surface");
     }
   } else {
-    FML_LOG(INFO) << "VK_KHR_surface not available; running in headless mode.";
+    LOG(INFO) << "VK_KHR_surface not available; running in headless mode.";
   }
 
   if (HasExtension("VK_KHR_portability_enumeration")) {
@@ -157,7 +159,7 @@ static const char* GetExtensionName(RequiredCommonDeviceExtensionVK ext) {
     case RequiredCommonDeviceExtensionVK::kLast:
       return "Unknown";
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 static const char* GetExtensionName(RequiredAndroidDeviceExtensionVK ext) {
@@ -176,7 +178,7 @@ static const char* GetExtensionName(RequiredAndroidDeviceExtensionVK ext) {
     case RequiredAndroidDeviceExtensionVK::kLast:
       return "Unknown";
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 static const char* GetExtensionName(OptionalAndroidDeviceExtensionVK ext) {
@@ -192,7 +194,7 @@ static const char* GetExtensionName(OptionalAndroidDeviceExtensionVK ext) {
     case OptionalAndroidDeviceExtensionVK::kLast:
       return "Unknown";
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 static const char* GetExtensionName(OptionalDeviceExtensionVK ext) {
@@ -206,7 +208,7 @@ static const char* GetExtensionName(OptionalDeviceExtensionVK ext) {
     case OptionalDeviceExtensionVK::kLast:
       return "Unknown";
   }
-  FML_UNREACHABLE();
+  LOG(FATAL) << "Reached unreachable code.";
 }
 
 template <class T>

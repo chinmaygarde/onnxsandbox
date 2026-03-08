@@ -9,6 +9,11 @@
 #include <algorithm>
 #include <set>
 
+#include <absl/log/log.h>
+
+#include <absl/log/check.h>
+#include "fml/logging.h"
+
 namespace fml {
 
 SharedThreadMerger::SharedThreadMerger(fml::TaskQueueId owner,
@@ -20,24 +25,24 @@ SharedThreadMerger::SharedThreadMerger(fml::TaskQueueId owner,
 
 bool SharedThreadMerger::MergeWithLease(RasterThreadMergerId caller,
                                         size_t lease_term) {
-  FML_DCHECK(lease_term > 0) << "lease_term should be positive.";
+  DCHECK(lease_term > 0) << "lease_term should be positive.";
   std::scoped_lock lock(mutex_);
   if (IsMergedUnSafe()) {
     return true;
   }
   bool success = task_queues_->Merge(owner_, subsumed_);
-  FML_CHECK(success) << "Unable to merge the raster and platform threads.";
+  CHECK(success) << "Unable to merge the raster and platform threads.";
   // Save the lease term
   lease_term_by_caller_[caller] = lease_term;
   return success;
 }
 
 bool SharedThreadMerger::UnMergeNowUnSafe() {
-  FML_CHECK(IsAllLeaseTermsZeroUnSafe())
+  CHECK(IsAllLeaseTermsZeroUnSafe())
       << "all lease term records must be zero before calling "
          "UnMergeNowUnSafe()";
   bool success = task_queues_->Unmerge(owner_, subsumed_);
-  FML_CHECK(success) << "Unable to un-merge the raster and platform threads.";
+  CHECK(success) << "Unable to un-merge the raster and platform threads.";
   return success;
 }
 
@@ -56,15 +61,15 @@ bool SharedThreadMerger::DecrementLease(RasterThreadMergerId caller) {
   bool exist = entry != lease_term_by_caller_.end();
   if (exist) {
     std::atomic_size_t& lease_term_ref = entry->second;
-    FML_CHECK(lease_term_ref > 0)
+    CHECK(lease_term_ref > 0)
         << "lease_term should always be positive when merged, lease_term="
         << lease_term_ref;
     lease_term_ref--;
   } else {
-    FML_LOG(WARNING) << "The caller does not exist when calling "
-                        "DecrementLease(), ignored. This may happens after "
-                        "caller is erased in UnMergeNowIfLastOne(). caller="
-                     << caller;
+    LOG(WARNING) << "The caller does not exist when calling "
+                    "DecrementLease(), ignored. This may happens after "
+                    "caller is erased in UnMergeNowIfLastOne(). caller="
+                 << caller;
   }
   if (IsAllLeaseTermsZeroUnSafe()) {
     // Unmerge now because lease_term_ decreased to zero.
@@ -76,10 +81,9 @@ bool SharedThreadMerger::DecrementLease(RasterThreadMergerId caller) {
 
 void SharedThreadMerger::ExtendLeaseTo(RasterThreadMergerId caller,
                                        size_t lease_term) {
-  FML_DCHECK(lease_term > 0) << "lease_term should be positive.";
+  DCHECK(lease_term > 0) << "lease_term should be positive.";
   std::scoped_lock lock(mutex_);
-  FML_DCHECK(IsMergedUnSafe())
-      << "should be merged state when calling this method";
+  DCHECK(IsMergedUnSafe()) << "should be merged state when calling this method";
   lease_term_by_caller_[caller] = lease_term;
 }
 

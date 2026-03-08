@@ -4,6 +4,7 @@
 
 #include "flutter/benchmarking/benchmarking.h"
 
+#include <absl/log/check.h>
 #include "entity/geometry/shadow_path_geometry.h"
 #include "entity/geometry/stroke_path_geometry.h"
 #include "flutter/display_list/geometry/dl_path.h"
@@ -115,7 +116,7 @@ static void BM_ShadowPathVerticesImpeller(benchmark::State& state,
   while (state.KeepRunning()) {
     auto result = ShadowPathGeometry::MakeAmbientShadowVertices(
         tessellator, path, height, matrix);
-    FML_CHECK(result != nullptr);
+    CHECK(result != nullptr);
   }
 }
 

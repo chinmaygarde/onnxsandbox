@@ -10,6 +10,7 @@
 
 #include <type_traits>
 
+#include <absl/log/log.h>
 #include "fml/file.h"
 #include "fml/platform/win/errors_win.h"
 #include "fml/platform/win/wstring_conversion.h"
@@ -50,7 +51,7 @@ FileMapping::FileMapping(const fml::UniqueFD& fd,
   const auto mapping_size = ::GetFileSize(fd.get(), nullptr);
 
   if (mapping_size == INVALID_FILE_SIZE) {
-    FML_DLOG(ERROR) << "Invalid file size. " << GetLastErrorMessage();
+    DLOG(ERROR) << "Invalid file size. " << GetLastErrorMessage();
     return;
   }
 
@@ -88,8 +89,7 @@ FileMapping::FileMapping(const fml::UniqueFD& fd,
       MapViewOfFile(mapping_handle_.get(), desired_access, 0, 0, mapping_size));
 
   if (mapping == nullptr) {
-    FML_DLOG(ERROR) << "Could not set up file mapping. "
-                    << GetLastErrorMessage();
+    DLOG(ERROR) << "Could not set up file mapping. " << GetLastErrorMessage();
     return;
   }
 

@@ -4,6 +4,7 @@
 
 #pragma once
 
+#include <absl/log/log.h>
 #include <optional>
 
 #include "fml/build_config.h"
@@ -46,7 +47,7 @@ class NativeLibrary : public fml::RefCountedThreadSafe<NativeLibrary> {
   const uint8_t* ResolveSymbol(const char* symbol) {
     auto* resolved_symbol = reinterpret_cast<const uint8_t*>(Resolve(symbol));
     if (resolved_symbol == nullptr) {
-      FML_DLOG(INFO) << "Could not resolve symbol in library: " << symbol;
+      DLOG(INFO) << "Could not resolve symbol in library: " << symbol;
     }
     return resolved_symbol;
   }

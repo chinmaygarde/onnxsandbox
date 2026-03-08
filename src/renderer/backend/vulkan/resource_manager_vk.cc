@@ -4,6 +4,7 @@
 
 #include "renderer/backend/vulkan/resource_manager_vk.h"
 
+#include <absl/log/check.h>
 #include "fml/cpu_affinity.h"
 #include "fml/logging.h"
 #include "fml/thread.h"
@@ -23,7 +24,7 @@ std::shared_ptr<ResourceManager> ResourceManager::Create() {
 ResourceManager::ResourceManager() : waiter_([&]() { Start(); }) {}
 
 ResourceManager::~ResourceManager() {
-  FML_DCHECK(waiter_.get_id() != std::this_thread::get_id())
+  DCHECK(waiter_.get_id() != std::this_thread::get_id())
       << "The ResourceManager being destructed on its own spawned thread is a "
       << "sign that Context was not properly destroyed. A usual fix for this "
       << "is to ensure that Context is shutdown (i.e. context->Shutdown()) "
@@ -85,7 +86,7 @@ void ResourceManager::Reclaim(std::unique_ptr<ResourceVK> resource) {
 
 void ResourceManager::Terminate() {
   // The thread should not be terminated more than once.
-  FML_DCHECK(!should_exit_);
+  DCHECK(!should_exit_);
 
   {
     std::scoped_lock lock(reclaimables_mutex_);
