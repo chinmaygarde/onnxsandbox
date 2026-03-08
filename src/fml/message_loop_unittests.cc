@@ -82,10 +82,11 @@ TEST(MessageLoop, NonDelayedTasksAreRunInOrder) {
     auto& loop = fml::MessageLoop::GetCurrent();
     size_t current = 0;
     for (size_t i = 0; i < count; i++) {
-      loop.GetTaskRunner()->PostTask([&terminated, i, &current, count]() {
+      loop.GetTaskRunner()->PostTask(
+          [&terminated, i, &current, last = count - 1]() {
         ASSERT_EQ(current, i);
         current++;
-        if (count == i + 1) {
+        if (last == i) {
           fml::MessageLoop::GetCurrent().Terminate();
           terminated = true;
         }
@@ -112,10 +113,10 @@ TEST(MessageLoop, DelayedTasksAtSameTimeAreRunInOrder) {
         fml::ChronoTicksSinceEpoch() + fml::TimeDelta::FromMilliseconds(2);
     for (size_t i = 0; i < count; i++) {
       loop.GetTaskRunner()->PostTaskForTime(
-          [&terminated, i, &current, count]() {
+          [&terminated, i, &current, last = count - 1]() {
             ASSERT_EQ(current, i);
             current++;
-            if (count == i + 1) {
+            if (last == i) {
               fml::MessageLoop::GetCurrent().Terminate();
               terminated = true;
             }
