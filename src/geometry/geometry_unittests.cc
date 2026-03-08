@@ -10,7 +10,7 @@
 #include <sstream>
 #include <type_traits>
 
-#include "flutter/testing/testing.h"
+#include <gtest/gtest.h>
 #include "fml/build_config.h"
 #include "geometry/color.h"
 #include "geometry/constants.h"

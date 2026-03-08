@@ -4,7 +4,7 @@
 
 #include "fml/platform/darwin/cf_utils.h"
 
-#include "flutter/testing/testing.h"
+#include <gtest/gtest.h>
 
 namespace fml {
 

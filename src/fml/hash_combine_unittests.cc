@@ -4,7 +4,7 @@
 
 #include "fml/hash_combine.h"
 
-#include "flutter/testing/testing.h"
+#include <gtest/gtest.h>
 
 namespace fml {
 namespace testing {

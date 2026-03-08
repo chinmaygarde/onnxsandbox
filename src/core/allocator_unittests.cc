@@ -2,12 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#include <memory>
+#include <gtest/gtest.h>
+
 #include "core/formats.h"
+#include "core/range.h"
 #include "core/texture_descriptor.h"
-#include "flutter/testing/testing.h"
 #include "geometry/size.h"
-#include "renderer/testing/mocks.h"
 
 namespace ogre {
 namespace testing {

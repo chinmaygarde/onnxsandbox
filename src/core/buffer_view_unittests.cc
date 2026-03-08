@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+#include <gtest/gtest.h>
 #include "core/buffer_view.h"
-#include "flutter/testing/testing.h"
 
 namespace ogre {
 namespace testing {

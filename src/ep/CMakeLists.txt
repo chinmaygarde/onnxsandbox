@@ -30,6 +30,10 @@ add_executable(onnx_sandbox_tests
 )
 target_link_libraries(onnx_sandbox_tests
   onnx_sandbox
+  base_unittests
+  core_unittests
+  fml_unittests
+  geometry_unittests
   GTest::gtest
   absl::log_initialize
   absl::log_globals

@@ -85,6 +85,11 @@ add_library(fml
   unique_fd.h
   unique_object.h
   wakeable.h
+  command_line.cc
+  command_line.h
+  backtrace_stub.cc
+  string_conversion.cc
+  string_conversion.h
   platform/posix/command_line_posix.cc
   platform/posix/file_posix.cc
   platform/posix/mapping_posix.cc
@@ -94,8 +99,13 @@ add_library(fml
   platform/posix/process_posix.cc
 )
 
+target_compile_definitions(fml PUBLIC
+  _SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING
+  _LIBCPP_DISABLE_DEPRECATION_WARNINGS
+)
+
 if (APPLE)
-target_sources(fml PUBLIC
+target_sources(fml PRIVATE
   platform/darwin/cf_utils.cc
   platform/darwin/cf_utils.h
   platform/darwin/concurrent_message_loop_factory.mm
@@ -110,7 +120,7 @@ target_sources(fml PUBLIC
   platform/darwin/string_range_sanitization.mm
 )
 elseif (UNIX)
-target_sources(fml PUBLIC
+target_sources(fml PRIVATE
   concurrent_message_loop_factory.cc
   platform/linux/message_loop_linux.cc
   platform/linux/message_loop_linux.h
@@ -121,3 +131,42 @@ target_sources(fml PUBLIC
 endif()
 
 target_include_directories(fml PUBLIC ..)
+
+add_library(fml_unittests OBJECT
+  ascii_trie_unittests.cc
+  backtrace_unittests.cc
+  base32_unittest.cc
+  closure_unittests.cc
+  command_line_unittest.cc
+  container_unittests.cc
+  cpu_affinity_unittests.cc
+  endianness_unittests.cc
+  file_unittest.cc
+  hash_combine_unittests.cc
+  hex_codec_unittest.cc
+  logging_unittests.cc
+  mapping_unittests.cc
+  math_unittests.cc
+  memory/ref_counted_unittest.cc
+  memory/task_runner_checker_unittest.cc
+  memory/weak_ptr_unittest.cc
+  message_loop_task_queues_merge_unmerge_unittests.cc
+  message_loop_task_queues_unittests.cc
+  message_loop_unittests.cc
+  paths_unittests.cc
+  raster_thread_merger_unittests.cc
+  string_conversion_unittests.cc
+  synchronization/count_down_latch_unittests.cc
+  synchronization/semaphore_unittest.cc
+  synchronization/sync_switch_unittest.cc
+  synchronization/waitable_event_unittest.cc
+  task_source_unittests.cc
+  thread_unittests.cc
+  time/chrono_timestamp_provider.cc
+  time/chrono_timestamp_provider.h
+  time/time_delta_unittest.cc
+  time/time_point_unittest.cc
+  time/time_unittest.cc
+)
+
+target_link_libraries(fml_unittests PUBLIC fml GTest::gtest)

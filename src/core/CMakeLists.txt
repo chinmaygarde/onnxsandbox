@@ -28,3 +28,10 @@ add_library(core
 target_link_libraries(core PUBLIC base geometry)
 
 target_include_directories(core PUBLIC ..)
+
+add_library(core_unittests OBJECT
+  allocator_unittests.cc
+  buffer_view_unittests.cc
+)
+
+target_link_libraries(core_unittests PUBLIC core GTest::gtest)

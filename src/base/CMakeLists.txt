@@ -26,3 +26,9 @@ add_library(base
 
 target_link_libraries(base PUBLIC fml)
 
+add_library(base_unittests OBJECT
+  allocation_size_unittests.cc
+  base_unittests.cc
+)
+
+target_link_libraries(base_unittests PUBLIC base GTest::gtest)

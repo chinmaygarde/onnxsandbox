@@ -7,7 +7,7 @@
 #include <chrono>
 #include <thread>
 
-#include "flutter/testing/testing.h"
+#include <gtest/gtest.h>
 #include "fml/build_config.h"
 #include "fml/thread.h"
 

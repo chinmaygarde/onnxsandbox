@@ -55,3 +55,21 @@ add_library(geometry
 )
 
 target_include_directories(geometry PUBLIC ..)
+
+add_library(geometry_unittests OBJECT
+  geometry_unittests.cc
+  matrix_unittests.cc
+  point_unittests.cc
+  rational_unittests.cc
+  rect_unittests.cc
+  round_rect_unittests.cc
+  round_superellipse_unittests.cc
+  rounding_radii_unittests.cc
+  rstransform_unittests.cc
+  saturated_math_unittests.cc
+  size_unittests.cc
+  trig_unittests.cc
+  wangs_formula_unittests.cc
+)
+
+target_link_libraries(geometry_unittests PUBLIC geometry GTest::gtest)
