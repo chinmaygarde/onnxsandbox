@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_FML_TIME_TIME_POINT_H_
-#define FLUTTER_FML_TIME_TIME_POINT_H_
+#pragma once
 
 #include <cstdint>
 #include <functional>
@@ -74,5 +73,3 @@ class TimePoint {
 };
 
 }  // namespace fml
-
-#endif  // FLUTTER_FML_TIME_TIME_POINT_H_

@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_SWAPCHAIN_AHB_AHB_SWAPCHAIN_IMPL_VK_H_
-#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_SWAPCHAIN_AHB_AHB_SWAPCHAIN_IMPL_VK_H_
+#pragma once
 
 #include <memory>
 
@@ -158,5 +157,3 @@ class AHBSwapchainImpl final
 };
 
 }  // namespace ogre
-
-#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_SWAPCHAIN_AHB_AHB_SWAPCHAIN_IMPL_VK_H_

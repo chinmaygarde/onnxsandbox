@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_YUV_CONVERSION_VK_H_
-#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_YUV_CONVERSION_VK_H_
+#pragma once
 
 #include <unordered_map>
 
@@ -104,5 +103,3 @@ struct ImmutableSamplerKey : public Comparable<ImmutableSamplerKey> {
 };
 
 }  // namespace ogre
-
-#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_YUV_CONVERSION_VK_H_

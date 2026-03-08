@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_SAMPLER_LIBRARY_VK_H_
-#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_SAMPLER_LIBRARY_VK_H_
+#pragma once
 
 #include "core/raw_ptr.h"
 #include "core/sampler_descriptor.h"
@@ -36,5 +35,3 @@ class SamplerLibrary final {
 };
 
 }  // namespace ogre
-
-#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_SAMPLER_LIBRARY_VK_H_

@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_CORE_DEVICE_BUFFER_H_
-#define FLUTTER_OGRE_CORE_DEVICE_BUFFER_H_
+#pragma once
 
 #include <memory>
 #include <string>
@@ -60,5 +59,3 @@ class DeviceBuffer {
 };
 
 }  // namespace ogre
-
-#endif  // FLUTTER_OGRE_CORE_DEVICE_BUFFER_H_

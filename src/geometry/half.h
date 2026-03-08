@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_GEOMETRY_HALF_H_
-#define FLUTTER_OGRE_GEOMETRY_HALF_H_
+#pragma once
 
 #include <cstdint>
 
@@ -163,23 +162,20 @@ inline std::ostream& operator<<(std::ostream& out, const ogre::Half& p) {
   return out;
 }
 
-inline std::ostream& operator<<(std::ostream& out,
-                                const ogre::HalfVector2& p) {
+inline std::ostream& operator<<(std::ostream& out, const ogre::HalfVector2& p) {
   out << "(" << static_cast<ogre::Scalar>(p.x) << ", "
       << static_cast<ogre::Scalar>(p.y) << ")";
   return out;
 }
 
-inline std::ostream& operator<<(std::ostream& out,
-                                const ogre::HalfVector3& p) {
+inline std::ostream& operator<<(std::ostream& out, const ogre::HalfVector3& p) {
   out << "(" << static_cast<ogre::Scalar>(p.x) << ", "
       << static_cast<ogre::Scalar>(p.y) << ", "
       << static_cast<ogre::Scalar>(p.z) << ")";
   return out;
 }
 
-inline std::ostream& operator<<(std::ostream& out,
-                                const ogre::HalfVector4& p) {
+inline std::ostream& operator<<(std::ostream& out, const ogre::HalfVector4& p) {
   out << "(" << static_cast<ogre::Scalar>(p.x) << ", "
       << static_cast<ogre::Scalar>(p.y) << ", "
       << static_cast<ogre::Scalar>(p.z) << ", "
@@ -190,5 +186,3 @@ inline std::ostream& operator<<(std::ostream& out,
 // NOLINTEND(google-explicit-constructor)
 
 }  // namespace std
-
-#endif  // FLUTTER_OGRE_GEOMETRY_HALF_H_

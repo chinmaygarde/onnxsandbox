@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_FML_MESSAGE_LOOP_H_
-#define FLUTTER_FML_MESSAGE_LOOP_H_
+#pragma once
 
 #include "fml/macros.h"
 #include "fml/task_runner.h"
@@ -72,5 +71,3 @@ class MessageLoop {
 };
 
 }  // namespace fml
-
-#endif  // FLUTTER_FML_MESSAGE_LOOP_H_

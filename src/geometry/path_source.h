@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_GEOMETRY_PATH_SOURCE_H_
-#define FLUTTER_OGRE_GEOMETRY_PATH_SOURCE_H_
+#pragma once
 
 #include "geometry/point.h"
 #include "geometry/rect.h"
@@ -142,5 +141,3 @@ class PathTransformer : public ogre::PathReceiver {
 };
 
 }  // namespace ogre
-
-#endif  // FLUTTER_OGRE_GEOMETRY_PATH_SOURCE_H_

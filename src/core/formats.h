@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_CORE_FORMATS_H_
-#define FLUTTER_OGRE_CORE_FORMATS_H_
+#pragma once
 
 #include <cstdint>
 #include <functional>
@@ -709,5 +708,3 @@ struct hash<ogre::StencilAttachmentDescriptor> {
 };
 
 }  // namespace std
-
-#endif  // FLUTTER_OGRE_CORE_FORMATS_H_

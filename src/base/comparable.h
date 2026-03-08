@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_BASE_COMPARABLE_H_
-#define FLUTTER_OGRE_BASE_COMPARABLE_H_
+#pragma once
 
 #include <cstddef>
 #include <functional>
@@ -96,9 +95,7 @@ namespace std {
 
 template <>
 struct hash<ogre::UniqueID> {
-  constexpr std::size_t operator()(const ogre::UniqueID& id) {
-    return id.id;
-  }
+  constexpr std::size_t operator()(const ogre::UniqueID& id) { return id.id; }
 };
 
 template <>
@@ -110,5 +107,3 @@ struct less<ogre::UniqueID> {
 };
 
 }  // namespace std
-
-#endif  // FLUTTER_OGRE_BASE_COMPARABLE_H_

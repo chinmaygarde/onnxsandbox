@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_FML_TRACE_EVENT_H_
-#define FLUTTER_FML_TRACE_EVENT_H_
+#pragma once
 
 #include <functional>
 
@@ -507,5 +506,3 @@ class TraceFlow {
 
 }  // namespace tracing
 }  // namespace fml
-
-#endif  // FLUTTER_FML_TRACE_EVENT_H_

@@ -61,8 +61,7 @@ bool DeviceBufferVK::SetLabel(std::string_view label) {
                          label.data()                         //
   );
 
-  return (*context).SetDebugName(resource_->buffer.get().buffer,
-                                                label);
+  return (*context).SetDebugName(resource_->buffer.get().buffer, label);
 #else
   return true;
 #endif  // OGRE_DEBUG

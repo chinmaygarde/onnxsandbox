@@ -10,8 +10,7 @@
 
 namespace ogre {
 
-static constexpr const char* kPipelineCacheFileName =
-    "flutter.ogre.vkcache";
+static constexpr const char* kPipelineCacheFileName = "flutter.ogre.vkcache";
 
 bool PipelineCacheDataPersist(const fml::UniqueFD& cache_directory,
                               const VkPhysicalDeviceProperties& props,

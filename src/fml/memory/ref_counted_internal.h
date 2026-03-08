@@ -4,8 +4,7 @@
 
 // Internal implementation details for ref_counted.h.
 
-#ifndef FLUTTER_FML_MEMORY_REF_COUNTED_INTERNAL_H_
-#define FLUTTER_FML_MEMORY_REF_COUNTED_INTERNAL_H_
+#pragma once
 
 #include <atomic>
 
@@ -102,5 +101,3 @@ inline RefCountedThreadSafeBase::~RefCountedThreadSafeBase() {
 
 }  // namespace internal
 }  // namespace fml
-
-#endif  // FLUTTER_FML_MEMORY_REF_COUNTED_INTERNAL_H_

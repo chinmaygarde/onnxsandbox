@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_FML_PLATFORM_LINUX_TIMERFD_H_
-#define FLUTTER_FML_PLATFORM_LINUX_TIMERFD_H_
+#pragma once
 
 #include "fml/time/time_point.h"
 
@@ -52,5 +51,3 @@ bool TimerRearm(int fd, fml::TimePoint time_point);
 bool TimerDrain(int fd);
 
 }  // namespace fml
-
-#endif  // FLUTTER_FML_PLATFORM_LINUX_TIMERFD_H_

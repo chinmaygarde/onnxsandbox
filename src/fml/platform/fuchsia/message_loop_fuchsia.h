@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_FML_PLATFORM_FUCHSIA_MESSAGE_LOOP_FUCHSIA_H_
-#define FLUTTER_FML_PLATFORM_FUCHSIA_MESSAGE_LOOP_FUCHSIA_H_
+#pragma once
 
 #include <lib/async-loop/cpp/loop.h>
 #include <lib/async/cpp/wait.h>
@@ -36,5 +35,3 @@ class MessageLoopFuchsia : public MessageLoopImpl {
 };
 
 }  // namespace fml
-
-#endif  // FLUTTER_FML_PLATFORM_FUCHSIA_MESSAGE_LOOP_FUCHSIA_H_

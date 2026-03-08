@@ -69,8 +69,7 @@ std::shared_ptr<Swapchain> Swapchain::Create(
   vk::AndroidSurfaceCreateInfoKHR surface_info;
   surface_info.setWindow(window.GetHandle());
   auto [result, surface] =
-      (*context).GetInstance().createAndroidSurfaceKHRUnique(
-          surface_info);
+      (*context).GetInstance().createAndroidSurfaceKHRUnique(surface_info);
   if (result != vk::Result::eSuccess) {
     VALIDATION_LOG << "Could not create KHR Android Surface: "
                    << vk::to_string(result);

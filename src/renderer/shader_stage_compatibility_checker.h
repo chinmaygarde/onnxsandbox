@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_RENDERER_SHADER_STAGE_COMPATIBILITY_CHECKER_H_
-#define FLUTTER_OGRE_RENDERER_SHADER_STAGE_COMPATIBILITY_CHECKER_H_
+#pragma once
 
 #include <cstddef>
 
@@ -81,5 +80,3 @@ class ShaderStageCompatibilityChecker {
 };
 
 }  // namespace ogre
-
-#endif  // FLUTTER_OGRE_RENDERER_SHADER_STAGE_COMPATIBILITY_CHECKER_H_

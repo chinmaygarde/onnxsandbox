@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_CORE_RAW_PTR_H_
-#define FLUTTER_OGRE_CORE_RAW_PTR_H_
+#pragma once
 
 #include <memory>
 
@@ -80,5 +79,3 @@ class raw_ptr {
 };
 
 }  // namespace ogre
-
-#endif  // FLUTTER_OGRE_CORE_RAW_PTR_H_

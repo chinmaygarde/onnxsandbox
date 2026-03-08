@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_FML_TASK_SOURCE_GRADE_H_
-#define FLUTTER_FML_TASK_SOURCE_GRADE_H_
+#pragma once
 
 namespace fml {
 
@@ -24,5 +23,3 @@ enum class TaskSourceGrade {
 };
 
 }  // namespace fml
-
-#endif  // FLUTTER_FML_TASK_SOURCE_GRADE_H_

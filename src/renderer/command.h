@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_RENDERER_COMMAND_H_
-#define FLUTTER_OGRE_RENDERER_COMMAND_H_
+#pragma once
 
 #include <cstdint>
 #include <memory>
@@ -157,5 +156,3 @@ struct Command {
 };
 
 }  // namespace ogre
-
-#endif  // FLUTTER_OGRE_RENDERER_COMMAND_H_

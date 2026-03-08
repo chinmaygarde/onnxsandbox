@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_FML_UNIQUE_OBJECT_H_
-#define FLUTTER_FML_UNIQUE_OBJECT_H_
+#pragma once
 
 #include <concepts>
 #include <utility>
@@ -136,5 +135,3 @@ bool operator!=(const T& value, const UniqueObject<T, Traits>& object) {
 }
 
 }  // namespace fml
-
-#endif  // FLUTTER_FML_UNIQUE_OBJECT_H_

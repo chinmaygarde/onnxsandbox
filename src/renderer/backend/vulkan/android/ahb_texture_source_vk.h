@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_ANDROID_AHB_TEXTURE_SOURCE_VK_H_
-#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_ANDROID_AHB_TEXTURE_SOURCE_VK_H_
+#pragma once
 
 #include "renderer/backend/vulkan/texture_source_vk.h"
 #include "renderer/backend/vulkan/vk.h"
@@ -14,7 +13,6 @@
 #include <android/hardware_buffer_jni.h>
 
 namespace ogre {
-
 
 //------------------------------------------------------------------------------
 /// @brief      A texture source that wraps an instance of AHardwareBuffer.
@@ -100,5 +98,3 @@ class AHBTextureSource final : public TextureSource {
 };
 
 }  // namespace ogre
-
-#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_ANDROID_AHB_TEXTURE_SOURCE_VK_H_

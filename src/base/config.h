@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_BASE_CONFIG_H_
-#define FLUTTER_OGRE_BASE_CONFIG_H_
+#pragma once
 
 #include <cstdlib>
 
@@ -28,13 +27,11 @@
 namespace ogre {
 
 [[noreturn]] inline void OgreUnimplemented(const char* method,
-                                               const char* file,
-                                               int line) {
+                                           const char* file,
+                                           int line) {
   FML_CHECK(false) << "Unimplemented: " << method << " in " << file << ":"
                    << line;
   std::abort();
 }
 
 }  // namespace ogre
-
-#endif  // FLUTTER_OGRE_BASE_CONFIG_H_

@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_GEOMETRY_ROUND_RECT_H_
-#define FLUTTER_OGRE_GEOMETRY_ROUND_RECT_H_
+#pragma once
 
 #include "geometry/path_source.h"
 #include "geometry/point.h"
@@ -197,8 +196,7 @@ class DiffRoundRectPathSource : public PathSource {
 
 namespace std {
 
-inline std::ostream& operator<<(std::ostream& out,
-                                const ogre::RoundRect& rr) {
+inline std::ostream& operator<<(std::ostream& out, const ogre::RoundRect& rr) {
   out << "("                                 //
       << "rect: " << rr.GetBounds() << ", "  //
       << "radii: " << rr.GetRadii()          //
@@ -207,5 +205,3 @@ inline std::ostream& operator<<(std::ostream& out,
 }
 
 }  // namespace std
-
-#endif  // FLUTTER_OGRE_GEOMETRY_ROUND_RECT_H_

@@ -109,7 +109,7 @@ std::unique_ptr<ComputePipeline> PipelineLibrary::CreateComputePipeline(
   }
 
   Context::SetDebugName(strong_device->GetDevice(), descs_layout.get(),
-                          "Descriptor Set Layout " + desc.GetLabel());
+                        "Descriptor Set Layout " + desc.GetLabel());
 
   //----------------------------------------------------------------------------
   /// Create the pipeline layout.
@@ -136,9 +136,9 @@ std::unique_ptr<ComputePipeline> PipelineLibrary::CreateComputePipeline(
   }
 
   Context::SetDebugName(strong_device->GetDevice(), *pipeline_layout.value,
-                          "Pipeline Layout " + desc.GetLabel());
+                        "Pipeline Layout " + desc.GetLabel());
   Context::SetDebugName(strong_device->GetDevice(), *pipeline,
-                          "Pipeline " + desc.GetLabel());
+                        "Pipeline " + desc.GetLabel());
 
   return std::make_unique<ComputePipeline>(device_holder_,
                                            weak_from_this(),                  //

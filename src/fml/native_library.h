@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_FML_NATIVE_LIBRARY_H_
-#define FLUTTER_FML_NATIVE_LIBRARY_H_
+#pragma once
 
 #include <optional>
 
@@ -71,5 +70,3 @@ class NativeLibrary : public fml::RefCountedThreadSafe<NativeLibrary> {
 };
 
 }  // namespace fml
-
-#endif  // FLUTTER_FML_NATIVE_LIBRARY_H_

@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_FML_MEMORY_TASK_RUNNER_CHECKER_H_
-#define FLUTTER_FML_MEMORY_TASK_RUNNER_CHECKER_H_
+#pragma once
 
 #include "fml/message_loop.h"
 #include "fml/task_runner.h"
@@ -37,5 +36,3 @@ class TaskRunnerChecker final {
 #endif
 
 }  // namespace fml
-
-#endif  // FLUTTER_FML_MEMORY_TASK_RUNNER_CHECKER_H_

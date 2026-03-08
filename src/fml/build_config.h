@@ -13,8 +13,7 @@
 //    FML_ARCH_CPU_X86 / FML_ARCH_CPU_X86_64 / FML_ARCH_CPU_X86_FAMILY (X86 or
 //    X86_64) FML_ARCH_CPU_32_BITS / FML_ARCH_CPU_64_BITS
 
-#ifndef FLUTTER_FML_BUILD_CONFIG_H_
-#define FLUTTER_FML_BUILD_CONFIG_H_
+#pragma once
 
 #if defined(__Fuchsia__)
 #define OS_FUCHSIA 1
@@ -114,5 +113,3 @@
 #else
 #error Please add support for your architecture in flutter/fml/build_config.h
 #endif
-
-#endif  // FLUTTER_FML_BUILD_CONFIG_H_

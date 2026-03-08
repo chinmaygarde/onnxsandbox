@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_SWAPCHAIN_AHB_EXTERNAL_SEMAPHORE_VK_H_
-#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_SWAPCHAIN_AHB_EXTERNAL_SEMAPHORE_VK_H_
+#pragma once
 
 #include "fml/unique_fd.h"
 #include "renderer/backend/vulkan/context_vk.h"
@@ -80,5 +79,3 @@ class ExternalSemaphore {
 };
 
 }  // namespace ogre
-
-#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_SWAPCHAIN_AHB_EXTERNAL_SEMAPHORE_VK_H_

@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_FML_MACROS_H_
-#define FLUTTER_FML_MACROS_H_
+#pragma once
 
 #ifndef FML_USED_ON_EMBEDDER
 
@@ -46,5 +45,3 @@
 
 #define FML_FRIEND_TEST(test_case_name, test_name) \
   friend FML_TEST_CLASS(test_case_name, test_name)
-
-#endif  // FLUTTER_FML_MACROS_H_

@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_TEXTURE_SOURCE_VK_H_
-#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_TEXTURE_SOURCE_VK_H_
+#pragma once
 
 #include "core/formats.h"
 #include "core/texture_descriptor.h"
@@ -159,5 +158,3 @@ class TextureSource {
 };
 
 }  // namespace ogre
-
-#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_TEXTURE_SOURCE_VK_H_

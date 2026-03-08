@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_GEOMETRY_SEPARATED_VECTOR_H_
-#define FLUTTER_OGRE_GEOMETRY_SEPARATED_VECTOR_H_
+#pragma once
 
 #include "geometry/point.h"
 
@@ -51,7 +50,5 @@ struct SeparatedVector2 {
   /// Returns the cross product of the two direction vectors.
   Scalar Cross(const SeparatedVector2& other) const;
 };
-
-#endif  // FLUTTER_OGRE_GEOMETRY_SEPARATED_VECTOR_H_
 
 }  // namespace ogre

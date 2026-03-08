@@ -84,13 +84,13 @@ TEST(MessageLoop, NonDelayedTasksAreRunInOrder) {
     for (size_t i = 0; i < count; i++) {
       loop.GetTaskRunner()->PostTask(
           [&terminated, i, &current, last = count - 1]() {
-        ASSERT_EQ(current, i);
-        current++;
-        if (last == i) {
-          fml::MessageLoop::GetCurrent().Terminate();
-          terminated = true;
-        }
-      });
+            ASSERT_EQ(current, i);
+            current++;
+            if (last == i) {
+              fml::MessageLoop::GetCurrent().Terminate();
+              terminated = true;
+            }
+          });
     }
     loop.Run();
     ASSERT_EQ(current, count);

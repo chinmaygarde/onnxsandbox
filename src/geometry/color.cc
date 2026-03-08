@@ -17,7 +17,7 @@
 
 namespace ogre {
 
-#define _OGRE_ASSERT_BLEND_MODE(blend_mode)                            \
+#define _OGRE_ASSERT_BLEND_MODE(blend_mode)                                \
   auto enum_##blend_mode = static_cast<std::underlying_type_t<BlendMode>>( \
       BlendMode::k##blend_mode);                                           \
   if (i != enum_##blend_mode) {                                            \

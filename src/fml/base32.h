@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_FML_BASE32_H_
-#define FLUTTER_FML_BASE32_H_
+#pragma once
 
 #include <string_view>
 #include <utility>
@@ -53,5 +52,3 @@ std::pair<bool, std::string> Base32Encode(std::string_view input);
 std::pair<bool, std::string> Base32Decode(const std::string& input);
 
 }  // namespace fml
-
-#endif  // FLUTTER_FML_BASE32_H_

@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_SHADER_FUNCTION_VK_H_
-#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_SHADER_FUNCTION_VK_H_
+#pragma once
 
 #include <string>
 
@@ -51,5 +50,3 @@ class ShaderFunction final : public Comparable<ShaderFunction> {
 };
 
 }  // namespace ogre
-
-#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_SHADER_FUNCTION_VK_H_

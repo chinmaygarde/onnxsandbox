@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_GEOMETRY_CONSTANTS_H_
-#define FLUTTER_OGRE_GEOMETRY_CONSTANTS_H_
+#pragma once
 
 namespace ogre {
 
@@ -57,5 +56,3 @@ constexpr float kPhi = 1.61803398874989484820f;
 constexpr float kEhCloseEnough = 1e-3f;
 
 }  // namespace ogre
-
-#endif  // FLUTTER_OGRE_GEOMETRY_CONSTANTS_H_

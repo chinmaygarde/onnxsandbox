@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_FML_LOG_LEVEL_H_
-#define FLUTTER_FML_LOG_LEVEL_H_
+#pragma once
 
 namespace fml {
 
@@ -64,5 +63,3 @@ const LogSeverity kLogDFatal = kLogFatal;
 const LogSeverity LOG_DFATAL = kLogDFatal;
 
 }  // namespace fml
-
-#endif  // FLUTTER_FML_LOG_LEVEL_H_

@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_FML_TASK_RUNNER_H_
-#define FLUTTER_FML_TASK_RUNNER_H_
+#pragma once
 
 #include "fml/closure.h"
 #include "fml/macros.h"
@@ -85,5 +84,3 @@ class TaskRunner : public fml::RefCountedThreadSafe<TaskRunner>,
 };
 
 }  // namespace fml
-
-#endif  // FLUTTER_FML_TASK_RUNNER_H_

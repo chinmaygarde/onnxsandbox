@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_PIPELINE_CACHE_DATA_VK_H_
-#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_PIPELINE_CACHE_DATA_VK_H_
+#pragma once
 
 #include "fml/mapping.h"
 #include "fml/unique_fd.h"
@@ -105,5 +104,3 @@ std::unique_ptr<fml::Mapping> PipelineCacheDataRetrieve(
     const VkPhysicalDeviceProperties& props);
 
 }  // namespace ogre
-
-#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_PIPELINE_CACHE_DATA_VK_H_

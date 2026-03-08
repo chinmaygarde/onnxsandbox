@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_GEOMETRY_COLOR_H_
-#define FLUTTER_OGRE_GEOMETRY_COLOR_H_
+#pragma once
 
 #include <stdint.h>
 #include <algorithm>
@@ -17,34 +16,34 @@
 #include "geometry/type_traits.h"
 
 #define OGRE_FOR_EACH_BLEND_MODE(V) \
-  V(Clear)                              \
-  V(Src)                                \
-  V(Dst)                                \
-  V(SrcOver)                            \
-  V(DstOver)                            \
-  V(SrcIn)                              \
-  V(DstIn)                              \
-  V(SrcOut)                             \
-  V(DstOut)                             \
-  V(SrcATop)                            \
-  V(DstATop)                            \
-  V(Xor)                                \
-  V(Plus)                               \
-  V(Modulate)                           \
-  V(Screen)                             \
-  V(Overlay)                            \
-  V(Darken)                             \
-  V(Lighten)                            \
-  V(ColorDodge)                         \
-  V(ColorBurn)                          \
-  V(HardLight)                          \
-  V(SoftLight)                          \
-  V(Difference)                         \
-  V(Exclusion)                          \
-  V(Multiply)                           \
-  V(Hue)                                \
-  V(Saturation)                         \
-  V(Color)                              \
+  V(Clear)                          \
+  V(Src)                            \
+  V(Dst)                            \
+  V(SrcOver)                        \
+  V(DstOver)                        \
+  V(SrcIn)                          \
+  V(DstIn)                          \
+  V(SrcOut)                         \
+  V(DstOut)                         \
+  V(SrcATop)                        \
+  V(DstATop)                        \
+  V(Xor)                            \
+  V(Plus)                           \
+  V(Modulate)                       \
+  V(Screen)                         \
+  V(Overlay)                        \
+  V(Darken)                         \
+  V(Lighten)                        \
+  V(ColorDodge)                     \
+  V(ColorBurn)                      \
+  V(HardLight)                      \
+  V(SoftLight)                      \
+  V(Difference)                     \
+  V(Exclusion)                      \
+  V(Multiply)                       \
+  V(Hue)                            \
+  V(Saturation)                     \
+  V(Color)                          \
   V(Luminosity)
 
 namespace ogre {
@@ -937,5 +936,3 @@ inline std::ostream& operator<<(std::ostream& out,
 }
 
 }  // namespace std
-
-#endif  // FLUTTER_OGRE_GEOMETRY_COLOR_H_

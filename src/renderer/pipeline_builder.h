@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_RENDERER_PIPELINE_BUILDER_H_
-#define FLUTTER_OGRE_RENDERER_PIPELINE_BUILDER_H_
+#pragma once
 
 #include <format>
 
@@ -130,5 +129,3 @@ struct PipelineBuilder {
 };
 
 }  // namespace ogre
-
-#endif  // FLUTTER_OGRE_RENDERER_PIPELINE_BUILDER_H_

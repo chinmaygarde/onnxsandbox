@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_FML_TIME_CHRONO_TIMESTAMP_PROVIDER_H_
-#define FLUTTER_FML_TIME_CHRONO_TIMESTAMP_PROVIDER_H_
+#pragma once
 
 #include "fml/time/timestamp_provider.h"
 
@@ -36,5 +35,3 @@ class ChronoTimestampProvider : TimestampProvider {
 fml::TimePoint ChronoTicksSinceEpoch();
 
 }  // namespace fml
-
-#endif  // FLUTTER_FML_TIME_CHRONO_TIMESTAMP_PROVIDER_H_

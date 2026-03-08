@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_VMA_H_
-#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_VMA_H_
+#pragma once
 
 #include <vk_mem_alloc.h>
 #include "fml/trace_event.h"
@@ -127,5 +126,3 @@ struct ImageVMATraits {
 using UniqueImageVMA = fml::UniqueObject<ImageVMA, ImageVMATraits>;
 
 }  // namespace ogre
-
-#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_VMA_H_

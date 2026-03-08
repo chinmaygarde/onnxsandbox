@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_BASE_ALLOCATION_SIZE_H_
-#define FLUTTER_OGRE_BASE_ALLOCATION_SIZE_H_
+#pragma once
 
 #include <cmath>
 #include <compare>
@@ -176,5 +175,3 @@ constexpr GibiBytes operator""_gib(unsigned long long int size) {
 }  // namespace allocation_size_literals
 
 }  // namespace ogre
-
-#endif  // FLUTTER_OGRE_BASE_ALLOCATION_SIZE_H_

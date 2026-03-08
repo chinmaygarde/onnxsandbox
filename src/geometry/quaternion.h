@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_GEOMETRY_QUATERNION_H_
-#define FLUTTER_OGRE_GEOMETRY_QUATERNION_H_
+#pragma once
 
 #include <ostream>
 
@@ -91,12 +90,9 @@ struct Quaternion {
 
 namespace std {
 
-inline std::ostream& operator<<(std::ostream& out,
-                                const ogre::Quaternion& q) {
+inline std::ostream& operator<<(std::ostream& out, const ogre::Quaternion& q) {
   out << "(" << q.x << ", " << q.y << ", " << q.z << ", " << q.w << ")";
   return out;
 }
 
 }  // namespace std
-
-#endif  // FLUTTER_OGRE_GEOMETRY_QUATERNION_H_

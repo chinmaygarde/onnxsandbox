@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_FML_PLATFORM_ANDROID_JNI_WEAK_REF_H_
-#define FLUTTER_FML_PLATFORM_ANDROID_JNI_WEAK_REF_H_
+#pragma once
 
 #include <jni.h>
 
@@ -46,5 +45,3 @@ ScopedJavaLocalRef<jobject> GetRealObject(JNIEnv* env, jweak obj);
 
 }  // namespace jni
 }  // namespace fml
-
-#endif  // FLUTTER_FML_PLATFORM_ANDROID_JNI_WEAK_REF_H_

@@ -1,3 +1,9 @@
+@format:
+	find src -name '*.h' -o -name '*.cc' -o -name '*.cpp' | xargs clang-format -i
+
+@format-check:
+	find src -name '*.h' -o -name '*.cc' -o -name '*.cpp' | xargs clang-format --dry-run --Werror
+
 @build preset='debug':
 	cmake --build --preset {{preset}}
 

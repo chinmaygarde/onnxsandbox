@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_CORE_SHADER_TYPES_H_
-#define FLUTTER_OGRE_CORE_SHADER_TYPES_H_
+#pragma once
 
 #include <cstddef>
 #include <cstdint>
@@ -205,5 +204,3 @@ inline constexpr Vector4 ToVector(Color color) {
 }
 
 }  // namespace ogre
-
-#endif  // FLUTTER_OGRE_CORE_SHADER_TYPES_H_

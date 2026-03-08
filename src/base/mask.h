@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_BASE_MASK_H_
-#define FLUTTER_OGRE_BASE_MASK_H_
+#pragma once
 
 #include <type_traits>
 
@@ -18,7 +17,7 @@ struct MaskTraits {
 /// @brief      Declare this in the "ogre" namespace to make the enum
 ///             maskable.
 ///
-#define OGRE_ENUM_IS_MASK(enum_name)  \
+#define OGRE_ENUM_IS_MASK(enum_name)      \
   template <>                             \
   struct MaskTraits<enum_name> {          \
     static constexpr bool kIsMask = true; \
@@ -167,5 +166,3 @@ inline constexpr auto operator<=>(const EnumType& lhs,
 }
 
 }  // namespace ogre
-
-#endif  // FLUTTER_OGRE_BASE_MASK_H_

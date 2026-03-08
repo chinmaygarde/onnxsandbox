@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_FML_EINTR_WRAPPER_H_
-#define FLUTTER_FML_EINTR_WRAPPER_H_
+#pragma once
 
 #include <errno.h>
 
@@ -39,5 +38,3 @@
   })
 
 #endif  // defined(FML_OS_WIN)
-
-#endif  // FLUTTER_FML_EINTR_WRAPPER_H_

@@ -4,8 +4,7 @@
 
 // Provides a smart pointer class for intrusively reference-counted objects.
 
-#ifndef FLUTTER_FML_MEMORY_REF_PTR_H_
-#define FLUTTER_FML_MEMORY_REF_PTR_H_
+#pragma once
 
 #include <cstddef>
 #include <functional>
@@ -269,5 +268,3 @@ struct hash<fml::RefPtr<T>> {
   }
 };
 }  // namespace std
-
-#endif  // FLUTTER_FML_MEMORY_REF_PTR_H_

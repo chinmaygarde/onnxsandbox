@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_DESCRIPTOR_POOL_VK_H_
-#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_DESCRIPTOR_POOL_VK_H_
+#pragma once
 
 #include <cstdint>
 #include <unordered_map>
@@ -110,5 +109,3 @@ class DescriptorPoolRecycler final
 };
 
 }  // namespace ogre
-
-#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_DESCRIPTOR_POOL_VK_H_

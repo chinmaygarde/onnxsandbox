@@ -125,8 +125,7 @@ std::unique_ptr<Surface> AHBSwapchainImpl::AcquireNextDrawable() {
 
   frame_index_ = (frame_index_ + 1) % kMaxPendingPresents;
 
-  if (!frame_data_[frame_index_]->WaitForFence(
-          (*context).GetDevice())) {
+  if (!frame_data_[frame_index_]->WaitForFence((*context).GetDevice())) {
     return nullptr;
   }
 
@@ -260,8 +259,8 @@ AHBSwapchainImpl::SubmitSignalForPresentReady(
   submit_info.setPSignalSemaphores(&sync->present_ready->GetHandle());
   submit_info.setSignalSemaphoreCount(1);
 
-  auto result = (*context).GetGraphicsQueue()->Submit(
-      submit_info, *sync->acquire);
+  auto result =
+      (*context).GetGraphicsQueue()->Submit(submit_info, *sync->acquire);
   if (result != vk::Result::eSuccess) {
     return nullptr;
   }

@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_CORE_TEXTURE_DESCRIPTOR_H_
-#define FLUTTER_OGRE_CORE_TEXTURE_DESCRIPTOR_H_
+#pragma once
 
 #include <cstdint>
 #include "core/formats.h"
@@ -93,5 +92,3 @@ struct TextureDescriptor {
 std::string TextureDescriptorToString(const TextureDescriptor& desc);
 
 }  // namespace ogre
-
-#endif  // FLUTTER_OGRE_CORE_TEXTURE_DESCRIPTOR_H_

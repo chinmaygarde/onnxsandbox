@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_GEOMETRY_TYPE_TRAITS_H_
-#define FLUTTER_OGRE_GEOMETRY_TYPE_TRAITS_H_
+#pragma once
 
 #include <type_traits>
 
@@ -19,5 +18,3 @@ template <class F, class I>
 using MixedOp = typename MixedOp_<F, I>::type;
 
 }  // namespace ogre
-
-#endif  // FLUTTER_OGRE_GEOMETRY_TYPE_TRAITS_H_

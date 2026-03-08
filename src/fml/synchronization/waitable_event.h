@@ -7,8 +7,7 @@
 // analogous to Windows's Event. (Unlike these two, we have separate types for
 // the manual- and auto-reset versions.)
 
-#ifndef FLUTTER_FML_SYNCHRONIZATION_WAITABLE_EVENT_H_
-#define FLUTTER_FML_SYNCHRONIZATION_WAITABLE_EVENT_H_
+#pragma once
 
 #include <condition_variable>
 #include <mutex>
@@ -123,5 +122,3 @@ class ManualResetWaitableEvent final {
 };
 
 }  // namespace fml
-
-#endif  // FLUTTER_FML_SYNCHRONIZATION_WAITABLE_EVENT_H_

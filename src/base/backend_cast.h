@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_BASE_BACKEND_CAST_H_
-#define FLUTTER_OGRE_BASE_BACKEND_CAST_H_
+#pragma once
 
 namespace ogre {
 
@@ -24,5 +23,3 @@ class BackendCast {
 };
 
 }  // namespace ogre
-
-#endif  // FLUTTER_OGRE_BASE_BACKEND_CAST_H_

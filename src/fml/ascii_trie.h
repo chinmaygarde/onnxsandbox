@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_FML_ASCII_TRIE_H_
-#define FLUTTER_FML_ASCII_TRIE_H_
+#pragma once
 
 #include <memory>
 #include <string>
@@ -36,5 +35,3 @@ class AsciiTrie {
   TrieNodePtr node_;
 };
 }  // namespace fml
-
-#endif  // FLUTTER_FML_ASCII_TRIE_H_

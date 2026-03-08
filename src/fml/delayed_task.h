@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_FML_DELAYED_TASK_H_
-#define FLUTTER_FML_DELAYED_TASK_H_
+#pragma once
 
 #include <queue>
 
@@ -44,5 +43,3 @@ using DelayedTaskQueue = std::priority_queue<DelayedTask,
                                              std::greater<DelayedTask>>;
 
 }  // namespace fml
-
-#endif  // FLUTTER_FML_DELAYED_TASK_H_

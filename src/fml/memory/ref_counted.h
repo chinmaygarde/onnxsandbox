@@ -4,8 +4,7 @@
 
 // Provides a base class for reference-counted classes.
 
-#ifndef FLUTTER_FML_MEMORY_REF_COUNTED_H_
-#define FLUTTER_FML_MEMORY_REF_COUNTED_H_
+#pragma once
 
 #include "fml/macros.h"
 #include "fml/memory/ref_counted_internal.h"
@@ -133,5 +132,3 @@ class RefCountedThreadSafe : public internal::RefCountedThreadSafeBase {
   friend class ::fml::internal::MakeRefCountedHelper<T>
 
 }  // namespace fml
-
-#endif  // FLUTTER_FML_MEMORY_REF_COUNTED_H_

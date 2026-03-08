@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_RENDER_PASS_BUILDER_VK_H_
-#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_RENDER_PASS_BUILDER_VK_H_
+#pragma once
 
 #include <map>
 #include <optional>
@@ -94,5 +93,3 @@ void InsertBarrierForInputAttachmentRead(const vk::CommandBuffer& buffer,
                                          const vk::Image& image);
 
 }  // namespace ogre
-
-#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_RENDER_PASS_BUILDER_VK_H_

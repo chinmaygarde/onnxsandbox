@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_FML_ENDIANNESS_H_
-#define FLUTTER_FML_ENDIANNESS_H_
+#pragma once
 
 #include <cstdint>
 #include <type_traits>
@@ -77,5 +76,3 @@ constexpr T LittleEndianToArch(T n) {
 }
 
 }  // namespace fml
-
-#endif  // FLUTTER_FML_ENDIANNESS_H_

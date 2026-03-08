@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_FML_TIME_TIME_DELTA_H_
-#define FLUTTER_FML_TIME_TIME_DELTA_H_
+#pragma once
 
 #include <chrono>
 #include <cstdint>
@@ -118,5 +117,3 @@ class TimeDelta {
 };
 
 }  // namespace fml
-
-#endif  // FLUTTER_FML_TIME_TIME_DELTA_H_

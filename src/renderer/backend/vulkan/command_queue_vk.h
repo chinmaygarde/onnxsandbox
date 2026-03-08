@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_COMMAND_QUEUE_VK_H_
-#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_COMMAND_QUEUE_VK_H_
+#pragma once
 
 #include <functional>
 #include <memory>
@@ -37,5 +36,3 @@ class CommandQueue {
 };
 
 }  // namespace ogre
-
-#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_COMMAND_QUEUE_VK_H_

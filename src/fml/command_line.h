@@ -33,8 +33,7 @@
 // mostly explains a.), c. it makes parsing "subcommands", like "my_program
 // --flag_for_my_program subcommand --flag_for_subcommand" saner.
 
-#ifndef FLUTTER_FML_COMMAND_LINE_H_
-#define FLUTTER_FML_COMMAND_LINE_H_
+#pragma once
 
 #include <cstddef>
 #include <initializer_list>
@@ -260,5 +259,3 @@ inline CommandLine CommandLineFromInitializerList(
 std::vector<std::string> CommandLineToArgv(const CommandLine& command_line);
 
 }  // namespace fml
-
-#endif  // FLUTTER_FML_COMMAND_LINE_H_

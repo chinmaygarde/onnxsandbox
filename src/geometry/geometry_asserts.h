@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_GEOMETRY_GEOMETRY_ASSERTS_H_
-#define FLUTTER_OGRE_GEOMETRY_GEOMETRY_ASSERTS_H_
+#pragma once
 
 #include <array>
 #include <iostream>
@@ -53,8 +52,7 @@ inline bool NumberNear(double a, double b) {
   return (std::min(ab_ulps, ba_ulps) < kImpellerTestingMaxULP);
 }
 
-inline ::testing::AssertionResult MatrixNear(ogre::Matrix a,
-                                             ogre::Matrix b) {
+inline ::testing::AssertionResult MatrixNear(ogre::Matrix a, ogre::Matrix b) {
   auto equal = NumberNear(a.m[0], b.m[0])       //
                && NumberNear(a.m[1], b.m[1])    //
                && NumberNear(a.m[2], b.m[2])    //
@@ -97,8 +95,7 @@ inline ::testing::AssertionResult RectNear(ogre::Rect a, ogre::Rect b) {
                      << "Rects are not equal (" << a << " " << b << ")";
 }
 
-inline ::testing::AssertionResult ColorNear(ogre::Color a,
-                                            ogre::Color b) {
+inline ::testing::AssertionResult ColorNear(ogre::Color a, ogre::Color b) {
   auto equal = NumberNear(a.red, b.red) && NumberNear(a.green, b.green) &&
                NumberNear(a.blue, b.blue) && NumberNear(a.alpha, b.alpha);
 
@@ -106,8 +103,7 @@ inline ::testing::AssertionResult ColorNear(ogre::Color a,
                : ::testing::AssertionFailure() << "Colors are not equal.";
 }
 
-inline ::testing::AssertionResult PointNear(ogre::Point a,
-                                            ogre::Point b) {
+inline ::testing::AssertionResult PointNear(ogre::Point a, ogre::Point b) {
   auto equal = NumberNear(a.x, b.x) && NumberNear(a.y, b.y);
 
   return equal ? ::testing::AssertionSuccess()
@@ -149,9 +145,8 @@ inline ::testing::AssertionResult Array4Near(std::array<uint8_t, 4> a,
                : ::testing::AssertionFailure() << "Arrays are not equal.";
 }
 
-inline ::testing::AssertionResult ColorBufferNear(
-    std::vector<uint8_t> a,
-    std::vector<ogre::Color> b) {
+inline ::testing::AssertionResult ColorBufferNear(std::vector<uint8_t> a,
+                                                  std::vector<ogre::Color> b) {
   if (a.size() != b.size() * 4) {
     return ::testing::AssertionFailure()
            << "Color buffer length does not match";
@@ -209,5 +204,3 @@ inline ::testing::AssertionResult ColorsNear(std::vector<ogre::Color> a,
 #define EXPECT_ARRAY_4_NEAR(a, b) EXPECT_PRED2(&::Array4Near, a, b)
 #define EXPECT_COLOR_BUFFER_NEAR(a, b) EXPECT_PRED2(&::ColorBufferNear, a, b)
 #define EXPECT_COLORS_NEAR(a, b) EXPECT_PRED2(&::ColorsNear, a, b)
-
-#endif  // FLUTTER_OGRE_GEOMETRY_GEOMETRY_ASSERTS_H_

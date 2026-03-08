@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_GEOMETRY_ROUNDING_RADII_H_
-#define FLUTTER_OGRE_GEOMETRY_ROUNDING_RADII_H_
+#pragma once
 
 #include "geometry/point.h"
 #include "geometry/rect.h"
@@ -102,5 +101,3 @@ inline std::ostream& operator<<(std::ostream& out,
 }
 
 }  // namespace std
-
-#endif  // FLUTTER_OGRE_GEOMETRY_ROUNDING_RADII_H_

@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_FML_LOGGING_H_
-#define FLUTTER_FML_LOGGING_H_
+#pragma once
 
 #include <sstream>
 
@@ -130,5 +129,3 @@ constexpr bool ShouldCreateLogMessageConstexpr(LogSeverity severity,
     FML_LOG(ERROR) << "Reached unreachable code."; \
     ::fml::KillProcessConstexpr(true);             \
   }
-
-#endif  // FLUTTER_FML_LOGGING_H_

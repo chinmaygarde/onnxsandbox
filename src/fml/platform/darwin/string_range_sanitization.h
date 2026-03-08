@@ -2,14 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_FML_PLATFORM_DARWIN_STRING_RANGE_SANITIZATION_H_
-#define FLUTTER_FML_PLATFORM_DARWIN_STRING_RANGE_SANITIZATION_H_
+#pragma once
 
 #include <Foundation/Foundation.h>
 
 namespace fml {
 
-// Returns a range encompassing the grapheme cluster in which |index| is located.
+// Returns a range encompassing the grapheme cluster in which |index| is
+// located.
 //
 // A nil |text| or an index greater than or equal to text.length will result in
 // `NSRange(NSNotFound, 0)`.
@@ -25,5 +25,3 @@ NSRange RangeForCharacterAtIndex(NSString* text, NSUInteger index);
 NSRange RangeForCharactersInRange(NSString* text, NSRange range);
 
 }  // namespace fml
-
-#endif  // FLUTTER_FML_PLATFORM_DARWIN_STRING_RANGE_SANITIZATION_H_

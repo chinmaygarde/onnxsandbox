@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_SWAPCHAIN_AHB_AHB_FORMATS_H_
-#define FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_SWAPCHAIN_AHB_AHB_FORMATS_H_
+#pragma once
 
 #include "core/formats.h"
 #include "toolkit/android/hardware_buffer.h"
@@ -19,5 +18,3 @@ constexpr PixelFormat ToPixelFormat(android::HardwareBufferFormat format) {
 }
 
 }  // namespace ogre
-
-#endif  // FLUTTER_OGRE_RENDERER_BACKEND_VULKAN_SWAPCHAIN_AHB_AHB_FORMATS_H_

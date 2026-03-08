@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_BASE_VALIDATION_H_
-#define FLUTTER_OGRE_BASE_VALIDATION_H_
+#pragma once
 
 #include <functional>
 #include <sstream>
@@ -89,5 +88,3 @@ struct ScopedValidationFatal {
 ///   happens in test environments.
 ///
 #define VALIDATION_LOG ::ogre::ValidationLog{__FILE__, __LINE__}.GetStream()
-
-#endif  // FLUTTER_OGRE_BASE_VALIDATION_H_

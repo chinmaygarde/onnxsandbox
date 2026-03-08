@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_FML_UNIQUE_FD_H_
-#define FLUTTER_FML_UNIQUE_FD_H_
+#pragma once
 
 #include "fml/build_config.h"
 #include "fml/unique_object.h"
@@ -103,5 +102,3 @@ using UniqueDir = UniqueObject<DIR*, internal::os_unix::UniqueDirTraits>;
 #endif  // FML_OS_WIN
 
 }  // namespace fml
-
-#endif  // FLUTTER_FML_UNIQUE_FD_H_

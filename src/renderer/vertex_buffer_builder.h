@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_RENDERER_VERTEX_BUFFER_BUILDER_H_
-#define FLUTTER_OGRE_RENDERER_VERTEX_BUFFER_BUILDER_H_
+#pragma once
 
 #include <format>
 #include <initializer_list>
@@ -173,5 +172,3 @@ class VertexBufferBuilder {
 };
 
 }  // namespace ogre
-
-#endif  // FLUTTER_OGRE_RENDERER_VERTEX_BUFFER_BUILDER_H_

@@ -12,8 +12,8 @@
 #include "fml/trace_event.h"
 #include "renderer/backend/vulkan/capabilities_vk.h"
 #include "renderer/backend/vulkan/context_vk.h"
-#include "renderer/backend/vulkan/pipeline_library_vk.h"
 #include "renderer/backend/vulkan/formats_vk.h"
+#include "renderer/backend/vulkan/pipeline_library_vk.h"
 #include "renderer/backend/vulkan/render_pass_builder_vk.h"
 #include "renderer/backend/vulkan/sampler_vk.h"
 #include "renderer/backend/vulkan/shader_function_vk.h"
@@ -163,9 +163,8 @@ static vk::UniqueRenderPass CreateCompatRenderPassForPipeline(
   }
 
 #ifdef OGRE_DEBUG
-  Context::SetDebugName(
-      device, pass.get(),
-      std::format("Compat Render Pass: {}", desc.GetLabel()));
+  Context::SetDebugName(device, pass.get(),
+                        std::format("Compat Render Pass: {}", desc.GetLabel()));
 #endif  // OGRE_DEBUG
 
   return pass;
@@ -240,7 +239,7 @@ fml::StatusOr<vk::UniquePipelineLayout> MakePipelineLayout(
 
 #ifdef OGRE_DEBUG
   Context::SetDebugName(device_holder->GetDevice(), *pipeline_layout.value,
-                          std::format("Pipeline Layout {}", desc.GetLabel()));
+                        std::format("Pipeline Layout {}", desc.GetLabel()));
 #endif  // OGRE_DEBUG
 
   return std::move(pipeline_layout.value);
@@ -454,7 +453,7 @@ fml::StatusOr<vk::UniquePipeline> MakePipeline(
 
 #ifdef OGRE_DEBUG
   Context::SetDebugName(device_holder->GetDevice(), *pipeline,
-                          std::format("Pipeline {}", desc.GetLabel()));
+                        std::format("Pipeline {}", desc.GetLabel()));
 #endif  // OGRE_DEBUG
 
   return pipeline;

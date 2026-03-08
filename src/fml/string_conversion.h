@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_FML_STRING_CONVERSION_H_
-#define FLUTTER_FML_STRING_CONVERSION_H_
+#pragma once
 
 #include <filesystem>
 #include <string>
@@ -24,5 +23,3 @@ std::u16string Utf8ToUtf16(const std::string_view string);
 std::string PathToUtf8(const std::filesystem::path& path);
 
 }  // namespace fml
-
-#endif  // FLUTTER_FML_STRING_CONVERSION_H_

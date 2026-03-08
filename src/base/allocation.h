@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_BASE_ALLOCATION_H_
-#define FLUTTER_OGRE_BASE_ALLOCATION_H_
+#pragma once
 
 #include <cstdint>
 #include <memory>
@@ -148,5 +147,3 @@ std::shared_ptr<fml::Mapping> CreateMappingWithString(
 std::shared_ptr<fml::Mapping> CreateMappingWithString(std::string string);
 
 }  // namespace ogre
-
-#endif  // FLUTTER_OGRE_BASE_ALLOCATION_H_

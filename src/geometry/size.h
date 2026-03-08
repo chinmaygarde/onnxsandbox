@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_GEOMETRY_SIZE_H_
-#define FLUTTER_OGRE_GEOMETRY_SIZE_H_
+#pragma once
 
 #include <algorithm>
 #include <cmath>
@@ -168,12 +167,9 @@ static_assert(sizeof(Size) == 2 * sizeof(Scalar));
 namespace std {
 
 template <class T>
-inline std::ostream& operator<<(std::ostream& out,
-                                const ogre::TSize<T>& s) {
+inline std::ostream& operator<<(std::ostream& out, const ogre::TSize<T>& s) {
   out << "(" << s.width << ", " << s.height << ")";
   return out;
 }
 
 }  // namespace std
-
-#endif  // FLUTTER_OGRE_GEOMETRY_SIZE_H_

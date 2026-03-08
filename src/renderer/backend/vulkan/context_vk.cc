@@ -10,8 +10,8 @@
 #include "core/runtime_types.h"
 #include "fml/concurrent_message_loop.h"
 #include "renderer/backend/vulkan/command_queue_vk.h"
-#include "renderer/backend/vulkan/pipeline_library_vk.h"
 #include "renderer/backend/vulkan/descriptor_pool_vk.h"
+#include "renderer/backend/vulkan/pipeline_library_vk.h"
 #include "renderer/backend/vulkan/render_pass_builder_vk.h"
 #include "renderer/backend/vulkan/workarounds_vk.h"
 #include "renderer/render_target.h"
@@ -722,8 +722,8 @@ void Context::DisposeThreadLocalCachedResources() {
   command_pool_recycler_->Dispose();
 }
 
-const std::shared_ptr<YUVConversionLibrary>&
-Context::GetYUVConversionLibrary() const {
+const std::shared_ptr<YUVConversionLibrary>& Context::GetYUVConversionLibrary()
+    const {
   return yuv_conversion_library_;
 }
 

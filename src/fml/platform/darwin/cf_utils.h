@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_FML_PLATFORM_DARWIN_CF_UTILS_H_
-#define FLUTTER_FML_PLATFORM_DARWIN_CF_UTILS_H_
+#pragma once
 
 #include <CoreFoundation/CoreFoundation.h>
 
@@ -120,5 +119,3 @@ class CFRef {
 };
 
 }  // namespace fml
-
-#endif  // FLUTTER_FML_PLATFORM_DARWIN_CF_UTILS_H_

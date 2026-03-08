@@ -5,8 +5,7 @@
 // A class for checking that the current thread is/isn't the same as an initial
 // thread.
 
-#ifndef FLUTTER_FML_MEMORY_THREAD_CHECKER_H_
-#define FLUTTER_FML_MEMORY_THREAD_CHECKER_H_
+#pragma once
 
 #include "fml/build_config.h"
 #include "fml/logging.h"
@@ -100,5 +99,3 @@ class ThreadChecker final {
 #endif
 
 }  // namespace fml
-
-#endif  // FLUTTER_FML_MEMORY_THREAD_CHECKER_H_

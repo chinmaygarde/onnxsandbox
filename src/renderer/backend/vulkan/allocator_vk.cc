@@ -534,7 +534,7 @@ std::shared_ptr<Texture> Allocator::OnCreateTexture(
     return nullptr;
   }
   auto source =
-      std::make_shared<AllocatedTextureSource>((*context),     //
+      std::make_shared<AllocatedTextureSource>((*context),                    //
                                                desc,                          //
                                                allocator_.get(),              //
                                                device_holder->GetDevice(),    //

@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_OGRE_CORE_VERTEX_BUFFER_H_
-#define FLUTTER_OGRE_CORE_VERTEX_BUFFER_H_
+#pragma once
 
 #include "core/buffer_view.h"
 #include "core/formats.h"
@@ -37,5 +36,3 @@ struct VertexBuffer {
 };
 
 }  // namespace ogre
-
-#endif  // FLUTTER_OGRE_CORE_VERTEX_BUFFER_H_
