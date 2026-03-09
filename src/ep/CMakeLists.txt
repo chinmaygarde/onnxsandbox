@@ -4,7 +4,7 @@ add_library(ogre
   provider.h
 )
 
-target_link_libraries(ogre PUBLIC renderer)
+target_link_libraries(ogre PUBLIC hal)
 
 # Configure Fixtures Location
 get_filename_component(TEST_ASSETS_LOCATION ../assets ABSOLUTE)
