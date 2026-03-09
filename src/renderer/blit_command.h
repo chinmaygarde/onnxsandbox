@@ -5,9 +5,9 @@
 #pragma once
 
 #include <cstdint>
-#include "core/device_buffer.h"
 #include "core/texture.h"
 #include "geometry/rect.h"
+#include "renderer/backend/vulkan/device_buffer_vk.h"
 
 namespace ogre {
 
@@ -29,7 +29,7 @@ struct BlitResizeTextureCommand : public BlitCommand {
 
 struct BlitCopyTextureToBufferCommand : public BlitCommand {
   std::shared_ptr<Texture> source;
-  std::shared_ptr<DeviceBuffer> destination;
+  std::shared_ptr<DeviceBufferVK> destination;
   IRect source_region;
   size_t destination_offset;
 };

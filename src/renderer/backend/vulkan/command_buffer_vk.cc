@@ -129,7 +129,7 @@ bool CommandBuffer::Track(const std::shared_ptr<SharedObject>& object) {
   return true;
 }
 
-bool CommandBuffer::Track(const std::shared_ptr<const DeviceBuffer>& buffer) {
+bool CommandBuffer::Track(const std::shared_ptr<const DeviceBufferVK>& buffer) {
   if (!IsValid()) {
     return false;
   }

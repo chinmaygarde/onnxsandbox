@@ -50,7 +50,8 @@ void TrackedObjects::Track(const std::shared_ptr<SharedObject>& object) {
   tracked_objects_.emplace_back(object);
 }
 
-void TrackedObjects::Track(const std::shared_ptr<const DeviceBuffer>& buffer) {
+void TrackedObjects::Track(
+    const std::shared_ptr<const DeviceBufferVK>& buffer) {
   if (!buffer || (!tracked_buffers_.empty() &&
                   buffer.get() == tracked_buffers_.back().get())) {
     return;

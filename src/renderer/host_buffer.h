@@ -136,13 +136,14 @@ class HostBuffer {
   TestStateQuery GetStateForTest();
 
  private:
-  [[nodiscard]] std::tuple<Range, std::shared_ptr<DeviceBuffer>, DeviceBuffer*>
-  EmplaceInternal(const void* buffer, size_t length);
+  [[nodiscard]] std::
+      tuple<Range, std::shared_ptr<DeviceBufferVK>, DeviceBufferVK*>
+      EmplaceInternal(const void* buffer, size_t length);
 
-  std::tuple<Range, std::shared_ptr<DeviceBuffer>, DeviceBuffer*>
+  std::tuple<Range, std::shared_ptr<DeviceBufferVK>, DeviceBufferVK*>
   EmplaceInternal(size_t length, size_t align, const EmplaceProc& cb);
 
-  std::tuple<Range, std::shared_ptr<DeviceBuffer>, DeviceBuffer*>
+  std::tuple<Range, std::shared_ptr<DeviceBufferVK>, DeviceBufferVK*>
   EmplaceInternal(const void* buffer, size_t length, size_t align);
 
   size_t GetLength() const { return offset_; }
@@ -153,7 +154,7 @@ class HostBuffer {
   /// A false return value indicates an unrecoverable allocation failure.
   [[nodiscard]] bool MaybeCreateNewBuffer();
 
-  const std::shared_ptr<DeviceBuffer>& GetCurrentBuffer() const;
+  const std::shared_ptr<DeviceBufferVK>& GetCurrentBuffer() const;
 
   [[nodiscard]] BufferView Emplace(const void* buffer, size_t length);
 
@@ -167,7 +168,7 @@ class HostBuffer {
 
   std::shared_ptr<Allocator> allocator_;
   std::shared_ptr<const IdleWaiter> idle_waiter_;
-  std::array<std::vector<std::shared_ptr<DeviceBuffer>>, kHostBufferArenaSize>
+  std::array<std::vector<std::shared_ptr<DeviceBufferVK>>, kHostBufferArenaSize>
       device_buffers_;
   size_t current_buffer_ = 0u;
   size_t offset_ = 0u;

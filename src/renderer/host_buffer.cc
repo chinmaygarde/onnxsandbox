@@ -10,9 +10,9 @@
 #include <absl/log/check.h>
 
 #include "core/buffer_view.h"
-#include "core/device_buffer.h"
 #include "core/device_buffer_descriptor.h"
 #include "core/formats.h"
+#include "renderer/backend/vulkan/device_buffer_vk.h"
 
 namespace ogre {
 
@@ -36,7 +36,8 @@ HostBuffer::HostBuffer(const std::shared_ptr<Allocator>& allocator,
   desc.size = kAllocatorBlockSize;
   desc.storage_mode = StorageMode::kHostVisible;
   for (auto i = 0u; i < kHostBufferArenaSize; i++) {
-    std::shared_ptr<DeviceBuffer> device_buffer = allocator->CreateBuffer(desc);
+    std::shared_ptr<DeviceBufferVK> device_buffer =
+        allocator->CreateBuffer(desc);
     CHECK(device_buffer) << "Failed to allocate device buffer.";
     device_buffers_[i].push_back(device_buffer);
   }
@@ -104,7 +105,7 @@ bool HostBuffer::MaybeCreateNewBuffer() {
     DeviceBufferDescriptor desc;
     desc.size = kAllocatorBlockSize;
     desc.storage_mode = StorageMode::kHostVisible;
-    std::shared_ptr<DeviceBuffer> buffer = allocator_->CreateBuffer(desc);
+    std::shared_ptr<DeviceBufferVK> buffer = allocator_->CreateBuffer(desc);
     if (!buffer) {
       LOG(ERROR) << "Failed to allocate host buffer of size " << desc.size;
       return false;
@@ -115,7 +116,7 @@ bool HostBuffer::MaybeCreateNewBuffer() {
   return true;
 }
 
-std::tuple<Range, std::shared_ptr<DeviceBuffer>, DeviceBuffer*>
+std::tuple<Range, std::shared_ptr<DeviceBufferVK>, DeviceBufferVK*>
 HostBuffer::EmplaceInternal(size_t length,
                             size_t align,
                             const EmplaceProc& cb) {
@@ -129,7 +130,7 @@ HostBuffer::EmplaceInternal(size_t length,
     DeviceBufferDescriptor desc;
     desc.size = length;
     desc.storage_mode = StorageMode::kHostVisible;
-    std::shared_ptr<DeviceBuffer> device_buffer =
+    std::shared_ptr<DeviceBufferVK> device_buffer =
         allocator_->CreateBuffer(desc);
     if (!device_buffer) {
       return {};
@@ -153,7 +154,7 @@ HostBuffer::EmplaceInternal(size_t length,
     offset_ += padding;
   }
 
-  const std::shared_ptr<DeviceBuffer>& current_buffer = GetCurrentBuffer();
+  const std::shared_ptr<DeviceBufferVK>& current_buffer = GetCurrentBuffer();
   auto contents = current_buffer->OnGetContents();
   cb(contents + offset_);
   Range output_range(offset_, length);
@@ -163,7 +164,7 @@ HostBuffer::EmplaceInternal(size_t length,
   return std::make_tuple(output_range, nullptr, current_buffer.get());
 }
 
-std::tuple<Range, std::shared_ptr<DeviceBuffer>, DeviceBuffer*>
+std::tuple<Range, std::shared_ptr<DeviceBufferVK>, DeviceBufferVK*>
 HostBuffer::EmplaceInternal(const void* buffer, size_t length) {
   // If the requested allocation is bigger than the block size, create a one-off
   // device buffer and write to that.
@@ -171,7 +172,7 @@ HostBuffer::EmplaceInternal(const void* buffer, size_t length) {
     DeviceBufferDescriptor desc;
     desc.size = length;
     desc.storage_mode = StorageMode::kHostVisible;
-    std::shared_ptr<DeviceBuffer> device_buffer =
+    std::shared_ptr<DeviceBufferVK> device_buffer =
         allocator_->CreateBuffer(desc);
     if (!device_buffer) {
       return {};
@@ -193,7 +194,7 @@ HostBuffer::EmplaceInternal(const void* buffer, size_t length) {
   }
   old_length = GetLength();
 
-  const std::shared_ptr<DeviceBuffer>& current_buffer = GetCurrentBuffer();
+  const std::shared_ptr<DeviceBufferVK>& current_buffer = GetCurrentBuffer();
   auto contents = current_buffer->OnGetContents();
   if (buffer) {
     ::memmove(contents + old_length, buffer, length);
@@ -204,7 +205,7 @@ HostBuffer::EmplaceInternal(const void* buffer, size_t length) {
                          current_buffer.get());
 }
 
-std::tuple<Range, std::shared_ptr<DeviceBuffer>, DeviceBuffer*>
+std::tuple<Range, std::shared_ptr<DeviceBufferVK>, DeviceBufferVK*>
 HostBuffer::EmplaceInternal(const void* buffer, size_t length, size_t align) {
   if (align == 0 || (GetLength() % align) == 0) {
     return EmplaceInternal(buffer, length);
@@ -222,7 +223,7 @@ HostBuffer::EmplaceInternal(const void* buffer, size_t length, size_t align) {
   return EmplaceInternal(buffer, length);
 }
 
-const std::shared_ptr<DeviceBuffer>& HostBuffer::GetCurrentBuffer() const {
+const std::shared_ptr<DeviceBufferVK>& HostBuffer::GetCurrentBuffer() const {
   return device_buffers_[frame_index_][current_buffer_];
 }
 

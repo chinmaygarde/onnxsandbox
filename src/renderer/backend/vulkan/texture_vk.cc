@@ -124,7 +124,7 @@ bool TextureVK::OnSetContents(const uint8_t* contents,
   copy.imageSubresource.layerCount = 1u;
 
   vk_cmd_buffer.copyBufferToImage(
-      DeviceBufferVK::Cast(*staging_buffer).GetBuffer(),  // src buffer
+      staging_buffer->GetBuffer(),  // src buffer
       GetImage(),                                         // dst image
       barrier.new_layout,                                 // dst image layout
       1u,                                                 // region count

@@ -5,9 +5,11 @@
 #pragma once
 
 #include <memory>
+#include <optional>
 
-#include "base/backend_cast.h"
-#include "core/device_buffer.h"
+#include "core/buffer_view.h"
+#include "core/device_buffer_descriptor.h"
+#include "core/range.h"
 #include "renderer/backend/vulkan/resource_manager_vk.h"
 #include "renderer/backend/vulkan/vma.h"
 
@@ -15,8 +17,7 @@ namespace ogre {
 
 class Context;
 
-class DeviceBufferVK final : public DeviceBuffer,
-                             public BackendCast<DeviceBufferVK, DeviceBuffer> {
+class DeviceBufferVK final {
  public:
   DeviceBufferVK(DeviceBufferDescriptor desc,
                  std::weak_ptr<Context> context,
@@ -24,13 +25,32 @@ class DeviceBufferVK final : public DeviceBuffer,
                  VmaAllocationInfo info,
                  bool is_host_coherent);
 
-  // |DeviceBuffer|
-  ~DeviceBufferVK() override;
+  ~DeviceBufferVK();
 
   vk::Buffer GetBuffer() const;
 
   // Visible for testing.
   bool IsHostCoherent() const;
+
+  [[nodiscard]] bool CopyHostBuffer(const uint8_t* source,
+                                    Range source_range,
+                                    size_t offset = 0u);
+
+  bool SetLabel(std::string_view label);
+
+  bool SetLabel(std::string_view label, Range range);
+
+  /// @brief Create a buffer view of this entire buffer.
+  static BufferView AsBufferView(std::shared_ptr<DeviceBufferVK> buffer);
+
+  const DeviceBufferDescriptor& GetDeviceBufferDescriptor() const;
+
+  uint8_t* OnGetContents() const;
+
+  /// Make any pending writes visible to the GPU.
+  void Flush(std::optional<Range> range = std::nullopt) const;
+
+  void Invalidate(std::optional<Range> range = std::nullopt) const;
 
  private:
   friend class Allocator;
@@ -54,29 +74,10 @@ class DeviceBufferVK final : public DeviceBuffer,
     BufferResource& operator=(const BufferResource&) = delete;
   };
 
+  const DeviceBufferDescriptor desc_;
   std::weak_ptr<Context> context_;
   UniqueResourceVKT<BufferResource> resource_;
   bool is_host_coherent_ = false;
-
-  // |DeviceBuffer|
-  uint8_t* OnGetContents() const override;
-
-  // |DeviceBuffer|
-  bool OnCopyHostBuffer(const uint8_t* source,
-                        Range source_range,
-                        size_t offset) override;
-
-  // |DeviceBuffer|
-  bool SetLabel(std::string_view label) override;
-
-  // |DeviceBuffer|
-  bool SetLabel(std::string_view label, Range range) override;
-
-  // |DeviceBuffer|
-  void Flush(std::optional<Range> range) const override;
-
-  // |DeviceBuffer|
-  void Invalidate(std::optional<Range> range) const override;
 
   DeviceBufferVK(const DeviceBufferVK&) = delete;
 

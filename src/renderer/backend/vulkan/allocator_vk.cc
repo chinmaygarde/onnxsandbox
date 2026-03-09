@@ -175,7 +175,7 @@ bool Allocator::IsValid() const {
   return is_valid_;
 }
 
-std::shared_ptr<DeviceBuffer> Allocator::CreateBuffer(
+std::shared_ptr<DeviceBufferVK> Allocator::CreateBuffer(
     const DeviceBufferDescriptor& desc) {
   return OnCreateBuffer(desc);
 }
@@ -200,13 +200,13 @@ std::shared_ptr<Texture> Allocator::CreateTexture(const TextureDescriptor& desc,
   return OnCreateTexture(desc, threadsafe);
 }
 
-std::shared_ptr<DeviceBuffer> Allocator::CreateBufferWithCopy(
+std::shared_ptr<DeviceBufferVK> Allocator::CreateBufferWithCopy(
     const uint8_t* buffer,
     size_t length) {
   DeviceBufferDescriptor desc;
   desc.size = length;
   desc.storage_mode = StorageMode::kHostVisible;
-  auto new_buffer = CreateBuffer(desc);
+  std::shared_ptr<DeviceBufferVK> new_buffer = CreateBuffer(desc);
 
   if (!new_buffer) {
     return nullptr;
@@ -221,7 +221,7 @@ std::shared_ptr<DeviceBuffer> Allocator::CreateBufferWithCopy(
   return new_buffer;
 }
 
-std::shared_ptr<DeviceBuffer> Allocator::CreateBufferWithCopy(
+std::shared_ptr<DeviceBufferVK> Allocator::CreateBufferWithCopy(
     const fml::Mapping& mapping) {
   return CreateBufferWithCopy(mapping.GetMapping(), mapping.GetSize());
 }
@@ -548,7 +548,7 @@ std::shared_ptr<Texture> Allocator::OnCreateTexture(
   return std::make_shared<TextureVK>(context_, std::move(source));
 }
 
-std::shared_ptr<DeviceBuffer> Allocator::OnCreateBuffer(
+std::shared_ptr<DeviceBufferVK> Allocator::OnCreateBuffer(
     const DeviceBufferDescriptor& desc) {
   vk::BufferCreateInfo buffer_info;
   buffer_info.usage = vk::BufferUsageFlagBits::eVertexBuffer |

@@ -1,8 +1,6 @@
 add_library(core
   buffer_view.cc
   buffer_view.h
-  device_buffer.cc
-  device_buffer.h
   device_buffer_descriptor.cc
   device_buffer_descriptor.h
   formats.cc

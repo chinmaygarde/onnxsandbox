@@ -6,9 +6,9 @@
 
 #include <memory>
 
-#include "core/device_buffer.h"
 #include "renderer/backend/vulkan/context_vk.h"
 #include "renderer/backend/vulkan/descriptor_pool_vk.h"
+#include "renderer/backend/vulkan/device_buffer_vk.h"
 #include "renderer/backend/vulkan/gpu_tracer_vk.h"
 #include "renderer/backend/vulkan/texture_source_vk.h"
 
@@ -29,7 +29,7 @@ class TrackedObjects {
 
   void Track(const std::shared_ptr<SharedObject>& object);
 
-  void Track(const std::shared_ptr<const DeviceBuffer>& buffer);
+  void Track(const std::shared_ptr<const DeviceBufferVK>& buffer);
 
   void Track(const std::shared_ptr<const TextureSource>& texture);
 
@@ -45,7 +45,7 @@ class TrackedObjects {
   std::shared_ptr<CommandPool> pool_;
   vk::UniqueCommandBuffer buffer_;
   std::vector<std::shared_ptr<SharedObject>> tracked_objects_;
-  std::vector<std::shared_ptr<const DeviceBuffer>> tracked_buffers_;
+  std::vector<std::shared_ptr<const DeviceBufferVK>> tracked_buffers_;
   std::vector<std::shared_ptr<const TextureSource>> tracked_textures_;
   std::unique_ptr<GPUProbe> probe_;
   bool is_valid_ = false;

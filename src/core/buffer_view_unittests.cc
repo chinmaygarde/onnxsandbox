@@ -14,10 +14,10 @@ TEST(BufferViewTest, Empty) {
 }
 
 TEST(BufferViewTest, TakeRaw) {
-  DeviceBuffer* buffer = reinterpret_cast<DeviceBuffer*>(0xcafebabe);
+  DeviceBufferVK* buffer = reinterpret_cast<DeviceBufferVK*>(0xcafebabe);
   BufferView buffer_view(buffer, {0, 123});
   EXPECT_TRUE(buffer_view);
-  std::shared_ptr<const DeviceBuffer> taken = buffer_view.TakeBuffer();
+  std::shared_ptr<const DeviceBufferVK> taken = buffer_view.TakeBuffer();
   EXPECT_FALSE(taken);
   EXPECT_EQ(buffer_view.GetBuffer(), buffer);
 }

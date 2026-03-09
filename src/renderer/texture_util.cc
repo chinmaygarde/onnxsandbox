@@ -20,12 +20,12 @@ std::shared_ptr<Texture> CreateTexture(
 
   auto data_mapping =
       std::make_shared<fml::NonOwnedMapping>(data.data(), data.size());
-  std::shared_ptr<DeviceBuffer> buffer =
+  std::shared_ptr<DeviceBufferVK> buffer =
       context->GetResourceAllocator()->CreateBufferWithCopy(*data_mapping);
 
   std::shared_ptr<CommandBuffer> cmd_buffer = context->CreateCommandBuffer();
   std::shared_ptr<BlitPass> blit_pass = cmd_buffer->CreateBlitPass();
-  blit_pass->AddCopy(DeviceBuffer::AsBufferView(std::move(buffer)), texture);
+  blit_pass->AddCopy(DeviceBufferVK::AsBufferView(std::move(buffer)), texture);
 
   if (!blit_pass->EncodeCommands() ||
       !context->GetCommandQueue()->Submit({std::move(cmd_buffer)}).ok()) {

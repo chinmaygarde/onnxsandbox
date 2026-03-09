@@ -6,6 +6,7 @@
 
 #include "renderer/backend/vulkan/command_buffer_vk.h"
 #include "renderer/backend/vulkan/compute_pipeline_vk.h"
+#include "renderer/backend/vulkan/device_buffer_vk.h"
 #include "renderer/backend/vulkan/formats_vk.h"
 #include "renderer/backend/vulkan/sampler_vk.h"
 #include "renderer/backend/vulkan/texture_vk.h"
@@ -189,12 +190,12 @@ bool ComputePass::BindResource(size_t binding,
     return false;
   }
 
-  auto buffer = DeviceBufferVK::Cast(*view.GetBuffer()).GetBuffer();
+  auto buffer = view.GetBuffer()->GetBuffer();
   if (!buffer) {
     return false;
   }
 
-  std::shared_ptr<const DeviceBuffer> device_buffer = view.TakeBuffer();
+  std::shared_ptr<const DeviceBufferVK> device_buffer = view.TakeBuffer();
   if (device_buffer && !command_buffer_->Track(device_buffer)) {
     return false;
   }

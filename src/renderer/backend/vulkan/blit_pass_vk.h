@@ -11,11 +11,11 @@
 
 #include "base/config.h"
 #include "core/buffer_view.h"
-#include "core/device_buffer.h"
 #include "core/texture.h"
 #include "fml/macros.h"
 #include "geometry/point.h"
 #include "geometry/rect.h"
+#include "renderer/backend/vulkan/device_buffer_vk.h"
 #include "renderer/backend/vulkan/workarounds_vk.h"
 
 namespace ogre {
@@ -43,7 +43,7 @@ class BlitPass final {
                std::string_view label = "");
 
   bool AddCopy(std::shared_ptr<Texture> source,
-               std::shared_ptr<DeviceBuffer> destination,
+               std::shared_ptr<DeviceBufferVK> destination,
                std::optional<IRect> source_region = std::nullopt,
                size_t destination_offset = 0,
                std::string_view label = "");
@@ -80,7 +80,7 @@ class BlitPass final {
                                      std::string_view label);
 
   bool OnCopyTextureToBufferCommand(std::shared_ptr<Texture> source,
-                                    std::shared_ptr<DeviceBuffer> destination,
+                                    std::shared_ptr<DeviceBufferVK> destination,
                                     IRect source_region,
                                     size_t destination_offset,
                                     std::string_view label);

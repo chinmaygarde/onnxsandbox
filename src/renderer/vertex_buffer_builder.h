@@ -11,7 +11,6 @@
 #include <vector>
 
 #include <absl/log/check.h>
-#include "core/device_buffer.h"
 #include "core/formats.h"
 #include "core/vertex_buffer.h"
 #include "renderer/backend/vulkan/allocator_vk.h"
@@ -139,7 +138,7 @@ class VertexBufferBuilder {
     if (!label_.empty()) {
       buffer->SetLabel(std::format("{} Vertices", label_));
     }
-    return DeviceBuffer::AsBufferView(std::move(buffer));
+    return DeviceBufferVK::AsBufferView(std::move(buffer));
   }
 
   std::vector<IndexType> CreateIndexBuffer() const { return indices_; }
@@ -168,7 +167,7 @@ class VertexBufferBuilder {
     if (!label_.empty()) {
       buffer->SetLabel(std::format("{} Indices", label_));
     }
-    return DeviceBuffer::AsBufferView(std::move(buffer));
+    return DeviceBufferVK::AsBufferView(std::move(buffer));
   }
 };
 

@@ -9,7 +9,6 @@
 #include <utility>
 
 #include "core/buffer_view.h"
-#include "core/device_buffer.h"
 #include "core/formats.h"
 #include "core/texture.h"
 #include "core/vertex_buffer.h"
@@ -531,10 +530,9 @@ bool RenderPass::SetVertexBuffer(BufferView vertex_buffers[],
   vk::Buffer buffers[kMaxVertexBuffers];
   vk::DeviceSize vertex_buffer_offsets[kMaxVertexBuffers];
   for (size_t i = 0; i < vertex_buffer_count; i++) {
-    buffers[i] =
-        DeviceBufferVK::Cast(*vertex_buffers[i].GetBuffer()).GetBuffer();
+    buffers[i] = vertex_buffers[i].GetBuffer()->GetBuffer();
     vertex_buffer_offsets[i] = vertex_buffers[i].GetRange().offset;
-    std::shared_ptr<const DeviceBuffer> device_buffer =
+    std::shared_ptr<const DeviceBufferVK> device_buffer =
         vertex_buffers[i].TakeBuffer();
     if (device_buffer) {
       command_buffer_->Track(device_buffer);
@@ -568,14 +566,13 @@ bool RenderPass::SetIndexBuffer(BufferView index_buffer, IndexType index_type) {
       return false;
     }
 
-    std::shared_ptr<const DeviceBuffer> index_buffer =
+    std::shared_ptr<const DeviceBufferVK> index_buffer =
         index_buffer_view.TakeBuffer();
     if (index_buffer && !command_buffer_->Track(index_buffer)) {
       return false;
     }
 
-    vk::Buffer index_buffer_handle =
-        DeviceBufferVK::Cast(*index_buffer_view.GetBuffer()).GetBuffer();
+    vk::Buffer index_buffer_handle = index_buffer_view.GetBuffer()->GetBuffer();
     command_buffer_vk_.bindIndexBuffer(index_buffer_handle,
                                        index_buffer_view.GetRange().offset,
                                        ToVKIndexType(index_type));
@@ -718,12 +715,12 @@ bool RenderPass::BindResource(size_t binding,
     return false;
   }
 
-  auto buffer = DeviceBufferVK::Cast(*view.GetBuffer()).GetBuffer();
+  auto buffer = view.GetBuffer()->GetBuffer();
   if (!buffer) {
     return false;
   }
 
-  std::shared_ptr<const DeviceBuffer> device_buffer = view.TakeBuffer();
+  std::shared_ptr<const DeviceBufferVK> device_buffer = view.TakeBuffer();
   if (device_buffer && !command_buffer_->Track(device_buffer)) {
     return false;
   }

@@ -19,7 +19,7 @@ class BlitPass;
 class ComputePass;
 class Context;
 class DescriptorPool;
-class DeviceBuffer;
+class DeviceBufferVK;
 class RenderPass;
 class RenderTarget;
 class SharedObject;
@@ -62,7 +62,7 @@ class CommandBuffer final : public std::enable_shared_from_this<CommandBuffer> {
 
   /// @brief Ensure that [buffer] is kept alive until this command buffer
   ///        completes execution.
-  bool Track(const std::shared_ptr<const DeviceBuffer>& buffer);
+  bool Track(const std::shared_ptr<const DeviceBufferVK>& buffer);
 
   /// @brief Ensure that [texture] is kept alive until this command buffer
   ///       completes execution.

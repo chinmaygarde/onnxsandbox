@@ -5,7 +5,6 @@
 #pragma once
 
 #include "base/allocation_size.h"
-#include "core/device_buffer.h"
 #include "core/device_buffer_descriptor.h"
 #include "core/texture.h"
 #include "core/texture_descriptor.h"
@@ -27,16 +26,16 @@ class Allocator final {
 
   bool IsValid() const;
 
-  std::shared_ptr<DeviceBuffer> CreateBuffer(
+  std::shared_ptr<DeviceBufferVK> CreateBuffer(
       const DeviceBufferDescriptor& desc);
 
   std::shared_ptr<Texture> CreateTexture(const TextureDescriptor& desc,
                                          bool threadsafe = false);
 
-  std::shared_ptr<DeviceBuffer> CreateBufferWithCopy(const uint8_t* buffer,
-                                                     size_t length);
+  std::shared_ptr<DeviceBufferVK> CreateBufferWithCopy(const uint8_t* buffer,
+                                                       size_t length);
 
-  std::shared_ptr<DeviceBuffer> CreateBufferWithCopy(
+  std::shared_ptr<DeviceBufferVK> CreateBufferWithCopy(
       const fml::Mapping& mapping);
 
   uint16_t MinimumBytesPerRow(PixelFormat format) const;
@@ -83,7 +82,7 @@ class Allocator final {
             const vk::Instance& instance,
             const Capabilities& capabilities);
 
-  std::shared_ptr<DeviceBuffer> OnCreateBuffer(
+  std::shared_ptr<DeviceBufferVK> OnCreateBuffer(
       const DeviceBufferDescriptor& desc);
 
   std::shared_ptr<Texture> OnCreateTexture(const TextureDescriptor& desc,

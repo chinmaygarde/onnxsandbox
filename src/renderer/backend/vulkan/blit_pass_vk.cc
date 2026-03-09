@@ -112,7 +112,7 @@ bool BlitPass::AddCopy(std::shared_ptr<Texture> source,
 }
 
 bool BlitPass::AddCopy(std::shared_ptr<Texture> source,
-                       std::shared_ptr<DeviceBuffer> destination,
+                       std::shared_ptr<DeviceBufferVK> destination,
                        std::optional<IRect> source_region,
                        size_t destination_offset,
                        std::string_view label) {
@@ -297,7 +297,7 @@ bool BlitPass::OnCopyTextureToTextureCommand(
 
 bool BlitPass::OnCopyTextureToBufferCommand(
     std::shared_ptr<Texture> source,
-    std::shared_ptr<DeviceBuffer> destination,
+    std::shared_ptr<DeviceBufferVK> destination,
     IRect source_region,
     size_t destination_offset,
     std::string_view label) {
@@ -323,7 +323,7 @@ bool BlitPass::OnCopyTextureToBufferCommand(
   barrier.dst_stage = vk::PipelineStageFlagBits::eVertexShader |
                       vk::PipelineStageFlagBits::eFragmentShader;
 
-  const auto& dst = DeviceBufferVK::Cast(*destination);
+  const DeviceBufferVK& dst = *destination;
 
   vk::BufferImageCopy image_copy;
   image_copy.setBufferOffset(destination_offset);
@@ -396,9 +396,9 @@ bool BlitPass::OnCopyBufferToTextureCommand(
 
   // cast destination to TextureVK
   const auto& dst = TextureVK::Cast(*destination);
-  const auto& src = DeviceBufferVK::Cast(*source.GetBuffer());
+  const DeviceBufferVK& src = *source.GetBuffer();
 
-  std::shared_ptr<const DeviceBuffer> source_buffer = source.TakeBuffer();
+  std::shared_ptr<const DeviceBufferVK> source_buffer = source.TakeBuffer();
   if ((source_buffer && !command_buffer_->Track(source_buffer)) ||
       !command_buffer_->Track(destination)) {
     return false;
