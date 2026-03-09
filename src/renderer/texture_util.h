@@ -5,8 +5,8 @@
 #pragma once
 
 #include "fml/status.h"
-#include "renderer/backend/vulkan/context_vk.h"
-#include "renderer/backend/vulkan/texture_vk.h"
+#include "renderer/context_vk.h"
+#include "renderer/texture_vk.h"
 
 namespace ogre {
 

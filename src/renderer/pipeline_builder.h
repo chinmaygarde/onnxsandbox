@@ -7,10 +7,10 @@
 #include <format>
 
 #include "core/formats.h"
-#include "renderer/backend/vulkan/capabilities_vk.h"
-#include "renderer/backend/vulkan/context_vk.h"
-#include "renderer/backend/vulkan/shader_library_vk.h"
+#include "renderer/capabilities_vk.h"
+#include "renderer/context_vk.h"
 #include "renderer/pipeline_descriptor.h"
+#include "renderer/shader_library_vk.h"
 #include "renderer/vertex_descriptor.h"
 
 namespace ogre {

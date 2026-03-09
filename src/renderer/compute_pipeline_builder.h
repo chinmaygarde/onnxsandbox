@@ -6,9 +6,9 @@
 
 #include <format>
 
-#include "renderer/backend/vulkan/context_vk.h"
-#include "renderer/backend/vulkan/shader_library_vk.h"
 #include "renderer/compute_pipeline_descriptor.h"
+#include "renderer/context_vk.h"
+#include "renderer/shader_library_vk.h"
 
 namespace ogre {
 

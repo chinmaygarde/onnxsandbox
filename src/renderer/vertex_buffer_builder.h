@@ -13,7 +13,7 @@
 #include <absl/log/check.h>
 #include "core/formats.h"
 #include "core/vertex_buffer.h"
-#include "renderer/backend/vulkan/allocator_vk.h"
+#include "renderer/allocator_vk.h"
 #include "renderer/host_buffer.h"
 
 namespace ogre {

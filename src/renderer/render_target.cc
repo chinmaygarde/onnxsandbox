@@ -9,10 +9,10 @@
 
 #include "core/formats.h"
 #include "core/texture_descriptor.h"
-#include "renderer/backend/vulkan/allocator_vk.h"
-#include "renderer/backend/vulkan/capabilities_vk.h"
-#include "renderer/backend/vulkan/context_vk.h"
-#include "renderer/backend/vulkan/texture_vk.h"
+#include "renderer/allocator_vk.h"
+#include "renderer/capabilities_vk.h"
+#include "renderer/context_vk.h"
+#include "renderer/texture_vk.h"
 
 namespace ogre {
 

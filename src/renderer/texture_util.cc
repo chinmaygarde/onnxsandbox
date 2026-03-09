@@ -3,10 +3,10 @@
 // found in the LICENSE file.
 
 #include "renderer/texture_util.h"
-#include "renderer/backend/vulkan/allocator_vk.h"
-#include "renderer/backend/vulkan/blit_pass_vk.h"
-#include "renderer/backend/vulkan/command_buffer_vk.h"
-#include "renderer/backend/vulkan/command_queue_vk.h"
+#include "renderer/allocator_vk.h"
+#include "renderer/blit_pass_vk.h"
+#include "renderer/command_buffer_vk.h"
+#include "renderer/command_queue_vk.h"
 
 namespace ogre {
 

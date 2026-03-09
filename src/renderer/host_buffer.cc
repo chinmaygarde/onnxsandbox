@@ -12,7 +12,7 @@
 #include "core/buffer_view.h"
 #include "core/device_buffer_descriptor.h"
 #include "core/formats.h"
-#include "renderer/backend/vulkan/device_buffer_vk.h"
+#include "renderer/device_buffer_vk.h"
 
 namespace ogre {
 

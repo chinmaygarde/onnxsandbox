@@ -11,8 +11,8 @@
 #include <type_traits>
 
 #include "core/buffer_view.h"
-#include "renderer/backend/vulkan/allocator_vk.h"
-#include "renderer/backend/vulkan/idle_waiter_vk.h"
+#include "renderer/allocator_vk.h"
+#include "renderer/idle_waiter_vk.h"
 
 namespace ogre {
 

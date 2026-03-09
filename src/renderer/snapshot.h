@@ -12,7 +12,7 @@
 #include "core/sampler_descriptor.h"
 #include "geometry/matrix.h"
 #include "geometry/rect.h"
-#include "renderer/backend/vulkan/texture_vk.h"
+#include "renderer/texture_vk.h"
 
 namespace ogre {
 

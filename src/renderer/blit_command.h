@@ -6,8 +6,8 @@
 
 #include <cstdint>
 #include "geometry/rect.h"
-#include "renderer/backend/vulkan/device_buffer_vk.h"
-#include "renderer/backend/vulkan/texture_vk.h"
+#include "renderer/device_buffer_vk.h"
+#include "renderer/texture_vk.h"
 
 namespace ogre {
 

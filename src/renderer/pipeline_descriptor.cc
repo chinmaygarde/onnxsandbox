@@ -9,7 +9,7 @@
 
 #include "base/comparable.h"
 #include "core/formats.h"
-#include "renderer/backend/vulkan/shader_function_vk.h"
+#include "renderer/shader_function_vk.h"
 #include "renderer/vertex_descriptor.h"
 
 namespace ogre {

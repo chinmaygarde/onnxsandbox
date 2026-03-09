@@ -10,8 +10,8 @@
 #include "core/formats.h"
 #include "core/raw_ptr.h"
 #include "core/shader_types.h"
-#include "renderer/backend/vulkan/sampler_vk.h"
-#include "renderer/backend/vulkan/texture_vk.h"
+#include "renderer/sampler_vk.h"
+#include "renderer/texture_vk.h"
 
 namespace ogre {
 
